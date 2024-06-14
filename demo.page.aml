@@ -1,9 +1,8 @@
 Dashboard unnamed {
   title: 'Unnamed Dashboard'
   description: ''''''
-
   block text_block: TextBlock {
-    content: @md   #  Welcome to Canvas Dashboard 🚀
+    content: @md    #  Welcome to Canvas Dashboard 🚀
 
 <div class="flex space-x-6">
   <div class="flex-1">
@@ -34,7 +33,7 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
     </div>
     <script src="https://fast.wistia.net/assets/external/E-v1.js" async></script>
   </div>
-</div>;;
+</div;;
   }
 
   block filter_block: FilterBlock {
