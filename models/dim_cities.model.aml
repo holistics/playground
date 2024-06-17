@@ -1,4 +1,4 @@
-Model demo_ecommerce_dim_countries {
+Model dim_countries {
   type: 'table'
   label: 'Dim Countries'
   description: ''
