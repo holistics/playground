@@ -1,4 +1,4 @@
-Model demo_ecommerce_dim_merchants {
+Model dim_merchants {
   type: 'table'
   label: 'Dim Merchants'
   description: ''
