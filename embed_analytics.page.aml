@@ -517,7 +517,7 @@ dim_users.sign_up_date
       position: pos(1160, 150, 220, 140)
     }
     block t3 {
-      position: pos(20, 120, 1400, 190)
+      position: pos(30, 120, 1400, 190)
       layer: -1
     }
     block t4 {
