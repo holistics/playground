@@ -511,13 +511,13 @@ dim_users.sign_up_date
       position: pos(610, 150, 260, 140)
     }
     block v6 {
-      position: pos(880, 180, 220, 140)
+      position: pos(890, 150, 220, 140)
     }
     block v7 {
       position: pos(1160, 150, 220, 140)
     }
     block t3 {
-      position: pos(30, 120, 1400, 190)
+      position: pos(20, 120, 1400, 190)
       layer: -1
     }
     block t4 {
