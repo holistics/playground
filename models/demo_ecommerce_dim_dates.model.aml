@@ -1,4 +1,4 @@
-Model demo_ecommerce_dim_dates {
+Model dim_dates {
   type: 'table'
   label: 'Dim Dates'
   description: ''
