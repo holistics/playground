@@ -1,4 +1,4 @@
-Model demo_ecommerce_dim_users {
+Model dim_users {
   type: 'table'
   label: 'Dim Users'
   description: ''
