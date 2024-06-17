@@ -1,5 +1,5 @@
 Dashboard ecomax {
-  title: '[Demo BQ]🛍️ Ecomax'
+  title: '🛍️ Ecomax'
   owner: 'triet.lq@holistics.io'
   description: ''''''
   view: CanvasLayout {
