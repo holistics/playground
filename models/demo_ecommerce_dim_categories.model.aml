@@ -1,4 +1,4 @@
-Model demo_ecommerce_dim_categories {
+Model dim_categories {
   type: 'table'
   label: 'Dim Categories'
   description: ''
