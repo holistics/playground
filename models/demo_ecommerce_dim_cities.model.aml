@@ -1,4 +1,4 @@
-Model demo_ecommerce_dim_cities {
+Model dim_cities {
   type: 'table'
   label: 'Dim Cities'
   description: ''
