@@ -1,4 +1,4 @@
-Model demo_ecommerce_fct_order_items {
+Model fct_order_items {
   type: 'table'
   label: 'Fct Order Items'
   description: ''
