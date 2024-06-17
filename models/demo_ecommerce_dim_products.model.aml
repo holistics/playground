@@ -1,4 +1,4 @@
-Model demo_ecommerce_dim_products {
+Model dim_products {
   type: 'table'
   label: 'Dim Products'
   description: ''
