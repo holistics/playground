@@ -1,6 +1,6 @@
 Model dim_cities {
   type: 'table'
-  label: 'Cities'
+  label: 'City'
   description: ''
   data_source_name: 'demo_bq'
   dimension id {
