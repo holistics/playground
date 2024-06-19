@@ -12,9 +12,6 @@ Model dim_user_countries = dim_countries.extend({
   label: 'User Countries'
 })
 
-// asdas
-// asdasd
-
 Dataset ecommerce {
   label: 'Demo Ecommerce'
   description: 'Ecommerce dataset. ERD can be found [here](https://dbdiagram.io/e/658b9f1289dea62799972ec8/665fedfcb65d933879884fa8)'
