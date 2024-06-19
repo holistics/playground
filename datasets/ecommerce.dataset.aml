@@ -1,0 +1,95 @@
+Model dim_product_cities = dim_cities.extend({
+  label: 'Product Cities'
+})
+Model dim_product_countries = dim_countries.extend({
+  label: 'Product Countries'
+})
+
+Model dim_user_cities = dim_cities.extend({
+  label: 'User Cities'
+})
+Model dim_user_countries = dim_countries.extend({
+  label: 'User Countries'
+})
+
+
+Dataset ecommerce {
+  label: 'Demo Ecommerce'
+  description: 'Ecommerce dataset. ERD can be found [here](https://dbdiagram.io/e/658b9f1289dea62799972ec8/665fedfcb65d933879884fa8)'
+  data_source_name: 'demo_bq'
+  owner: 'triet.lq@holistics.io'
+  
+  models: [
+    fct_order_items,
+    fct_orders,
+
+    dim_products,
+    dim_users,
+    dim_categories,
+    dim_merchants,
+    
+
+    dim_product_cities,
+    dim_product_countries,
+    dim_user_cities,
+    dim_user_countries,
+    dim_dates,
+    
+  ]
+  relationships: [
+    relationship(fct_order_items.product_id > dim_products.id, true),
+    relationship(fct_order_items.category_id >  dim_categories.id, true),
+    
+    relationship(fct_order_items.merchant_id >  dim_merchants.id, true),
+    relationship(fct_order_items.merchant_city_id >  dim_product_cities.id, true),
+    relationship(fct_order_items.merchant_country_code >  dim_product_countries.code, true),
+    relationship(fct_order_items.user_id >  dim_users.id, true),
+    relationship(fct_order_items.created_date >  dim_dates.date_key, true),
+    relationship(fct_order_items.order_id >  fct_orders.id, false),
+
+
+    relationship(fct_orders.user_city_id >  dim_user_cities.id, true),
+    relationship(fct_orders.user_country_code >  dim_user_countries.code, true),
+    relationship(fct_orders.created_date >  dim_dates.date_key, true),
+    relationship(fct_orders.user_id >  dim_users.id, false),
+
+  ]
+
+
+  metric count_users {
+    label: 'Count Users'
+    type: 'number'
+    definition: @aql count(dim_users.id);;
+  }
+
+  metric count_orders {
+    label: 'Count Orders'
+    type: 'number'
+    definition: @aql count(fct_orders.id) | with_relationships(fct_orders.user_id >  dim_users.id);;
+  }
+
+  metric count_distinct_orders {
+    label: 'Count Distinct Orders'
+    type: 'number'
+    definition: @aql count_distinct(fct_order_items.order_id) ;;
+  }
+
+  metric count_distinct_products {
+    label: 'Count Distinct Products'
+    type: 'number'
+    definition: @aql count_distinct(fct_order_items.product_id) ;;
+  }
+
+  metric gmv {
+    label: "GMV - Gross Merchandise Value"
+    type: "number"
+    description: "Total value regardless of order status"
+    definition: @aql sum(fct_order_items.value);;
+  }
+
+  metric aov {
+    label: "AOV - Average Order Value"
+    type: 'number'
+    definition: @aql gmv/count_orders;;
+  }
+}
