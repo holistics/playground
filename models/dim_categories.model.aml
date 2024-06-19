@@ -1,6 +1,6 @@
 Model dim_categories {
   type: 'table'
-  label: 'Dim Categories'
+  label: 'Categories'
   description: ''
   data_source_name: 'demo_bq'
   dimension id {

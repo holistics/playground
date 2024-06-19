@@ -1,6 +1,6 @@
 Model dim_products {
   type: 'table'
-  label: 'Dim Products'
+  label: 'Products'
   description: ''
   data_source_name: 'demo_bq'
   dimension id {

@@ -1,6 +1,6 @@
 Model dim_countries {
   type: 'table'
-  label: 'Dim Countries'
+  label: 'Countries'
   description: ''
   data_source_name: 'demo_bq'
   dimension code {

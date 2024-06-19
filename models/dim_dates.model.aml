@@ -1,6 +1,6 @@
 Model dim_dates {
   type: 'table'
-  label: 'Dim Dates'
+  label: 'Dates'
   description: ''
   data_source_name: 'demo_bq'
   dimension date_key {

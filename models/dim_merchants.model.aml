@@ -1,6 +1,6 @@
 Model dim_merchants {
   type: 'table'
-  label: 'Dim Merchants'
+  label: 'Merchants'
   description: ''
   data_source_name: 'demo_bq'
   dimension id {

@@ -1,6 +1,6 @@
 Model dim_users {
   type: 'table'
-  label: 'Dim Users'
+  label: 'Users'
   description: ''
   data_source_name: 'demo_bq'
   dimension id {
