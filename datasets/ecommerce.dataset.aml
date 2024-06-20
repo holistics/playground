@@ -1,15 +1,15 @@
 Model dim_product_cities = dim_cities.extend({
-  label: 'Product Cities'
+  label: 'Product Citiy'
 })
 Model dim_product_countries = dim_countries.extend({
-  label: 'Product Countries'
+  label: 'Product Country'
 })
 
 Model dim_user_cities = dim_cities.extend({
-  label: 'User Cities'
+  label: 'User City'
 })
 Model dim_user_countries = dim_countries.extend({
-  label: 'User Countries'
+  label: 'User Country'
 })
 
 Dataset ecommerce {
@@ -22,6 +22,7 @@ Dataset ecommerce {
     fct_order_items,
     fct_orders,
 
+    dim_dates,
     dim_products,
     dim_users,
     dim_categories,
@@ -32,7 +33,6 @@ Dataset ecommerce {
     dim_product_countries,
     dim_user_cities,
     dim_user_countries,
-    dim_dates,
     
   ]
   relationships: [

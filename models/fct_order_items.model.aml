@@ -1,6 +1,6 @@
 Model fct_order_items {
   type: 'table'
-  label: 'Fct Order Items'
+  label: 'Order Items'
   description: ''
   data_source_name: 'demo_bq'
   dimension id {
