@@ -1,3 +1,8 @@
+use m_ecommerce {
+  ecommerce
+}
+
+
 Dashboard vizlibrary {
   title: 'Vizlibrary'
   description: ''''''
@@ -46,9 +51,9 @@ Dashboard vizlibrary {
   }
   // test
 
-  block t21: beautifulCard
-  block t23: beautifulCard
-  block t22: beautifulCard
+  // block t21: beautifulCard
+  // block t23: beautifulCard
+  // block t22: beautifulCard
 
   block v1: VizBlock {
     label: 'Total Users'

@@ -1,6 +1,8 @@
+use m_ecommerce
+
 Dashboard ecomax {
   title: '🛍️ Ecomax'
-  owner: 'triet.lq@holistics.io'
+  owner: 'support@holistics.io'
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
@@ -107,7 +109,7 @@ Dashboard ecomax {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('dim_users', 'sign_up_date')
+        field: ref('m_ecommerce.dim_users', 'sign_up_date')
         duration: 1
         granularity: 'year'
       }
@@ -121,7 +123,7 @@ Dashboard ecomax {
     viz: ColumnChart {
       dataset: ecommerce
       x_axis: VizFieldFull {
-        ref: ref('dim_dates', 'date_key')
+        ref: ref('m_ecommerce.dim_dates', 'date_key')
         transformation: 'datetrunc month'
         format {
           type: 'date'
@@ -144,7 +146,7 @@ Dashboard ecomax {
       settings {
         row_limit: 5000
         pop {
-          field: ref('dim_dates', 'date_key')
+          field: ref('m_ecommerce.dim_dates', 'date_key')
           duration: 1
           granularity: 'year'
           show_growth_rate: true
@@ -157,7 +159,11 @@ Dashboard ecomax {
   }
   block f1: FilterBlock {
     label: 'Date Range'
-    type: 'date'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: m_ecommerce.ecommerce
+      field: ref('m_ecommerce.dim_dates', 'date_key')
+    }
     default {
       operator: 'matches'
       value: 'last 1 year'
@@ -178,7 +184,7 @@ Dashboard ecomax {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('dim_dates', 'date_key')
+        field: ref('m_ecommerce.dim_dates', 'date_key')
         duration: 1
         granularity: 'year'
       }
@@ -192,7 +198,7 @@ Dashboard ecomax {
     viz: PieChart {
       dataset: ecommerce
       legend: VizFieldFull {
-        ref: ref('dim_users', 'gender')
+        ref: ref('m_ecommerce.dim_users', 'gender')
         format {
           type: 'text'
         }
@@ -235,7 +241,7 @@ Dashboard ecomax {
       dataset: ecommerce
       fields: [
         VizFieldFull {
-          ref: ref('dim_products', 'name')
+          ref: ref('m_ecommerce.dim_products', 'name')
           format {
             type: 'text'
           }
@@ -275,7 +281,7 @@ Dashboard ecomax {
           }
         ]
         pop {
-          field: ref('dim_dates', 'date_key')
+          field: ref('m_ecommerce.dim_dates', 'date_key')
           duration: 1
           granularity: 'year'
         }
@@ -296,19 +302,19 @@ Dashboard ecomax {
     viz: BarChart {
       dataset: ecommerce
       filter {
-        field: ref('dim_merchants', 'name')
+        field: ref('m_ecommerce.dim_merchants', 'name')
         operator: 'top'
         value: 10
         options {
           rank_by {
-            field: ref('fct_order_items', 'value')
+            field: ref('m_ecommerce.fct_order_items', 'value')
             aggregation: 'sum'
             logic: 'standard'
           }
         }
       }
       x_axis: VizFieldFull {
-        ref: ref('dim_merchants', 'name')
+        ref: ref('m_ecommerce.dim_merchants', 'name')
         format {
           type: 'text'
         }
@@ -357,7 +363,7 @@ Dashboard ecomax {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('dim_dates', 'date_key')
+        field: ref('m_ecommerce.dim_dates', 'date_key')
         duration: 1
         granularity: 'year'
       }
@@ -382,23 +388,12 @@ Dashboard ecomax {
     content: @md <span style="font-weight: 500; font-size: 20px" class="color-main">Key Metrics</span>;;
   }
   interactions: [
-    FilterInteraction {
-      from: 'f1'
+    DateDrillInteraction {
+      from: 'd1'
       to: [
         CustomMapping {
-          block: 'v1'
-          field: ref('dim_users', 'sign_up_date')
-        },
-        CustomMapping {
-          block: [
-            'v2',
-            'v3',
-            'v4',
-            'v5',
-            'v6',
-            'v7'
-          ]
-          field: ref('dim_dates', 'date_key')
+          block: 'v2'
+          field: ref('m_ecommerce.dim_dates', 'date_key')
         }
       ]
     }
