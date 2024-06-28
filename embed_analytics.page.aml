@@ -100,7 +100,7 @@ Dashboard embed_analytics {
           ref: 'aov'
           format {
             type: 'number'
-            pattern: 'inherited'
+            pattern: '[$$]#,###0.00'
           }
         }
       ]
@@ -154,7 +154,7 @@ Dashboard embed_analytics {
           ref: 'aov'
           format {
             type: 'number'
-            pattern: 'inherited'
+            pattern: '[$$]#,###0.00'
           }
         }
       ]
@@ -489,7 +489,7 @@ dim_users.sign_up_date
       position: pos(-490, 100, 465, 160)
     }
     block f1 {
-      position: pos(-290, 320, 300, 80)
+      position: pos(-320, 320, 300, 80)
     }
     block v2 {
       position: pos(750, 780, 650, 240)
