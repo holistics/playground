@@ -45,7 +45,7 @@ Model dim_users {
     hidden: false
     definition: @sql {{ #SOURCE.birth_date }};;
   }
-   dimension gender {
+  dimension gender {
     label: 'Gender'
     type: 'text'
     hidden: false
@@ -65,4 +65,10 @@ Model dim_users {
 
   owner: 'triet.lq+ph@holistics.io'
   table_name: '`demo_ecommerce`.`dim_users`'
+  measure total_users {
+    label: "Total Users"
+    type: "number"
+    definition: @sql count({{ id }});;
+    aggregation_type: "custom"
+  }
 }
