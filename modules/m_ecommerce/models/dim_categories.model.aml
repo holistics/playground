@@ -2,7 +2,7 @@ Model dim_categories {
   type: 'table'
   label: 'Category'
   description: ''
-  data_source_name: 'demo_bq'
+  data_source_name: 'demo_pg'
   dimension id {
     label: 'Id'
     type: 'number'
@@ -23,5 +23,5 @@ Model dim_categories {
   }
 
   owner: 'triet.lq+ph@holistics.io'
-  table_name: '`demo_ecommerce`.`dim_categories`'
+  table_name: 'ecommerce.dim_categories'
 }

@@ -2,7 +2,7 @@ Model dim_dates {
   type: 'table'
   label: 'Date'
   description: ''
-  data_source_name: 'demo_bq'
+  data_source_name: 'demo_pg'
   dimension date_key {
     label: 'Date'
     type: 'date'
@@ -101,5 +101,5 @@ Model dim_dates {
   }
 
   owner: 'triet.lq+ph@holistics.io'
-  table_name: '`demo_ecommerce`.`dim_dates`'
+  table_name: 'ecommerce.dim_dates'
 }

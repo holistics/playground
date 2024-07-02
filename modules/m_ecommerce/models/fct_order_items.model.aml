@@ -2,7 +2,7 @@ Model fct_order_items {
   type: 'table'
   label: 'Order Items'
   description: ''
-  data_source_name: 'demo_bq'
+  data_source_name: 'demo_pg'
   dimension id {
     label: 'Id'
     type: 'number'
@@ -83,5 +83,5 @@ Model fct_order_items {
   }
 
   owner: 'triet.lq+ph@holistics.io'
-  table_name: '`demo_ecommerce`.`fct_order_items`'
+  table_name: 'ecommerce.fct_order_items'
 }
