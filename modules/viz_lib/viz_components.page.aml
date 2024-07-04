@@ -58,19 +58,19 @@ Dashboard vizlibrary {
     viz: MetricKpi {
       dataset: ecommerce
       filter {
-        field: ref('m_ecommerce.dim_users', 'sign_up_date')
+        field: ref('ecommerce.dim_users', 'sign_up_date')
         operator: 'matches'
         value: '2023'
       }
       value: VizFieldFull {
-        ref: ref('m_ecommerce.dim_users', 'total_users')
+        ref: ref('ecommerce.dim_users', 'total_users')
         format {
           type: 'number'
           pattern: 'inherited'
         }
       }
       compare_value: VizPopSettings {
-        field: ref('m_ecommerce.dim_users', 'sign_up_date')
+        field: ref('ecommerce.dim_users', 'sign_up_date')
         duration: 1
         granularity: 'year'
       }
@@ -87,12 +87,12 @@ Dashboard vizlibrary {
     viz: LineChart {
       dataset: ecommerce
       filter {
-        field: ref('m_ecommerce.dim_users', 'sign_up_date')
+        field: ref('ecommerce.dim_users', 'sign_up_date')
         operator: 'matches'
         value: '2022 to 2023'
       }
       x_axis: VizFieldFull {
-        ref: ref('m_ecommerce.dim_users', 'sign_up_date')
+        ref: ref('ecommerce.dim_users', 'sign_up_date')
         transformation: 'datetrunc month'
         format {
           type: 'date'
@@ -102,7 +102,7 @@ Dashboard vizlibrary {
       y_axis {
         series {
           field {
-            ref: ref('m_ecommerce.dim_users', 'total_users')
+            ref: ref('ecommerce.dim_users', 'total_users')
             format {
               type: 'number'
               pattern: 'inherited'
@@ -117,7 +117,7 @@ Dashboard vizlibrary {
       settings {
         row_limit: 5000
         pop {
-          field: ref('m_ecommerce.dim_users', 'sign_up_date')
+          field: ref('ecommerce.dim_users', 'sign_up_date')
           duration: 1
           granularity: 'year'
         }
@@ -132,12 +132,12 @@ Dashboard vizlibrary {
     viz: PieChart {
       dataset: ecommerce
       filter {
-        field: ref('m_ecommerce.dim_users', 'sign_up_date')
+        field: ref('ecommerce.dim_users', 'sign_up_date')
         operator: 'matches'
         value: '2022 to 2023'
       }
       legend: VizFieldFull {
-        ref: ref('m_ecommerce.dim_users', 'gender')
+        ref: ref('ecommerce.dim_users', 'gender')
         format {
           type: 'text'
         }
@@ -145,7 +145,7 @@ Dashboard vizlibrary {
       series {
         field {
           label: ' '
-          ref: ref('m_ecommerce.dim_users', 'total_users')
+          ref: ref('ecommerce.dim_users', 'total_users')
           format {
             type: 'number'
             pattern: 'inherited'
@@ -204,19 +204,19 @@ Dashboard vizlibrary {
     viz: MetricKpi {
       dataset: ecommerce
       filter {
-        field: ref('m_ecommerce.dim_users', 'sign_up_date')
+        field: ref('ecommerce.dim_users', 'sign_up_date')
         operator: 'matches'
         value: '2023'
       }
       value: VizFieldFull {
-        ref: ref('m_ecommerce.dim_users', 'total_users')
+        ref: ref('ecommerce.dim_users', 'total_users')
         format {
           type: 'number'
           pattern: 'inherited'
         }
       }
       compare_value: VizPopSettings {
-        field: ref('m_ecommerce.dim_users', 'sign_up_date')
+        field: ref('ecommerce.dim_users', 'sign_up_date')
         duration: 1
         granularity: 'year'
       }
@@ -233,12 +233,12 @@ Dashboard vizlibrary {
     viz: LineChart {
       dataset: ecommerce
       filter {
-        field: ref('m_ecommerce.dim_users', 'sign_up_date')
+        field: ref('ecommerce.dim_users', 'sign_up_date')
         operator: 'matches'
         value: '2022 to 2023'
       }
       x_axis: VizFieldFull {
-        ref: ref('m_ecommerce.dim_users', 'sign_up_date')
+        ref: ref('ecommerce.dim_users', 'sign_up_date')
         transformation: 'datetrunc month'
         format {
           type: 'date'
@@ -251,7 +251,7 @@ Dashboard vizlibrary {
         }
         series {
           field {
-            ref: ref('m_ecommerce.dim_users', 'total_users')
+            ref: ref('ecommerce.dim_users', 'total_users')
             format {
               type: 'number'
               pattern: 'inherited'
@@ -267,7 +267,7 @@ Dashboard vizlibrary {
         row_limit: 5000
         legend_label: 'hidden'
         pop {
-          field: ref('m_ecommerce.dim_users', 'sign_up_date')
+          field: ref('ecommerce.dim_users', 'sign_up_date')
           duration: 1
           granularity: 'year'
         }
