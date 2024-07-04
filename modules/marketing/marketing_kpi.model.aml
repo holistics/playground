@@ -1,0 +1,111 @@
+Model marketing_kpi {
+  type: 'table'
+  label: 'Marketing Kpi'
+  description: ''
+  data_source_name: 'demo_pg'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension c_date {
+    label: 'C Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.c_date }};;
+  }
+  dimension campaign_name {
+    label: 'Campaign Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.campaign_name }};;
+  }
+  dimension category {
+    label: 'Category'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.category }};;
+  }
+  dimension campaign_id {
+    label: 'Campaign Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.campaign_id }};;
+  }
+  dimension impressions {
+    label: 'Impressions'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.impressions }};;
+  }
+  dimension mark_spent {
+    label: 'Mark Spent'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.mark_spent }};;
+  }
+  dimension clicks {
+    label: 'Clicks'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.clicks }};;
+  }
+  dimension leads {
+    label: 'Leads'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.leads }};;
+  }
+  dimension orders {
+    label: 'Orders'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.orders }};;
+  }
+  dimension revenue {
+    label: 'Revenue'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.revenue }};;
+  }
+
+   measure conversion_rate {
+    label: 'Conversion rate'
+    type: 'number'
+    definition: @sql SELECT (sum(CAST({{ #SOURCE.orders }} as FLOAT)) / sum(CAST({{ #SOURCE.clicks }} as FLOAT)))*100;;
+    description: "orders / clicks"
+    format: "#,###0.00[$%]"
+
+  }
+
+  measure ctr {
+    label: 'Click-through rate'
+    type: 'number'
+    definition: @sql SELECT (sum(CAST({{ #SOURCE.clicks }} as FLOAT)) / sum(CAST({{ #SOURCE.impressions }} as FLOAT)))*100;;
+    description: "clicks / impressions"
+    format: "#,###0.00[$%]"
+
+  }
+  measure cost_per_thousand_impressions {
+    label: 'Cost per thousand impressions'
+    type: 'number'
+    definition: @sql SELECT sum((CAST({{ #SOURCE.impressions }} as FLOAT)/1000) / CAST({{ #SOURCE.mark_spent }} as FLOAT));;
+    format: "[$$]#,###0.00"
+  }
+  measure cost_per_conversion {
+    label: 'Cost per Conversion'
+    type: 'number'
+    definition: @sql SELECT sum(({{ #SOURCE.mark_spent }}/1000) / CAST({{ #SOURCE.orders }} as FLOAT));;
+    format: "[$$]#,###0.00"
+  }
+  measure cost_per_click {
+    label: 'Cost per Click'
+    type: 'number'
+    definition: @sql SELECT sum(({{ #SOURCE.mark_spent }}/1000) / CAST({{ #SOURCE.clicks }} as FLOAT));;
+    format: "[$$]#,###0.00"
+  }
+
+  owner: 'son.hoang+ph@holistics.io'
+  table_name: '"minhminh"."MarketingKPI"'
+}

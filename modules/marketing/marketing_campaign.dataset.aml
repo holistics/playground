@@ -1,0 +1,11 @@
+Dataset marketing_campaign {
+  label: 'Marketing Campaign'
+  description: ''
+  data_source_name: 'demo_pg'
+  models: [
+    marketing_kpi
+  ]
+  relationships: [
+  ]
+  owner: 'son.hoang+ph@holistics.io'
+}
