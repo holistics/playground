@@ -1,5 +1,5 @@
-Dashboard template_marketing_2 {
-  title: 'Template Marketing Dashboard 2'
+Dashboard marketing_1 {
+  title: 'Template Marketing Dashboard 1'
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
