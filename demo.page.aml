@@ -100,7 +100,7 @@ Dashboard ecomax {
   block v1: VizBlock {
     label: 'Total Users'
     viz: MetricKpi {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       value: VizFieldFull {
         ref: 'count_users'
         format {
@@ -121,7 +121,7 @@ Dashboard ecomax {
   block v2: VizBlock {
     label: 'GMV Over Time'
     viz: ColumnChart {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       x_axis: VizFieldFull {
         ref: ref('ecommerce.dim_dates', 'date_key')
         transformation: 'datetrunc month'
@@ -161,7 +161,7 @@ Dashboard ecomax {
     label: 'Date Range'
     type: 'field'
     source: FieldFilterSource {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       field: ref('ecommerce.dim_dates', 'date_key')
     }
     default {
@@ -172,7 +172,7 @@ Dashboard ecomax {
   block v3: VizBlock {
     label: 'GMV'
     viz: MetricKpi {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       value: VizFieldFull {
         label: 'GMV'
         ref: 'gmv'
@@ -196,7 +196,7 @@ Dashboard ecomax {
   block v4: VizBlock {
     label: 'Count Users by Gender'
     viz: PieChart {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       legend: VizFieldFull {
         ref: ref('ecommerce.dim_users', 'gender')
         format {
@@ -238,7 +238,7 @@ Dashboard ecomax {
   block v5: VizBlock {
     label: 'GMV by Products'
     viz: DataTable {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       fields: [
         VizFieldFull {
           ref: ref('ecommerce.dim_products', 'name')
@@ -300,7 +300,7 @@ Dashboard ecomax {
   block v6: VizBlock {
     label: 'GMV by Merchants'
     viz: BarChart {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       filter {
         field: ref('ecommerce.dim_merchants', 'name')
         operator: 'top'
@@ -353,7 +353,7 @@ Dashboard ecomax {
   block v7: VizBlock {
     label: 'AOV'
     viz: MetricKpi {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       value: VizFieldFull {
         label: 'AOV'
         ref: 'aov'

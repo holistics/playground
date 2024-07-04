@@ -7,7 +7,7 @@ Dashboard embed_analytics {
   block v1: VizBlock {
     label: 'Merchant'
     viz: DataTable {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       fields: [
         VizFieldFull {
           ref: ref('ecommerce.dim_merchants', 'name')
@@ -60,7 +60,7 @@ Dashboard embed_analytics {
     label: 'Merchant Name'
     type: 'field'
     source: FieldFilterSource {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       field: ref('ecommerce.dim_merchants', 'name')
     }
     default {
@@ -71,7 +71,7 @@ Dashboard embed_analytics {
   block v2: VizBlock {
     label: 'Product Performance'
     viz: DataTable {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       fields: [
         VizFieldFull {
           ref: ref('ecommerce.dim_products', 'name')
@@ -125,7 +125,7 @@ Dashboard embed_analytics {
   block v3: VizBlock {
     label: 'Users'
     viz: DataTable {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       fields: [
         VizFieldFull {
           ref: ref('ecommerce.dim_users', 'email')
@@ -186,7 +186,7 @@ Dashboard embed_analytics {
   block v4: VizBlock {
     label: 'Total Users'
     viz: MetricKpi {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       value: VizFieldFull {
         ref: 'count_users'
         format {
@@ -207,7 +207,7 @@ Dashboard embed_analytics {
   block v5: VizBlock {
     label: 'Total Orders'
     viz: MetricKpi {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       value: VizFieldFull {
         ref: 'count_orders'
         format {
@@ -228,7 +228,7 @@ Dashboard embed_analytics {
   block v6: VizBlock {
     label: 'Total GMV'
     viz: MetricKpi {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       value: VizFieldFull {
         label: 'GMV'
         ref: 'gmv'
@@ -252,7 +252,7 @@ Dashboard embed_analytics {
   block v7: VizBlock {
     label: 'Metric AOV'
     viz: MetricKpi {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       value: VizFieldFull {
         label: 'AOV'
         ref: 'aov'
@@ -282,7 +282,7 @@ Dashboard embed_analytics {
   block v8: VizBlock {
     label: 'User Growth'
     viz: CombinationChart {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       calculation f_3f16a1c {
         label: 'Running Total'
         formula: @aql          running_total!(
@@ -375,7 +375,7 @@ ecommerce.dim_users.sign_up_date
   block v11: VizBlock {
     label: 'Product Performance (dup)'
     viz: CombinationChart {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       x_axis: VizFieldFull {
         ref: ref('ecommerce.dim_dates', 'date_key')
         transformation: 'datetrunc month'
@@ -449,7 +449,7 @@ ecommerce.dim_users.sign_up_date
   block v12: VizBlock {
     label: 'Total Products'
     viz: MetricKpi {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       value: VizFieldFull {
         ref: 'count_distinct_products'
         format {
@@ -472,7 +472,7 @@ ecommerce.dim_users.sign_up_date
     label: 'Product'
     type: 'field'
     source: FieldFilterSource {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       field: ref('ecommerce.dim_products', 'name')
     }
     default {

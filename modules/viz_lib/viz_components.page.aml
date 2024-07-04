@@ -56,7 +56,7 @@ Dashboard vizlibrary {
   block v1: VizBlock {
     label: 'Total Users'
     viz: MetricKpi {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       filter {
         field: ref('ecommerce.dim_users', 'sign_up_date')
         operator: 'matches'
@@ -85,7 +85,7 @@ Dashboard vizlibrary {
   block v2: VizBlock {
     label: 'Total Users (dup)'
     viz: LineChart {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       filter {
         field: ref('ecommerce.dim_users', 'sign_up_date')
         operator: 'matches'
@@ -130,7 +130,7 @@ Dashboard vizlibrary {
   block v3: VizBlock {
     label: 'Total Users (dup) (dup)'
     viz: PieChart {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       filter {
         field: ref('ecommerce.dim_users', 'sign_up_date')
         operator: 'matches'
@@ -202,7 +202,7 @@ Dashboard vizlibrary {
   block v4: VizBlock {
     label: 'Total Users (dup)'
     viz: MetricKpi {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       filter {
         field: ref('ecommerce.dim_users', 'sign_up_date')
         operator: 'matches'
@@ -231,7 +231,7 @@ Dashboard vizlibrary {
   block v5: VizBlock {
     label: 'Total Users (dup) (dup)'
     viz: LineChart {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       filter {
         field: ref('ecommerce.dim_users', 'sign_up_date')
         operator: 'matches'
