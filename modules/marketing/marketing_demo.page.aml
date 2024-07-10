@@ -88,6 +88,9 @@ Dashboard marketing_1 {
         border-radius: 4px;
         background:#fafafa;
       }
+      .text-content {
+        overflow: hidden;
+      }
     </style>;;
   }
   block v3: VizBlock {
