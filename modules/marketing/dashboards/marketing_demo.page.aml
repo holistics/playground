@@ -75,10 +75,10 @@ Dashboard marketing_1 {
       .dac-text-block {
         overflow: hidden !important;
       }
-      .h-kpi-metric .h-6 {
+      .h-kpi-metric-label {
         font-size: 18px;
       }
-      .h-kpi-metric .text-blue-gray-800:not(.h-6){
+      .h-kpi-metric-kpi {
         color: #5425D8FF;
       }
       .bg-gray {
@@ -87,6 +87,9 @@ Dashboard marketing_1 {
         height:274px;
         border-radius: 4px;
         background:#fafafa;
+      }
+      .text-content {
+        overflow: hidden;
       }
     </style>;;
   }

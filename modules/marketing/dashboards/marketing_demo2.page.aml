@@ -355,23 +355,23 @@ Dashboard marketing_2 {
       .dac-text-block {
         overflow: hidden !important;
       }
-      .h-kpi-metric .text-blue-gray-800{
+      .h-kpi-metric-kpi {
         font-size: 36px;
         color: #012A49;
       }
-      .dac-viz-block .text-blue-gray-800 {
-        color: #012A49;
+      .dac-viz-block-label {
+        color: #012A49 !important;
         overflow: hidden !important;
       }
-      .h-kpi-metric .h-6 {
+      .h-kpi-metric-label {
         color: #012A49;
         font-size: 18px;
       }
       .h-kpi-metric .text-blue-gray-800:not(.h-6)  {
         line-height: 3.5rem !important;
       }
-      .h-dynamic-filter-metadata > span {
-        color: #fff;
+      .dac-ic-block-label {
+        color: #fff !important;
       }
       .highcharts-pane {
         stroke: #323435;
@@ -384,13 +384,16 @@ Dashboard marketing_2 {
       .highcharts-axis text {
         display: none;
       }
-       .shadow-light {
+      .shadow-light {
         margin:8px;
         width:calc(100% - 16px);
         height:274px;
         border-radius: 4px;
         box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
         background:#fdfdfd;
+      }
+      .text-content {
+        overflow: hidden;
       }
     </style>;;
   }
