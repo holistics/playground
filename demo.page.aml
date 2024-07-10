@@ -1,4 +1,4 @@
-use m_ecommerce
+use ecommerce
 
 Dashboard ecomax {
   title: '🛍️ Ecomax'
@@ -100,7 +100,7 @@ Dashboard ecomax {
   block v1: VizBlock {
     label: 'Total Users'
     viz: MetricKpi {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       value: VizFieldFull {
         ref: 'count_users'
         format {
@@ -109,7 +109,7 @@ Dashboard ecomax {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('m_ecommerce.dim_users', 'sign_up_date')
+        field: ref('ecommerce.dim_users', 'sign_up_date')
         duration: 1
         granularity: 'year'
       }
@@ -121,9 +121,9 @@ Dashboard ecomax {
   block v2: VizBlock {
     label: 'GMV Over Time'
     viz: ColumnChart {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       x_axis: VizFieldFull {
-        ref: ref('m_ecommerce.dim_dates', 'date_key')
+        ref: ref('ecommerce.dim_dates', 'date_key')
         transformation: 'datetrunc month'
         format {
           type: 'date'
@@ -146,7 +146,7 @@ Dashboard ecomax {
       settings {
         row_limit: 5000
         pop {
-          field: ref('m_ecommerce.dim_dates', 'date_key')
+          field: ref('ecommerce.dim_dates', 'date_key')
           duration: 1
           granularity: 'year'
           show_growth_rate: true
@@ -161,8 +161,8 @@ Dashboard ecomax {
     label: 'Date Range'
     type: 'field'
     source: FieldFilterSource {
-      dataset: m_ecommerce.ecommerce
-      field: ref('m_ecommerce.dim_dates', 'date_key')
+      dataset: ds_ecommerce
+      field: ref('ecommerce.dim_dates', 'date_key')
     }
     default {
       operator: 'matches'
@@ -172,7 +172,7 @@ Dashboard ecomax {
   block v3: VizBlock {
     label: 'GMV'
     viz: MetricKpi {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       value: VizFieldFull {
         label: 'GMV'
         ref: 'gmv'
@@ -184,7 +184,7 @@ Dashboard ecomax {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('m_ecommerce.dim_dates', 'date_key')
+        field: ref('ecommerce.dim_dates', 'date_key')
         duration: 1
         granularity: 'year'
       }
@@ -196,9 +196,9 @@ Dashboard ecomax {
   block v4: VizBlock {
     label: 'Count Users by Gender'
     viz: PieChart {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       legend: VizFieldFull {
-        ref: ref('m_ecommerce.dim_users', 'gender')
+        ref: ref('ecommerce.dim_users', 'gender')
         format {
           type: 'text'
         }
@@ -238,10 +238,10 @@ Dashboard ecomax {
   block v5: VizBlock {
     label: 'GMV by Products'
     viz: DataTable {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       fields: [
         VizFieldFull {
-          ref: ref('m_ecommerce.dim_products', 'name')
+          ref: ref('ecommerce.dim_products', 'name')
           format {
             type: 'text'
           }
@@ -281,7 +281,7 @@ Dashboard ecomax {
           }
         ]
         pop {
-          field: ref('m_ecommerce.dim_dates', 'date_key')
+          field: ref('ecommerce.dim_dates', 'date_key')
           duration: 1
           granularity: 'year'
         }
@@ -300,21 +300,21 @@ Dashboard ecomax {
   block v6: VizBlock {
     label: 'GMV by Merchants'
     viz: BarChart {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       filter {
-        field: ref('m_ecommerce.dim_merchants', 'name')
+        field: ref('ecommerce.dim_merchants', 'name')
         operator: 'top'
         value: 10
         options {
           rank_by {
-            field: ref('m_ecommerce.fct_order_items', 'value')
+            field: ref('ecommerce.fct_order_items', 'value')
             aggregation: 'sum'
             logic: 'standard'
           }
         }
       }
       x_axis: VizFieldFull {
-        ref: ref('m_ecommerce.dim_merchants', 'name')
+        ref: ref('ecommerce.dim_merchants', 'name')
         format {
           type: 'text'
         }
@@ -353,7 +353,7 @@ Dashboard ecomax {
   block v7: VizBlock {
     label: 'AOV'
     viz: MetricKpi {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       value: VizFieldFull {
         label: 'AOV'
         ref: 'aov'
@@ -363,7 +363,7 @@ Dashboard ecomax {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('m_ecommerce.dim_dates', 'date_key')
+        field: ref('ecommerce.dim_dates', 'date_key')
         duration: 1
         granularity: 'year'
       }
@@ -393,7 +393,7 @@ Dashboard ecomax {
       to: [
         CustomMapping {
           block: 'v2'
-          field: ref('m_ecommerce.dim_dates', 'date_key')
+          field: ref('ecommerce.dim_dates', 'date_key')
         }
       ]
     }

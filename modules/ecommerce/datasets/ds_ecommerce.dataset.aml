@@ -1,0 +1,94 @@
+Model dim_product_cities = dim_cities.extend({
+  label: 'Product City'
+})
+Model dim_product_countries = dim_countries.extend({
+  label: 'Product Country'
+})
+
+Model dim_user_cities = dim_cities.extend({
+  label: 'User City'
+})
+Model dim_user_countries = dim_countries.extend({
+  label: 'User Country'
+})
+
+Dataset ds_ecommerce {
+  label: 'Demo Ecommerce'
+  description: 'Ecommerce dataset. ERD can be found [here](https://dbdiagram.io/e/658b9f1289dea62799972ec8/665fedfcb65d933879884fa8)'
+  data_source_name: 'demo_pg'
+  owner: 'triet.lq@holistics.io'
+  
+  models: [
+    fct_order_items,
+    fct_orders,
+
+    dim_dates,
+    dim_products,
+    dim_users,
+    dim_categories,
+    dim_merchants,
+    
+
+    dim_product_cities,
+    dim_product_countries,
+    dim_user_cities,
+    dim_user_countries,
+    
+  ]
+  relationships: [
+    relationship(ecommerce.fct_order_items.product_id > ecommerce.dim_products.id, true),
+    relationship(ecommerce.fct_order_items.category_id >  ecommerce.dim_categories.id, true),
+    
+    relationship(ecommerce.fct_order_items.merchant_id >  ecommerce.dim_merchants.id, true),
+    relationship(ecommerce.fct_order_items.merchant_city_id >  ecommerce.dim_product_cities.id, true),
+    relationship(ecommerce.fct_order_items.merchant_country_code >  ecommerce.dim_product_countries.code, true),
+    relationship(ecommerce.fct_order_items.user_id >  ecommerce.dim_users.id, true),
+    relationship(ecommerce.fct_order_items.created_date >  ecommerce.dim_dates.date_key, true),
+    relationship(ecommerce.fct_order_items.order_id >  ecommerce.fct_orders.id, false),
+
+
+    relationship(ecommerce.fct_orders.user_city_id >  ecommerce.dim_user_cities.id, true),
+    relationship(ecommerce.fct_orders.user_country_code >  ecommerce.dim_user_countries.code, true),
+    relationship(ecommerce.fct_orders.created_date >  ecommerce.dim_dates.date_key, true),
+    relationship(ecommerce.fct_orders.user_id >  ecommerce.dim_users.id, false),
+
+  ]
+
+
+  metric count_users {
+    label: 'Count Users'
+    type: 'number'
+    definition: @aql count(ecommerce.dim_users.id);;
+  }
+
+  metric count_orders {
+    label: 'Count Orders'
+    type: 'number'
+    definition: @aql count(ecommerce.fct_orders.id) | with_relationships(ecommerce.fct_orders.user_id >  ecommerce.dim_users.id);;
+  }
+
+  metric count_distinct_orders {
+    label: 'Count Distinct Orders'
+    type: 'number'
+    definition: @aql count_distinct(ecommerce.fct_order_items.order_id) ;;
+  }
+
+  metric count_distinct_products {
+    label: 'Count Distinct Products'
+    type: 'number'
+    definition: @aql count_distinct(ecommerce.fct_order_items.product_id) ;;
+  }
+
+  metric gmv {
+    label: "GMV - Gross Merchandise Value"
+    type: "number"
+    description: "Total value regardless of order status"
+    definition: @aql sum(ecommerce.fct_order_items.value);;
+  }
+
+  metric aov {
+    label: "AOV - Average Order Value"
+    type: 'number'
+    definition: @aql gmv/count_orders;;
+  }
+}

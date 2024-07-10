@@ -1,4 +1,4 @@
-use m_ecommerce
+use ecommerce
 
 Dashboard embed_analytics {
   title: 'Ecommerce Embedded Analytics'
@@ -7,10 +7,10 @@ Dashboard embed_analytics {
   block v1: VizBlock {
     label: 'Merchant'
     viz: DataTable {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       fields: [
         VizFieldFull {
-          ref: ref('m_ecommerce.dim_merchants', 'name')
+          ref: ref('ecommerce.dim_merchants', 'name')
           format {
             type: 'text'
           }
@@ -60,8 +60,8 @@ Dashboard embed_analytics {
     label: 'Merchant Name'
     type: 'field'
     source: FieldFilterSource {
-      dataset: ecommerce
-      field: ref('m_ecommerce.dim_merchants', 'name')
+      dataset: ds_ecommerce
+      field: ref('ecommerce.dim_merchants', 'name')
     }
     default {
       operator: 'is'
@@ -71,10 +71,10 @@ Dashboard embed_analytics {
   block v2: VizBlock {
     label: 'Product Performance'
     viz: DataTable {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       fields: [
         VizFieldFull {
-          ref: ref('m_ecommerce.dim_products', 'name')
+          ref: ref('ecommerce.dim_products', 'name')
           format {
             type: 'text'
           }
@@ -125,10 +125,10 @@ Dashboard embed_analytics {
   block v3: VizBlock {
     label: 'Users'
     viz: DataTable {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       fields: [
         VizFieldFull {
-          ref: ref('m_ecommerce.dim_users', 'email')
+          ref: ref('ecommerce.dim_users', 'email')
           format {
             type: 'text'
           }
@@ -186,7 +186,7 @@ Dashboard embed_analytics {
   block v4: VizBlock {
     label: 'Total Users'
     viz: MetricKpi {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       value: VizFieldFull {
         ref: 'count_users'
         format {
@@ -195,7 +195,7 @@ Dashboard embed_analytics {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('m_ecommerce.dim_users', 'sign_up_date')
+        field: ref('ecommerce.dim_users', 'sign_up_date')
         duration: 1
         granularity: 'month'
       }
@@ -207,7 +207,7 @@ Dashboard embed_analytics {
   block v5: VizBlock {
     label: 'Total Orders'
     viz: MetricKpi {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       value: VizFieldFull {
         ref: 'count_orders'
         format {
@@ -216,7 +216,7 @@ Dashboard embed_analytics {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('m_ecommerce.dim_dates', 'date_key')
+        field: ref('ecommerce.dim_dates', 'date_key')
         duration: 1
         granularity: 'month'
       }
@@ -228,7 +228,7 @@ Dashboard embed_analytics {
   block v6: VizBlock {
     label: 'Total GMV'
     viz: MetricKpi {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       value: VizFieldFull {
         label: 'GMV'
         ref: 'gmv'
@@ -240,7 +240,7 @@ Dashboard embed_analytics {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('m_ecommerce.dim_dates', 'date_key')
+        field: ref('ecommerce.dim_dates', 'date_key')
         duration: 1
         granularity: 'month'
       }
@@ -252,7 +252,7 @@ Dashboard embed_analytics {
   block v7: VizBlock {
     label: 'Metric AOV'
     viz: MetricKpi {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       value: VizFieldFull {
         label: 'AOV'
         ref: 'aov'
@@ -262,7 +262,7 @@ Dashboard embed_analytics {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('m_ecommerce.dim_dates', 'date_key')
+        field: ref('ecommerce.dim_dates', 'date_key')
         duration: 1
         granularity: 'month'
       }
@@ -282,18 +282,18 @@ Dashboard embed_analytics {
   block v8: VizBlock {
     label: 'User Growth'
     viz: CombinationChart {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       calculation f_3f16a1c {
         label: 'Running Total'
         formula: @aql          running_total!(
-m_ecommerce.dim_users.id | count() ,
-m_ecommerce.dim_users.sign_up_date
+ecommerce.dim_users.id | count() ,
+ecommerce.dim_users.sign_up_date
 );;
         calc_type: 'measure'
         data_type: 'number'
       }
       x_axis: VizFieldFull {
-        ref: ref('m_ecommerce.dim_users', 'sign_up_date')
+        ref: ref('ecommerce.dim_users', 'sign_up_date')
         transformation: 'datetrunc quarter'
         format {
           type: 'date'
@@ -335,7 +335,7 @@ m_ecommerce.dim_users.sign_up_date
       }
       settings {
         pop {
-          field: ref('m_ecommerce.dim_users', 'sign_up_date')
+          field: ref('ecommerce.dim_users', 'sign_up_date')
           duration: 3
           granularity: 'month'
         }
@@ -375,9 +375,9 @@ m_ecommerce.dim_users.sign_up_date
   block v11: VizBlock {
     label: 'Product Performance (dup)'
     viz: CombinationChart {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       x_axis: VizFieldFull {
-        ref: ref('m_ecommerce.dim_dates', 'date_key')
+        ref: ref('ecommerce.dim_dates', 'date_key')
         transformation: 'datetrunc month'
         format {
           type: 'date'
@@ -449,7 +449,7 @@ m_ecommerce.dim_users.sign_up_date
   block v12: VizBlock {
     label: 'Total Products'
     viz: MetricKpi {
-      dataset: ecommerce
+      dataset: ds_ecommerce
       value: VizFieldFull {
         ref: 'count_distinct_products'
         format {
@@ -472,8 +472,8 @@ m_ecommerce.dim_users.sign_up_date
     label: 'Product'
     type: 'field'
     source: FieldFilterSource {
-      dataset: ecommerce
-      field: ref('m_ecommerce.dim_products', 'name')
+      dataset: ds_ecommerce
+      field: ref('ecommerce.dim_products', 'name')
     }
     default {
       operator: 'is'
@@ -590,7 +590,7 @@ m_ecommerce.dim_users.sign_up_date
             'v6',
             'v5'
           ]
-          field: ref('m_ecommerce.dim_dates', 'date_key')
+          field: ref('ecommerce.dim_dates', 'date_key')
         },
         CustomMapping {
           block: [
@@ -598,7 +598,7 @@ m_ecommerce.dim_users.sign_up_date
             'v3',
             'v8'
           ]
-          field: ref('m_ecommerce.dim_users', 'sign_up_date')
+          field: ref('ecommerce.dim_users', 'sign_up_date')
         }
       ]
     }
