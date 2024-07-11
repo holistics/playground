@@ -3,7 +3,7 @@ Dataset pokedex_2 {
   description: ''
   data_source_name: 'demo_pg'
   models: [
-    pkm_2
+    pkm_final
   ]
   relationships: [
   ]

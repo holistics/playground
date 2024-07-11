@@ -1,6 +1,6 @@
-Model pkm {
+Model pkm_original {
   type: 'table'
-  label: 'Pkm'
+  label: 'Pokemon Original Data'
   description: ''
   data_source_name: 'demo_pg'
   dimension number {

@@ -1,6 +1,6 @@
-Model repack_persisted_pokedex_2_csv {
+Model pkm_extra {
   type: 'table'
-  label: 'Repack Persisted Pokedex 2 Csv'
+  label: 'Pokemon Extra Data'
   description: ''
   data_source_name: 'demo_pg'
   dimension index {

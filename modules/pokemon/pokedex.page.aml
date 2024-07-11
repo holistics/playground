@@ -168,7 +168,7 @@ Dashboard pokedex_dashboard {
       dataset: pokedex_2
       calculation f_ef7b4e0 {
         label: 'PNG'
-        formula: @aml concat('<img src="',pokemon.pkm_2.png, '" width="700" />');;
+        formula: @aml concat('<img src="',pokemon.pkm_final.png, '" width="700" />');;
         calc_type: 'dimension'
         data_type: 'text'
       }
@@ -196,7 +196,7 @@ Dashboard pokedex_dashboard {
       dataset: pokedex_2
       calculation f_ef7b4e0 {
         label: 'Description'
-        formula: @aml concat('<div><p style="font-family:Verdana; font-weight: normal; font-size:15px">',pokemon.pkm_2.description, '</p></div>');;
+        formula: @aml concat('<div><p style="font-family:Verdana; font-weight: normal; font-size:15px">',pokemon.pkm_final.description, '</p></div>');;
         calc_type: 'dimension'
         data_type: 'text'
       }
@@ -224,7 +224,7 @@ Dashboard pokedex_dashboard {
       dataset: pokedex_2
       calculation f_ef7b4e0 {
         label: 'Description'
-        formula: @aml concat('<div><p style="font-family:Verdana; font-weight: bolder; font-size:50px">',pokemon.pkm_2.name, '</p></div>');;
+        formula: @aml concat('<div><p style="font-family:Verdana; font-weight: bolder; font-size:50px">',pokemon.pkm_final.name, '</p></div>');;
         calc_type: 'dimension'
         data_type: 'text'
       }
@@ -252,7 +252,7 @@ Dashboard pokedex_dashboard {
       dataset: pokedex_2
       calculation f_ef7b4e0 {
         label: 'Description'
-        formula: @aml concat('<div><p style="font-family:Verdana; font-weight: bolder; font-size:25px">', pokemon.pkm_2.japanese_name, '</p></div>');;
+        formula: @aml concat('<div><p style="font-family:Verdana; font-weight: bolder; font-size:25px">', pokemon.pkm_final.japanese_name, '</p></div>');;
         calc_type: 'dimension'
         data_type: 'text'
       }
@@ -316,7 +316,7 @@ Dashboard pokedex_dashboard {
       dataset: pokedex_2
       fields: [
         VizFieldFull {
-          ref: ref('pokemon.pkm_2', 'height_m')
+          ref: ref('pokemon.pkm_final', 'height_m')
           format {
             type: 'number'
             pattern: '#,###0.00'
@@ -338,7 +338,7 @@ Dashboard pokedex_dashboard {
       dataset: pokedex_2
       fields: [
         VizFieldFull {
-          ref: ref('pokemon.pkm_2', 'base_experience')
+          ref: ref('pokemon.pkm_final', 'base_experience')
           format {
             type: 'number'
             pattern: '#,###0.00'
@@ -360,7 +360,7 @@ Dashboard pokedex_dashboard {
       dataset: pokedex_2
       fields: [
         VizFieldFull {
-          ref: ref('pokemon.pkm_2', 'weight_kg')
+          ref: ref('pokemon.pkm_final', 'weight_kg')
           format {
             type: 'number'
             pattern: '#,###0.00'
@@ -396,7 +396,7 @@ Dashboard pokedex_dashboard {
     viz: RadarChart {
       dataset: pokemon.pokedex_2
       legend: VizFieldFull {
-        ref: ref('pokemon.pkm_2', 'name')
+        ref: ref('pokemon.pkm_final', 'name')
         format {
           type: 'text'
         }
@@ -404,7 +404,7 @@ Dashboard pokedex_dashboard {
       y_axis {
         field: VizFieldFull {
           label: 'Attack'
-          ref: ref('pokemon.pkm_2', 'attack')
+          ref: ref('pokemon.pkm_final', 'attack')
           aggregation: 'sum'
           format {
             type: 'number'
@@ -414,7 +414,7 @@ Dashboard pokedex_dashboard {
       y_axis {
         field: VizFieldFull {
           label: 'Defense'
-          ref: ref('pokemon.pkm_2', 'defense')
+          ref: ref('pokemon.pkm_final', 'defense')
           aggregation: 'sum'
           format {
             type: 'number'
@@ -424,7 +424,7 @@ Dashboard pokedex_dashboard {
       y_axis {
         field: VizFieldFull {
           label: 'Speed'
-          ref: ref('pokemon.pkm_2', 'speed')
+          ref: ref('pokemon.pkm_final', 'speed')
           aggregation: 'sum'
           format {
             type: 'number'
@@ -433,17 +433,7 @@ Dashboard pokedex_dashboard {
       }
       y_axis {
         field: VizFieldFull {
-          ref: ref('pokemon.pkm_2', 'sp_attack')
-          aggregation: 'sum'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        }
-      }
-      y_axis {
-        field: VizFieldFull {
-          ref: ref('pokemon.pkm_2', 'sp_defense')
+          ref: ref('pokemon.pkm_final', 'sp_attack')
           aggregation: 'sum'
           format {
             type: 'number'
@@ -453,7 +443,17 @@ Dashboard pokedex_dashboard {
       }
       y_axis {
         field: VizFieldFull {
-          ref: ref('pokemon.pkm_2', 'max_hp')
+          ref: ref('pokemon.pkm_final', 'sp_defense')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+      y_axis {
+        field: VizFieldFull {
+          ref: ref('pokemon.pkm_final', 'max_hp')
           aggregation: 'sum'
           format {
             type: 'number'
@@ -478,7 +478,7 @@ Dashboard pokedex_dashboard {
       dataset: pokemon.pokedex_2
       value: VizFieldFull {
         label: '⚔️ Attack'
-        ref: ref('pokemon.pkm_2', 'attack')
+        ref: ref('pokemon.pkm_final', 'attack')
         aggregation: 'avg'
         format {
           type: 'number'
@@ -496,7 +496,7 @@ Dashboard pokedex_dashboard {
       dataset: pokedex_2
       value: VizFieldFull {
         label: '👟 Speed'
-        ref: ref('pokemon.pkm_2', 'speed')
+        ref: ref('pokemon.pkm_final', 'speed')
         aggregation: 'sum'
         format {
           type: 'number'
@@ -514,7 +514,7 @@ Dashboard pokedex_dashboard {
       dataset: pokemon.pokedex_2
       value: VizFieldFull {
         label: '🛡️ Defense'
-        ref: ref('pokemon.pkm_2', 'defense')
+        ref: ref('pokemon.pkm_final', 'defense')
         aggregation: 'sum'
         format {
           type: 'number'
@@ -532,7 +532,7 @@ Dashboard pokedex_dashboard {
       dataset: pokedex_2
       value: VizFieldFull {
         label: 'Special Attack'
-        ref: ref('pokemon.pkm_2', 'sp_attack')
+        ref: ref('pokemon.pkm_final', 'sp_attack')
         aggregation: 'sum'
         format {
           type: 'number'
@@ -550,7 +550,7 @@ Dashboard pokedex_dashboard {
       dataset: pokedex_2
       value: VizFieldFull {
         label: 'Special Defense'
-        ref: ref('pokemon.pkm_2', 'sp_defense')
+        ref: ref('pokemon.pkm_final', 'sp_defense')
         aggregation: 'sum'
         format {
           type: 'number'
@@ -568,7 +568,7 @@ Dashboard pokedex_dashboard {
       dataset: pokedex_2
       fields: [
         VizFieldFull {
-          ref: ref('pokemon.pkm_2', 'is_legendary')
+          ref: ref('pokemon.pkm_final', 'is_legendary')
           format {
             type: 'number'
           }
@@ -589,7 +589,7 @@ Dashboard pokedex_dashboard {
       dataset: pokedex_2
       calculation f_a2dc312 {
         label: 'type icon'
-        formula: @aml concat('<img src="',pokemon.pkm_2.type2_icon, '" width="100" />');;
+        formula: @aml concat('<img src="',pokemon.pkm_final.type2_icon, '" width="100" />');;
         calc_type: 'dimension'
         data_type: 'text'
       }
@@ -623,7 +623,7 @@ Dashboard pokedex_dashboard {
       dataset: pokedex_2
       calculation f_a2dc312 {
         label: 'type icon'
-        formula: @aml concat('<img src="',pokemon.pkm_2.type1_icon, '" width="100" />');;
+        formula: @aml concat('<img src="',pokemon.pkm_final.type1_icon, '" width="100" />');;
         calc_type: 'dimension'
         data_type: 'text'
       }
@@ -650,7 +650,7 @@ Dashboard pokedex_dashboard {
     type: 'field'
     source: FieldFilterSource {
       dataset: pokedex_2
-      field: ref('pokemon.pkm_2', 'name')
+      field: ref('pokemon.pkm_final', 'name')
     }
     default {
       operator: 'is'

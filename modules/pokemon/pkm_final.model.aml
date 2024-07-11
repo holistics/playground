@@ -1,6 +1,6 @@
-Model pkm_2 {
+Model pkm_final {
   type: 'query'
-  label: 'Pkm 2'
+  label: 'Pokemon Joined Data'
   description: ''
   data_source_name: 'demo_pg'
   dimension index {
@@ -453,10 +453,10 @@ END;;
   {{ #b.gif }},
   {{ #b.png }}
 FROM
-  {{ #pokemon.repack_persisted_pokedex_2_csv a }}
-  LEFT JOIN {{ #pokemon.pkm b }} ON {{ #a.pokedex_number }} = {{ #b.number }};;
+  {{ #pokemon.pkm_extra a }}
+  LEFT JOIN {{ #pokemon.pkm_original b }} ON {{ #a.pokedex_number }} = {{ #b.number }};;
   models: [
-    pkm,
-    repack_persisted_pokedex_2_csv
+    pkm_original,
+    pkm_extra
   ]
 }
