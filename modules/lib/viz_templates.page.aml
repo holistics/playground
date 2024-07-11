@@ -1,33 +1,21 @@
 use ecommerce
 
 
-Dashboard vizlibrary {
+Dashboard viz_templates {
   title: 'Vizlibrary'
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
     width: 880
-    height: 790
-    block t21 {
-      position: pos(30, 30, 210, 200)
-      layer: -1
-    }
+    height: 1470
     block v1 {
       position: pos(60, 70, 150, 120)
     }
     block v2 {
       position: pos(280, 60, 540, 370)
     }
-    block t22 {
-      position: pos(260, 30, 590, 420)
-      layer: -1
-    }
     block v3 {
       position: pos(30, 260, 210, 180)
-    }
-    block t23 {
-      position: pos(30, 250, 210, 200)
-      layer: -1
     }
     block t24 {
       position: pos(30, 460, 820, 40)
@@ -293,5 +281,4 @@ Dashboard vizlibrary {
 }
 </style>;;
   }
-
 }

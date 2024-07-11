@@ -1,4 +1,5 @@
 use ecommerce
+use lib
 
 Dashboard embed_analytics {
   title: 'Ecommerce Embedded Analytics'
@@ -34,13 +35,6 @@ Dashboard embed_analytics {
       .dac-canvas {
         background: #fbfbfb;
       }
-      .card-box {
-        background: rgba(255,255,255, 1);
-        border-radius: 14px;
-        border: 2px solid #eeeeee;
-        width: 100%; height: 100%;
-        
-      }
       .text-widget-content {
         height: 100% !important
       }
@@ -48,12 +42,7 @@ Dashboard embed_analytics {
         font-size: 18px;
         font-weight: 500;
       }
-      .h-line {
-        border-left: 2px solid #eeeeee;
-        height: 200px;
-        margin-left: 50%;
-        display: block;
-      }
+
     </style>;;
   }
   block f1: FilterBlock {
@@ -115,10 +104,7 @@ Dashboard embed_analytics {
       hide_label: true
     }
   }
-  block t1: TextBlock {
-    content: @md <div class="card-box">
-</div>;;
-  }
+  block t1: page_components.block.card_flat
   block t2: TextBlock {
     content: @md <div class="card-title">Sales Performance</div>;;
   }
@@ -271,14 +257,8 @@ Dashboard embed_analytics {
       hide_label: true
     }
   }
-  block t3: TextBlock {
-    content: @md   <div class="card-box">
-</div>;;
-  }
-  block t4: TextBlock {
-    content: @md  <div class="card-box">
-</div>;;
-  }
+  block t3: page_components.block.card_flat
+  block t4: page_components.block.card_flat
   block v8: VizBlock {
     label: 'User Growth'
     viz: CombinationChart {
@@ -363,15 +343,9 @@ ecommerce.dim_users.sign_up_date
     content: @md <div class="card-box">
 </div>;;
   }
-  block t11: TextBlock {
-    content: @md <div class="h-line"></div>;;
-  }
-  block t12: TextBlock {
-    content: @md <div class="h-line"></div>;;
-  }
-  block t13: TextBlock {
-    content: @md <div class="h-line"></div>;;
-  }
+  block t11: page_components.block.line_ver
+  block t12: page_components.block.line_ver
+  block t13: page_components.block.line_ver
   block v11: VizBlock {
     label: 'Product Performance (dup)'
     viz: CombinationChart {
@@ -462,9 +436,7 @@ ecommerce.dim_users.sign_up_date
       hide_label: true
     }
   }
-  block t14: TextBlock {
-    content: @md <div class="h-line"></div>;;
-  }
+  block t14: page_components.block.line_ver
   block t15: TextBlock {
     content: @md <div style="width: 1px; height: 32px; background: rgba(0,0,0,0.1); margin: 0 auto"><div>;;
   }
