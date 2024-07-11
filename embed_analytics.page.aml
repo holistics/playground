@@ -339,10 +339,7 @@ ecommerce.dim_users.sign_up_date
   block t9: TextBlock {
     content: @md <div class="card-title">User Growth</div>;;
   }
-  block t10: TextBlock {
-    content: @md <div class="card-box">
-</div>;;
-  }
+  block t10: page_components.block.card_flat
   block t11: page_components.block.line_ver
   block t12: page_components.block.line_ver
   block t13: page_components.block.line_ver

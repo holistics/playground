@@ -1,4 +1,5 @@
 use marketing
+use lib
 
 Dashboard marketing_1 {
   title: 'Marketing Dashboard'
@@ -70,6 +71,9 @@ Dashboard marketing_1 {
     block t7 {
       position: pos(20, 190, 1280, 160)
       layer: -1
+    }
+    block note_1 {
+      position: pos(1090, 10, 210, 90)
     }
   }
   block override_css: TextBlock {
@@ -433,4 +437,6 @@ Dashboard marketing_1 {
   block t7: TextBlock {
     content: @md <div style="height:144px;overflow-x:hidden" class="bg-gray"></div>;;
   }
+
+  block note_1: sticky_note_pink("This is our demo marketing dashboard")
 }

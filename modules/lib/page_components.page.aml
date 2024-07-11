@@ -1,3 +1,45 @@
+Func sticky_note(color: String, content: String) { // auto infer return type = VizBlock
+  TextBlock {
+    content: @md <div style="padding:10px">
+      <div style="
+        width: 100%;
+        font-weight: 400;
+        font-size: 12px;
+        margin: 0 auto;
+        border-radius: 2px;
+        padding: 10px;
+        box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.05);
+        background: #f1c40f;
+        -webkit-transform: rotate(1deg);
+        -moz-transform: rotate(1deg);
+        -o-transform: rotate(1deg);
+        -ms-transform: rotate(1deg);
+        transform: rotate(1deg);
+        background: ${color};"
+      >
+        ${content} 
+      </div>
+    </div>;;
+  }
+}
+
+Func sticky_note_pink(content: String) {
+  sticky_note("#ffe2ec", "${content}")
+}
+
+Func sticky_note_yellow(content: String) {
+  sticky_note("#fff7de", "${content}")
+}
+
+Func sticky_note_white(content: String) {
+  sticky_note("#fbfbfb", "${content}")
+}
+
+Func sticky_note_blue(content: String) {
+  sticky_note("#d9ecff", "${content}")
+}
+
+
 Dashboard page_components {
   title: 'Page Components'
   description: ''''''
@@ -12,6 +54,9 @@ Dashboard page_components {
     }
     block line_ver {
       position: pos(280, 50, 90, 220)
+    }
+    block t5 {
+      position: pos(400, 80, 150, 80)
     }
   }
   block style_css: TextBlock {
@@ -37,5 +82,7 @@ Dashboard page_components {
         display: block;
       "></div>;;
   }
+
+  block t5: sticky_note_pink("Sample sticky note")
 
 }
