@@ -6,7 +6,7 @@ Model pkm_2 {
   dimension index {
     label: "Index"
     type: "number"
-    definition: @sql {{ #SOURCE.index }};;
+    definition: @sql CAST({{ #SOURCE.index }} AS INTEGER);;
   }
   dimension pokedex_number {
     label: "Pokedex Number"
