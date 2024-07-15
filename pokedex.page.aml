@@ -8,41 +8,28 @@ Dashboard pokedex_dashboard {
     width: 1720
     height: 880
     block t5 {
-      position: pos(10, 30, 170, 110)
+      position: pos(610, 30, 170, 110)
       layer: -2
     }
     block t6 {
-      position: pos(180, 30, 980, 100)
-    }
-    block t7 {
-      position: pos(0, 0, 1730, 190)
-      layer: -3
-    }
-    block t8 {
-      position: pos(0, 150, 1730, 40)
+      position: pos(780, 30, 980, 100)
     }
     block t9 {
-      position: pos(10, 350, 350, 190)
+      position: pos(20, 20, 350, 190)
       layer: 1
     }
     block v2 {
-      position: pos(390, 340, 210, 240)
+      position: pos(30, 280, 280, 340)
       layer: 1
     }
     block v3 {
-      position: pos(600, 640, 360, 90)
+      position: pos(400, 650, 360, 90)
     }
     block v4 {
-      position: pos(590, 340, 380, 170)
+      position: pos(430, 330, 380, 170)
     }
     block v5 {
-      position: pos(590, 490, 380, 70)
-    }
-    block t10 {
-      position: pos(390, 340, 210, 80)
-    }
-    block t11 {
-      position: pos(600, 580, 360, 80)
+      position: pos(440, 480, 380, 70)
     }
     block t12 {
       position: pos(370, 210, 190, 120)
@@ -55,14 +42,14 @@ Dashboard pokedex_dashboard {
       position: pos(570, 210, 190, 120)
     }
     block t15 {
-      position: pos(0, 180, 1730, 1060)
+      position: pos(0, 0, 1720, 880)
       layer: -7
     }
     block t20 {
       position: pos(990, 210, 700, 590)
     }
     block t21 {
-      position: pos(370, 330, 600, 490)
+      position: pos(370, 330, 610, 410)
       layer: -6
     }
     block v6 {
@@ -84,42 +71,38 @@ Dashboard pokedex_dashboard {
       position: pos(580, 220, 180, 50)
     }
     block v9 {
-      position: pos(1270, 370, 340, 310)
+      position: pos(1070, 390, 560, 300)
     }
     block v10 {
       position: pos(1010, 220, 170, 90)
     }
     block v10_dup_dup {
-      position: pos(1010, 430, 270, 90)
+      position: pos(1330, 220, 270, 90)
     }
     block v10_dup {
-      position: pos(1010, 320, 240, 90)
+      position: pos(1180, 220, 240, 90)
     }
     block v10_dup_dup_dup {
-      position: pos(1010, 550, 150, 90)
+      position: pos(1460, 220, 150, 90)
     }
     block v10_dup_dup_dup_dup {
-      position: pos(1000, 670, 160, 90)
+      position: pos(1610, 220, 160, 90)
     }
     block v12 {
-      position: pos(130, 760, 150, 50)
+      position: pos(580, 800, 150, 50)
     }
     block v13_dup {
-      position: pos(500, 610, 60, 130)
-    }
-    block t11_dup {
-      position: pos(390, 580, 180, 80)
-      layer: -1
+      position: pos(140, 750, 60, 130)
     }
     block v13 {
-      position: pos(170, 610, 60, 130)
+      position: pos(60, 750, 60, 130)
     }
     block f1 {
-      position: pos(40, 490, 300, 80)
+      position: pos(20, 190, 350, 40)
       layer: 2
     }
     block t27 {
-      position: pos(70, 320, 240, 70)
+      position: pos(1410, 50, 240, 70)
     }
   }
   block t5: TextBlock {
@@ -145,14 +128,6 @@ Dashboard pokedex_dashboard {
     content: @md <div>
 <h1 style="color:#f2b602; font-family:Verdana; font-weight: bolder;font-size:50px">POKEDEX</h1>
 <h2 style="color:white; font-family:Verdana; font-weight: bold;">Gonna Catch 'Em All</h2>
-</div>;;
-  }
-  block t7: TextBlock {
-    content: @md   <div style="width: 2500px; height: 200px; background-color:#0B325B;">
-</div>;;
-  }
-  block t8: TextBlock {
-    content: @md  <div style="width: 2500px; height: 200px; background-color:#f2b602;">
 </div>;;
   }
   block t9: TextBlock {
@@ -275,18 +250,6 @@ Dashboard pokedex_dashboard {
       hide_controls: true
     }
   }
-  block t10: TextBlock {
-    content: @md <div>
-<h3 style="font-family:Verdana; font-weight: bolder;">Pokemon</h3>
-<h3 style="font-family:Verdana; font-weight: bolder;">▲</h3>
-</div>;;
-  }
-  block t11: TextBlock {
-    content: @md <div>
-<h3 style="font-family:Verdana; font-weight: bolder;">Description</h3>
-<h3 style="font-family:Verdana; font-weight: bolder;">▲</h3>
-</div>;;
-  }
   block t12: TextBlock {
     content: @md <div style="width: 100%; height: 100px; background-color:#f2b602;">
 </div>;;
@@ -300,7 +263,7 @@ Dashboard pokedex_dashboard {
 </div>;;
   }
   block t15: TextBlock {
-    content: @md  <div style="width: 100%; height: 1000px; background-color:#bbd9f6;">
+    content: @md  <div style="width: 100%; height: 1000px; background-color:#bbd9f6; background: url('https://i.pinimg.com/originals/68/d0/43/68d04354d8ae557bec753171be1050f1.jpg') no-repeat; background-size: cover">
 </div>;;
   }
   block t20: TextBlock {
@@ -336,13 +299,13 @@ Dashboard pokedex_dashboard {
   block v7: VizBlock {
     label: 'Experience'
     viz: DataTable {
-      dataset: pokedex_2
+      dataset: pokemon.pokedex_2
       fields: [
         VizFieldFull {
-          ref: ref('pokemon.pkm_final', 'base_experience')
+          ref: ref('pokemon.pkm_final', 'hp')
           format {
             type: 'number'
-            pattern: '#,###0.00'
+            pattern: 'inherited'
           }
         }
       ]
@@ -384,7 +347,7 @@ Dashboard pokedex_dashboard {
   }
   block t23: TextBlock {
     content: @md   <div>
-<h3 style="font-family:Verdana; font-weight: bolder;">Experience</h3>
+<h3 style="font-family:Verdana; font-weight: bolder;">HP</h3>
 </div>;;
   }
   block t24: TextBlock {
@@ -404,7 +367,7 @@ Dashboard pokedex_dashboard {
       }
       y_axis {
         field: VizFieldFull {
-          label: 'Attack'
+          label: '⚔️ Attack'
           ref: ref('pokemon.pkm_final', 'attack')
           aggregation: 'sum'
           format {
@@ -414,7 +377,7 @@ Dashboard pokedex_dashboard {
       }
       y_axis {
         field: VizFieldFull {
-          label: 'Defense'
+          label: '🛡️ Defense'
           ref: ref('pokemon.pkm_final', 'defense')
           aggregation: 'sum'
           format {
@@ -424,7 +387,7 @@ Dashboard pokedex_dashboard {
       }
       y_axis {
         field: VizFieldFull {
-          label: 'Speed'
+          label: '👟 Speed'
           ref: ref('pokemon.pkm_final', 'speed')
           aggregation: 'sum'
           format {
@@ -434,7 +397,7 @@ Dashboard pokedex_dashboard {
       }
       y_axis {
         field: VizFieldFull {
-          label: 'Sp Attack'
+          label: '🔫 Sp Attack'
           ref: ref('pokemon.pkm_final', 'sp_attack')
           aggregation: 'sum'
           format {
@@ -445,19 +408,8 @@ Dashboard pokedex_dashboard {
       }
       y_axis {
         field: VizFieldFull {
-          label: 'Sp Defense'
+          label: '🏰 Sp Defense'
           ref: ref('pokemon.pkm_final', 'sp_defense')
-          aggregation: 'sum'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        }
-      }
-      y_axis {
-        field: VizFieldFull {
-          label: 'Max Hp'
-          ref: ref('pokemon.pkm_final', 'max_hp')
           aggregation: 'sum'
           format {
             type: 'number'
@@ -468,7 +420,7 @@ Dashboard pokedex_dashboard {
       settings {
         legend_label: 'hidden'
         y_axis_min: 0
-        y_axis_max: 300
+        y_axis_max: 250
       }
     }
     settings {
@@ -531,11 +483,11 @@ Dashboard pokedex_dashboard {
     }
   }
   block v10_dup_dup_dup: VizBlock {
-    label: 'Special Attack'
+    label: '🔫 Special Attack'
     viz: MetricKpi {
       dataset: pokedex_2
       value: VizFieldFull {
-        label: 'Special Attack'
+        label: '🔫 Special Attack'
         ref: ref('pokemon.pkm_final', 'sp_attack')
         aggregation: 'sum'
         format {
@@ -549,11 +501,11 @@ Dashboard pokedex_dashboard {
     }
   }
   block v10_dup_dup_dup_dup: VizBlock {
-    label: 'Special Defense'
+    label: '🏰 Special Defense'
     viz: MetricKpi {
       dataset: pokedex_2
       value: VizFieldFull {
-        label: 'Special Defense'
+        label: '🏰  Special Defense'
         ref: ref('pokemon.pkm_final', 'sp_defense')
         aggregation: 'sum'
         format {
@@ -614,12 +566,6 @@ Dashboard pokedex_dashboard {
       hide_label: true
       hide_controls: true
     }
-  }
-  block t11_dup: TextBlock {
-    content: @md  <div>
-<h3 style="font-family:Verdana; font-weight: bolder;">Type</h3>
-<h3 style="font-family:Verdana; font-weight: bolder;">▲</h3>
-</div>;;
   }
   block v13: VizBlock {
     label: 'Type 1'
