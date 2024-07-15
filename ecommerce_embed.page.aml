@@ -1,7 +1,7 @@
 use ecommerce
 use lib
 
-Dashboard embed_analytics {
+Dashboard ecom_embedded_analytics {
   title: 'Ecommerce Embedded Analytics'
   owner: 'support@holistics.io'
   description: ''''''

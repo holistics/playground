@@ -101,7 +101,7 @@ Dashboard pokedex_dashboard {
       position: pos(1000, 670, 160, 90)
     }
     block v12 {
-      position: pos(770, 840, 150, 50)
+      position: pos(130, 760, 150, 50)
     }
     block v13_dup {
       position: pos(500, 610, 60, 130)
@@ -433,6 +433,7 @@ Dashboard pokedex_dashboard {
       }
       y_axis {
         field: VizFieldFull {
+          label: 'Sp Attack'
           ref: ref('pokemon.pkm_final', 'sp_attack')
           aggregation: 'sum'
           format {
@@ -443,6 +444,7 @@ Dashboard pokedex_dashboard {
       }
       y_axis {
         field: VizFieldFull {
+          label: 'Sp Defense'
           ref: ref('pokemon.pkm_final', 'sp_defense')
           aggregation: 'sum'
           format {
@@ -453,6 +455,7 @@ Dashboard pokedex_dashboard {
       }
       y_axis {
         field: VizFieldFull {
+          label: 'Max Hp'
           ref: ref('pokemon.pkm_final', 'max_hp')
           aggregation: 'sum'
           format {

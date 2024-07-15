@@ -1,7 +1,7 @@
 use marketing
 use lib
 
-Dashboard marketing_1 {
+Dashboard marketing_purple {
   title: 'Marketing Dashboard'
   description: ''''''
   view: CanvasLayout {
