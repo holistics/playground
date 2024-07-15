@@ -1,3 +1,4 @@
+use pokemon
 
 Dashboard pokedex_dashboard {
   title: 'Pokedex 2.0'
