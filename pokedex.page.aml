@@ -574,44 +574,44 @@ Dashboard pokedex_dashboard {
       hide_controls: true
     }
   }
-  block v12: VizBlock {
-    label: 'Is Legendary?'
-    viz: DataTable {
-      dataset: pokemon.pokedex
-      calculation f_eff4e34 {
-        label: 'Is Legend'
-        formula: @aql case(
-          when: pokemon.pkm_final.is_legendary == true
-          , then: "Legendary Pokemon"
-          , else: "Regular Pokemon"
-        );;
-        calc_type: 'dimension'
-        data_type: 'text'
-        model: pokemon.pkm_final
-      }
-      fields: [
-        VizFieldFull {
-          ref: ref('pokemon.pkm_final', 'is_legendary')
-          format {
-            type: 'number'
-          }
-        },
-        VizFieldFull {
-          ref: ref('pokemon.pkm_final', 'f_eff4e34')
-          format {
-            type: 'text'
-          }
-        }
-      ]
-      settings {
-        row_limit: 1
-      }
-    }
-    settings {
-      hide_label: true
-      hide_controls: true
-    }
-  }
+  // block v12: VizBlock {
+  //   label: 'Is Legendary?'
+  //   viz: DataTable {
+  //     dataset: pokemon.pokedex
+  //     calculation f_eff4e34 {
+  //       label: 'Is Legend'
+  //       formula: @aql case(
+  //         when: pokemon.pkm_final.is_legendary == true
+  //         , then: "Legendary Pokemon"
+  //         , else: "Regular Pokemon"
+  //       );;
+  //       calc_type: 'dimension'
+  //       data_type: 'text'
+  //       model: pokemon.pkm_final
+  //     }
+  //     fields: [
+  //       VizFieldFull {
+  //         ref: ref('pokemon.pkm_final', 'is_legendary')
+  //         format {
+  //           type: 'number'
+  //         }
+  //       },
+  //       VizFieldFull {
+  //         ref: ref('pokemon.pkm_final', 'f_eff4e34')
+  //         format {
+  //           type: 'text'
+  //         }
+  //       }
+  //     ]
+  //     settings {
+  //       row_limit: 1
+  //     }
+  //   }
+  //   settings {
+  //     hide_label: true
+  //     hide_controls: true
+  //   }
+  // }
   block v13_dup: VizBlock {
     label: 'Type 2'
     viz: DataTable {
@@ -727,33 +727,33 @@ Dashboard pokedex_dashboard {
       hide_controls: true
     }
   }
-  block v16: VizBlock {
-    label: 'yeah'
-    viz: DataTable {
-      dataset: pokemon.pokedex
-      calculation f_35d2c12 {
-        label: 'test test'
-        formula: @aql case(
-          when: pokemon.pkm_final.is_legendary == true
-          , then: "Legendary Pokemon"
-          , else: "Regular Pokemon"
-        );;
-        calc_type: 'dimension'
-        data_type: 'text'
-        model: pokemon.pkm_final
-      }
-      fields: [
-        VizFieldFull {
-          ref: ref('pokemon.pkm_final', 'f_35d2c12')
-          format {
-            type: 'text'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 5000
-      }
-    }
-  }
+  // block v16: VizBlock {
+  //   label: 'yeah'
+  //   viz: DataTable {
+  //     dataset: pokemon.pokedex
+  //     calculation f_35d2c12 {
+  //       label: 'test test'
+  //       formula: @aql case(
+  //         when: pokemon.pkm_final.is_legendary == true
+  //         , then: "Legendary Pokemon"
+  //         , else: "Regular Pokemon"
+  //       );;
+  //       calc_type: 'dimension'
+  //       data_type: 'text'
+  //       model: pokemon.pkm_final
+  //     }
+  //     fields: [
+  //       VizFieldFull {
+  //         ref: ref('pokemon.pkm_final', 'f_35d2c12')
+  //         format {
+  //           type: 'text'
+  //         }
+  //       }
+  //     ]
+  //     settings {
+  //       show_row_number: true
+  //       row_limit: 5000
+  //     }
+  //   }
+  // }
 }
