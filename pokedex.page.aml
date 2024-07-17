@@ -15,25 +15,25 @@ Dashboard pokedex_dashboard {
       layer: -2
     }
     block t6 {
-      position: pos(1140, 80, 980, 100)
+      position: pos(780, 580, 980, 100)
     }
     block t9 {
-      position: pos(200, 540, 350, 190)
+      position: pos(1330, 140, 350, 190)
       layer: 1
     }
     block v2 {
-      position: pos(30, 280, 280, 340)
+      position: pos(60, 310, 300, 280)
       layer: 1
     }
     block v3 {
-      position: pos(400, 650, 360, 90)
+      position: pos(30, 510, 360, 90)
     }
     block v4 {
-      position: pos(350, 70, 300, 110)
+      position: pos(150, 70, 540, 110)
       layer: 2
     }
     block v5 {
-      position: pos(400, 390, 380, 70)
+      position: pos(60, 10, 380, 70)
     }
     block t12 {
       position: pos(370, 210, 190, 120)
@@ -46,18 +46,18 @@ Dashboard pokedex_dashboard {
       position: pos(570, 210, 190, 120)
     }
     block t15 {
-      position: pos(-40, 0, 1780, 880)
+      position: pos(-50, -70, 1830, 1070)
       layer: -7
     }
     block t20 {
       position: pos(990, 210, 700, 590)
     }
     block t21 {
-      position: pos(370, 330, 610, 410)
+      position: pos(10, 270, 390, 470)
       layer: -6
     }
     block v6 {
-      position: pos(370, 240, 190, 70)
+      position: pos(360, 240, 190, 70)
     }
     block v7 {
       position: pos(770, 240, 200, 70)
@@ -75,16 +75,16 @@ Dashboard pokedex_dashboard {
       position: pos(580, 220, 180, 50)
     }
     block v9 {
-      position: pos(1070, 390, 560, 300)
+      position: pos(1070, 400, 560, 300)
     }
     block v10 {
-      position: pos(1010, 220, 170, 90)
+      position: pos(1020, 290, 170, 90)
     }
     block v10_dup_dup {
       position: pos(1330, 220, 270, 90)
     }
     block v10_dup {
-      position: pos(1180, 220, 240, 90)
+      position: pos(1200, 290, 240, 90)
     }
     block v10_dup_dup_dup {
       position: pos(1460, 220, 150, 90)
@@ -93,43 +93,47 @@ Dashboard pokedex_dashboard {
       position: pos(1610, 220, 160, 90)
     }
     block v12 {
-      position: pos(580, 800, 150, 50)
+      position: pos(70, 600, 260, 90)
     }
     block v13_dup {
-      position: pos(140, 750, 60, 130)
+      position: pos(960, 80, 60, 60)
+      layer: 3
     }
     block v13 {
-      position: pos(730, 70, 50, 110)
+      position: pos(880, 80, 60, 60)
       layer: 1
     }
     block f1 {
-      position: pos(20, 190, 350, 40)
+      position: pos(1270, 110, 350, 40)
       layer: 2
     }
     block t27 {
       position: pos(1410, 50, 240, 70)
     }
     block t28 {
-      position: pos(-100, 70, 810, 110)
+      position: pos(-120, 70, 810, 110)
       layer: 1
     }
     block t29 {
-      position: pos(640, 70, 230, 110)
+      position: pos(790, 60, 310, 110)
     }
     block t30 {
       position: pos(10, 30, 310, 150)
     }
-    block v14 {
-      position: pos(40, 230, 330, 220)
-      layer: 2
+    block v15 {
+      position: pos(40, 280, 380, 70)
+    }
+    block v16 {
+      position: pos(470, 430, 400, 300)
     }
   }
 
   block page_css: TextBlock {
     content: @md <style>
       @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
-      .h-canvas p, .h-canvas h1, .h-canvas h2, .h-canvas div {
-        // font-family: "Pixelify Sans", sans-serif !important;
+
+      .h-canvas text, .h-canvas p, .h-canvas div {
+        font-family: "Pixelify Sans", sans-serif !important;
       }
       .dark-header {
         width: 100%; 
@@ -144,6 +148,15 @@ Dashboard pokedex_dashboard {
         padding-left: 50px;
         padding-right: 50px;
       } 
+      .white-card {
+          width: 100%; 
+          height: 100%; 
+          background: #fff; 
+          border-radius: 10px;
+          background-clip: padding-box;
+          border: 10px solid rgba(255, 255, 255, 0.2);
+
+      }
 </style>
  ;;
   }
@@ -168,9 +181,9 @@ Dashboard pokedex_dashboard {
     </center>;;
   }
   block t6: TextBlock {
-    content: @md   <div>
-<h1 style="color:#f2b602; font-weight: bolder;font-size:50px">POKEDEX</h1>
-<h2 style="color:white; font-weight: bold;">Gonna Catch 'Em All</h2>
+    content: @md <div>
+<h1 style="color:#f2b602; font-family:Verdana; font-weight: bolder;font-size:50px">POKEDEX</h1>
+<h2 style="color:white; font-family:Verdana; font-weight: bold;">Gonna Catch 'Em All</h2>
 </div>;;
   }
   block t9: TextBlock {
@@ -184,7 +197,7 @@ Dashboard pokedex_dashboard {
   block v2: VizBlock {
     label: 'Pokemon'
     viz: DataTable {
-      dataset: pokedex_2
+      dataset: pokedex
       calculation f_ef7b4e0 {
         label: 'PNG'
         formula: @aml concat('<img src="',pokemon.pkm_final.png, '" width="700" />');;
@@ -212,10 +225,10 @@ Dashboard pokedex_dashboard {
   block v3: VizBlock {
     label: 'Description'
     viz: DataTable {
-      dataset: pokedex_2
+      dataset: pokedex
       calculation f_ef7b4e0 {
         label: 'Description'
-        formula: @aml concat('<div><p style="font-family:Verdana; font-weight: normal; font-size:15px">',pokemon.pkm_final.description, '</p></div>');;
+        formula: @aml concat('<div><p style="font-weight: normal; font-size:15px">',pokemon.pkm_final.description, '</p></div>');;
         calc_type: 'dimension'
         data_type: 'text'
       }
@@ -240,7 +253,7 @@ Dashboard pokedex_dashboard {
   block v4: VizBlock {
     label: 'Name'
     viz: DataTable {
-      dataset: pokedex_2
+      dataset: pokedex
       calculation f_ef7b4e0 {
         label: 'Description'
         formula: @aml concat('<div><p style="font-weight: 400; font-size:50px; color: white !important">',pokemon.pkm_final.name, '</p></div>');;
@@ -268,7 +281,7 @@ Dashboard pokedex_dashboard {
   block v5: VizBlock {
     label: 'Japanese Name'
     viz: DataTable {
-      dataset: pokedex_2
+      dataset: pokedex
       calculation f_ef7b4e0 {
         label: 'Description'
         formula: @aml concat('<div><p style="font-family:Verdana; font-weight: bolder; font-size:25px">', pokemon.pkm_final.japanese_name, '</p></div>');;
@@ -294,15 +307,15 @@ Dashboard pokedex_dashboard {
     }
   }
   block t12: TextBlock {
-    content: @md <div style="width: 100%; height: 100px; background-color:#f2b602;">
+    content: @md <div class="white-card">
 </div>;;
   }
   block t13: TextBlock {
-    content: @md <div style="width: 100%; height: 100px; background-color:#f2b602; border-radius:10px">
+    content: @md <div class="white-card">
 </div>;;
   }
   block t14: TextBlock {
-    content: @md  <div style="width: 100%; height: 100px; background-color:#f2b602;border-radius:8px">
+    content: @md  <div class="white-card">
 </div>;;
   }
   block t15: TextBlock {
@@ -310,17 +323,17 @@ Dashboard pokedex_dashboard {
 </div>;;
   }
   block t20: TextBlock {
-    content: @md   <div style="width: 100%; height: 100%; background-color:white;border-radius:8px">
+    content: @md   <div class="white-card">
 </div>;;
   }
   block t21: TextBlock {
-    content: @md  <div style="width: 100%; height: 430px; background-color:white;border-radius:8px">
+    content: @md  <div class="white-card">
 </div>;;
   }
   block v6: VizBlock {
     label: 'Height'
     viz: DataTable {
-      dataset: pokedex_2
+      dataset: pokedex
       fields: [
         VizFieldFull {
           ref: ref('pokemon.pkm_final', 'height_m')
@@ -342,7 +355,7 @@ Dashboard pokedex_dashboard {
   block v7: VizBlock {
     label: 'Experience'
     viz: DataTable {
-      dataset: pokemon.pokedex_2
+      dataset: pokemon.pokedex
       fields: [
         VizFieldFull {
           ref: ref('pokemon.pkm_final', 'hp')
@@ -364,7 +377,7 @@ Dashboard pokedex_dashboard {
   block v8: VizBlock {
     label: 'Weight'
     viz: DataTable {
-      dataset: pokedex_2
+      dataset: pokedex
       fields: [
         VizFieldFull {
           ref: ref('pokemon.pkm_final', 'weight_kg')
@@ -401,7 +414,7 @@ Dashboard pokedex_dashboard {
   block v9: VizBlock {
     label: 'Attack, Defense, Speed'
     viz: RadarChart {
-      dataset: pokemon.pokedex_2
+      dataset: pokemon.pokedex
       legend: VizFieldFull {
         ref: ref('pokemon.pkm_final', 'name')
         format {
@@ -474,7 +487,7 @@ Dashboard pokedex_dashboard {
   block v10: VizBlock {
     label: '⚔️ Attack'
     viz: MetricKpi {
-      dataset: pokemon.pokedex_2
+      dataset: pokemon.pokedex
       value: VizFieldFull {
         label: '⚔️ Attack'
         ref: ref('pokemon.pkm_final', 'attack')
@@ -492,7 +505,7 @@ Dashboard pokedex_dashboard {
   block v10_dup_dup: VizBlock {
     label: "Speed"
     viz: MetricKpi {
-      dataset: pokedex_2
+      dataset: pokedex
       value: VizFieldFull {
         label: '👟 Speed'
         ref: ref('pokemon.pkm_final', 'speed')
@@ -510,7 +523,7 @@ Dashboard pokedex_dashboard {
   block v10_dup: VizBlock {
     label: 'Defense'
     viz: MetricKpi {
-      dataset: pokemon.pokedex_2
+      dataset: pokemon.pokedex
       value: VizFieldFull {
         label: '🛡️ Defense'
         ref: ref('pokemon.pkm_final', 'defense')
@@ -528,7 +541,7 @@ Dashboard pokedex_dashboard {
   block v10_dup_dup_dup: VizBlock {
     label: '🔫 Special Attack'
     viz: MetricKpi {
-      dataset: pokedex_2
+      dataset: pokedex
       value: VizFieldFull {
         label: '🔫 Special Attack'
         ref: ref('pokemon.pkm_final', 'sp_attack')
@@ -546,7 +559,7 @@ Dashboard pokedex_dashboard {
   block v10_dup_dup_dup_dup: VizBlock {
     label: '🏰 Special Defense'
     viz: MetricKpi {
-      dataset: pokedex_2
+      dataset: pokedex
       value: VizFieldFull {
         label: '🏰  Special Defense'
         ref: ref('pokemon.pkm_final', 'sp_defense')
@@ -564,12 +577,29 @@ Dashboard pokedex_dashboard {
   block v12: VizBlock {
     label: 'Is Legendary?'
     viz: DataTable {
-      dataset: pokedex_2
+      dataset: pokemon.pokedex
+      calculation f_eff4e34 {
+        label: 'Is Legend'
+        formula: @aql case(
+          when: pokemon.pkm_final.is_legendary == true
+          , then: "Legendary Pokemon"
+          , else: "Regular Pokemon"
+        );;
+        calc_type: 'dimension'
+        data_type: 'text'
+        model: pokemon.pkm_final
+      }
       fields: [
         VizFieldFull {
           ref: ref('pokemon.pkm_final', 'is_legendary')
           format {
             type: 'number'
+          }
+        },
+        VizFieldFull {
+          ref: ref('pokemon.pkm_final', 'f_eff4e34')
+          format {
+            type: 'text'
           }
         }
       ]
@@ -585,7 +615,7 @@ Dashboard pokedex_dashboard {
   block v13_dup: VizBlock {
     label: 'Type 2'
     viz: DataTable {
-      dataset: pokedex_2
+      dataset: pokedex
       calculation f_a2dc312 {
         label: 'type icon'
         formula: @aml concat('<img src="',pokemon.pkm_final.type2_icon, '" width="100" />');;
@@ -613,7 +643,7 @@ Dashboard pokedex_dashboard {
   block v13: VizBlock {
     label: 'Type 1'
     viz: DataTable {
-      dataset: pokedex_2
+      dataset: pokedex
       calculation f_a2dc312 {
         label: 'type icon'
         formula: @aml concat('<img src="',pokemon.pkm_final.type1_icon, '" width="100" />');;
@@ -642,7 +672,7 @@ Dashboard pokedex_dashboard {
     label: 'Choose your Pokemon'
     type: 'field'
     source: FieldFilterSource {
-      dataset: pokedex_2
+      dataset: pokedex
       field: ref('pokemon.pkm_final', 'name')
     }
     default {
@@ -661,7 +691,7 @@ Dashboard pokedex_dashboard {
 </div>;;
   }
   block t28: TextBlock {
-    content: @md <div class="dark-header"></div>;;
+    content: @md <div class="dark-header" style="border-bottom: 12px solid #fff"></div>;;
   }
   block t29: TextBlock {
     content: @md <div class="dark-header""></div>;;
@@ -669,16 +699,22 @@ Dashboard pokedex_dashboard {
   block t30: TextBlock {
     content: @md <div class="dark-header""></div>;;
   }
-  block v14: VizBlock {
-    label: 'Name (dup)'
+  block v15: VizBlock {
+    label: 'Japanese Name (dup)'
     viz: DataTable {
-      dataset: pokemon.pokedex_2
+      dataset: pokemon.pokedex
+      calculation f_ef7b4e0 {
+        label: 'Description'
+        formula: @aml concat('<div><p style="font-family:Verdana; font-weight: bolder; font-size:25px">', pokemon.pkm_final.japanese_name, '</p></div>');;
+        calc_type: 'dimension'
+        data_type: 'text'
+      }
       fields: [
         VizFieldFull {
-          ref: ref('pokemon.pkm_final', 'index')
+          label: ' '
+          ref: 'f_ef7b4e0'
           format {
-            type: 'number'
-            pattern: 'inherited'
+            type: 'html'
           }
         }
       ]
@@ -689,6 +725,35 @@ Dashboard pokedex_dashboard {
     settings {
       hide_label: true
       hide_controls: true
+    }
+  }
+  block v16: VizBlock {
+    label: 'yeah'
+    viz: DataTable {
+      dataset: pokemon.pokedex
+      calculation f_35d2c12 {
+        label: 'test test'
+        formula: @aql case(
+          when: pokemon.pkm_final.is_legendary == true
+          , then: "Legendary Pokemon"
+          , else: "Regular Pokemon"
+        );;
+        calc_type: 'dimension'
+        data_type: 'text'
+        model: pokemon.pkm_final
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('pokemon.pkm_final', 'f_35d2c12')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+      }
     }
   }
 }

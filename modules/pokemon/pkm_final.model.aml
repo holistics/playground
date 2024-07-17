@@ -51,7 +51,7 @@ Model pkm_final {
     label: 'Is Legendary'
     type: 'truefalse'
     hidden: false
-    definition: @sql {{ #SOURCE.is_legendary }};;
+    definition: @sql cast({{ #SOURCE.is_legendary }} as boolean);;
   }
   dimension is_mythical {
     label: 'Is Mythical'
