@@ -1,3 +1,5 @@
+use lib
+
 Dashboard marketing_1 {
   title: 'Template Marketing Dashboard 1'
   description: ''''''
@@ -50,23 +52,23 @@ Dashboard marketing_1 {
       position: pos(30, 100, 510, 80)
     }
     block t2 {
-      position: pos(20, 360, 300, 300)
+      position: pos(30, 370, 280, 280)
       layer: -1
     }
     block t4 {
-      position: pos(20, 660, 300, 300)
+      position: pos(30, 670, 280, 280)
       layer: -1
     }
     block t12 {
-      position: pos(330, 660, 970, 300)
+      position: pos(330, 670, 960, 280)
       layer: -1
     }
     block t13 {
-      position: pos(330, 360, 970, 300)
+      position: pos(330, 370, 960, 280)
       layer: -1
     }
     block t7 {
-      position: pos(20, 190, 1280, 160)
+      position: pos(30, 190, 1260, 160)
       layer: -1
     }
   }
@@ -80,13 +82,6 @@ Dashboard marketing_1 {
       }
       .h-kpi-metric-kpi {
         color: #5425D8FF;
-      }
-      .bg-gray {
-        margin:8px;
-        width:calc(100% - 16px);
-        height:274px;
-        border-radius: 4px;
-        background:#fafafa;
       }
       .text-content {
         overflow: hidden;
@@ -418,20 +413,9 @@ Dashboard marketing_1 {
     content: @md <div style="padding:8px 0;background-color:#fff"><p style="font-size:16px; text-align: left;">The dashboard's primary goal is to offer marketers a quick, comprehensive view of their campaign performance, allowing for data-driven decision-making and strategy adjustments.</p></div>;;
   }
 
-  block t2: TextBlock {
-    content: @md <div class="bg-gray"></div>;;
-  }
-  block t4: TextBlock {
-    content: @md <div class="bg-gray"></div>;;
-  }
-  block t12: TextBlock {
-    content: @md <div class="bg-gray"></div>;;
-  }
-  block t13: TextBlock {
-    content: @md <div class="bg-gray"></div>;;
-  }
-
-  block t7: TextBlock {
-    content: @md <div style="height:144px;overflow-x:hidden" class="bg-gray"></div>;;
-  }
+  block t2: background_gray()
+  block t4: background_gray()
+  block t12: background_gray()
+  block t13: background_gray()
+  block t7: background_gray()
 }
