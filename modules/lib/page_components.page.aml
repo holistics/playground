@@ -54,6 +54,19 @@ Func background_gray() {
   background("#fafafa")
 }
 
+Func shadow_light() {
+  TextBlock {
+    content: @md <div style="
+        margin: 8px;
+        width: calc(100% - 16px);
+        height: calc(100% - 16px);
+        border-radius: 4px;
+        box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+        background: #fdfdfd;"
+    </div>;;
+  }
+}
+
 
 Dashboard page_components {
   title: 'Page Components'
@@ -74,7 +87,7 @@ Dashboard page_components {
       position: pos(400, 80, 150, 80)
     }
     block t6 {
-      position: pos(160, 350, 630, 260)
+      position: pos(40, 320, 630, 260)
     }
   }
   block style_css: TextBlock {

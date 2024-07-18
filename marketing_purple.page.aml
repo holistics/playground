@@ -12,7 +12,7 @@ Dashboard marketing_purple {
       position: pos(-20, 650, 170, 120)
     }
     block v3 {
-      position: pos(360, 390, 910, 230)
+      position: pos(360, 380, 910, 230)
     }
     block f1 {
       position: pos(660, 120, 630, 60)
@@ -37,13 +37,13 @@ Dashboard marketing_purple {
       position: pos(30, 40, 390, 50)
     }
     block v14 {
-      position: pos(360, 690, 910, 230)
+      position: pos(360, 680, 910, 230)
     }
     block v15 {
-      position: pos(50, 390, 240, 230)
+      position: pos(50, 380, 250, 230)
     }
     block v18 {
-      position: pos(50, 690, 240, 230)
+      position: pos(50, 680, 250, 230)
     }
     block t15 {
       position: pos(30, 20, 1320, 930)
@@ -53,27 +53,27 @@ Dashboard marketing_purple {
       position: pos(30, 100, 510, 80)
     }
     block t2 {
-      position: pos(20, 360, 300, 300)
+      position: pos(30, 360, 290, 280)
       layer: -1
     }
     block t4 {
-      position: pos(20, 660, 300, 300)
+      position: pos(30, 660, 290, 280)
       layer: -1
     }
     block t12 {
-      position: pos(330, 660, 970, 300)
+      position: pos(340, 660, 950, 280)
       layer: -1
     }
     block t13 {
-      position: pos(330, 360, 970, 300)
+      position: pos(340, 360, 950, 280)
       layer: -1
     }
     block t7 {
-      position: pos(20, 190, 1280, 160)
+      position: pos(30, 200, 1260, 140)
       layer: -1
     }
     block note_1 {
-      position: pos(1090, 10, 210, 90)
+      position: pos(1090, 40, 210, 90)
     }
   }
   block override_css: TextBlock {
@@ -421,22 +421,11 @@ Dashboard marketing_purple {
     content: @md <div style="padding:8px 0;background-color:#fff"><p style="font-size:16px; text-align: left;">The dashboard's primary goal is to offer marketers a quick, comprehensive view of their campaign performance, allowing for data-driven decision-making and strategy adjustments.</p></div>;;
   }
 
-  block t2: TextBlock {
-    content: @md <div class="bg-gray"></div>;;
-  }
-  block t4: TextBlock {
-    content: @md <div class="bg-gray"></div>;;
-  }
-  block t12: TextBlock {
-    content: @md <div class="bg-gray"></div>;;
-  }
-  block t13: TextBlock {
-    content: @md <div class="bg-gray"></div>;;
-  }
-
-  block t7: TextBlock {
-    content: @md <div style="height:144px;overflow-x:hidden" class="bg-gray"></div>;;
-  }
+  block t2: background_gray()
+  block t4: background_gray()
+  block t12: background_gray()
+  block t13: background_gray()
+  block t7: background_gray()
 
   block note_1: sticky_note_pink("This is our demo marketing dashboard")
 }
