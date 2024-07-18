@@ -6,8 +6,8 @@ Dashboard marketing_purple {
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
-    width: 1310
-    height: 960
+    width: 1320
+    height: 970
     block override_css {
       position: pos(-20, 650, 170, 120)
     }
