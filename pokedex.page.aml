@@ -15,14 +15,14 @@ Dashboard pokedex_dashboard {
       layer: -2
     }
     block t6 {
-      position: pos(780, 580, 980, 100)
+      position: pos(540, -40, 980, 100)
     }
     block t9 {
-      position: pos(1330, 140, 350, 190)
+      position: pos(960, -10, 350, 190)
       layer: 1
     }
     block v2 {
-      position: pos(60, 310, 300, 280)
+      position: pos(50, 320, 300, 280)
       layer: 1
     }
     block v3 {
@@ -36,71 +36,68 @@ Dashboard pokedex_dashboard {
       position: pos(60, 10, 380, 70)
     }
     block t12 {
-      position: pos(370, 210, 190, 120)
+      position: pos(430, 270, 190, 120)
     }
     block t13 {
-      position: pos(770, 210, 200, 120)
+      position: pos(430, 560, 200, 120)
       layer: -6
     }
     block t14 {
-      position: pos(570, 210, 190, 120)
+      position: pos(430, 410, 190, 120)
     }
     block t15 {
-      position: pos(-50, -70, 1830, 1070)
+      position: pos(-70, -60, 1830, 1070)
       layer: -7
     }
     block t20 {
-      position: pos(990, 210, 700, 590)
+      position: pos(740, 240, 950, 520)
     }
     block t21 {
       position: pos(10, 270, 390, 470)
       layer: -6
     }
     block v6 {
-      position: pos(360, 240, 190, 70)
+      position: pos(420, 300, 190, 70)
     }
     block v7 {
-      position: pos(770, 240, 200, 70)
+      position: pos(440, 600, 200, 70)
     }
     block v8 {
-      position: pos(570, 240, 190, 70)
+      position: pos(440, 450, 190, 70)
     }
     block t22 {
-      position: pos(380, 220, 180, 50)
+      position: pos(450, 290, 180, 50)
     }
     block t23 {
-      position: pos(780, 220, 190, 50)
+      position: pos(450, 580, 190, 50)
     }
     block t24 {
-      position: pos(580, 220, 180, 50)
+      position: pos(450, 430, 180, 50)
     }
     block v9 {
-      position: pos(1070, 400, 560, 300)
+      position: pos(920, 290, 560, 300)
     }
     block v10 {
-      position: pos(1020, 290, 170, 90)
+      position: pos(780, 270, 170, 90)
     }
     block v10_dup_dup {
-      position: pos(1330, 220, 270, 90)
+      position: pos(770, 550, 270, 90)
     }
     block v10_dup {
-      position: pos(1200, 290, 240, 90)
+      position: pos(780, 400, 240, 90)
     }
     block v10_dup_dup_dup {
-      position: pos(1460, 220, 150, 90)
+      position: pos(1500, 290, 150, 90)
     }
     block v10_dup_dup_dup_dup {
-      position: pos(1610, 220, 160, 90)
-    }
-    block v12 {
-      position: pos(70, 600, 260, 90)
+      position: pos(1500, 400, 160, 90)
     }
     block v13_dup {
       position: pos(960, 80, 60, 60)
       layer: 3
     }
     block v13 {
-      position: pos(880, 80, 60, 60)
+      position: pos(740, 90, 60, 60)
       layer: 1
     }
     block f1 {
@@ -115,16 +112,13 @@ Dashboard pokedex_dashboard {
       layer: 1
     }
     block t29 {
-      position: pos(790, 60, 310, 110)
+      position: pos(620, 70, 310, 110)
     }
     block t30 {
       position: pos(10, 30, 310, 150)
     }
     block v15 {
-      position: pos(40, 280, 380, 70)
-    }
-    block v16 {
-      position: pos(470, 430, 400, 300)
+      position: pos(50, 320, 380, 70)
     }
   }
 
@@ -727,33 +721,4 @@ Dashboard pokedex_dashboard {
       hide_controls: true
     }
   }
-  // block v16: VizBlock {
-  //   label: 'yeah'
-  //   viz: DataTable {
-  //     dataset: pokemon.pokedex
-  //     calculation f_35d2c12 {
-  //       label: 'test test'
-  //       formula: @aql case(
-  //         when: pokemon.pkm_final.is_legendary == true
-  //         , then: "Legendary Pokemon"
-  //         , else: "Regular Pokemon"
-  //       );;
-  //       calc_type: 'dimension'
-  //       data_type: 'text'
-  //       model: pokemon.pkm_final
-  //     }
-  //     fields: [
-  //       VizFieldFull {
-  //         ref: ref('pokemon.pkm_final', 'f_35d2c12')
-  //         format {
-  //           type: 'text'
-  //         }
-  //       }
-  //     ]
-  //     settings {
-  //       show_row_number: true
-  //       row_limit: 5000
-  //     }
-  //   }
-  // }
 }
