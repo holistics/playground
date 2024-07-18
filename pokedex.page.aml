@@ -33,7 +33,7 @@ Dashboard pokedex_dashboard {
       layer: 2
     }
     block v5 {
-      position: pos(60, 10, 380, 70)
+      position: pos(320, 200, 380, 70)
     }
     block t12 {
       position: pos(430, 270, 190, 120)
@@ -53,7 +53,7 @@ Dashboard pokedex_dashboard {
       position: pos(740, 240, 950, 520)
     }
     block t21 {
-      position: pos(10, 270, 390, 470)
+      position: pos(50, 220, 390, 470)
       layer: -6
     }
     block v6 {
@@ -120,6 +120,9 @@ Dashboard pokedex_dashboard {
     block v15 {
       position: pos(50, 320, 380, 70)
     }
+    block v16 {
+      position: pos(10, 650, 380, 70)
+    }
   }
 
   block page_css: TextBlock {
@@ -149,7 +152,46 @@ Dashboard pokedex_dashboard {
           border-radius: 10px;
           background-clip: padding-box;
           border: 10px solid rgba(255, 255, 255, 0.2);
-
+      }
+      .pixel-corners {
+        clip-path: polygon(
+          0px calc(100% - 20px),
+          4px calc(100% - 20px),
+          4px calc(100% - 12px),
+          8px calc(100% - 12px),
+          8px calc(100% - 8px),
+          12px calc(100% - 8px),
+          12px calc(100% - 4px),
+          20px calc(100% - 4px),
+          20px 100%,
+          calc(100% - 20px) 100%,
+          calc(100% - 20px) calc(100% - 4px),
+          calc(100% - 12px) calc(100% - 4px),
+          calc(100% - 12px) calc(100% - 8px),
+          calc(100% - 8px) calc(100% - 8px),
+          calc(100% - 8px) calc(100% - 12px),
+          calc(100% - 4px) calc(100% - 12px),
+          calc(100% - 4px) calc(100% - 20px),
+          100% calc(100% - 20px),
+          100% 20px,
+          calc(100% - 4px) 20px,
+          calc(100% - 4px) 12px,
+          calc(100% - 8px) 12px,
+          calc(100% - 8px) 8px,
+          calc(100% - 12px) 8px,
+          calc(100% - 12px) 4px,
+          calc(100% - 20px) 4px,
+          calc(100% - 20px) 0px,
+          20px 0px,
+          20px 4px,
+          12px 4px,
+          12px 8px,
+          8px 8px,
+          8px 12px,
+          4px 12px,
+          4px 20px,
+          0px 20px
+        );
       }
 </style>
  ;;
@@ -275,10 +317,10 @@ Dashboard pokedex_dashboard {
   block v5: VizBlock {
     label: 'Japanese Name'
     viz: DataTable {
-      dataset: pokedex
+      dataset: pokemon.pokedex
       calculation f_ef7b4e0 {
         label: 'Description'
-        formula: @aml concat('<div><p style="font-family:Verdana; font-weight: bolder; font-size:25px">', pokemon.pkm_final.japanese_name, '</p></div>');;
+        formula: @aml concat('<div><p style="font-family:Verdana; font-weight: bolder; font-size:25px">', pokemon.pkm_final.index, '</p></div>');;
         calc_type: 'dimension'
         data_type: 'text'
       }
@@ -700,6 +742,44 @@ Dashboard pokedex_dashboard {
       calculation f_ef7b4e0 {
         label: 'Description'
         formula: @aml concat('<div><p style="font-family:Verdana; font-weight: bolder; font-size:25px">', pokemon.pkm_final.japanese_name, '</p></div>');;
+        calc_type: 'dimension'
+        data_type: 'text'
+      }
+      fields: [
+        VizFieldFull {
+          label: ' '
+          ref: 'f_ef7b4e0'
+          format {
+            type: 'html'
+          }
+        }
+      ]
+      settings {
+        row_limit: 1
+      }
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
+    }
+  }
+  block v16: VizBlock {
+    label: 'Japanese Name (dup)'
+    viz: DataTable {
+      dataset: pokemon.pokedex
+      calculation f_ef7b4e0 {
+        label: 'Description'
+        formula: @aml concat
+(
+  '<div><p style="font-family:Verdana; font-weight: bolder; font-size:25px">',
+  case(
+  when: pokemon.pkm_final.is_legendary == true
+  , then: "Legendary Pokemon"
+  , else: "Normal Pokemon"
+  ), 
+  "</p></div>"
+
+);;
         calc_type: 'dimension'
         data_type: 'text'
       }

@@ -5,7 +5,9 @@ Model pkm_final {
   data_source_name: 'demo_pg'
   dimension index {
     label: "Index"
-    type: "number"
+    type: "text"
+    description: ""
+    hidden: false
     definition: @sql CAST({{ #SOURCE.index }} AS INTEGER);;
   }
   dimension pokedex_number {
