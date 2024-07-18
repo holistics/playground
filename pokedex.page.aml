@@ -11,11 +11,11 @@ Dashboard pokedex_dashboard {
       position: pos(610, -240, 860, 190)
     }
     block t5 {
-      position: pos(930, 160, 170, 110)
+      position: pos(1310, -10, 170, 110)
       layer: -2
     }
     block t6 {
-      position: pos(540, -40, 980, 100)
+      position: pos(430, 760, 980, 100)
     }
     block t9 {
       position: pos(960, -10, 350, 190)
@@ -29,11 +29,11 @@ Dashboard pokedex_dashboard {
       position: pos(30, 510, 360, 90)
     }
     block v4 {
-      position: pos(310, 70, 470, 110)
+      position: pos(240, 70, 470, 110)
       layer: 2
     }
     block block_index {
-      position: pos(40, 70, 230, 110)
+      position: pos(40, 70, 180, 110)
       layer: 100
     }
     block t12 {
@@ -94,11 +94,11 @@ Dashboard pokedex_dashboard {
       position: pos(1500, 400, 160, 90)
     }
     block v13_dup {
-      position: pos(960, 80, 60, 60)
+      position: pos(790, 90, 60, 60)
       layer: 3
     }
     block v13 {
-      position: pos(740, 90, 60, 60)
+      position: pos(700, 90, 60, 60)
       layer: 1
     }
     block f1 {
@@ -116,7 +116,7 @@ Dashboard pokedex_dashboard {
       position: pos(620, 70, 310, 110)
     }
     block t30 {
-      position: pos(10, 30, 310, 150)
+      position: pos(10, 30, 260, 150)
     }
     block v15 {
       position: pos(50, 320, 380, 70)
@@ -146,6 +146,7 @@ Dashboard pokedex_dashboard {
       div:has(>.dark-header) {
         padding-left: 50px;
         padding-right: 50px;
+        
       } 
       .white-card {
           width: 100%; 
@@ -740,10 +741,10 @@ Dashboard pokedex_dashboard {
     content: @md <div class="dark-header" style="border-bottom: 12px solid #fff"></div>;;
   }
   block t29: TextBlock {
-    content: @md <div class="dark-header""></div>;;
+    content: @md <div class="dark-header" style="border-bottom: 12px solid #fff"></div>;;
   }
   block t30: TextBlock {
-    content: @md <div class="dark-header""></div>;;
+    content: @md <div class="dark-header" style="border-bottom: 12px solid #fff"></div>;;
   }
   block v15: VizBlock {
     label: 'Japanese Name (dup)'
