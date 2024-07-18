@@ -1,0 +1,11 @@
+Dataset global_temps_dataset {
+  label: 'Global Temps'
+  description: ''
+  data_source_name: 'demo_pg'
+  models: [
+    demo.global_temps_pivot
+  ]
+  relationships: [
+  ]
+  owner: 'support@holistics.io'
+}

@@ -29,11 +29,12 @@ Dashboard pokedex_dashboard {
       position: pos(30, 510, 360, 90)
     }
     block v4 {
-      position: pos(150, 70, 540, 110)
+      position: pos(310, 70, 470, 110)
       layer: 2
     }
-    block v5 {
-      position: pos(320, 200, 380, 70)
+    block block_index {
+      position: pos(40, 70, 230, 110)
+      layer: 100
     }
     block t12 {
       position: pos(430, 270, 190, 120)
@@ -128,9 +129,10 @@ Dashboard pokedex_dashboard {
   block page_css: TextBlock {
     content: @md <style>
       @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
-
+      @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&family=Playpen+Sans:wght@100..800&display=swap');      
+      
       .h-canvas text, .h-canvas p, .h-canvas div {
-        font-family: "Pixelify Sans", sans-serif !important;
+        font-family: "Playpen Sans", cursive;
       }
       .dark-header {
         width: 100%; 
@@ -152,6 +154,14 @@ Dashboard pokedex_dashboard {
           border-radius: 10px;
           background-clip: padding-box;
           border: 10px solid rgba(255, 255, 255, 0.2);
+      }
+      .header-text {
+        color: #ffffff;
+        font-weight: 700; 
+        font-size:50px;
+      }
+      .single-value .html-value:has(.header-text-left) {
+        margin-left: 0;
       }
       .pixel-corners {
         clip-path: polygon(
@@ -292,7 +302,7 @@ Dashboard pokedex_dashboard {
       dataset: pokedex
       calculation f_ef7b4e0 {
         label: 'Description'
-        formula: @aml concat('<div><p style="font-weight: 400; font-size:50px; color: white !important">',pokemon.pkm_final.name, '</p></div>');;
+        formula: @aml concat('<div><p class="header-text header-text-left" style="align: left">',pokemon.pkm_final.name, '</p></div>');;
         calc_type: 'dimension'
         data_type: 'text'
       }
@@ -314,13 +324,13 @@ Dashboard pokedex_dashboard {
       hide_controls: true
     }
   }
-  block v5: VizBlock {
+  block block_index: VizBlock {
     label: 'Japanese Name'
     viz: DataTable {
       dataset: pokemon.pokedex
       calculation f_ef7b4e0 {
         label: 'Description'
-        formula: @aml concat('<div><p style="font-family:Verdana; font-weight: bolder; font-size:25px">', pokemon.pkm_final.index, '</p></div>');;
+        formula: @aml concat('<div><p class="header-text">', pokemon.pkm_final.index, '</p></div>');;
         calc_type: 'dimension'
         data_type: 'text'
       }
