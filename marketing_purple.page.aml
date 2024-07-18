@@ -81,18 +81,11 @@ Dashboard marketing_purple {
       .dac-text-block {
         overflow: hidden !important;
       }
-      .h-kpi-metric .h-6 {
+      .h-kpi-metric-label {
         font-size: 18px;
       }
-      .h-kpi-metric .text-blue-gray-800:not(.h-6){
+      .h-kpi-metric-kpi {
         color: #5425D8FF;
-      }
-      .bg-gray {
-        margin:8px;
-        width:calc(100% - 16px);
-        height:274px;
-        border-radius: 4px;
-        background:#fafafa;
       }
     </style>;;
   }
