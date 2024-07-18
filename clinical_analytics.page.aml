@@ -1,6 +1,15 @@
 use demo
 
+PageTheme clinical_analytics_theme {
+  canvas {
+    background {
+      bg_color: '#f6f6f6'
+    }
+  }
+}
+
 Dashboard clinical_analytics {
+  theme: clinical_analytics_theme
   title: 'Clinical Analytics'
   description: ''''''
   view: CanvasLayout {
@@ -8,46 +17,45 @@ Dashboard clinical_analytics {
     width: 1160
     height: 960
     block v1 {
-      position: pos(40, 170, 1080, 360)
+      position: pos(40, 260, 1080, 270)
       layer: 1
     }
     block f1 {
-      position: pos(30, 30, 300, 60)
+      position: pos(20, 70, 300, 60)
     }
     block f2 {
-      position: pos(350, 30, 300, 60)
+      position: pos(340, 70, 300, 60)
     }
     block f3 {
-      position: pos(670, 30, 450, 60)
+      position: pos(660, 70, 450, 60)
     }
     block v2 {
-      position: pos(600, 630, 520, 280)
+      position: pos(610, 640, 510, 280)
       layer: 1
     }
     block v3 {
-      position: pos(40, 630, 560, 280)
+      position: pos(40, 640, 530, 280)
     }
     block t1 {
-      position: pos(40, 140, 720, 70)
+      position: pos(40, 190, 720, 70)
     }
     block t2 {
-      position: pos(40, 580, 580, 60)
-    }
-    block t3 {
-      position: pos(-10, -10, 1480, 970)
-      layer: -1
+      position: pos(40, 600, 580, 60)
     }
     block t4 {
-      position: pos(20, 20, 1120, 90)
+      position: pos(0, 0, 1160, 150)
       layer: -1
     }
     block t5 {
-      position: pos(20, 120, 1120, 440)
+      position: pos(20, 170, 1120, 390)
       layer: -1
     }
     block t6 {
-      position: pos(20, 570, 1120, 370)
+      position: pos(20, 580, 1120, 360)
       layer: -1
+    }
+    block t7 {
+      position: pos(20, 20, 257, 40)
     }
   }
   block v1: VizBlock {
@@ -178,21 +186,20 @@ Dashboard clinical_analytics {
     content: @md ### Patient Wait Time and Satisfactory Scores
 ;;
   }
-  block t3: TextBlock {
-    content: @md <div style="width: 1550px; height: 1000px; background-color: #f4f4f4">
-</div>;;
-  }
   block t4: TextBlock {
-    content: @md   <div style="width: 1400px; height: 80px; background-color: #ffffff">
+    content: @md   <div style="width: 100%; height: 100%; background-color: #ffffff">
 </div>;;
   }
   block t5: TextBlock {
-    content: @md  <div style="width: 1400px; height: 430px; background-color: #ffffff; ">
+    content: @md  <div style="width: 100%; height: 100%; background-color: #ffffff; border-radius: 12px; ">
 </div>;;
   }
   block t6: TextBlock {
-    content: @md  <div style="width: 1400px; height: 360px; background-color: #ffffff">
+    content: @md  <div style="width: 100%; height: 100%; background-color: #ffffff; border-radius: 12px">
 </div>;;
+  }
+  block t7: TextBlock {
+    content: @md ## Clinical Analytics;;
   }
   interactions: [
     FilterInteraction {
@@ -232,5 +239,4 @@ Dashboard clinical_analytics {
       ]
     }
   ]
-
 }
