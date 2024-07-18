@@ -1,10 +1,12 @@
+use lib
+
 Dashboard marketing_2 {
   title: 'Template Marketing Dashboard 2'
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
     width: 1330
-    height: 910
+    height: 920
     block v3 {
       position: pos(360, 330, 240, 240)
     }
@@ -24,7 +26,7 @@ Dashboard marketing_2 {
       position: pos(670, 180, 200, 80)
     }
     block t7 {
-      position: pos(20, 150, 1290, 150)
+      position: pos(20, 150, 1290, 140)
       layer: -1
     }
     block t9 {
@@ -185,9 +187,7 @@ Dashboard marketing_2 {
     }
   }
 
-  block t7: TextBlock {
-    content: @md <div style="height:122px;" class="shadow-light"></div>;;
-  }
+  block t7: shadow_light()
   block t9: TextBlock {
     content: @md <div id="heading"><h2 style="font-size:32px; text-align: left;color:#fff">Marketing Dashboard</h2></div>;;
   }
@@ -355,23 +355,21 @@ Dashboard marketing_2 {
       .dac-text-block {
         overflow: hidden !important;
       }
-      .h-kpi-metric-kpi {
-        font-size: 36px;
-        color: #012A49;
-      }
       .dac-viz-block-label {
         color: #012A49 !important;
         overflow: hidden !important;
       }
+      .dac-ic-block-label {
+        color: #fff !important;
+      }
+      .h-kpi-metric-kpi {
+        font-size: 36px;
+        color: #012A49;
+        line-height: 3.5rem !important;
+      }
       .h-kpi-metric-label {
         color: #012A49;
         font-size: 18px;
-      }
-      .h-kpi-metric .text-blue-gray-800:not(.h-6)  {
-        line-height: 3.5rem !important;
-      }
-      .dac-ic-block-label {
-        color: #fff !important;
       }
       .highcharts-pane {
         stroke: #323435;
@@ -384,33 +382,15 @@ Dashboard marketing_2 {
       .highcharts-axis text {
         display: none;
       }
-      .shadow-light {
-        margin:8px;
-        width:calc(100% - 16px);
-        height:274px;
-        border-radius: 4px;
-        box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
-        background:#fdfdfd;
-      }
       .text-content {
         overflow: hidden;
       }
     </style>;;
   }
 
-  block t2: TextBlock {
-    content: @md <div class="shadow-light"></div>;;
- }
-  block t3: TextBlock {
-    content: @md <div class="shadow-light"></div>;;
- }
-  block t4: TextBlock {
-    content: @md <div class="shadow-light"></div>;;
- }
-  block t11: TextBlock {
-    content: @md <div class="shadow-light"></div>;;
- }
-  block t12: TextBlock {
-    content: @md <div class="shadow-light"></div>;;
- }
+  block t2: shadow_light()
+  block t3: shadow_light()
+  block t4: shadow_light()
+  block t11: shadow_light()
+  block t12: shadow_light()
 }
