@@ -8,7 +8,7 @@ Dashboard aql_use_cases {
     label: 'View 1'
     height: 800
     block v1 {
-      position: pos(400, 400, 600, 400)
+      position: pos(10, 10, 600, 400)
     }
   }
   block v1: VizBlock {
