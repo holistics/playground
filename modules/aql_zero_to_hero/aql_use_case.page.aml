@@ -1,0 +1,74 @@
+use ecommerce
+
+Dashboard aql_use_cases {
+  title: 'AQL Use Cases'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block v1 {
+      position: pos(400, 400, 600, 400)
+    }
+  }
+  block v1: VizBlock {
+    label: 'Percent of Total'
+    viz: DataTable {
+      dataset: ecommerce.ds_ecommerce
+      calculation f_5b5361b {
+        label: 'total order'
+        formula: @aql count_distinct(ecommerce.fct_order_items.order_id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation f_b07d83b {
+        label: 'total orders across all'
+        formula: @aql count_distinct(ecommerce.fct_order_items.order_id) | of_all(ecommerce.fct_order_items);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation f_25c42e3 {
+        label: 'Percent of Total'
+        formula: @aql (count_distinct(ecommerce.fct_order_items.order_id) * 1.0)
+/ (count_distinct(ecommerce.fct_order_items.order_id) | of_all(ecommerce.fct_order_items));;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce.dim_product_cities', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: 'f_5b5361b'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'f_b07d83b'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'f_25c42e3'
+          format {
+            type: 'number'
+            pattern: '#,###0.00%'
+            group_separator: ','
+            decimal_separator: '.'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+      }
+    }
+  }
+}
