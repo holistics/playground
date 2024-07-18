@@ -199,7 +199,7 @@ Dashboard clinical_analytics {
 </div>;;
   }
   block t7: TextBlock {
-    content: @md ## Clinic Analytics;;
+    content: @md ## Clinical Analytics;;
   }
   interactions: [
     FilterInteraction {
