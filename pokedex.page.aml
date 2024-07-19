@@ -11,13 +11,13 @@ Dashboard pokedex_dashboard {
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
-    width: 1720
+    width: 1630
     height: 880
     block page_css {
       position: pos(610, -240, 860, 190)
     }
     block t9 {
-      position: pos(1320, 60, 350, 190)
+      position: pos(1150, 50, 250, 100)
       layer: 1
     }
     block v2 {
@@ -36,61 +36,61 @@ Dashboard pokedex_dashboard {
       layer: 100
     }
     block t12 {
-      position: pos(540, 240, 190, 120)
+      position: pos(510, 290, 190, 120)
     }
     block t13 {
-      position: pos(520, 560, 200, 120)
+      position: pos(510, 590, 200, 120)
       layer: -6
     }
     block t14 {
-      position: pos(550, 410, 190, 120)
+      position: pos(510, 440, 190, 120)
     }
     block background_block {
-      position: pos(-70, -60, 1830, 1070)
+      position: pos(-70, -20, 1760, 1020)
       layer: -7
     }
     block t20 {
-      position: pos(920, 230, 790, 570)
+      position: pos(800, 230, 790, 570)
     }
     block t21 {
-      position: pos(50, 230, 420, 570)
-      layer: -6
+      position: pos(50, 230, 710, 570)
+      layer: -7
     }
     block v6 {
-      position: pos(530, 270, 190, 70)
+      position: pos(500, 320, 190, 70)
     }
     block v7 {
-      position: pos(530, 600, 200, 70)
+      position: pos(510, 640, 200, 70)
     }
     block v8 {
-      position: pos(560, 450, 190, 70)
+      position: pos(520, 480, 190, 70)
     }
     block t22 {
-      position: pos(560, 260, 180, 50)
+      position: pos(530, 310, 180, 50)
     }
     block t23 {
-      position: pos(540, 580, 190, 50)
+      position: pos(530, 610, 190, 50)
     }
     block t24 {
-      position: pos(570, 430, 180, 50)
+      position: pos(530, 460, 180, 50)
     }
     block v9 {
-      position: pos(950, 340, 440, 350)
+      position: pos(830, 340, 440, 350)
     }
     block v10 {
-      position: pos(1430, 360, 170, 90)
+      position: pos(1310, 360, 170, 90)
     }
     block v10_dup_dup {
-      position: pos(1430, 270, 270, 80)
+      position: pos(1310, 270, 270, 80)
     }
     block v10_dup {
-      position: pos(1430, 460, 240, 90)
+      position: pos(1310, 460, 240, 90)
     }
     block v10_dup_dup_dup {
-      position: pos(1430, 560, 230, 90)
+      position: pos(1310, 560, 230, 90)
     }
     block v10_dup_dup_dup_dup {
-      position: pos(1430, 660, 240, 90)
+      position: pos(1310, 660, 240, 90)
     }
     block v13_dup {
       position: pos(790, 90, 60, 60)
@@ -101,11 +101,11 @@ Dashboard pokedex_dashboard {
       layer: 1
     }
     block f1 {
-      position: pos(950, 140, 350, 40)
+      position: pos(1100, 140, 350, 40)
       layer: 2
     }
     block t27 {
-      position: pos(1280, 30, 460, 70)
+      position: pos(1140, 30, 460, 70)
     }
     block t28 {
       position: pos(-120, 70, 810, 110)
@@ -868,7 +868,7 @@ Dashboard pokedex_dashboard {
   }
   block t27: TextBlock {
     content: @md <div>
-<h2 style="color:#0B325B;  font-weight: bold;">CHOOSE YOUR POKEMON</h2>
+<h2 style="color:#0B325B;  font-weight: bold;">CHOOSE YOUR</h2>
 </div>;;
   }
   block t28: TextBlock {
