@@ -75,22 +75,22 @@ Dashboard pokedex_dashboard {
       position: pos(570, 430, 180, 50)
     }
     block v9 {
-      position: pos(1290, 300, 370, 420)
+      position: pos(950, 340, 440, 350)
     }
     block v10 {
-      position: pos(970, 360, 170, 90)
+      position: pos(1430, 360, 170, 90)
     }
     block v10_dup_dup {
-      position: pos(970, 270, 270, 80)
+      position: pos(1430, 270, 270, 80)
     }
     block v10_dup {
-      position: pos(970, 460, 240, 90)
+      position: pos(1430, 460, 240, 90)
     }
     block v10_dup_dup_dup {
-      position: pos(970, 560, 230, 90)
+      position: pos(1430, 560, 230, 90)
     }
     block v10_dup_dup_dup_dup {
-      position: pos(970, 660, 240, 90)
+      position: pos(1430, 660, 240, 90)
     }
     block v13_dup {
       position: pos(790, 90, 60, 60)
