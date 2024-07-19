@@ -14,7 +14,7 @@ Dashboard aql_use_cases {
       position: pos(570, 190, 88, 40)
     }
     block t2 {
-      position: pos(40, 190, 250, 70)
+      position: pos(40, 190, 320, 70)
     }
     block t3 {
       position: pos(40, 50, 390, 110)
@@ -89,7 +89,7 @@ Dashboard aql_use_cases {
   block t2: TextBlock {
     content: @md ### Initial Data
 
-Click to explore and build;;
+Click on the Initial Setup to explore and build;;
   }
   block t3: TextBlock {
     content: @md ## Percent of Total
