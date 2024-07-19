@@ -16,9 +16,6 @@ Dashboard pokedex_dashboard {
     block page_css {
       position: pos(610, -240, 860, 190)
     }
-    block t6 {
-      position: pos(990, 780, 980, 100)
-    }
     block t9 {
       position: pos(1320, 60, 350, 190)
       layer: 1
@@ -385,12 +382,6 @@ Dashboard pokedex_dashboard {
       }
 </style>
  ;;
-  }
-  block t6: TextBlock {
-    content: @md <div>
-<h1 style="color:#f2b602;  font-weight: bolder;font-size:50px">POKEDEX</h1>
-<h2 style="color:white;  font-weight: bold;">Gonna Catch 'Em All</h2>
-</div>;;
   }
   block t9: TextBlock {
     content: @md <center>
