@@ -8,7 +8,19 @@ Dashboard aql_use_cases {
     label: 'View 1'
     height: 800
     block v1 {
-      position: pos(10, 10, 600, 400)
+      position: pos(570, 280, 600, 400)
+    }
+    block t1 {
+      position: pos(570, 190, 88, 40)
+    }
+    block t2 {
+      position: pos(40, 190, 320, 70)
+    }
+    block t3 {
+      position: pos(40, 50, 390, 110)
+    }
+    block v2 {
+      position: pos(40, 280, 500, 400)
     }
   }
   block v1: VizBlock {
@@ -62,6 +74,52 @@ Dashboard aql_use_cases {
             pattern: '#,###0.00%'
             group_separator: ','
             decimal_separator: '.'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+      }
+    }
+  }
+  block t1: TextBlock {
+    content: @md ### Result;;
+  }
+  block t2: TextBlock {
+    content: @md ### Initial Data
+
+Click on the Initial Setup to explore and build;;
+  }
+  block t3: TextBlock {
+    content: @md ## Percent of Total
+
+Docs: [Calculate Percent of Total (using AQL)](https://docs.holistics.io/as-code/guides/aql-percent-of-total)
+
+Video Tutorial: [Percent of Total Analysis with Holistics AQL](https://www.youtube.com/watch?v=u9t7z_ZiUVQ);;
+  }
+  block v2: VizBlock {
+    label: 'Percent of Total (Initial Setup)'
+    viz: DataTable {
+      dataset: ecommerce.ds_ecommerce
+      calculation f_93badb3 {
+        label: 'total_order'
+        formula: @aql count_distinct(ecommerce.fct_order_items.order_id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce.dim_product_cities', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: 'f_93badb3'
+          format {
+            type: 'number'
+            pattern: 'inherited'
           }
         }
       ]
