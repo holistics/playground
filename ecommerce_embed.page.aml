@@ -172,8 +172,9 @@ Dashboard ecom_embedded_analytics {
   block v4: VizBlock {
     label: 'Total Users'
     viz: MetricKpi {
-      dataset: ds_ecommerce
+      dataset: ecommerce.ds_ecommerce
       value: VizFieldFull {
+        label: 'Total Users'
         ref: 'count_users'
         format {
           type: 'number'
@@ -572,5 +573,4 @@ ecommerce.dim_users.sign_up_date
       ]
     }
   ]
-
 }
