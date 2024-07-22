@@ -17,7 +17,7 @@ Dashboard pokedex_dashboard {
       position: pos(610, -240, 860, 190)
     }
     block t9 {
-      position: pos(90, 20, 250, 100)
+      position: pos(80, 0, 340, 120)
       layer: 1
     }
     block v2 {
@@ -92,30 +92,26 @@ Dashboard pokedex_dashboard {
     block v10_dup_dup_dup_dup {
       position: pos(1310, 660, 240, 90)
     }
-    block v13_dup {
-      position: pos(800, 130, 60, 60)
-      layer: 3
-    }
     block v13 {
-      position: pos(710, 130, 60, 60)
+      position: pos(100, 250, 350, 140)
       layer: 1
     }
     block f1 {
-      position: pos(1220, 50, 350, 40)
+      position: pos(1220, 60, 350, 40)
       layer: 2
     }
     block t27 {
-      position: pos(850, 50, 460, 70)
+      position: pos(850, 60, 460, 70)
     }
     block t28 {
-      position: pos(10, 20, 1650, 110)
+      position: pos(0, 30, 1650, 110)
       layer: -7
     }
     block t29 {
       position: pos(630, 110, 310, 110)
     }
     block t30 {
-      position: pos(10, 120, 260, 110)
+      position: pos(20, 110, 260, 110)
     }
     block v15 {
       position: pos(70, 580, 380, 70)
@@ -758,79 +754,21 @@ Dashboard pokedex_dashboard {
       hide_controls: true
     }
   }
-  // block v12: VizBlock {
-  //   label: 'Is Legendary?'
-  //   viz: DataTable {
-  //     dataset: pokemon.pokedex
-  //     calculation f_eff4e34 {
-  //       label: 'Is Legend'
-  //       formula: @aql case(
-  //         when: pokemon.pkm_final.is_legendary == true
-  //         , then: "Legendary Pokemon"
-  //         , else: "Regular Pokemon"
-  //       );;
-  //       calc_type: 'dimension'
-  //       data_type: 'text'
-  //       model: pokemon.pkm_final
-  //     }
-  //     fields: [
-  //       VizFieldFull {
-  //         ref: ref('pokemon.pkm_final', 'is_legendary')
-  //         format {
-  //           type: 'number'
-  //         }
-  //       },
-  //       VizFieldFull {
-  //         ref: ref('pokemon.pkm_final', 'f_eff4e34')
-  //         format {
-  //           type: 'text'
-  //         }
-  //       }
-  //     ]
-  //     settings {
-  //       row_limit: 1
-  //     }
-  //   }
-  //   settings {
-  //     hide_label: true
-  //     hide_controls: true
-  //   }
-  // }
-  block v13_dup: VizBlock {
-    label: 'Type 2'
-    viz: DataTable {
-      dataset: pokedex
-      calculation f_a2dc312 {
-        label: 'type icon'
-        formula: @aml concat('<img src="',pokemon.pkm_final.type2_icon, '" width="100" />');;
-        calc_type: 'dimension'
-        data_type: 'text'
-      }
-      fields: [
-        VizFieldFull {
-          label: ' '
-          ref: 'f_a2dc312'
-          format {
-            type: 'html'
-          }
-        }
-      ]
-      settings {
-        row_limit: 1
-      }
-    }
-    settings {
-      hide_label: true
-      hide_controls: true
-    }
-  }
   block v13: VizBlock {
     label: 'Type 1'
     viz: DataTable {
-      dataset: pokedex
+      dataset: pokemon.pokedex
       calculation f_a2dc312 {
         label: 'type icon'
-        formula: @aml concat('<img src="',pokemon.pkm_final.type1_icon, '" width="100" />');;
+        formula: @aml case(
+          when: pokemon.pkm_final.type2_icon == ''
+          , then: concat(
+              '<div><img style="display: inline-block; height: 64px" src="', pokemon.pkm_final.type1_icon, '" /></div>')
+          , else: concat(
+              '<div><img style="display: inline-block; height: 64px" src="', pokemon.pkm_final.type1_icon, '" />',
+              '<img style="display: inline-block; margin-left: 12px; height: 64px" src="', pokemon.pkm_final.type2_icon, '" /></div>'
+              )
+        );;
         calc_type: 'dimension'
         data_type: 'text'
       }
@@ -871,7 +809,7 @@ Dashboard pokedex_dashboard {
   }
   block t27: TextBlock {
     content: @md <div>
-<h3 style="color:#0B325B;  font-weight: bold;">CHOOSE YOUR Pokemon</h3>
+<h3 style="color:#fff;  font-weight: bold;">CHOOSE YOUR Pokemon</h3>
 </div>;;
   }
   block t28: TextBlock {
