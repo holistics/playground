@@ -64,19 +64,19 @@ Dashboard pokedex_dashboard {
       position: pos(855, 275, 430, 415)
     }
     block v10 {
-      position: pos(1310, 330, 170, 90)
+      position: pos(1310, 340, 170, 90)
     }
     block v10_dup_dup {
-      position: pos(1310, 240, 270, 80)
+      position: pos(1310, 240, 270, 90)
     }
     block v10_dup {
-      position: pos(1310, 430, 240, 90)
+      position: pos(1310, 440, 240, 90)
     }
     block v10_dup_dup_dup {
-      position: pos(1310, 530, 230, 90)
+      position: pos(1310, 540, 230, 90)
     }
     block v10_dup_dup_dup_dup {
-      position: pos(1310, 630, 240, 90)
+      position: pos(1310, 640, 240, 90)
     }
     block v13 {
       position: pos(530, 235, 200, 55)
@@ -103,13 +103,13 @@ Dashboard pokedex_dashboard {
       position: pos(70, 610, 380, 50)
     }
     block t31 {
-      position: pos(480, 170, 20, 620)
+      position: pos(480, 170, 20, 630)
     }
     block t32 {
       position: pos(530, 200, 240, 50)
     }
     block v17 {
-      position: pos(530, 650, 240, 85)
+      position: pos(530, 650, 240, 120)
       layer: 1
     }
     block t33 {
