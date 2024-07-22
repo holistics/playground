@@ -36,7 +36,7 @@ Dashboard pokedex_dashboard {
       layer: -7
     }
     block t20 {
-      position: pos(830, 170, 760, 630)
+      position: pos(830, 170, 750, 630)
     }
     block t21 {
       position: pos(50, 170, 760, 630)
@@ -83,14 +83,14 @@ Dashboard pokedex_dashboard {
       layer: 1
     }
     block f1 {
-      position: pos(1310, 70, 255, 40)
+      position: pos(1300, 70, 255, 40)
       layer: 2
     }
     block t27 {
-      position: pos(960, 71, 460, 50)
+      position: pos(950, 71, 460, 50)
     }
     block t28 {
-      position: pos(0, 40, 1650, 100)
+      position: pos(0, 40, 1640, 100)
       layer: -7
     }
     block t29 {
