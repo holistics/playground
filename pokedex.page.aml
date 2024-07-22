@@ -17,22 +17,22 @@ Dashboard pokedex_dashboard {
       position: pos(610, -240, 860, 190)
     }
     block t9 {
-      position: pos(1150, 50, 250, 100)
+      position: pos(90, 20, 250, 100)
       layer: 1
     }
     block v2 {
-      position: pos(70, 250, 380, 380)
+      position: pos(100, 280, 330, 340)
       layer: 1
     }
     block v3 {
       position: pos(80, 680, 360, 90)
     }
     block v4 {
-      position: pos(240, 70, 470, 110)
+      position: pos(270, 120, 470, 110)
       layer: 2
     }
     block block_index {
-      position: pos(50, 70, 180, 110)
+      position: pos(60, 110, 180, 110)
       layer: 100
     }
     block t12 {
@@ -93,35 +93,38 @@ Dashboard pokedex_dashboard {
       position: pos(1310, 660, 240, 90)
     }
     block v13_dup {
-      position: pos(790, 90, 60, 60)
+      position: pos(800, 130, 60, 60)
       layer: 3
     }
     block v13 {
-      position: pos(700, 90, 60, 60)
+      position: pos(710, 130, 60, 60)
       layer: 1
     }
     block f1 {
-      position: pos(1100, 140, 350, 40)
+      position: pos(1220, 50, 350, 40)
       layer: 2
     }
     block t27 {
-      position: pos(1140, 30, 460, 70)
+      position: pos(850, 50, 460, 70)
     }
     block t28 {
-      position: pos(-120, 70, 810, 110)
-      layer: 1
+      position: pos(10, 20, 1650, 110)
+      layer: -7
     }
     block t29 {
-      position: pos(620, 70, 310, 110)
+      position: pos(630, 110, 310, 110)
     }
     block t30 {
-      position: pos(10, 70, 260, 110)
+      position: pos(10, 120, 260, 110)
     }
     block v15 {
       position: pos(70, 580, 380, 70)
     }
     block v16 {
       position: pos(70, 630, 380, 70)
+    }
+    block t31 {
+      position: pos(460, 260, 20, 510)
     }
   }
 
@@ -150,7 +153,7 @@ Dashboard pokedex_dashboard {
       .white-card {
           width: 100%; 
           height: 100%; 
-          background: #fff; 
+          background: #fafaf5; 
           background-clip: padding-box;
       }
       .white-card2 {
@@ -868,7 +871,7 @@ Dashboard pokedex_dashboard {
   }
   block t27: TextBlock {
     content: @md <div>
-<h2 style="color:#0B325B;  font-weight: bold;">CHOOSE YOUR</h2>
+<h3 style="color:#0B325B;  font-weight: bold;">CHOOSE YOUR Pokemon</h3>
 </div>;;
   }
   block t28: TextBlock {
@@ -945,5 +948,8 @@ Dashboard pokedex_dashboard {
       hide_label: true
       hide_controls: true
     }
+  }
+  block t31: TextBlock {
+    content: @md <div style="width: 3px; margin: 0 auto; background: #545454; height: 100%"></div>;;
   }
 }
