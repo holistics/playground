@@ -148,7 +148,7 @@ Dashboard pokedex_dashboard {
       } 
       .white-card {
           width: 100%; 
-          height: 100%; 
+          height: 99.9%; 
           background: #fafaf5; 
           background-clip: padding-box;
       }
