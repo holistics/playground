@@ -455,8 +455,8 @@ END;;
   {{ #b.gif }},
   {{ #b.png }}
 FROM
-  {{ #pokemon.pkm_extra a }}
-  LEFT JOIN {{ #pokemon.pkm_original b }} ON {{ #a.pokedex_number }} = {{ #b.number }};;
+  {{ #demo.pkm_extra a }}
+  LEFT JOIN {{ #demo.pkm_original b }} ON {{ #a.pokedex_number }} = {{ #b.number }};;
   models: [
     pkm_original,
     pkm_extra
