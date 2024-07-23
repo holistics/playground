@@ -94,7 +94,7 @@ Dashboard pokedex_dashboard {
       layer: -7
     }
     block t29 {
-      position: pos(30, 200, 480, 70)
+      position: pos(30, 200, 485, 70)
     }
     block v15 {
       position: pos(70, 570, 380, 70)
@@ -131,7 +131,6 @@ Dashboard pokedex_dashboard {
         height: 100%; 
         background: rgba(0,0,0,0.7);
         margin: 0 auto;
-        transform: skew(-12deg);
       }
       .dac-ic-block {
         transform: skew(-12deg);
@@ -806,7 +805,7 @@ Dashboard pokedex_dashboard {
 </div>;;
   }
   block t28: TextBlock {
-    content: @md <div class="dark-header pixel-corners-no-border" style="border-bottom: 10px solid #fafaf5"></div>;;
+    content: @md <div class="dark-header pixel-corners-no-border" style="transform: skew(-12deg); border-bottom: 10px solid #fafaf5"></div>;;
   }
   block t29: TextBlock {
     content: @md <div class="dark-header pixel-corners-no-border" style=""></div>;;
