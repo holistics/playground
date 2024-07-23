@@ -1,4 +1,5 @@
 use demo
+use lib
 
 PageTheme clinical_analytics_theme {
   canvas {

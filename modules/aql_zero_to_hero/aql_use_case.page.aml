@@ -1,4 +1,4 @@
-use ecommerce
+use demo
 
 Dashboard aql_use_cases {
   title: 'AQL Use Cases'
@@ -26,29 +26,29 @@ Dashboard aql_use_cases {
   block v1: VizBlock {
     label: 'Percent of Total'
     viz: DataTable {
-      dataset: ecommerce.ds_ecommerce
+      dataset: demo.ds_ecommerce
       calculation f_5b5361b {
         label: 'total order'
-        formula: @aql count_distinct(ecommerce.fct_order_items.order_id);;
+        formula: @aql count_distinct(demo.fct_order_items.order_id);;
         calc_type: 'measure'
         data_type: 'number'
       }
       calculation f_b07d83b {
         label: 'total orders across all'
-        formula: @aql count_distinct(ecommerce.fct_order_items.order_id) | of_all(ecommerce.fct_order_items);;
+        formula: @aql count_distinct(demo.fct_order_items.order_id) | of_all(demo.fct_order_items);;
         calc_type: 'measure'
         data_type: 'number'
       }
       calculation f_25c42e3 {
         label: 'Percent of Total'
-        formula: @aql (count_distinct(ecommerce.fct_order_items.order_id) * 1.0)
-/ (count_distinct(ecommerce.fct_order_items.order_id) | of_all(ecommerce.fct_order_items));;
+        formula: @aql (count_distinct(demo.fct_order_items.order_id) * 1.0)
+/ (count_distinct(demo.fct_order_items.order_id) | of_all(demo.fct_order_items));;
         calc_type: 'measure'
         data_type: 'number'
       }
       fields: [
         VizFieldFull {
-          ref: ref('ecommerce.dim_product_cities', 'name')
+          ref: ref('demo.dim_product_cities', 'name')
           format {
             type: 'text'
           }
@@ -101,16 +101,16 @@ Video Tutorial: [Percent of Total Analysis with Holistics AQL](https://www.youtu
   block v2: VizBlock {
     label: 'Percent of Total (Initial Setup)'
     viz: DataTable {
-      dataset: ecommerce.ds_ecommerce
+      dataset: demo.ds_ecommerce
       calculation f_93badb3 {
         label: 'total_order'
-        formula: @aql count_distinct(ecommerce.fct_order_items.order_id);;
+        formula: @aql count_distinct(demo.fct_order_items.order_id);;
         calc_type: 'measure'
         data_type: 'number'
       }
       fields: [
         VizFieldFull {
-          ref: ref('ecommerce.dim_product_cities', 'name')
+          ref: ref('demo.dim_product_cities', 'name')
           format {
             type: 'text'
           }

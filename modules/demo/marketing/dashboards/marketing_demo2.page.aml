@@ -77,7 +77,7 @@ Dashboard marketing_2 {
     viz: GaugeChart {
       dataset: marketing_campaign
       value: VizFieldFull {
-        ref: ref('marketing.marketing_kpi', 'orders')
+        ref: ref('demo.marketing_kpi', 'orders')
         aggregation: 'sum'
         format {
           type: 'number'
@@ -85,7 +85,7 @@ Dashboard marketing_2 {
         }
       }
       max_value: VizFieldFull {
-        ref: ref('marketing.marketing_kpi', 'leads')
+        ref: ref('demo.marketing_kpi', 'leads')
         aggregation: 'sum'
         format {
           type: 'number'
@@ -104,7 +104,7 @@ Dashboard marketing_2 {
     type: 'field'
     source: FieldFilterSource {
       dataset: marketing_campaign
-      field: ref('marketing.marketing_kpi', 'campaign_name')
+      field: ref('demo.marketing_kpi', 'campaign_name')
     }
     default {
       operator: 'is'
@@ -120,7 +120,7 @@ Dashboard marketing_2 {
       dataset: marketing_campaign
       value: VizFieldFull {
         label: 'Conversion rate'
-        ref: ref('marketing.marketing_kpi', 'conversion_rate')
+        ref: ref('demo.marketing_kpi', 'conversion_rate')
         format {
           type: 'number'
           pattern: 'inherited'
@@ -139,7 +139,7 @@ Dashboard marketing_2 {
     viz: MetricKpi {
       dataset: marketing_campaign
       value: VizFieldFull {
-        ref: ref('marketing.marketing_kpi', 'cost_per_click')
+        ref: ref('demo.marketing_kpi', 'cost_per_click')
         format {
           type: 'number'
           pattern: 'inherited'
@@ -156,7 +156,7 @@ Dashboard marketing_2 {
       dataset: marketing_campaign
       value: VizFieldFull {
         label: 'CP1kI'
-        ref: ref('marketing.marketing_kpi', 'cost_per_thousand_impressions')
+        ref: ref('demo.marketing_kpi', 'cost_per_thousand_impressions')
         format {
           type: 'number'
           pattern: 'inherited'
@@ -172,7 +172,7 @@ Dashboard marketing_2 {
     viz: MetricKpi {
       dataset: marketing_campaign
       value: VizFieldFull {
-        ref: ref('marketing.marketing_kpi', 'cost_per_conversion')
+        ref: ref('demo.marketing_kpi', 'cost_per_conversion')
         format {
           type: 'number'
           pattern: 'inherited'
@@ -196,7 +196,7 @@ Dashboard marketing_2 {
     viz: CombinationChart {
       dataset: marketing_campaign
       x_axis: VizFieldFull {
-        ref: ref('marketing.marketing_kpi', 'c_date')
+        ref: ref('demo.marketing_kpi', 'c_date')
         transformation: 'datetrunc day'
         format {
           type: 'date'
@@ -206,7 +206,7 @@ Dashboard marketing_2 {
         series {
           mark_type: 'column'
           field {
-            ref: ref('marketing.marketing_kpi', 'cost_per_conversion')
+            ref: ref('demo.marketing_kpi', 'cost_per_conversion')
             format {
               type: 'number'
               pattern: 'inherited'
@@ -228,7 +228,7 @@ Dashboard marketing_2 {
       dataset: marketing_campaign
       x_axis: VizFieldFull {
         label: ' '
-        ref: ref('marketing.marketing_kpi', 'c_date')
+        ref: ref('demo.marketing_kpi', 'c_date')
         transformation: 'datetrunc day'
         format {
           type: 'date'
@@ -240,7 +240,7 @@ Dashboard marketing_2 {
         }
         series {
           field {
-            ref: ref('marketing.marketing_kpi', 'clicks')
+            ref: ref('demo.marketing_kpi', 'clicks')
             aggregation: 'avg'
             format {
               type: 'number'
@@ -269,7 +269,7 @@ Dashboard marketing_2 {
       dataset: marketing_campaign
       x_axis: VizFieldFull {
         label: ' '
-        ref: ref('marketing.marketing_kpi', 'c_date')
+        ref: ref('demo.marketing_kpi', 'c_date')
         transformation: 'datetrunc day'
         format {
           type: 'date'
@@ -281,7 +281,7 @@ Dashboard marketing_2 {
         }
         series {
           field {
-            ref: ref('marketing.marketing_kpi', 'impressions')
+            ref: ref('demo.marketing_kpi', 'impressions')
             aggregation: 'sum'
             format {
               type: 'number'
@@ -310,7 +310,7 @@ Dashboard marketing_2 {
       dataset: marketing_campaign
       x_axis: VizFieldFull {
         label: ' '
-        ref: ref('marketing.marketing_kpi', 'c_date')
+        ref: ref('demo.marketing_kpi', 'c_date')
         transformation: 'datetrunc day'
         format {
           type: 'date'
@@ -323,7 +323,7 @@ Dashboard marketing_2 {
         }
         series {
           field {
-            ref: ref('marketing.marketing_kpi', 'ctr')
+            ref: ref('demo.marketing_kpi', 'ctr')
             format {
               type: 'number'
               pattern: '#,###0.00'
