@@ -7,39 +7,32 @@ Dashboard ecommerce_dashboard {
 
   theme: PageTheme {
     background {
-      bg_image: 'linear-gradient(to top, #0D1347, #141F81'
+      bg_color: "#FFFFFF"
     }
     canvas {
       background {
-        bg_color: '#313F71'
+        bg_color: '#F7F8F9'
       }
       border {
-        border_width: 1
-        border_radius: 8
-        border_color: "#576999"
+        border_radius: 4
+        border_width: 2
+        border_color: '#E8E8E8'
       }
       shadow: "none"
-
     }
     block {
-      label: FontTheme {
-        font_size: 20
-        font_color: '#E8F2FD'
-      }
-      text {
-        font_size: 12
-        font_color: 'white'
-      }
-      padding: 12
+      padding: 10
       border {
-        border_width: 1
-        border_radius: 4
-        border_color: '#576999'
+        border_width: 2
+        border_color: '#E8E8E8'
+        border_radius: 8
       }
       background {
-        bg_color: '#0D1347'
+        bg_color: "#FFFFFF"
+
       }
     }
+
   }
 
   block f1: FilterBlock {
