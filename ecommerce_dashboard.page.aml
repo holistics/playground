@@ -1,60 +1,55 @@
 use demo
-use lib
 
-Dashboard ecom_analytics {
-  title: 'Ecommerce Embedded Analytics'
+Dashboard ecommerce_dashboard {
+  title: 'Ecommerce Analytics'
   owner: 'support@holistics.io'
   description: ''''''
-  block v1: VizBlock {
-    label: 'Merchant'
-    viz: DataTable {
-      dataset: ds_ecommerce
-      fields: [
-        VizFieldFull {
-          ref: ref('demo.dim_merchants', 'name')
-          format {
-            type: 'text'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 5000
+
+  theme: PageTheme {
+    background {
+      bg_color: "#FFFFFF"
+    }
+    canvas {
+      background {
+        bg_color: '#F7F8F9'
+      }
+      border {
+        border_radius: 4
+        border_width: 2
+        border_color: '#E8E8E8'
+      }
+      shadow: "none"
+    }
+    block {
+      padding: 10
+      border {
+        border_width: 2
+        border_color: '#E8E8E8'
+        border_radius: 8
+      }
+      background {
+        bg_color: "#FFFFFF"
+
       }
     }
-    settings {
-      hide_label: true
-    }
+
   }
 
-  block override_css: TextBlock {
-    content: @md <style>
-      .dac-text-block {
-        overflow: hidden !important;
-      }
-      .dac-canvas {
-        background: #fbfbfb;
-      }
-      .text-widget-content {
-        height: 100% !important
-      }
-      .card-title {
-        font-size: 18px;
-        font-weight: 500;
-      }
-
-    </style>;;
-  }
   block f1: FilterBlock {
     label: 'Merchant Name'
     type: 'field'
     source: FieldFilterSource {
-      dataset: ds_ecommerce
-      field: ref('demo.dim_merchants', 'name')
+      dataset: demo.ds_ecommerce
+      field: ref('ecommerce.dim_merchants', 'name')
     }
     default {
       operator: 'is'
-      value: 'Abernathy Group'
+      value: [
+        'Abernathy Group',
+        'Anderson LLC',
+        'Ankunding, Thiel and Hodkiewicz',
+        'Armstrong, Reynolds and Lubowitz'
+      ]
     }
   }
   block v2: VizBlock {
@@ -103,10 +98,6 @@ Dashboard ecom_analytics {
     settings {
       hide_label: true
     }
-  }
-  block t1: page_components.block.card_flat
-  block t2: TextBlock {
-    content: @md <div class="card-title">Sales Performance</div>;;
   }
   block v3: VizBlock {
     label: 'Users'
@@ -194,7 +185,7 @@ Dashboard ecom_analytics {
   block v5: VizBlock {
     label: 'Total Orders'
     viz: MetricKpi {
-      dataset: demo.ds_ecommerce
+      dataset: ds_ecommerce
       value: VizFieldFull {
         label: 'Total Orders'
         ref: 'count_orders'
@@ -213,36 +204,11 @@ Dashboard ecom_analytics {
       hide_label: true
     }
   }
-  block v6: VizBlock {
-    label: 'Total GMV'
-    viz: MetricKpi {
-      dataset: ds_ecommerce
-      value: VizFieldFull {
-        label: 'GMV'
-        ref: 'gmv'
-        format {
-          type: 'number'
-          pattern: '[$$]#,###0.00,"K"'
-          group_separator: ','
-          decimal_separator: '.'
-        }
-      }
-      compare_value: VizPopSettings {
-        field: ref('demo.dim_dates', 'date_key')
-        duration: 1
-        granularity: 'month'
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
   block v7: VizBlock {
     label: 'Metric AOV'
     viz: MetricKpi {
-      dataset: ds_ecommerce
+      dataset: demo.ds_ecommerce
       value: VizFieldFull {
-        label: 'AOV'
         ref: 'aov'
         format {
           type: 'number'
@@ -259,12 +225,10 @@ Dashboard ecom_analytics {
       hide_label: true
     }
   }
-  block t3: page_components.block.card_flat
-  block t4: page_components.block.card_flat
   block v8: VizBlock {
     label: 'User Growth'
     viz: CombinationChart {
-      dataset: ds_ecommerce
+      dataset: demo.ds_ecommerce
       calculation f_3f16a1c {
         label: 'Running Total'
         formula: @aql          running_total!(
@@ -284,7 +248,7 @@ demo.dim_users.sign_up_date
       y_axis {
         series {
           mark_type: 'column'
-          field {
+          field: VizFieldFull {
             ref: 'count_users'
             format {
               type: 'number'
@@ -302,7 +266,7 @@ demo.dim_users.sign_up_date
         }
         series {
           mark_type: 'line'
-          field {
+          field: VizFieldFull {
             ref: 'f_3f16a1c'
             format {
               type: 'number'
@@ -323,32 +287,33 @@ demo.dim_users.sign_up_date
         }
       }
     }
-    settings {
-      hide_label: true
-    }
   }
   block f2: FilterBlock {
     label: 'Date Range'
-    type: 'date'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo.ds_ecommerce
+      field: ref('demo.dim_dates', 'date_key')
+    }
     default {
       operator: 'matches'
       value: 'last 2 years'
     }
+    theme {
+      label {
+        font_size: 16
+      }
+    }
   }
   block t5: TextBlock {
-    content: @md <img src="https://cdn.holistics.io/landing/logo-color.svg"/>;;
+    content: @md <div style="height: 100%; margin: 0; display: flex; justify-content: center; align-items: center;">
+      <img src="https://cdn.holistics.io/logos/holistics-logo-white.svg" alt="Holistics Logo">
+    </div>;;
   }
-  block t9: TextBlock {
-    content: @md <div class="card-title">User Growth</div>;;
-  }
-  block t10: page_components.block.card_flat
-  block t11: page_components.block.line_ver
-  block t12: page_components.block.line_ver
-  block t13: page_components.block.line_ver
   block v11: VizBlock {
-    label: 'Product Performance (dup)'
+    label: 'Sales Performance'
     viz: CombinationChart {
-      dataset: ds_ecommerce
+      dataset: demo.ds_ecommerce
       x_axis: VizFieldFull {
         ref: ref('demo.dim_dates', 'date_key')
         transformation: 'datetrunc month'
@@ -359,7 +324,7 @@ demo.dim_users.sign_up_date
       y_axis {
         series {
           mark_type: 'column'
-          field {
+          field: VizFieldFull {
             label: 'Total Orders'
             ref: 'count_orders'
             format {
@@ -378,7 +343,7 @@ demo.dim_users.sign_up_date
         }
         series {
           mark_type: 'line'
-          field {
+          field: VizFieldFull {
             label: 'GMV'
             ref: 'gmv'
             format {
@@ -397,7 +362,7 @@ demo.dim_users.sign_up_date
       y_axis {
         series {
           mark_type: 'line'
-          field {
+          field: VizFieldFull {
             label: 'AOV'
             ref: 'aov'
             format {
@@ -415,14 +380,11 @@ demo.dim_users.sign_up_date
         row_limit: 5000
       }
     }
-    settings {
-      hide_label: true
-    }
   }
   block v12: VizBlock {
     label: 'Total Products'
     viz: MetricKpi {
-      dataset: demo.ds_ecommerce
+      dataset: ds_ecommerce
       value: VizFieldFull {
         label: 'Total Products'
         ref: 'count_distinct_products'
@@ -436,10 +398,6 @@ demo.dim_users.sign_up_date
       hide_label: true
     }
   }
-  block t14: page_components.block.line_ver
-  block t15: TextBlock {
-    content: @md <div style="width: 1px; height: 32px; background: rgba(0,0,0,0.1); margin: 0 auto"><div>;;
-  }
   block f3: FilterBlock {
     label: 'Product'
     type: 'field'
@@ -451,100 +409,121 @@ demo.dim_users.sign_up_date
       operator: 'is'
       value: []
     }
+    theme {
+      label {
+        font_size: 16
+      }
+    }
   }
+  block t11: TextBlock {
+    content: @md <hr style="height: 1px; border: none; background-color: #E8E8E8;">;;
+    theme {
+      padding: 1
+      border {
+        border_style: "none"
+        border_color: "white"
+      }
+      background {
+        bg_color: 'transparent'
+      }
+    }
+  }
+  block t12: TextBlock {
+    content: @md # eCommerce Dashboard
+Last updated: Jul 30, 2024;;
+  }
+  block v13: VizBlock {
+    label: 'Gross Merchandise Value compared with Gross Merchandise Value (Prev. 1m)'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce
+      value: VizFieldFull {
+        ref: 'gmv'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.dim_dates', 'date_key')
+        duration: 1
+        granularity: 'month'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+
   view: CanvasLayout {
     label: 'View 1'
-    width: 1440
-    height: 1080
-    block v1 {
-      position: pos(238, 16, 302, 60)
-    }
-    block override_css {
-      position: pos(-490, 100, 465, 160)
-    }
+    width: 1460
+    height: 1120
     block f1 {
-      position: pos(-320, 320, 300, 80)
+      position: pos(-420, 1320, 300, 80)
     }
     block v2 {
-      position: pos(750, 780, 650, 240)
-    }
-    block t1 {
-      position: pos(730, 330, 690, 710)
-      layer: -1
-    }
-    block t2 {
-      position: pos(750, 350, 650, 40)
+      position: pos(740, 820, 680, 260)
     }
     block v3 {
-      position: pos(40, 780, 650, 240)
+      position: pos(40, 820, 660, 260)
     }
     block v4 {
-      position: pos(50, 150, 190, 140)
+      position: pos(940, 180, 220, 160)
     }
     block v5 {
-      position: pos(610, 150, 260, 140)
-    }
-    block v6 {
-      position: pos(890, 150, 220, 140)
+      position: pos(680, 180, 220, 160)
     }
     block v7 {
-      position: pos(1160, 150, 220, 140)
-    }
-    block t3 {
-      position: pos(20, 120, 1400, 190)
-      layer: -1
-    }
-    block t4 {
-      position: pos(20, 330, 690, 710)
-      layer: -1
+      position: pos(420, 180, 220, 160)
     }
     block v8 {
-      position: pos(40, 390, 650, 370)
+      position: pos(40, 360, 660, 440)
+      layer: 1
     }
     block f2 {
-      position: pos(1110, 10, 310, 80)
+      position: pos(900, 40, 280, 100)
     }
     block t5 {
-      position: pos(27, 23, 190, 50)
-    }
-    block t9 {
-      position: pos(40, 350, 650, 40)
-    }
-    block t10 {
-      position: pos(-20, -10, 1470, 110)
-      layer: -1
-    }
-    block t11 {
-      position: pos(280, 120, 40, 190)
-    }
-    block t12 {
-      position: pos(560, 120, 40, 190)
-    }
-    block t13 {
-      position: pos(1120, 120, 40, 190)
+      position: pos(1220, 40, 200, 100)
     }
     block v11 {
-      position: pos(750, 400, 650, 360)
+      position: pos(740, 360, 680, 440)
     }
     block v12 {
-      position: pos(330, 150, 200, 140)
-    }
-    block t14 {
-      position: pos(840, 120, 40, 190)
-    }
-    block t15 {
-      position: pos(149, 29, 169, 53)
+      position: pos(1200, 180, 220, 160)
     }
     block f3 {
-      position: pos(800, 10, 300, 80)
+      position: pos(580, 40, 280, 100)
+    }
+    block t11 {
+      position: pos(40, 140, 1380, 40)
+    }
+    block t12 {
+      position: pos(40, 40, 500, 100)
+    }
+    block v13 {
+      position: pos(40, 180, 340, 160)
     }
   }
   interactions: [
     FilterInteraction {
-      from: 'f3'
+      from: 'f2'
       to: [
         CustomMapping {
-          block: 'f1'
+          block: [
+            'v3',
+            'v4',
+            'v8'
+          ]
+          field: ref('demo.dim_users', 'sign_up_date')
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'f2'
           disabled: true
         }
       ]
@@ -554,23 +533,22 @@ demo.dim_users.sign_up_date
       to: [
         CustomMapping {
           block: [
-            'v1',
-            'v2',
-            'v11',
-            'v12',
-            'v7',
-            'v6',
-            'v5'
+            'f1',
+            'f3'
           ]
-          field: ref('demo.dim_dates', 'date_key')
-        },
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f3'
+      to: [
         CustomMapping {
           block: [
-            'v4',
-            'v3',
-            'v8'
+            'f1',
+            'f2'
           ]
-          field: ref('demo.dim_users', 'sign_up_date')
+          disabled: true
         }
       ]
     }
