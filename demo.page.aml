@@ -1,4 +1,4 @@
-// This dashboard is defined by AML - a modeling language powered by Holistics. 
+// This dashboard is defined in AML - a modeling language powered by Holistics. 
 // Learn more: https://docs.holistics.io/as-code/aml/dashboard
 
 use demo
