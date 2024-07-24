@@ -1,7 +1,7 @@
 use demo
 
 Dashboard ecommerce_dashboard {
-  title: 'Ecommerce Analytic'
+  title: 'Ecommerce Analytics'
   owner: 'support@holistics.io'
   description: ''''''
 
@@ -47,7 +47,7 @@ Dashboard ecommerce_dashboard {
     type: 'field'
     source: FieldFilterSource {
       dataset: demo.ds_ecommerce
-      field: ref('demo.dim_merchants', 'name')
+      field: ref('ecommerce.dim_merchants', 'name')
     }
     default {
       operator: 'is'
