@@ -134,7 +134,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
       dataset: ds_ecommerce
       // calculation f_2fb1cc3 {
       //   label: 'GMT last year'
-      //   formula: @aml order_master.gmv * 0.87;;
+      //   formula: @aml ecommerce.order_master.gmv * 0.87;;
       //   calc_type: 'measure'
       //   data_type: 'number'
       // }
@@ -167,12 +167,12 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
     viz: PieChart {
       dataset: ds_ecommerce
       filter {
-        field: ref('order_master', 'order_created_at')
+        field: ref('ecommerce.order_master', 'order_created_at')
         operator: 'matches'
         value: '2023'
       }
       legend: VizFieldFull {
-        ref: ref('map_categories', 'parent_category')
+        ref: ref('ecommerce.map_categories', 'parent_category')
         format {
           type: 'text'
         }
@@ -180,7 +180,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
       series {
         field {
           label: ' '
-          ref: ref('order_master', 'gmv')
+          ref: ref('ecommerce.order_master', 'gmv')
           format {
             type: 'number'
             pattern: '[$$]#,###'
@@ -230,7 +230,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
         data_type: 'text'
       }
       filter {
-        field: ref('order_master', 'order_created_at')
+        field: ref('ecommerce.order_master', 'order_created_at')
         operator: 'matches'
         value: '2023'
       }
@@ -249,7 +249,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
         },
         VizFieldFull {
           label: 'GMV'
-          ref: ref('order_master', 'gmv')
+          ref: ref('ecommerce.order_master', 'gmv')
           format {
             type: 'number'
             pattern: '[$$]#,###'
@@ -267,7 +267,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
         ]
         conditional_formats: [
           ConditionalFormat {
-            ref: ref('order_master', 'gmv')
+            ref: ref('ecommerce.order_master', 'gmv')
             aggregation: 'custom'
             format: ScaleFormat {
               min {
@@ -355,7 +355,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
         series {
           mark_type: 'line'
           field {
-            ref: ref('order_master', 'delivered_orders_count')
+            ref: ref('ecommerce.order_master', 'delivered_orders_count')
             format {
               type: 'number'
             }
@@ -406,7 +406,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
       dataset: ds_ecommerce
       // calculation f_2fb1cc3 {
       //   label: 'GMT last year'
-      //   formula: @aml order_master.gmv * 0.87;;
+      //   formula: @aml ecommerce.order_master.gmv * 0.87;;
       //   calc_type: 'measure'
       //   data_type: 'number'
       // }
@@ -530,11 +530,10 @@ border: 3px solid #BBD7F7;">
 <p style="color: #0B325B; letter-spacing: 0rem;font-weight: bold; font-size:24px; line-height: 12px">
  William Davis </p>
   <p style="color: #BEC1CB; letter-spacing: 0rem; font-weight: regular; font-size: 16px;">
- DATA ANALYST </p>
+ DATA ANALYST </p><br>
 <p style="color:#53586A; letter-spacing: 0rem; font-size:16px;"> Reach me at
 <a style= "color: #022658; "> 
 william_da_vis@mycompany.com </a> 
-<p style="color: #53586A; letter-spacing: 0rem; font-weight: regular; font-size: 16px; line-height: 8px">Have an awesome day!</p>
 </p>;;
   }
   block t17: background_gray()
@@ -597,16 +596,16 @@ william_da_vis@mycompany.com </a>
       calculation f_7be4e9b {
         label: 'Status'
         formula: @aml  case(
-  when: ecommerce_orders.status == 'cancelled', then: 'Cancelled',
-  when: ecommerce_orders.status == 'delivered', then: 'Delivered',
-  when: ecommerce_orders.status == 'refunded', then: 'Refunded'
+  when: ecommerce.fct_orders.status == 'cancelled', then: 'Cancelled',
+  when: ecommerce.fct_orders.status == 'delivered', then: 'Delivered',
+  when: ecommerce.fct_orders.status == 'refunded', then: 'Refunded'
   , else: 'others'
 );;
         calc_type: 'dimension'
         data_type: 'text'
       }
       x_axis: VizFieldFull {
-        ref: ref('ecommerce_countries', 'name')
+        ref: ref('ecommerce.dim_countries', 'name')
         format {
           type: 'text'
         }
@@ -624,7 +623,7 @@ william_da_vis@mycompany.com </a>
         series {
           field {
             label: 'orders'
-            ref: ref('ecommerce_orders', 'total_order')
+            ref: ref('ecommerce.fct_orders', 'total_order')
             aggregation: 'custom'
             format {
               type: 'number'
@@ -803,12 +802,12 @@ william_da_vis@mycompany.com </a>
     viz: CombinationChart {
       dataset: ds_ecommerce
       filter {
-        field: ref('order_master', 'order_created_at')
+        field: ref('ecommerce.order_master', 'order_created_at')
         operator: 'matches'
         value: '2023'
       }
       x_axis: VizFieldFull {
-        ref: ref('order_master', 'order_created_at')
+        ref: ref('ecommerce.order_master', 'order_created_at')
         transformation: 'datetrunc month'
         format {
           type: 'date'
@@ -818,7 +817,7 @@ william_da_vis@mycompany.com </a>
         series {
           mark_type: 'line'
           field {
-            ref: ref('order_master', 'aov')
+            ref: ref('ecommerce.order_master', 'aov')
             format {
               type: 'number'
               pattern: 'inherited'
@@ -831,7 +830,7 @@ william_da_vis@mycompany.com </a>
       }
       settings {
         pop {
-          field: ref('order_master', 'order_created_at')
+          field: ref('ecommerce.order_master', 'order_created_at')
           duration: 1
           granularity: 'year'
           show_growth_rate: true
@@ -845,20 +844,20 @@ william_da_vis@mycompany.com </a>
       dataset: ds_ecommerce
       values: [
         VizFieldFull {
-          ref: ref('ecommerce_users', 'users_signed_up_count')
+          ref: ref('ecommerce.dim_users', 'users_signed_up_count')
           format {
             type: 'number'
           }
         },
         VizFieldFull {
-          ref: ref('user_facts_aggr', 'buyers_count')
+          ref: ref('ecommerce.user_facts_aggr', 'buyers_count')
           format {
             type: 'number'
             pattern: 'inherited'
           }
         },
         VizFieldFull {
-          ref: ref('user_facts_aggr', 'repeated_buyers_count')
+          ref: ref('ecommerce.user_facts_aggr', 'repeated_buyers_count')
           format {
             type: 'number'
             pattern: 'inherited'
@@ -1037,14 +1036,14 @@ text-align: right;
       layer: -1
     }
     block t16 {
-      position: pos(220, 150, 290, 170)
+      position: pos(220, 150, 250, 150)
     }
     block t17 {
       position: pos(990, 530, 310, 180)
       layer: -1
     }
     block v13 {
-      position: pos(30, 1490, 1260, 480)
+      position: pos(30, 1490, 1270, 480)
     }
     block t18 {
       position: pos(30, 2490, 380, 120)

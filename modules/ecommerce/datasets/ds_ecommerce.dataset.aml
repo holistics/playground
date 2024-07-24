@@ -38,12 +38,11 @@ Dataset ds_ecommerce {
     dim_categories,
     dim_merchants,
 
-
-    dim_product_cities,
-    dim_product_countries,
-    dim_user_cities,
-    dim_user_countries,
     order_master,
+
+    user_facts_aggr,
+
+    map_categories,
 
   ]
   relationships: [
@@ -51,6 +50,7 @@ Dataset ds_ecommerce {
     relationship(ecommerce_orders_ecommerce_users, true),
     relationship(ecommerce_products_map_categories, true),
     relationship(ecommerce_users_ecommerce_cities, true),
+    relationship(ecommerce_cities_ecommerce_countries, true),
     relationship(order_master_ecommerce_merchants, true),
     relationship(order_master_ecommerce_orders, true),
     relationship(order_master_ecommerce_products, true),
