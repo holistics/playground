@@ -5,9 +5,9 @@ Model user_facts_aggr {
   data_source_name: 'demo_pg'
 
   models: [
-    ecommerce.dim_users,
-    ecommerce.fct_orders,
-    ecommerce.order_master,
+    dim_users,
+    fct_orders,
+    order_master,
   ]
   
   
@@ -25,8 +25,8 @@ Model user_facts_aggr {
         , current_date - max({{#o.created_at}}::date) as days_from_last_order
         , coalesce(count(distinct {{#oi.order_id}}), 0) > 0 as is_buyer
         , coalesce(count(distinct {{#oi.order_id}}), 0) > 1 as is_repeat_buyer
-      from {{ #ecommerce.order_master oi }}  
-      left join {{ #ecommerce.fct_orders o }} on {{#o.id}} = {{#oi.order_id}}
+      from {{ #demo.order_master oi }}  
+      left join {{ #demo.fct_orders o }} on {{#o.id}} = {{#oi.order_id}}
       group by 1
     )
 
@@ -42,7 +42,7 @@ Model user_facts_aggr {
         , last_order_date
         , days_from_last_order
         
-    from {{#ecommerce.dim_users u}}
+    from {{#demo.dim_users u}}
     left join base on {{#u.id}} = base.user_id;;
 
 

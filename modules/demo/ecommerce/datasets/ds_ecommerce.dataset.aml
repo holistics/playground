@@ -33,6 +33,9 @@ Dataset ds_ecommerce {
     dim_product_countries,
     dim_user_cities,
     dim_user_countries,
+
+        fct_order_items,
+    fct_orders,
     
   ]
   relationships: [

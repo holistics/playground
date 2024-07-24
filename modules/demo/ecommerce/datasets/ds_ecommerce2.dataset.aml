@@ -1,26 +1,4 @@
-Model dim_product_cities = dim_cities.extend(
-  {
-    label: 'Product City'
-  }
-)
-Model dim_product_countries = dim_countries.extend(
-  {
-    label: 'Product Country'
-  }
-)
-
-Model dim_user_cities = dim_cities.extend(
-  {
-    label: 'User City'
-  }
-)
-Model dim_user_countries = dim_countries.extend(
-  {
-    label: 'User Country'
-  }
-)
-
-Dataset ds_ecommerce {
+Dataset ds_ecommerce2 {
   label: 'Demo Ecommerce'
   description: 'Ecommerce dataset. ERD can be found [here](https://dbdiagram.io/e/658b9f1289dea62799972ec8/665fedfcb65d933879884fa8)'
   data_source_name: 'demo_pg'
@@ -44,6 +22,10 @@ Dataset ds_ecommerce {
 
     map_categories,
 
+    ecommerce_product_images,
+
+    user_cohort_retention,
+
   ]
   relationships: [
     relationship(ecommerce_orders_dim_dates, true),
@@ -54,7 +36,8 @@ Dataset ds_ecommerce {
     relationship(order_master_ecommerce_merchants, true),
     relationship(order_master_ecommerce_orders, true),
     relationship(order_master_ecommerce_products, true),
-    relationship(ecommerce_products_map_categories, true),
+    relationship(dim_products.id - ecommerce_product_images.product_id, true),
+    relationship(demo.dim_products.category_id > demo.map_categories.category_id, true)
   ]
 
 

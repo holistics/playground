@@ -23,9 +23,9 @@ Model order_master {
   }
 
   models: [
-    ecommerce.fct_orders,
-    ecommerce.dim_products,
-    ecommerce.fct_order_items
+    fct_orders,
+    dim_products,
+    fct_order_items
   ]
 
 
@@ -41,9 +41,9 @@ Model order_master {
   , {{#p.price}}
   , {{#p.merchant_id}}
   , {{ #oi.order_id }} as test_broken
-from {{ #ecommerce.fct_order_items AS oi }} 
-left join {{ #ecommerce.fct_orders AS o }} on {{#oi.order_id}} = {{#o.id}}
-left join {{ #ecommerce.dim_products AS p }} on {{#oi.product_id}} = {{#p.id}};;
+from {{ #demo.fct_order_items AS oi }} 
+left join {{ #demo.fct_orders AS o }} on {{#oi.order_id}} = {{#o.id}}
+left join {{ #demo.dim_products AS p }} on {{#oi.product_id}} = {{#p.id}};;
 
   dimension order_id {
     label: "Order Id"

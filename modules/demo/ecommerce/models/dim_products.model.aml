@@ -39,7 +39,11 @@ Model dim_products {
     hidden: false
     definition: @sql {{ #SOURCE.created_at }};;
   }
-
+  dimension product_google_link {
+    label: "Product (image)"
+    type: "text"
+    definition: @sql CONCAT('<a href="','https://www.google.com/search?tbm=isch&q=',{{ name }},'" target="_blank">',{{ name }},'</a>');;
+  }
   owner: 'triet.lq+ph@holistics.io'
   table_name: 'ecommerce.dim_products'
 }
