@@ -5,7 +5,9 @@ Model pkm_final {
   data_source_name: 'demo_pg'
   dimension index {
     label: "Index"
-    type: "number"
+    type: "text"
+    description: ""
+    hidden: false
     definition: @sql CAST({{ #SOURCE.index }} AS INTEGER);;
   }
   dimension pokedex_number {
@@ -453,8 +455,8 @@ END;;
   {{ #b.gif }},
   {{ #b.png }}
 FROM
-  {{ #pokemon.pkm_extra a }}
-  LEFT JOIN {{ #pokemon.pkm_original b }} ON {{ #a.pokedex_number }} = {{ #b.number }};;
+  {{ #demo.pkm_extra a }}
+  LEFT JOIN {{ #demo.pkm_original b }} ON {{ #a.pokedex_number }} = {{ #b.number }};;
   models: [
     pkm_original,
     pkm_extra

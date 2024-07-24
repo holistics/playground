@@ -1,5 +1,4 @@
 use lib
-use demo
 
 Dataset clinical_analytics_dataset {
   label: 'Clinical Analytics'
@@ -9,11 +8,11 @@ Dataset clinical_analytics_dataset {
   models: [
     persisted_clinical_analytics
     ,
-    dim_dates
+    dim_dates_std
   ]
   relationships: [
     relationship(
-      demo.persisted_clinical_analytics.check_in_time - lib.dim_dates.date_key, true)
+      demo.persisted_clinical_analytics.check_in_time - lib.dim_dates_std.date_key, true)
   ]
   owner: 'support@holistics.io'
 }

@@ -1,4 +1,7 @@
-use ecommerce
+// This dashboard is defined in AML - a modeling language powered by Holistics. 
+// Learn more: https://docs.holistics.io/as-code/aml/dashboard
+
+use demo
 
 Dashboard ecomax {
   title: '🛍️ Ecomax'
@@ -12,7 +15,7 @@ Dashboard ecomax {
       position: pos(-20, 650, 170, 120)
     }
     block t1 {
-      position: pos(-20, -20, 280, 930)
+      position: pos(-10, -20, 280, 930)
     }
     block t2 {
       position: pos(260, -10, 400, 920)
@@ -25,7 +28,7 @@ Dashboard ecomax {
       position: pos(690, 140, 880, 370)
     }
     block t3 {
-      position: pos(690, 110, 880, 20)
+      position: pos(690, 110, 870, 20)
     }
     block f1 {
       position: pos(690, 30, 270, 80)
@@ -49,7 +52,7 @@ Dashboard ecomax {
       position: pos(1150, 530, 420, 340)
     }
     block v7 {
-      position: pos(300, 380, 310, 140)
+      position: pos(300, 375, 310, 140)
     }
     block t5 {
       position: pos(30, 40, 190, 50)
@@ -70,16 +73,17 @@ Dashboard ecomax {
         overflow: hidden !important;
       }
       
-      .h-kpi-metric .text-blue-gray-800{
+      .h-kpi-metric .h-kpi-metric-kpi {
         font-size: 36px;
         color: #2f3e4a;
       }
-      .h-kpi-metric .h-6 {
+      .h-kpi-metric .h-kpi-metric-label {
         font-size: 18px;
       }
-      .h-kpi-metric .text-blue-gray-800:not(.h-6)  {
+      .h-kpi-metric .h-kpi-metric-kpi {
         line-height: 3.5rem !important;
       }
+      
       .sepline {
         border-top: 0.5px solid #2f3e4a; opacity: 25%; width: 100%;
       }
@@ -100,8 +104,9 @@ Dashboard ecomax {
   block v1: VizBlock {
     label: 'Total Users'
     viz: MetricKpi {
-      dataset: ds_ecommerce
+      dataset: demo.ds_ecommerce
       value: VizFieldFull {
+        label: 'Total Users'
         ref: 'count_users'
         format {
           type: 'number'
@@ -109,7 +114,7 @@ Dashboard ecomax {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('ecommerce.dim_users', 'sign_up_date')
+        field: ref('demo.dim_users', 'sign_up_date')
         duration: 1
         granularity: 'year'
       }
@@ -119,11 +124,11 @@ Dashboard ecomax {
     }
   }
   block v2: VizBlock {
-    label: 'GMV Over Time'
+    label: 'GMV over time'
     viz: ColumnChart {
       dataset: ds_ecommerce
       x_axis: VizFieldFull {
-        ref: ref('ecommerce.dim_dates', 'date_key')
+        ref: ref('demo.dim_dates', 'date_key')
         transformation: 'datetrunc month'
         format {
           type: 'date'
@@ -146,7 +151,7 @@ Dashboard ecomax {
       settings {
         row_limit: 5000
         pop {
-          field: ref('ecommerce.dim_dates', 'date_key')
+          field: ref('demo.dim_dates', 'date_key')
           duration: 1
           granularity: 'year'
           show_growth_rate: true
@@ -161,8 +166,8 @@ Dashboard ecomax {
     label: 'Date Range'
     type: 'field'
     source: FieldFilterSource {
-      dataset: ds_ecommerce
-      field: ref('ecommerce.dim_dates', 'date_key')
+      dataset: demo.ds_ecommerce
+      field: ref('demo.dim_dates', 'date_key')
     }
     default {
       operator: 'matches'
@@ -184,7 +189,7 @@ Dashboard ecomax {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('ecommerce.dim_dates', 'date_key')
+        field: ref('demo.dim_dates', 'date_key')
         duration: 1
         granularity: 'year'
       }
@@ -198,7 +203,7 @@ Dashboard ecomax {
     viz: PieChart {
       dataset: ds_ecommerce
       legend: VizFieldFull {
-        ref: ref('ecommerce.dim_users', 'gender')
+        ref: ref('demo.dim_users', 'gender')
         format {
           type: 'text'
         }
@@ -241,7 +246,7 @@ Dashboard ecomax {
       dataset: ds_ecommerce
       fields: [
         VizFieldFull {
-          ref: ref('ecommerce.dim_products', 'name')
+          ref: ref('demo.dim_products', 'name')
           format {
             type: 'text'
           }
@@ -281,7 +286,7 @@ Dashboard ecomax {
           }
         ]
         pop {
-          field: ref('ecommerce.dim_dates', 'date_key')
+          field: ref('demo.dim_dates', 'date_key')
           duration: 1
           granularity: 'year'
         }
@@ -302,19 +307,19 @@ Dashboard ecomax {
     viz: BarChart {
       dataset: ds_ecommerce
       filter {
-        field: ref('ecommerce.dim_merchants', 'name')
+        field: ref('demo.dim_merchants', 'name')
         operator: 'top'
         value: 10
         options {
           rank_by {
-            field: ref('ecommerce.fct_order_items', 'value')
+            field: ref('demo.fct_order_items', 'value')
             aggregation: 'sum'
             logic: 'standard'
           }
         }
       }
       x_axis: VizFieldFull {
-        ref: ref('ecommerce.dim_merchants', 'name')
+        ref: ref('demo.dim_merchants', 'name')
         format {
           type: 'text'
         }
@@ -363,7 +368,7 @@ Dashboard ecomax {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('ecommerce.dim_dates', 'date_key')
+        field: ref('demo.dim_dates', 'date_key')
         duration: 1
         granularity: 'year'
       }
@@ -388,15 +393,23 @@ Dashboard ecomax {
     content: @md <span style="font-weight: 500; font-size: 20px" class="color-main">Key Metrics</span>;;
   }
   interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'v1'
+          field: ref('demo.dim_users', 'sign_up_date')
+        }
+      ]
+    },
     DateDrillInteraction {
       from: 'd1'
       to: [
         CustomMapping {
           block: 'v2'
-          field: ref('ecommerce.dim_dates', 'date_key')
+          field: ref('demo.dim_dates', 'date_key')
         }
       ]
     }
   ]
-
 }

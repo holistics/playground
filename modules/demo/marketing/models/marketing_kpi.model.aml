@@ -106,6 +106,6 @@ Model marketing_kpi {
     format: "[$$]#,###0.00"
   }
 
-  owner: 'son.hoang+ph@holistics.io'
+  owner: 'support@holistics.io'
   table_name: '"minhminh"."MarketingKPI"'
 }
