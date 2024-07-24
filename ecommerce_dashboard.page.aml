@@ -8,42 +8,7 @@ Dashboard ecommerce_dashboard {
   owner: 'support@holistics.io'
   description: ''''''
 
-  theme: PageTheme {
-    background {
-      bg_image: 'linear-gradient(to top, #0D1347, #141F81'
-    }
-    canvas {
-      background {
-        bg_color: '#313F71'
-      }
-      border {
-        border_width: 1
-        border_radius: 8
-        border_color: "#576999"
-      }
-      shadow: "none"
 
-    }
-    block {
-      label: FontTheme {
-        font_size: 20
-        font_color: '#E8F2FD'
-      }
-      text {
-        font_size: 12
-        font_color: 'white'
-      }
-      padding: 12
-      border {
-        border_width: 1
-        border_radius: 4
-        border_color: '#576999'
-      }
-      background {
-        bg_color: '#0D1347'
-      }
-    }
-  }
 
   block f1: FilterBlock {
     label: 'Merchant Name'
