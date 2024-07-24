@@ -66,6 +66,13 @@ Model dim_users {
   owner: 'triet.lq+ph@holistics.io'
   table_name: 'ecommerce.dim_users'
   
+
+  measure users_signed_up_count {
+    label: 'Users Signed Up'
+    type: 'number'
+    definition: @sql {{ id }};;
+    aggregation_type: 'count'
+  }
   measure total_users {
     label: "Total Users"
     type: "number"
