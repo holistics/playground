@@ -1,7 +1,7 @@
 use demo
 
 Dashboard ecommerce_dashboard {
-  title: 'Ecommerce Analytics'
+  title: 'Ecommerce Analytic'
   owner: 'support@holistics.io'
   description: ''''''
 
