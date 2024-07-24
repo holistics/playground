@@ -50,7 +50,7 @@ Dashboard ecommerce_dashboard {
     type: 'field'
     source: FieldFilterSource {
       dataset: demo.ds_ecommerce
-      field: ref('ecommerce.dim_merchants', 'name')
+      field: ref('demo.dim_merchants', 'name')
     }
     default {
       operator: 'is'
