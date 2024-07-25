@@ -19,9 +19,9 @@ Dashboard ecommerce_dashboard {
       border {
         border_width: 1
         border_radius: 8
-        border_color: "#576999"
+        border_color: '#576999'
       }
-      shadow: "none"
+      shadow: 'none'
 
     }
     block {
