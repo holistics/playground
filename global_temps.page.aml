@@ -81,7 +81,6 @@ Dashboard global_temps_page {
   }
   settings {
     timezone: 'Etc/UTC'
-    cache_duration: 10
+    cache_duration: 20160
   }
-
 }
