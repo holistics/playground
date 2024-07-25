@@ -28,10 +28,10 @@ Dashboard pokedex_dashboard {
       layer: 1
     }
     block v3 {
-      position: pos(80, 660, 360, 140)
+      position: pos(80, 660, 380, 140)
     }
     block v4 {
-      position: pos(90, 210, 370, 50)
+      position: pos(90, 210, 360, 50)
       layer: 2
     }
     block background_block {
@@ -67,16 +67,16 @@ Dashboard pokedex_dashboard {
       position: pos(855, 275, 430, 415)
     }
     block v10 {
-      position: pos(1310, 340, 170, 90)
+      position: pos(1310, 340, 240, 90)
     }
     block v10_dup_dup {
-      position: pos(1310, 240, 270, 90)
+      position: pos(1310, 240, 240, 90)
     }
     block v10_dup {
       position: pos(1310, 440, 240, 90)
     }
     block v10_dup_dup_dup {
-      position: pos(1310, 540, 230, 90)
+      position: pos(1310, 540, 240, 90)
     }
     block v10_dup_dup_dup_dup {
       position: pos(1310, 640, 240, 90)
@@ -100,10 +100,10 @@ Dashboard pokedex_dashboard {
       position: pos(30, 200, 485, 70)
     }
     block v15 {
-      position: pos(70, 570, 380, 70)
+      position: pos(80, 570, 380, 70)
     }
     block v16 {
-      position: pos(70, 610, 380, 50)
+      position: pos(80, 610, 380, 50)
     }
     block t31 {
       position: pos(480, 170, 20, 630)
@@ -143,6 +143,11 @@ Dashboard pokedex_dashboard {
         background: rgba(0,0,0,0.7);
         color: #fafaf5;
       }
+
+      .dac-text-block .text-content {
+        overflow: hidden;
+      }
+
       div:has(>.dark-header) {
         padding-left: 50px;
         padding-right: 50px;
