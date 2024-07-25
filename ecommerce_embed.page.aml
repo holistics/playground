@@ -578,4 +578,8 @@ demo.dim_users.sign_up_date
       ]
     }
   ]
+  settings {
+    timezone: 'Etc/UTC'
+    cache_duration: 20160
+  }
 }
