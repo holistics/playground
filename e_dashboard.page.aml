@@ -122,6 +122,9 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
           }
         }
       ]
+      settings {
+        max_column: 12
+      }
     }
     settings {
       hide_label: true
@@ -165,7 +168,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
   block v2_dup_dup: VizBlock {
     label: 'Top selling product category'
     viz: PieChart {
-      dataset: ds_ecommerce2
+      dataset: demo.ds_ecommerce2
       filter {
         field: ref('demo.order_master', 'order_created_at')
         operator: 'matches'
@@ -178,7 +181,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
         }
       }
       series {
-        field {
+        field: VizFieldFull {
           label: ' '
           ref: ref('demo.order_master', 'gmv')
           format {
@@ -186,36 +189,9 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
             pattern: '[$$]#,###'
           }
         }
-        settings {
-          point {
-            value: 'Clothes'
-            color: '#255DD4'
-          }
-          point {
-            value: 'Groceries'
-            color: '#18A59E'
-          }
-          point {
-            value: 'Skin Care'
-            color: '#F2B602'
-          }
-          point {
-            value: 'Home Furniture'
-            color: '#AF7DED'
-          }
-          point {
-            value: 'Mobiles & Tablets'
-            color: '#A50E43'
-          }
-          point {
-            value: 'Home Entertainment'
-            color: '#07326C'
-          }
-        }
       }
       settings {
         display_as_donut: true
-        show_total: true
       }
     }
   }
@@ -924,9 +900,7 @@ text-align: right;
   block t45: TextBlock {
     content: @md <div style="width: 1450px; height: 500px; background: linear-gradient(97deg, #051527 11.18%, #071945 98.67%);"></div>;;
   }
-  block t46: TextBlock {
-    content: @md <div style="width: 1450px; height: 500px; background: linear-gradient(97deg, #051527 11.18%, #071945 98.67%);"></div>;;
-  }
+  block t46: background_gray()
   block t47: TextBlock {
     content: @md   <div>
   <a href="#heading" class="border-radius:4px;overflow:hidden;">
@@ -941,12 +915,7 @@ text-align: right;
 </div>;;
   }
   block t48: TextBlock {
-    content: @md <div style="
-        width:100%;
-        height:100%;
-        border-radius: 4px;
-        background: #fafafa;"
-    </div>;;
+    content: @md <div style="width: 1450px; height: 500px; background: linear-gradient(97deg, #051527 11.18%, #071945 98.67%);"></div>;;
   }
   theme: PageTheme {
     background {
@@ -983,13 +952,13 @@ text-align: right;
       position: pos(660, 100, 630, 120)
     }
     block v1 {
-      position: pos(30, 800, 1270, 390)
+      position: pos(50, 820, 1240, 390)
     }
     block v2 {
       position: pos(880, 480, 260, 130)
     }
     block v2_dup_dup {
-      position: pos(410, 2490, 400, 520)
+      position: pos(410, 2490, 380, 480)
     }
     block v6 {
       position: pos(830, 2480, 480, 520)
@@ -1004,7 +973,7 @@ text-align: right;
       position: pos(880, 630, 320, 130)
     }
     block v12 {
-      position: pos(50, 480, 760, 280)
+      position: pos(70, 480, 740, 280)
       layer: -1
     }
     block f1 {
@@ -1014,7 +983,7 @@ text-align: right;
       position: pos(20, 390, 390, 60)
     }
     block t6 {
-      position: pos(30, 1380, 348, 60)
+      position: pos(30, 1360, 348, 60)
     }
     block t7 {
       position: pos(60, 2510, 220, 70)
@@ -1043,17 +1012,17 @@ text-align: right;
       position: pos(220, 160, 320, 150)
     }
     block t17 {
-      position: pos(850, 460, 440, 320)
+      position: pos(860, 460, 430, 320)
       layer: -1
     }
     block v13 {
-      position: pos(30, 1490, 1270, 480)
+      position: pos(30, 1480, 660, 340)
     }
     block t18 {
       position: pos(30, 2490, 380, 90)
     }
     block v14 {
-      position: pos(710, 2000, 590, 420)
+      position: pos(30, 1870, 1260, 540)
     }
     block t25 {
       position: pos(60, 3320, 50, 60)
@@ -1107,7 +1076,7 @@ text-align: right;
       position: pos(670, 3460, 620, 510)
     }
     block v16 {
-      position: pos(30, 2000, 650, 420)
+      position: pos(700, 1490, 620, 350)
     }
     block t37 {
       position: pos(780, 280, 520, 70)
@@ -1136,15 +1105,16 @@ text-align: right;
       layer: -1
     }
     block t46 {
-      position: pos(0, 1330, 1340, 140)
-      layer: -1
+      position: pos(50, 460, 780, 320)
+      layer: -2
     }
     block t47 {
-      position: pos(1200, 1340, 100, 120)
+      position: pos(340, 380, 100, 100)
+      layer: -2
     }
     block t48 {
-      position: pos(30, 460, 800, 320)
-      layer: -2
+      position: pos(0, 1320, 1340, 140)
+      layer: -1
     }
   }
   settings {

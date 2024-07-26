@@ -1,3 +1,5 @@
+use demo
+
 Model dim_product_cities = dim_cities.extend(
   {
     label: 'Product City'
