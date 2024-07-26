@@ -446,15 +446,35 @@ Last updated: Jul 30, 2024;;
   block general_css: TextBlock {
     content: @md <style>
       .pivot-table-wrapper .h-table, .data-table-wrapper .h-table {
-        --ag-background-color: red;
-        --ag-foreground-color: red;
-        --ag-odd-row-background-color: red;
-        --ag-row-hover-color: red;
-        --ag-header-cell-hover-background-color: red;
-        --ag-border-color: red;
-        --ag-horizontal-border-color: red;
-        --ag-header-background-color: red;
+        --ag-background-color: #a4a5fd;
+        --ag-foreground-color: #3e2d82;
+        --ag-odd-row-background-color: #e0e2ff;
+        --ag-row-hover-color: #e0e2ff;
+        --ag-header-cell-hover-background-color: #3e2d82;
+        --ag-border-color: #3e2d82;
+        --ag-horizontal-border-color: #3e2d82;
+        --ag-header-background-color: transparent;
+        --ag-cell-horizontal-border: 1px solid red;
+
       }
+
+      .pivot-table-wrapper .h-table .ag-header .ag-header-cell, .data-table-wrapper .h-table .ag-header .ag-header-cell{
+        background-color: #251a4c;
+        color: white;
+      }
+
+      .pivot-table-wrapper .h-table .ag-row-odd, .data-table-wrapper .h-table .ag-row-odd {
+        background-color: #8980f9;
+        color: #3e2d82;
+      }
+
+      .pivot-table-wrapper .h-table .ag-row:not(.ag-row-last,.ag-row-pinned:last-child) .ag-cell:not(.h-range-selection-cell.h-bottom-border,.h-last-cell-in-row-group,:focus), .data-table-wrapper .h-table .ag-row:not(.ag-row-last,.ag-row-pinned:last-child) .ag-cell:not(.h-range-selection-cell.h-bottom-border,.h-last-cell-in-row-group,:focus) {
+        border-color: #3e2d82;
+      }
+      .ag-header-cell-resize:after {
+        background-color: #3e2d82;
+      }
+      
     </style>;;
   }
 
