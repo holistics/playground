@@ -3,8 +3,8 @@
 
 use demo
 
-Dashboard ecommerce_dashboard {
-  title: 'Ecommerce Analytics'
+Dashboard ecommerce_violet {
+  title: 'Ecommerce Violet'
   owner: 'support@holistics.io'
   description: ''''''
 
@@ -502,7 +502,7 @@ Last updated: Jul 30, 2024;;
       layer: 1
     }
     block f2 {
-      position: pos(760, 40, 320, 120)
+      position: pos(720, 40, 340, 120)
     }
     block v11 {
       position: pos(720, 400, 700, 440)
@@ -511,13 +511,13 @@ Last updated: Jul 30, 2024;;
       position: pos(1200, 200, 220, 180)
     }
     block f3 {
-      position: pos(1100, 40, 320, 120)
+      position: pos(1080, 40, 340, 120)
     }
     block t11 {
       position: pos(40, 160, 1380, 40)
     }
     block t12 {
-      position: pos(40, 40, 700, 120)
+      position: pos(40, 40, 660, 120)
     }
     block v13 {
       position: pos(40, 200, 320, 180)
