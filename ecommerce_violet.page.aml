@@ -3,23 +3,23 @@
 
 use demo
 
-Dashboard ecommerce_dashboard {
-  title: 'Ecommerce Analytics'
+Dashboard ecommerce_violet {
+  title: 'Ecommerce Violet'
   owner: 'support@holistics.io'
   description: ''''''
 
   theme: PageTheme {
     background {
-      bg_image: 'linear-gradient(to top, #0D1347, #141F81'
+      bg_image: 'linear-gradient(to top, #fbfbfb, #eeefff)'
     }
     canvas {
       background {
-        bg_color: '#313F71'
+        bg_color: '#3e2d82'
       }
       border {
         border_width: 1
         border_radius: 8
-        border_color: '#576999'
+        border_color: '#7661f3'
       }
       shadow: 'none'
 
@@ -33,33 +33,15 @@ Dashboard ecommerce_dashboard {
         font_size: 12
         font_color: 'white'
       }
-      padding: 12
+      padding: 24
       border {
         border_width: 1
         border_radius: 4
-        border_color: '#576999'
+        border_color: '#623de6'
       }
       background {
-        bg_color: '#0D1347'
+        bg_color: '#251a4c'
       }
-    }
-  }
-
-  block f1: FilterBlock {
-    label: 'Merchant Name'
-    type: 'field'
-    source: FieldFilterSource {
-      dataset: demo.ds_ecommerce
-      field: ref('demo.dim_merchants', 'name')
-    }
-    default {
-      operator: 'is'
-      value: [
-        'Abernathy Group',
-        'Anderson LLC',
-        'Ankunding, Thiel and Hodkiewicz',
-        'Armstrong, Reynolds and Lubowitz'
-      ]
     }
   }
   block v2: VizBlock {
@@ -214,6 +196,9 @@ Dashboard ecommerce_dashboard {
       hide_label: true
     }
   }
+
+
+
   block v7: VizBlock {
     label: 'Metric AOV'
     viz: MetricKpi {
@@ -266,7 +251,7 @@ demo.dim_users.sign_up_date
             }
           }
           settings {
-            color: '#005A32FF'
+            color: '#623de6'
           }
         }
       }
@@ -284,7 +269,7 @@ demo.dim_users.sign_up_date
             }
           }
           settings {
-            color: '#41ab5d'
+            color: '#7661f3'
             line_interpolation: 'smooth'
           }
         }
@@ -315,11 +300,6 @@ demo.dim_users.sign_up_date
       }
     }
   }
-  block t5: TextBlock {
-    content: @md <div style="height: 100%; margin: 0; display: flex; justify-content: center; align-items: center;">
-      <img src="https://cdn.holistics.io/logos/holistics-logo-white.svg" alt="Holistics Logo">
-    </div>;;
-  }
   block v11: VizBlock {
     label: 'Sales Performance'
     viz: CombinationChart {
@@ -343,7 +323,7 @@ demo.dim_users.sign_up_date
             }
           }
           settings {
-            color: '#005A32FF'
+            color: '#623de6'
           }
         }
       }
@@ -381,7 +361,7 @@ demo.dim_users.sign_up_date
             }
           }
           settings {
-            color: '#41AB5DFF'
+            color: '#a4a5fd'
             line_interpolation: 'smooth'
           }
         }
@@ -426,7 +406,7 @@ demo.dim_users.sign_up_date
     }
   }
   block t11: TextBlock {
-    content: @md <hr style="height: 1px; border: none; background-color: #E8E8E8;">;;
+    content: @md <hr style="height: 1px; border: none; background-color: #623de6;">;;
     theme {
       padding: 1
       border {
@@ -463,56 +443,87 @@ Last updated: Jul 30, 2024;;
       hide_label: true
     }
   }
+  block general_css: TextBlock {
+    content: @md <style>
+      .pivot-table-wrapper .h-table, .data-table-wrapper .h-table {
+        --ag-background-color: #a4a5fd;
+        --ag-foreground-color: #3e2d82;
+        --ag-odd-row-background-color: #e0e2ff;
+        --ag-row-hover-color: #e0e2ff;
+        --ag-header-cell-hover-background-color: #3e2d82;
+        --ag-border-color: #3e2d82;
+        --ag-horizontal-border-color: #3e2d82;
+        --ag-header-background-color: transparent;
+        --ag-cell-horizontal-border: 1px solid red;
+
+      }
+
+      .pivot-table-wrapper .h-table .ag-header .ag-header-cell, .data-table-wrapper .h-table .ag-header .ag-header-cell{
+        background-color: #251a4c;
+        color: white;
+      }
+
+      .pivot-table-wrapper .h-table .ag-row-odd, .data-table-wrapper .h-table .ag-row-odd {
+        background-color: #8980f9;
+        color: #3e2d82;
+      }
+
+      .pivot-table-wrapper .h-table .ag-row:not(.ag-row-last,.ag-row-pinned:last-child) .ag-cell:not(.h-range-selection-cell.h-bottom-border,.h-last-cell-in-row-group,:focus), .data-table-wrapper .h-table .ag-row:not(.ag-row-last,.ag-row-pinned:last-child) .ag-cell:not(.h-range-selection-cell.h-bottom-border,.h-last-cell-in-row-group,:focus) {
+        border-color: #3e2d82;
+      }
+      .ag-header-cell-resize:after {
+        background-color: #3e2d82;
+      }
+      
+    </style>;;
+  }
 
   view: CanvasLayout {
     label: 'View 1'
     width: 1460
-    height: 1120
-    block f1 {
-      position: pos(-420, 1320, 300, 80)
-    }
+    height: 1160
     block v2 {
-      position: pos(740, 820, 680, 260)
+      position: pos(720, 860, 700, 260)
     }
     block v3 {
-      position: pos(40, 820, 660, 260)
+      position: pos(40, 860, 660, 260)
     }
     block v4 {
-      position: pos(940, 180, 220, 160)
+      position: pos(960, 200, 220, 180)
     }
     block v5 {
-      position: pos(680, 180, 220, 160)
+      position: pos(720, 200, 220, 180)
     }
     block v7 {
-      position: pos(420, 180, 220, 160)
+      position: pos(380, 200, 320, 180)
     }
     block v8 {
-      position: pos(40, 360, 660, 440)
+      position: pos(40, 400, 660, 440)
       layer: 1
     }
     block f2 {
-      position: pos(900, 40, 280, 100)
-    }
-    block t5 {
-      position: pos(1220, 40, 200, 100)
+      position: pos(720, 40, 340, 120)
     }
     block v11 {
-      position: pos(740, 360, 680, 440)
+      position: pos(720, 400, 700, 440)
     }
     block v12 {
-      position: pos(1200, 180, 220, 160)
+      position: pos(1200, 200, 220, 180)
     }
     block f3 {
-      position: pos(580, 40, 280, 100)
+      position: pos(1080, 40, 340, 120)
     }
     block t11 {
-      position: pos(40, 140, 1380, 40)
+      position: pos(40, 160, 1380, 40)
     }
     block t12 {
-      position: pos(40, 40, 500, 100)
+      position: pos(40, 40, 660, 120)
     }
     block v13 {
-      position: pos(40, 180, 340, 160)
+      position: pos(40, 200, 320, 180)
+    }
+    block general_css {
+      position: pos(-510, 300, 460, 120)
     }
   }
   interactions: [
@@ -530,22 +541,10 @@ Last updated: Jul 30, 2024;;
       ]
     },
     FilterInteraction {
-      from: 'f1'
-      to: [
-        CustomMapping {
-          block: 'f2'
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
       from: 'f2'
       to: [
         CustomMapping {
-          block: [
-            'f1',
-            'f3'
-          ]
+          block: 'f3'
           disabled: true
         }
       ]
@@ -554,10 +553,7 @@ Last updated: Jul 30, 2024;;
       from: 'f3'
       to: [
         CustomMapping {
-          block: [
-            'f1',
-            'f2'
-          ]
+          block: 'f2'
           disabled: true
         }
       ]
