@@ -10,16 +10,16 @@ Dashboard ecommerce_dashboard {
 
   theme: PageTheme {
     background {
-      bg_image: 'linear-gradient(to top, #0D1347, #141F81'
+      bg_image: 'linear-gradient(to top, #fbfbfb, #eeefff)'
     }
     canvas {
       background {
-        bg_color: '#313F71'
+        bg_color: '#3e2d82'
       }
       border {
         border_width: 1
         border_radius: 8
-        border_color: '#576999'
+        border_color: '#7661f3'
       }
       shadow: 'none'
 
@@ -33,14 +33,14 @@ Dashboard ecommerce_dashboard {
         font_size: 12
         font_color: 'white'
       }
-      padding: 12
+      padding: 24
       border {
         border_width: 1
         border_radius: 4
-        border_color: '#576999'
+        border_color: '#623de6'
       }
       background {
-        bg_color: '#0D1347'
+        bg_color: '#251a4c'
       }
     }
   }
@@ -266,7 +266,7 @@ demo.dim_users.sign_up_date
             }
           }
           settings {
-            color: '#005A32FF'
+            color: '#623de6'
           }
         }
       }
@@ -284,7 +284,7 @@ demo.dim_users.sign_up_date
             }
           }
           settings {
-            color: '#41ab5d'
+            color: '#7661f3'
             line_interpolation: 'smooth'
           }
         }
@@ -315,11 +315,6 @@ demo.dim_users.sign_up_date
       }
     }
   }
-  block t5: TextBlock {
-    content: @md <div style="height: 100%; margin: 0; display: flex; justify-content: center; align-items: center;">
-      <img src="https://cdn.holistics.io/logos/holistics-logo-white.svg" alt="Holistics Logo">
-    </div>;;
-  }
   block v11: VizBlock {
     label: 'Sales Performance'
     viz: CombinationChart {
@@ -343,7 +338,7 @@ demo.dim_users.sign_up_date
             }
           }
           settings {
-            color: '#005A32FF'
+            color: '#623de6'
           }
         }
       }
@@ -381,7 +376,7 @@ demo.dim_users.sign_up_date
             }
           }
           settings {
-            color: '#41AB5DFF'
+            color: '#a4a5fd'
             line_interpolation: 'smooth'
           }
         }
@@ -426,7 +421,7 @@ demo.dim_users.sign_up_date
     }
   }
   block t11: TextBlock {
-    content: @md <hr style="height: 1px; border: none; background-color: #E8E8E8;">;;
+    content: @md <hr style="height: 1px; border: none; background-color: #623de6;">;;
     theme {
       padding: 1
       border {
@@ -467,52 +462,49 @@ Last updated: Jul 30, 2024;;
   view: CanvasLayout {
     label: 'View 1'
     width: 1460
-    height: 1120
+    height: 1160
     block f1 {
       position: pos(-420, 1320, 300, 80)
     }
     block v2 {
-      position: pos(740, 820, 680, 260)
+      position: pos(720, 860, 700, 260)
     }
     block v3 {
-      position: pos(40, 820, 660, 260)
+      position: pos(40, 860, 660, 260)
     }
     block v4 {
-      position: pos(940, 180, 220, 160)
+      position: pos(960, 200, 220, 180)
     }
     block v5 {
-      position: pos(680, 180, 220, 160)
+      position: pos(720, 200, 220, 180)
     }
     block v7 {
-      position: pos(420, 180, 220, 160)
+      position: pos(380, 200, 320, 180)
     }
     block v8 {
-      position: pos(40, 360, 660, 440)
+      position: pos(40, 400, 660, 440)
       layer: 1
     }
     block f2 {
-      position: pos(900, 40, 280, 100)
-    }
-    block t5 {
-      position: pos(1220, 40, 200, 100)
+      position: pos(760, 40, 320, 120)
     }
     block v11 {
-      position: pos(740, 360, 680, 440)
+      position: pos(720, 400, 700, 440)
     }
     block v12 {
-      position: pos(1200, 180, 220, 160)
+      position: pos(1200, 200, 220, 180)
     }
     block f3 {
-      position: pos(580, 40, 280, 100)
+      position: pos(1100, 40, 320, 120)
     }
     block t11 {
-      position: pos(40, 140, 1380, 40)
+      position: pos(40, 160, 1380, 40)
     }
     block t12 {
-      position: pos(40, 40, 500, 100)
+      position: pos(40, 40, 700, 120)
     }
     block v13 {
-      position: pos(40, 180, 340, 160)
+      position: pos(40, 200, 320, 180)
     }
   }
   interactions: [
