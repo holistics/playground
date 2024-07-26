@@ -44,24 +44,6 @@ Dashboard ecommerce_dashboard {
       }
     }
   }
-
-  block f1: FilterBlock {
-    label: 'Merchant Name'
-    type: 'field'
-    source: FieldFilterSource {
-      dataset: demo.ds_ecommerce
-      field: ref('demo.dim_merchants', 'name')
-    }
-    default {
-      operator: 'is'
-      value: [
-        'Abernathy Group',
-        'Anderson LLC',
-        'Ankunding, Thiel and Hodkiewicz',
-        'Armstrong, Reynolds and Lubowitz'
-      ]
-    }
-  }
   block v2: VizBlock {
     label: 'Product Performance'
     viz: DataTable {
@@ -214,6 +196,9 @@ Dashboard ecommerce_dashboard {
       hide_label: true
     }
   }
+
+
+
   block v7: VizBlock {
     label: 'Metric AOV'
     viz: MetricKpi {
@@ -458,14 +443,25 @@ Last updated: Jul 30, 2024;;
       hide_label: true
     }
   }
+  block general_css: TextBlock {
+    content: @md <style>
+      .pivot-table-wrapper .h-table, .data-table-wrapper .h-table {
+        --ag-background-color: red;
+        --ag-foreground-color: red;
+        --ag-odd-row-background-color: red;
+        --ag-row-hover-color: red;
+        --ag-header-cell-hover-background-color: red;
+        --ag-border-color: red;
+        --ag-horizontal-border-color: red;
+        --ag-header-background-color: red;
+      }
+    </style>;;
+  }
 
   view: CanvasLayout {
     label: 'View 1'
     width: 1460
     height: 1160
-    block f1 {
-      position: pos(-420, 1320, 300, 80)
-    }
     block v2 {
       position: pos(720, 860, 700, 260)
     }
@@ -506,6 +502,9 @@ Last updated: Jul 30, 2024;;
     block v13 {
       position: pos(40, 200, 320, 180)
     }
+    block general_css {
+      position: pos(-510, 300, 460, 120)
+    }
   }
   interactions: [
     FilterInteraction {
@@ -522,22 +521,10 @@ Last updated: Jul 30, 2024;;
       ]
     },
     FilterInteraction {
-      from: 'f1'
-      to: [
-        CustomMapping {
-          block: 'f2'
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
       from: 'f2'
       to: [
         CustomMapping {
-          block: [
-            'f1',
-            'f3'
-          ]
+          block: 'f3'
           disabled: true
         }
       ]
@@ -546,10 +533,7 @@ Last updated: Jul 30, 2024;;
       from: 'f3'
       to: [
         CustomMapping {
-          block: [
-            'f1',
-            'f2'
-          ]
+          block: 'f2'
           disabled: true
         }
       ]
