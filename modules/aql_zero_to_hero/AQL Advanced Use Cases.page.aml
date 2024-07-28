@@ -8,19 +8,19 @@ Dashboard aql_use_cases {
     label: 'View 1'
     height: 800
     block v1 {
-      position: pos(570, 280, 600, 400)
+      position: pos(620, 280, 550, 400)
     }
     block t1 {
-      position: pos(570, 190, 88, 40)
+      position: pos(620, 190, 250, 40)
     }
     block t2 {
-      position: pos(40, 190, 320, 70)
+      position: pos(40, 190, 500, 70)
     }
     block t3 {
       position: pos(40, 50, 390, 110)
     }
     block v2 {
-      position: pos(40, 280, 500, 400)
+      position: pos(40, 280, 560, 400)
     }
   }
   block v1: VizBlock {
@@ -84,12 +84,12 @@ Dashboard aql_use_cases {
     }
   }
   block t1: TextBlock {
-    content: @md ### Result;;
+    content: @md ### Expected Result;;
   }
   block t2: TextBlock {
     content: @md ### Initial Data
 
-Click on the Initial Setup to explore and build;;
+Explore or edit the initial data below to replicate the result on the right.;;
   }
   block t3: TextBlock {
     content: @md ## Percent of Total
