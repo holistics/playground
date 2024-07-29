@@ -458,8 +458,8 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
   block t10: TextBlock {
     content: @md   <a href="#overview">
  <button style="
-  background-color: white;
-  color: #022658;
+  background-color: #70bfb9;
+  color: #000;
   font-weight:700;
   width: 100%;
   padding: 10px 20px;
@@ -473,9 +473,9 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
   block t11: TextBlock {
     content: @md   <a href="#regional-analysis">
   <button style="
-  background-color: #47B881;
-  color: white;
-    font-weight:700;
+  background-color: #4eb2ab;
+  color: #000;
+  font-weight:700;
   width: 100%;
   padding: 10px 20px;
   border: none;
@@ -487,9 +487,9 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
   }
   block t12: TextBlock {
     content: @md <a href="#users-analysis">
-<button style="
-  background-color: #009f6f;
-  color: white;
+  <button style="
+  background-color: #18a59e;
+  color: #000;
   font-weight:700;
   width: 100%;
   padding: 10px 20px;
@@ -808,10 +808,6 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
       }
     }
   }
-  block t37: TextBlock {
-    content: @md <iframe src="https://free.timeanddate.com/clock/i9hamsdb/n218/fn6/fs16/fc1ccc97/tct/pct/ftb/bas2/bac1ccc97/pa8/tt0/tw1/th1/ta1/tb4" frameborder="0" width="212" height="56" allowtransparency="true"></iframe>
-;;
-  }
   block t38: TextBlock {
     content: @md <div style="width: 1450px; height: 500px; background: linear-gradient(97deg, #051527 11.18%, #071945 98.67%);"></div>;;
   }
@@ -864,19 +860,18 @@ text-align: right;
   }
   theme: PageTheme {
     background {
-  // bg_image: 'url("https://cdn.vanderbilt.edu/vu-web/insidedores-wpcontent/20190412155028/doge-pattern-27481-2880x1800.jpg")'
+      bg_image: 'linear-gradient(135deg, #ffffff 0%, #ccdaf0 100%)'
     }
     canvas {
       background {
         bg_color: '#fff'
       }
       border {
-        border_width: 0
-        border_radius: 0
-        border_style: 'none'
-        border_color: 'transparent'
+        border_width: 1
+        border_radius: 8
+        border_style: 'solid'
       }
-      shadow: 'none'
+      shadow: 'md'
     }
   }
   view: CanvasLayout {
@@ -884,17 +879,17 @@ text-align: right;
     width: 1330
     height: 4700
     block hd1 {
-      position: pos(1100, 30, 200, 60)
+      position: pos(1160, 40, 140, 40)
     }
     block hd2 {
       position: pos(40, 40, 630, 60)
     }
     block hd3 {
-      position: pos(0, 0, 1490, 280)
+      position: pos(0, 0, 1340, 200)
       layer: -1
     }
     block t2 {
-      position: pos(40, 100, 630, 120)
+      position: pos(40, 100, 630, 40)
     }
     block v1 {
       position: pos(50, 820, 1240, 390)
@@ -925,7 +920,7 @@ text-align: right;
       position: pos(60, 3380, 340, 50)
     }
     block t5 {
-      position: pos(40, 320, 1250, 80)
+      position: pos(50, 360, 1250, 80)
     }
     block t6 {
       position: pos(30, 1360, 1270, 80)
@@ -941,13 +936,13 @@ text-align: right;
       position: pos(120, 3330, 270, 50)
     }
     block t10 {
-      position: pos(40, 180, 160, 50)
+      position: pos(770, 100, 160, 50)
     }
     block t11 {
-      position: pos(210, 180, 170, 50)
+      position: pos(940, 100, 170, 50)
     }
     block t12 {
-      position: pos(390, 180, 170, 50)
+      position: pos(1120, 100, 170, 50)
     }
     block t17 {
       position: pos(860, 460, 430, 320)
@@ -1016,9 +1011,6 @@ text-align: right;
     block v16 {
       position: pos(700, 1490, 620, 350)
     }
-    block t37 {
-      position: pos(1080, 170, 220, 60)
-    }
     block t38 {
       position: pos(-10, 4540, 1360, 250)
       layer: -1
@@ -1027,7 +1019,7 @@ text-align: right;
       position: pos(30, 4590, 200, 70)
     }
     block t40 {
-      position: pos(910, 4560, 390, 110)
+      position: pos(910, 4570, 390, 110)
     }
     block t42 {
       position: pos(1240, 3140, 70, 100)
