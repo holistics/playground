@@ -958,22 +958,22 @@ text-align: right;
       position: pos(40, 100, 630, 40)
     }
     block v1 {
-      position: pos(50, 710, 1210, 380)
+      position: pos(60, 710, 1200, 380)
     }
     block v2 {
       position: pos(880, 350, 260, 130)
     }
     block v2_dup_dup {
-      position: pos(420, 2250, 380, 480)
+      position: pos(420, 2250, 390, 480)
     }
     block v6 {
       position: pos(830, 2250, 460, 480)
     }
     block v7 {
-      position: pos(30, 3620, 1250, 430)
+      position: pos(40, 3620, 1250, 430)
     }
     block v8 {
-      position: pos(30, 3090, 610, 510)
+      position: pos(40, 3080, 600, 510)
     }
     block v10 {
       position: pos(880, 500, 320, 130)
@@ -983,23 +983,23 @@ text-align: right;
       layer: -1
     }
     block f1 {
-      position: pos(50, 3000, 340, 50)
+      position: pos(60, 3000, 350, 50)
     }
     block t5 {
       position: pos(40, 230, 1250, 70)
     }
     block t6 {
-      position: pos(30, 1190, 1260, 80)
+      position: pos(40, 1190, 1250, 80)
     }
     block t7 {
-      position: pos(50, 2270, 220, 50)
+      position: pos(60, 2270, 220, 50)
       layer: 1
     }
     block t8 {
-      position: pos(30, 2820, 1260, 80)
+      position: pos(40, 2820, 1250, 80)
     }
     block t9 {
-      position: pos(110, 2950, 270, 50)
+      position: pos(120, 2950, 270, 50)
     }
     block t10 {
       position: pos(770, 100, 160, 50)
@@ -1015,61 +1015,61 @@ text-align: right;
       layer: -1
     }
     block v13 {
-      position: pos(30, 1290, 630, 340)
+      position: pos(40, 1290, 620, 340)
     }
     block t18 {
-      position: pos(30, 2250, 380, 90)
+      position: pos(40, 2250, 370, 90)
     }
     block v14 {
-      position: pos(30, 1670, 1260, 540)
+      position: pos(40, 1670, 1250, 540)
     }
     block t25 {
-      position: pos(50, 2940, 50, 60)
+      position: pos(60, 2940, 60, 60)
     }
     block t26 {
-      position: pos(30, 2920, 390, 150)
+      position: pos(40, 2920, 390, 150)
       layer: -2
     }
     block t27 {
       position: pos(330, 2270, 60, 60)
     }
     block t28 {
-      position: pos(980, 2950, 260, 50)
+      position: pos(970, 2950, 260, 50)
     }
     block f2 {
-      position: pos(920, 3000, 340, 50)
+      position: pos(910, 3000, 360, 50)
     }
     block t29 {
-      position: pos(450, 2920, 410, 150)
+      position: pos(460, 2920, 400, 150)
       layer: -3
     }
     block t30 {
-      position: pos(490, 2940, 60, 60)
+      position: pos(480, 2940, 60, 60)
     }
     block t31 {
       position: pos(890, 2920, 410, 140)
       layer: -5
     }
     block f3 {
-      position: pos(490, 3000, 340, 50)
+      position: pos(480, 3000, 360, 50)
     }
     block t32 {
-      position: pos(550, 2950, 270, 50)
+      position: pos(540, 2950, 270, 50)
       layer: 1
     }
     block t33 {
-      position: pos(920, 2940, 60, 60)
+      position: pos(910, 2940, 60, 60)
     }
     block t34 {
-      position: pos(50, 2370, 330, 360)
+      position: pos(60, 2370, 330, 360)
       layer: -3
     }
     block t35 {
-      position: pos(30, 2350, 380, 410)
+      position: pos(40, 2350, 380, 400)
       layer: -4
     }
     block v15 {
-      position: pos(670, 3090, 620, 510)
+      position: pos(670, 3080, 620, 510)
     }
     block v16 {
       position: pos(690, 1290, 600, 340)
@@ -1096,7 +1096,7 @@ text-align: right;
       layer: -2
     }
     block t49 {
-      position: pos(30, 680, 1260, 440)
+      position: pos(40, 680, 1250, 440)
       layer: -2
     }
   }
