@@ -54,6 +54,20 @@ Dataset ds_ecommerce {
 
   ]
 
+  dimension acquisition_month_cohort  {
+    model: dim_users
+    label: 'Acquisition Month Cohort'
+    type: 'date'
+    definition: @aql dimensionalize(min(demo.fct_order_items.created_at | month()), demo.dim_users.id) ;;
+  }
+
+  dimension month_no {
+    model: fct_order_items
+    label: 'Month Number'
+    type: 'number'
+    definition: @aql 
+    date_diff('month', (demo.dim_users.acquisition_month_cohort), (demo.fct_order_items.created_at | month()) ) ;;
+  }
 
   metric count_users {
     label: 'Count Users'
@@ -90,5 +104,11 @@ Dataset ds_ecommerce {
     label: "AOV - Average Order Value"
     type: 'number'
     definition: @aql gmv/count_orders;;
+  }
+
+  metric cohort_retention {
+    label: 'Cohort Retention'
+    type: 'number'
+    definition: @aql (count_users*1.0) / (count_users | of_all(demo.fct_order_items.month_no));;
   }
 }
