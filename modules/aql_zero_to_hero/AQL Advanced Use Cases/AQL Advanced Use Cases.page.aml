@@ -1,12 +1,12 @@
 use demo
 
-Dashboard aql_use_cases {
-  title: 'AQL Use Cases'
+Dashboard pct_of_total {
+  title: 'Percent of Total'
   description: ''''''
 
   view: CanvasLayout {
     label: 'View 1'
-    height: 800
+    height: 1080
     block v1 {
       position: pos(620, 280, 550, 400)
     }
