@@ -70,16 +70,16 @@ Func shadow_light() {
 
 Func title(title: String, color:String){
   TextBlock {
-  content: @md <div> 
-    <div style="
-      padding-bottom:24px;
-      font-size:40px;
-      color: ${color};
-      border-bottom: 1px solid #fcfcfc;"
-    >
-      ${title}
-    </div>
-  </div>;;
+    content: @md <div style="padding-top:10px"> 
+      <div style="
+        padding-bottom:24px;
+        font-size:40px;
+        color: ${color};
+        border-bottom: 1px solid #fcfcfc;"
+      >
+        ${title}
+      </div>
+    </div>;;
   }
 }
 

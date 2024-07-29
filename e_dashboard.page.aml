@@ -440,7 +440,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
   }
   block t5: title('Overview', '#022658')
   block t6: TextBlock {
-    content: @md <h1 style =" font-size:40px; color: #022658;padding-bottom:24px;border-bottom: 1px solid #eee" id="regional-analysis">Regional Analysis</h1>;;
+    content: @md <h1 style =" font-size:40px; color: #022658;padding-bottom:24px;border-bottom: 1px solid #022658" id="regional-analysis">Regional Analysis</h1>;;
   }
   block t7: TextBlock {
     content: @md   <p style="font-size: 16px; color: #18345E "> Click on Pivot table to Cross-filter other charts
@@ -448,7 +448,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
 </p>;;
   }
   block t8: TextBlock {
-    content: @md <h1 style ="font-size:40px; color: #022658;padding-bottom:24px;border-bottom: 1px solid #eee" id="users-analysis">Users Analysis</h1>;;
+    content: @md <h1 style ="font-size:40px; color: #022658;padding-bottom:24px;border-bottom: 1px solid #022658" id="users-analysis">Users Analysis</h1>;;
   }
   block t9: TextBlock {
     content: @md <h3>Filter by Country</h3>;;
