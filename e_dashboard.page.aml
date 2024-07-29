@@ -721,14 +721,6 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
   </li>
 </ul>;;
   }
-  block t36: TextBlock {
-    content: @md <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect y="40" width="40" height="40" rx="4" transform="rotate(-90 0 40)" fill="#022658"/>
-<rect width="36" height="36" transform="translate(2 2)" fill="#022658"/>
-<path d="M20 7.75202C26.7262 7.75202 32.248 13.1998 32.248 20C32.248 26.7642 26.7698 32.248 20 32.248C13.2384 32.248 7.75202 26.7726 7.75202 20C7.75202 13.2408 13.2297 7.75202 20 7.75202ZM20 5.9375C12.234 5.9375 5.9375 12.2363 5.9375 20C5.9375 27.7682 12.234 34.0625 20 34.0625C27.766 34.0625 34.0625 27.7682 34.0625 20C34.0625 12.2363 27.766 5.9375 20 5.9375ZM17.9587 25.4435H18.6391V18.6391H17.9587C17.5829 18.6391 17.2782 18.3344 17.2782 17.9587V17.505C17.2782 17.1293 17.5829 16.8246 17.9587 16.8246H20.6804C21.0562 16.8246 21.3609 17.1293 21.3609 17.505V25.4435H22.0413C22.4171 25.4435 22.7218 25.7482 22.7218 26.124V26.5776C22.7218 26.9534 22.4171 27.2581 22.0413 27.2581H17.9587C17.5829 27.2581 17.2782 26.9534 17.2782 26.5776V26.124C17.2782 25.7482 17.5829 25.4435 17.9587 25.4435ZM20 11.8347C18.9979 11.8347 18.1855 12.6471 18.1855 13.6492C18.1855 14.6513 18.9979 15.4637 20 15.4637C21.0021 15.4637 21.8145 14.6513 21.8145 13.6492C21.8145 12.6471 21.0021 11.8347 20 11.8347Z" fill="white"/>
-</svg>
-;;
-  }
   block t35: TextBlock {
     content: @md <svg viewBox="0 0 425 425" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="1" y="1" width="405" height="423" rx="6" fill="#FAFAFA" stroke="#BEC1CB" stroke-dasharray="4 4"/>
@@ -869,8 +861,8 @@ text-align: right;
   theme: PageTheme {
     background {
       bg_image: 'linear-gradient(135deg, #ffffff 0%, #ccdaf0 100%)'
-      // bg_image: 'url(https://i.pinimg.com/originals/7b/31/3f/7b313f61386ee25512d9f5c9576fbc9a.png)'
-      // bg_size: 'cover'
+  // bg_image: 'url(https://i.pinimg.com/originals/7b/31/3f/7b313f61386ee25512d9f5c9576fbc9a.png)'
+  // bg_size: 'cover'
     }
     canvas {
       background {
@@ -917,10 +909,10 @@ text-align: right;
       position: pos(880, 350, 260, 130)
     }
     block v2_dup_dup {
-      position: pos(410, 2490, 380, 480)
+      position: pos(420, 2230, 380, 480)
     }
     block v6 {
-      position: pos(830, 2480, 480, 520)
+      position: pos(830, 2230, 460, 480)
     }
     block v7 {
       position: pos(40, 4000, 1250, 430)
@@ -945,7 +937,7 @@ text-align: right;
       position: pos(40, 1180, 1250, 80)
     }
     block t7 {
-      position: pos(60, 2510, 220, 70)
+      position: pos(50, 2250, 220, 70)
       layer: 1
     }
     block t8 {
@@ -971,7 +963,7 @@ text-align: right;
       position: pos(40, 1280, 620, 340)
     }
     block t18 {
-      position: pos(30, 2490, 380, 90)
+      position: pos(30, 2230, 380, 90)
     }
     block v14 {
       position: pos(30, 1650, 1260, 540)
@@ -984,7 +976,7 @@ text-align: right;
       layer: -2
     }
     block t27 {
-      position: pos(330, 2510, 60, 60)
+      position: pos(330, 2250, 60, 60)
     }
     block t28 {
       position: pos(990, 3330, 260, 50)
@@ -1014,14 +1006,11 @@ text-align: right;
       position: pos(930, 3320, 60, 60)
     }
     block t34 {
-      position: pos(40, 2610, 340, 440)
+      position: pos(50, 2350, 330, 360)
       layer: -3
     }
-    block t36 {
-      position: pos(340, 2610, 70, 60)
-    }
     block t35 {
-      position: pos(30, 2590, 380, 410)
+      position: pos(30, 2330, 380, 410)
       layer: -4
     }
     block v15 {
