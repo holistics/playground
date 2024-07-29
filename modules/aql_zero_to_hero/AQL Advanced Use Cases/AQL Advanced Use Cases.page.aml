@@ -6,7 +6,7 @@ Dashboard pct_of_total {
 
   view: CanvasLayout {
     label: 'View 1'
-    height: 800
+    height: 1080
     block v1 {
       position: pos(570, 280, 600, 400)
     }
