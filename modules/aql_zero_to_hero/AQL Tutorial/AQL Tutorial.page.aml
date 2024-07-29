@@ -33,7 +33,7 @@ Dashboard aql_tutorial {
       position: pos(30, 1140, 370, 280)
     }
     block v6 {
-      position: pos(450, 1140, 370, 240)
+      position: pos(450, 1140, 520, 250)
     }
   }
   block t1: TextBlock {
