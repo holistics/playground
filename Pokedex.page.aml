@@ -1,0 +1,941 @@
+// This dashboard is defined in AML - a modeling language powered by Holistics. 
+// Learn more: https://docs.holistics.io/as-code/aml/dashboard
+
+use demo
+
+Func pixel_block() {
+  TextBlock {
+    content: @md  <div class="white-card pixel-corners"></div>;;
+  }
+}
+
+Dashboard pokedex_dashboard {
+  title: 'Pokedex 2.0'
+  description: ''''''
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1630
+    height: 880
+    block page_css {
+      position: pos(610, -240, 860, 190)
+    }
+    block t9 {
+      position: pos(40, 10, 290, 110)
+      layer: 1
+    }
+    block v2 {
+      position: pos(165, 320, 210, 220)
+      layer: 1
+    }
+    block v3 {
+      position: pos(80, 660, 380, 140)
+    }
+    block v4 {
+      position: pos(90, 210, 360, 50)
+      layer: 2
+    }
+    block background_block {
+      position: pos(-70, -20, 1760, 1020)
+      layer: -7
+    }
+    block t20 {
+      position: pos(830, 170, 750, 630)
+    }
+    block t21 {
+      position: pos(50, 170, 760, 630)
+      layer: -7
+    }
+    block v6 {
+      position: pos(530, 335, 190, 70)
+    }
+    block v7 {
+      position: pos(530, 535, 200, 70)
+    }
+    block v8 {
+      position: pos(530, 435, 190, 70)
+    }
+    block t22 {
+      position: pos(530, 315, 170, 50)
+    }
+    block t23 {
+      position: pos(530, 520, 250, 50)
+    }
+    block t24 {
+      position: pos(530, 415, 180, 50)
+    }
+    block v9 {
+      position: pos(855, 275, 430, 415)
+    }
+    block v10 {
+      position: pos(1310, 340, 240, 90)
+    }
+    block v10_dup_dup {
+      position: pos(1310, 240, 240, 90)
+    }
+    block v10_dup {
+      position: pos(1310, 440, 240, 90)
+    }
+    block v10_dup_dup_dup {
+      position: pos(1310, 540, 240, 90)
+    }
+    block v10_dup_dup_dup_dup {
+      position: pos(1310, 640, 240, 90)
+    }
+    block v13 {
+      position: pos(530, 235, 200, 55)
+      layer: 1
+    }
+    block f1 {
+      position: pos(1300, 70, 255, 40)
+      layer: 2
+    }
+    block t27 {
+      position: pos(950, 71, 460, 50)
+    }
+    block t28 {
+      position: pos(0, 40, 1640, 100)
+      layer: -7
+    }
+    block t29 {
+      position: pos(30, 200, 485, 70)
+    }
+    block v15 {
+      position: pos(80, 570, 380, 70)
+    }
+    block v16 {
+      position: pos(80, 610, 380, 50)
+    }
+    block t31 {
+      position: pos(480, 170, 20, 630)
+    }
+    block t32 {
+      position: pos(530, 200, 240, 50)
+    }
+    block v17 {
+      position: pos(530, 650, 240, 120)
+      layer: 1
+    }
+    block t33 {
+      position: pos(530, 620, 250, 50)
+    }
+  }
+
+  block page_css: TextBlock {
+    content: @md <style>
+      @import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');      
+
+      .h-canvas text, .h-canvas p, .h-canvas div, .h-canvas text,
+      .highcharts-tooltip-container .highcharts-tooltip .tooltip-wrapper{
+        font-family: 'Silkscreen' !important;
+      }
+      .dark-header {
+        width: 100%; 
+        padding: 0 50px;
+        height: 100%; 
+        background: rgba(0,0,0,0.7);
+        margin: 0 auto;
+      }
+      .dac-ic-block {
+        transform: skew(-12deg);
+      }
+
+      .dac-ic-block .selected-value {
+        background: rgba(0,0,0,0.7);
+        color: #fafaf5;
+      }
+
+      .dac-text-block .text-content {
+        overflow: hidden;
+      }
+
+      div:has(>.dark-header) {
+        padding-left: 50px;
+        padding-right: 50px;
+        
+      } 
+      .white-card {
+          width: 100%; 
+          height: 99.9%; 
+          background: #fafaf5; 
+          background-clip: padding-box;
+      }
+      .white-card2 {
+          width: 100%; 
+          height: 100%; 
+          background: #fafaf5; 
+          border-radius: 10px;
+          background-clip: padding-box;
+          border: 10px solid rgba(255, 255, 255, 0.2);
+      }
+      .header-text {
+        color: #ffffff;
+        font-weight: 700; 
+        font-size: 28px;
+      }
+
+      .single-value .html-value:has(.header-text-left) {
+        margin-left: 0;
+      }
+
+      .ability-text {
+        text-align: left;
+        font-size: 22px;
+      }
+
+      .single-value .html-value:has(.ability-text) {
+        margin-top: 0;
+        margin-left: 0;
+      }
+
+      .single-value .fit-text .text-container {
+        justify-content: left
+      }
+
+      .single-value .html-value:has(.description-text) {
+        margin-top: 0;
+      }
+
+      #block-v13 .single-value .html-value {
+        margin-left: 0
+      }
+
+      .h-kpi-metric-label {
+        font-size: 20px;
+      }
+      .h-kpi-metric-kpi {
+        font-size: 36px;
+        line-height: 1.2
+      }
+      
+      .pixel-corners,
+      .pixel-corners--wrapper {
+        clip-path: polygon(0px calc(100% - 20px),
+          4px calc(100% - 20px),
+          4px calc(100% - 12px),
+          8px calc(100% - 12px),
+          8px calc(100% - 8px),
+          12px calc(100% - 8px),
+          12px calc(100% - 4px),
+          20px calc(100% - 4px),
+          20px 100%,
+          calc(100% - 20px) 100%,
+          calc(100% - 20px) calc(100% - 4px),
+          calc(100% - 12px) calc(100% - 4px),
+          calc(100% - 12px) calc(100% - 8px),
+          calc(100% - 8px) calc(100% - 8px),
+          calc(100% - 8px) calc(100% - 12px),
+          calc(100% - 4px) calc(100% - 12px),
+          calc(100% - 4px) calc(100% - 20px),
+          100% calc(100% - 20px),
+          100% 20px,
+          calc(100% - 4px) 20px,
+          calc(100% - 4px) 12px,
+          calc(100% - 8px) 12px,
+          calc(100% - 8px) 8px,
+          calc(100% - 12px) 8px,
+          calc(100% - 12px) 4px,
+          calc(100% - 20px) 4px,
+          calc(100% - 20px) 0px,
+          20px 0px,
+          20px 4px,
+          12px 4px,
+          12px 8px,
+          8px 8px,
+          8px 12px,
+          4px 12px,
+          4px 20px,
+          0px 20px);
+        position: relative;
+      }
+      .pixel-corners {
+        border: 4px solid transparent;
+      }
+      .pixel-corners--wrapper {
+        width: fit-content;
+        height: fit-content;
+      }
+      .pixel-corners--wrapper .pixel-corners {
+        display: block;
+        clip-path: polygon(4px 20px,
+          8px 20px,
+          8px 12px,
+          12px 12px,
+          12px 8px,
+          20px 8px,
+          20px 4px,
+          calc(100% - 20px) 4px,
+          calc(100% - 20px) 8px,
+          calc(100% - 12px) 8px,
+          calc(100% - 12px) 12px,
+          calc(100% - 8px) 12px,
+          calc(100% - 8px) 20px,
+          calc(100% - 4px) 20px,
+          calc(100% - 4px) calc(100% - 20px),
+          calc(100% - 8px) calc(100% - 20px),
+          calc(100% - 8px) calc(100% - 12px),
+          calc(100% - 12px) calc(100% - 12px),
+          calc(100% - 12px) calc(100% - 8px),
+          calc(100% - 20px) calc(100% - 8px),
+          calc(100% - 20px) calc(100% - 4px),
+          20px calc(100% - 4px),
+          20px calc(100% - 8px),
+          12px calc(100% - 8px),
+          12px calc(100% - 12px),
+          8px calc(100% - 12px),
+          8px calc(100% - 20px),
+          4px calc(100% - 20px));
+      }
+      .pixel-corners::after,
+      .pixel-corners--wrapper::after {
+        content: "";
+        position: absolute;
+        clip-path: polygon(0px calc(100% - 20px),
+          4px calc(100% - 20px),
+          4px calc(100% - 12px),
+          8px calc(100% - 12px),
+          8px calc(100% - 8px),
+          12px calc(100% - 8px),
+          12px calc(100% - 4px),
+          20px calc(100% - 4px),
+          20px 100%,
+          calc(100% - 20px) 100%,
+          calc(100% - 20px) calc(100% - 4px),
+          calc(100% - 12px) calc(100% - 4px),
+          calc(100% - 12px) calc(100% - 8px),
+          calc(100% - 8px) calc(100% - 8px),
+          calc(100% - 8px) calc(100% - 12px),
+          calc(100% - 4px) calc(100% - 12px),
+          calc(100% - 4px) calc(100% - 20px),
+          100% calc(100% - 20px),
+          100% 20px,
+          calc(100% - 4px) 20px,
+          calc(100% - 4px) 12px,
+          calc(100% - 8px) 12px,
+          calc(100% - 8px) 8px,
+          calc(100% - 12px) 8px,
+          calc(100% - 12px) 4px,
+          calc(100% - 20px) 4px,
+          calc(100% - 20px) 0px,
+          20px 0px,
+          20px 4px,
+          12px 4px,
+          12px 8px,
+          8px 8px,
+          8px 12px,
+          4px 12px,
+          4px 20px,
+          0px 20px,
+          0px 50%,
+          4px 50%,
+          4px 20px,
+          8px 20px,
+          8px 12px,
+          12px 12px,
+          12px 8px,
+          20px 8px,
+          20px 4px,
+          calc(100% - 20px) 4px,
+          calc(100% - 20px) 8px,
+          calc(100% - 12px) 8px,
+          calc(100% - 12px) 12px,
+          calc(100% - 8px) 12px,
+          calc(100% - 8px) 20px,
+          calc(100% - 4px) 20px,
+          calc(100% - 4px) calc(100% - 20px),
+          calc(100% - 8px) calc(100% - 20px),
+          calc(100% - 8px) calc(100% - 12px),
+          calc(100% - 12px) calc(100% - 12px),
+          calc(100% - 12px) calc(100% - 8px),
+          calc(100% - 20px) calc(100% - 8px),
+          calc(100% - 20px) calc(100% - 4px),
+          20px calc(100% - 4px),
+          20px calc(100% - 8px),
+          12px calc(100% - 8px),
+          12px calc(100% - 12px),
+          8px calc(100% - 12px),
+          8px calc(100% - 20px),
+          4px calc(100% - 20px),
+          4px 50%,
+          0px 50%);
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #545454;
+        display: block;
+        pointer-events: none;
+      }
+      .pixel-corners::after {
+        margin: -4px;
+      }
+      
+      .pixel-corners-no-border {
+        clip-path: polygon(
+          0px calc(100% - 20px),
+          4px calc(100% - 20px),
+          4px calc(100% - 12px),
+          8px calc(100% - 12px),
+          8px calc(100% - 8px),
+          12px calc(100% - 8px),
+          12px calc(100% - 4px),
+          20px calc(100% - 4px),
+          20px 100%,
+          calc(100% - 20px) 100%,
+          calc(100% - 20px) calc(100% - 4px),
+          calc(100% - 12px) calc(100% - 4px),
+          calc(100% - 12px) calc(100% - 8px),
+          calc(100% - 8px) calc(100% - 8px),
+          calc(100% - 8px) calc(100% - 12px),
+          calc(100% - 4px) calc(100% - 12px),
+          calc(100% - 4px) calc(100% - 20px),
+          100% calc(100% - 20px),
+          100% 20px,
+          calc(100% - 4px) 20px,
+          calc(100% - 4px) 12px,
+          calc(100% - 8px) 12px,
+          calc(100% - 8px) 8px,
+          calc(100% - 12px) 8px,
+          calc(100% - 12px) 4px,
+          calc(100% - 20px) 4px,
+          calc(100% - 20px) 0px,
+          20px 0px,
+          20px 4px,
+          12px 4px,
+          12px 8px,
+          8px 8px,
+          8px 12px,
+          4px 12px,
+          4px 20px,
+          0px 20px
+        );
+      }
+</style>
+ ;;
+  }
+  block t9: TextBlock {
+    content: @md <center>
+  <img src="https://cdn.holistics.io/random/16-bit-pokemon-logo-20240719-141.png" />
+</center>;;
+  }
+  block v2: VizBlock {
+    label: 'Pokemon'
+    viz: DataTable {
+      dataset: pokedex
+      calculation f_ef7b4e0 {
+        label: 'PNG'
+        formula: @aml concat('<img src="',demo.pkm_final.gif, '" style="height: 200px" />');;
+        calc_type: 'dimension'
+        data_type: 'text'
+      }
+      fields: [
+        VizFieldFull {
+          label: ' '
+          ref: 'f_ef7b4e0'
+          format {
+            type: 'html'
+          }
+        }
+      ]
+      settings {
+        row_limit: 1
+      }
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
+    }
+  }
+  block v3: VizBlock {
+    label: 'Description'
+    viz: DataTable {
+      dataset: pokedex
+      calculation f_ef7b4e0 {
+        label: 'Description'
+        formula: @aml concat('<div class="description-text"><p style="font-weight: normal; font-size:15px; margin-top: 0">',demo.pkm_final.description, '</p></div>');;
+        calc_type: 'dimension'
+        data_type: 'text'
+      }
+      fields: [
+        VizFieldFull {
+          label: ' '
+          ref: 'f_ef7b4e0'
+          format {
+            type: 'html'
+          }
+        }
+      ]
+      settings {
+        row_limit: 1
+      }
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
+    }
+  }
+  block v4: VizBlock {
+    label: 'Name'
+    viz: DataTable {
+      dataset: pokedex
+      calculation f_ef7b4e0 {
+        label: 'Description'
+        formula: @aml concat('<div><p class="header-text" >', demo.pkm_final.index, ". ", demo.pkm_final.name, '</p></div>');;
+        calc_type: 'dimension'
+        data_type: 'text'
+      }
+      fields: [
+        VizFieldFull {
+          label: ' '
+          ref: 'f_ef7b4e0'
+          format {
+            type: 'html'
+          }
+        }
+      ]
+      settings {
+        row_limit: 1
+      }
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
+    }
+  }
+
+
+  block background_block: TextBlock {
+    content: @md  <div style="width: 100%; height: 1000px; background-color:#bbd9f6; background: url('https://i.pinimg.com/originals/68/d0/43/68d04354d8ae557bec753171be1050f1.jpg') no-repeat; background-size: cover">
+</div>;;
+  }
+  block t20: pixel_block()
+  block t21: pixel_block()
+  block v6: VizBlock {
+    label: 'Height'
+    viz: DataTable {
+      dataset: pokedex
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.pkm_final', 'height_m')
+          format {
+            type: 'number'
+            pattern: '#,###0.00'
+          }
+        }
+      ]
+      settings {
+        row_limit: 1
+      }
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
+    }
+  }
+  block v7: VizBlock {
+    label: 'Experience'
+    viz: DataTable {
+      dataset: demo.pokedex
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.pkm_final', 'hp')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        row_limit: 1
+      }
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
+    }
+  }
+  block v8: VizBlock {
+    label: 'Weight'
+    viz: DataTable {
+      dataset: pokedex
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.pkm_final', 'weight_kg')
+          format {
+            type: 'number'
+            pattern: '#,###0.00'
+          }
+        }
+      ]
+      settings {
+        row_limit: 1
+      }
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
+    }
+  }
+  block t22: TextBlock {
+    content: @md <div>
+<h3 style=" font-weight: bolder;">Height (m)</h3>
+</div>;;
+  }
+  block t23: TextBlock {
+    content: @md   <div>
+<h3 style=" font-weight: bolder;">Health Points</h3>
+</div>;;
+  }
+  block t24: TextBlock {
+    content: @md   <div>
+<h3 style=" font-weight: bolder;">Weight (kg)</h3>
+</div>;;
+  }
+  block v9: VizBlock {
+    label: 'Attack, Defense, Speed'
+    viz: RadarChart {
+      dataset: demo.pokedex
+      legend: VizFieldFull {
+        ref: ref('demo.pkm_final', 'name')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        field: VizFieldFull {
+          label: '⚔️ Atk'
+          ref: ref('demo.pkm_final', 'attack')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+          }
+        }
+      }
+      y_axis {
+        field: VizFieldFull {
+          label: '🛡️ Def'
+          ref: ref('demo.pkm_final', 'defense')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+          }
+        }
+      }
+      y_axis {
+        field: VizFieldFull {
+          label: '👟 Speed'
+          ref: ref('demo.pkm_final', 'speed')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+          }
+        }
+      }
+      y_axis {
+        field: VizFieldFull {
+          label: '🔫 Sp Atk'
+          ref: ref('demo.pkm_final', 'sp_attack')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+      y_axis {
+        field: VizFieldFull {
+          label: '🏰 Sp Def'
+          ref: ref('demo.pkm_final', 'sp_defense')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+      settings {
+        legend_label: 'hidden'
+        y_axis_min: 0
+        y_axis_max: 250
+      }
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
+    }
+  }
+  block v10: VizBlock {
+    label: '⚔️ Attack'
+    viz: MetricKpi {
+      dataset: demo.pokedex
+      value: VizFieldFull {
+        label: '⚔️ Attack'
+        ref: ref('demo.pkm_final', 'attack')
+        aggregation: 'avg'
+        format {
+          type: 'number'
+        }
+      }
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
+    }
+  }
+  block v10_dup_dup: VizBlock {
+    label: "Speed"
+    viz: MetricKpi {
+      dataset: pokedex
+      value: VizFieldFull {
+        label: '👟 Speed'
+        ref: ref('demo.pkm_final', 'speed')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+        }
+      }
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
+    }
+  }
+  block v10_dup: VizBlock {
+    label: 'Defense'
+    viz: MetricKpi {
+      dataset: demo.pokedex
+      value: VizFieldFull {
+        label: '🛡️ Defense'
+        ref: ref('demo.pkm_final', 'defense')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+        }
+      }
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
+    }
+  }
+  block v10_dup_dup_dup: VizBlock {
+    label: '🔫 Special Attack'
+    viz: MetricKpi {
+      dataset: pokedex
+      value: VizFieldFull {
+        label: '🔫 Special Attack'
+        ref: ref('demo.pkm_final', 'sp_attack')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+        }
+      }
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
+    }
+  }
+  block v10_dup_dup_dup_dup: VizBlock {
+    label: '🏰 Special Defense'
+    viz: MetricKpi {
+      dataset: pokedex
+      value: VizFieldFull {
+        label: '🏰  Special Defense'
+        ref: ref('demo.pkm_final', 'sp_defense')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+        }
+      }
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
+    }
+  }
+  block v13: VizBlock {
+    label: 'Type 1'
+    viz: DataTable {
+      dataset: demo.pokedex
+      calculation f_a2dc312 {
+        label: 'type icon'
+        formula: @aml case(
+          when: is(demo.pkm_final.type2_icon, null)
+          , then: concat(
+                '<div"><img style="display: inline-block; height: 48px" src="', demo.pkm_final.type1_icon, '" /></div>'
+              )
+          , else: concat(
+                '<div><img style="display: inline-block; height: 48px" src="', demo.pkm_final.type1_icon, '" />',
+                '<img style="display: inline-block; margin-left: 12px; height: 48px" src="', demo.pkm_final.type2_icon, '" /></div>'
+              )
+        );;
+        calc_type: 'dimension'
+        data_type: 'text'
+      }
+      fields: [
+        VizFieldFull {
+          label: ' '
+          ref: 'f_a2dc312'
+          format {
+            type: 'html'
+          }
+        }
+      ]
+      settings {
+        row_limit: 1
+      }
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
+    }
+  }
+  block f1: FilterBlock {
+    label: 'Choose your Pokemon'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: pokedex
+      field: ref('demo.pkm_final', 'name')
+    }
+    default {
+      operator: 'is'
+      value: 'Pikachu'
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
+      input_type: 'single'
+    }
+  }
+  block t27: TextBlock {
+    content: @md <div>
+<h3 style="color:#fafaf5; transform: skew(-12deg); font-weight: bold;">CHOOSE YOUR Pokemon</h3>
+</div>;;
+  }
+  block t28: TextBlock {
+    content: @md <div class="dark-header pixel-corners-no-border" style="transform: skew(-12deg); border-bottom: 10px solid #fafaf5"></div>;;
+  }
+  block t29: TextBlock {
+    content: @md <div class="dark-header pixel-corners-no-border" style=""></div>;;
+  }
+  block v15: VizBlock {
+    label: 'Japanese Name (dup)'
+    viz: DataTable {
+      dataset: demo.pokedex
+      calculation f_ef7b4e0 {
+        label: 'Description'
+        formula: @aml concat('<div><p style="font-weight: bolder; font-size:25px">', demo.pkm_final.japanese_name, '</p></div>');;
+        calc_type: 'dimension'
+        data_type: 'text'
+      }
+      fields: [
+        VizFieldFull {
+          label: ' '
+          ref: 'f_ef7b4e0'
+          format {
+            type: 'html'
+          }
+        }
+      ]
+      settings {
+        row_limit: 1
+      }
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
+    }
+  }
+  block v16: VizBlock {
+    label: 'Japanese Name (dup)'
+    viz: DataTable {
+      dataset: demo.pokedex
+      calculation f_ef7b4e0 {
+        label: 'Description'
+        formula: @aml concat
+(
+  '<div><p style="font-weight: bolder; font-size:16px">',
+  case(
+  when: demo.pkm_final.is_legendary == true
+  , then: "Legendary Pokemon"
+  , else: "Normal Pokemon"
+  ), 
+  "</p></div>"
+
+);;
+        calc_type: 'dimension'
+        data_type: 'text'
+      }
+      fields: [
+        VizFieldFull {
+          label: ' '
+          ref: 'f_ef7b4e0'
+          format {
+            type: 'html'
+          }
+        }
+      ]
+      settings {
+        row_limit: 1
+      }
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
+    }
+  }
+  block t31: TextBlock {
+    content: @md <div style="width: 3px; margin: 0 auto; background: #545454; height: 100%"></div>;;
+  }
+  block t32: TextBlock {
+    content: @md <div>
+<h3 style=" font-weight: bolder;">Pokemon Types</h3>
+</div>;;
+  }
+  block v17: VizBlock {
+    label: 'Type 1 (dup)'
+    viz: DataTable {
+      dataset: demo.pokedex
+      calculation f_a2dc312 {
+        label: 'abilities'
+        formula: @aml concat(
+  '<div class="ability-text">',
+  coalesce(demo.pkm_final.ability_1, ""),
+  case(
+    when: demo.pkm_final.ability_2 !=""
+    , then: ", "
+    , else: ""
+  ),
+  coalesce(demo.pkm_final.ability_2, ""),
+   case(
+    when: demo.pkm_final.ability_hidden !=""
+    , then: ", "
+    , else: ""
+  ),
+  coalesce(demo.pkm_final.ability_hidden, ""),
+  '</div>'
+);;
+        calc_type: 'dimension'
+        data_type: 'text'
+      }
+      fields: [
+        VizFieldFull {
+          label: ' '
+          ref: 'f_a2dc312'
+          format {
+            type: 'html'
+          }
+        }
+      ]
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
+    }
+  }
+  block t33: TextBlock {
+    content: @md   <div>
+<h3 style=" font-weight: bolder;">abilities</h3>
+</div>;;
+  }
+}

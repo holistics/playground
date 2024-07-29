@@ -5,19 +5,16 @@ Model pkm_final {
   data_source_name: 'demo_pg'
   dimension index {
     label: "Index"
-    type: "number"
+    type: "text"
+    description: ""
+    hidden: false
     definition: @sql CAST({{ #SOURCE.index }} AS INTEGER);;
   }
   dimension pokedex_number {
     label: "Pokedex Number"
-    type: "number"
-    definition: @sql 
-    Case 
-      When {{ #SOURCE.attack }} != '' then CAST({{ #SOURCE.pokedex_number }} AS DOUBLE PRECISION)
-      Else NULL
-    End
-    ;;
-    format: "#,###"
+    type: "text"
+    hidden: false
+    definition: @sql {{ #SOURCE.pokedex_number }};;
   }
   dimension name {
     label: 'Name'
@@ -453,10 +450,11 @@ END;;
   {{ #b.gif }},
   {{ #b.png }}
 FROM
-  {{ #pokemon.pkm_extra a }}
-  LEFT JOIN {{ #pokemon.pkm_original b }} ON {{ #a.pokedex_number }} = {{ #b.number }};;
+  {{ #demo.pkm_extra a }}
+  LEFT JOIN {{ #demo.pkm_original b }} ON {{ #a.pokedex_number }} = {{ #b.number }}
+WHERE {{ #b.gif }} <> '';;
   models: [
-    pkm_original,
-    pkm_extra
+    demo.pkm_extra,
+    demo.pkm_original
   ]
 }

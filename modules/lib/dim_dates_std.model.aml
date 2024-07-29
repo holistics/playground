@@ -1,4 +1,4 @@
-Model dim_dates {
+Model dim_dates_std {
   type: 'query'
   label: 'Dim Dates'
   description: ''
