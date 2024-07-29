@@ -1,0 +1,245 @@
+Dashboard aql_tutorial {
+  title: 'AQL Tutorial'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 1500
+    block t1 {
+      position: pos(30, 60, 260, 100)
+    }
+    block v1 {
+      position: pos(30, 250, 370, 310)
+    }
+    block v2 {
+      position: pos(440, 250, 370, 310)
+    }
+    block t2 {
+      position: pos(30, 150, 410, 100)
+    }
+    block t3 {
+      position: pos(30, 600, 570, 100)
+    }
+    block v3 {
+      position: pos(30, 720, 370, 310)
+    }
+    block v4 {
+      position: pos(430, 720, 620, 310)
+    }
+    block t4 {
+      position: pos(30, 1050, 570, 100)
+    }
+    block v5 {
+      position: pos(30, 1140, 370, 280)
+    }
+    block v6 {
+      position: pos(450, 1140, 370, 240)
+    }
+  }
+  block t1: TextBlock {
+    content: @md ## AQL Tutorial
+
+Docs: [AQL Sales Enablement](https://www.notion.so/holistics/Progressive-AQL-Sales-Enablement-74de10f58380491d85f591519537dee4);;
+  }
+  block v1: VizBlock {
+    label: 'Simple Aggregation (Intial)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.dim_product_countries', 'name')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'Simple Aggregation (Result)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce
+      calculation f_c5892a6 {
+        label: 'Total Users per Country'
+        formula: @aql count(demo.dim_users.id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.dim_product_countries', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: 'f_c5892a6'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+      }
+    }
+  }
+  block t2: TextBlock {
+    content: @md # Simple Aggregation
+
+You can aggregate values of columns within a model;;
+  }
+  block t3: TextBlock {
+    content: @md # Aggregation with Scalar Functions
+
+You can aggregate values and then perform scalar operations (addition, subtraction, multiplication, division) on these aggregations.;;
+  }
+  block v3: VizBlock {
+    label: 'Aggregation with Scalar Functions (Initial)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.dim_product_countries', 'name')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+      }
+    }
+  }
+  block v4: VizBlock {
+    label: 'Aggregation with Scalar Functions (Result)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce
+      calculation f_7eafbc0 {
+        label: 'Total users'
+        formula: @aql count(demo.dim_users.id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation f_f9c8103 {
+        label: 'Total Orders'
+        formula: @aql count(demo.fct_order_items.id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation f_1c4966c {
+        label: 'Order Per Users'
+        formula: @aql count(demo.fct_order_items.id) * 1.0 / count(demo.dim_users.id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.dim_product_countries', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: 'f_7eafbc0'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'f_f9c8103'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'f_1c4966c'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+      }
+    }
+  }
+  block t4: TextBlock {
+    content: @md # Conditions
+
+You can apply conditions when calculating metrics;;
+  }
+  block v5: VizBlock {
+    label: 'Conditions (Initial)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce
+      calculation f_a24a2c2 {
+        label: 'total orders'
+        formula: @aql count(demo.fct_order_items.id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.dim_product_countries', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: 'f_a24a2c2'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+      }
+    }
+  }
+  block v6: VizBlock {
+    label: 'Conditions (Initial) (dup)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce
+      calculation f_a24a2c2 {
+        label: 'total orders with value more than $100'
+        formula: @aql count(demo.fct_order_items.id) | where(demo.fct_order_items.value > 150);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.dim_product_countries', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: 'f_a24a2c2'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+      }
+    }
+  }
+}
