@@ -453,7 +453,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
     content: @md <h1 style ="font-size:40px; color: #022658;padding-bottom:24px;border-bottom: 1px solid #022658" id="users-analysis">Users Analysis</h1>;;
   }
   block t9: TextBlock {
-    content: @md <h3 style="color: #18345E">Filter by Country</h3>;;
+    content: @md <h3>Filter by Country</h3>;;
   }
   block t10: TextBlock {
     content: @md   <a href="#overview">
@@ -636,7 +636,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
 ;;
   }
   block t28: TextBlock {
-    content: @md <h3 style="color: #18345E">Filter by Age Group</h3>;;
+    content: @md <h3>Filter by Age Group</h3>;;
   }
   block f2: FilterBlock {
     label: 'Age Group'
@@ -689,7 +689,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
     }
   }
   block t32: TextBlock {
-    content: @md <h3 style="color: #18345E">Filter by City</h3>;;
+    content: @md <h3>Filter by City</h3>;;
   }
   block t33: TextBlock {
     content: @md  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -698,19 +698,19 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
 </svg>;;
   }
   block t34: TextBlock {
-    content: @md   <p style="font-size: 20px; font-weight: 300; color: #858B9D "> 
+    content: @md   <p style="font-size: 20px;"> 
   Company GMV Data
 
 </p>
-  <p style="font-size: 12px; color: #858B9D "> 
+  <p style="font-size: 12px "> 
   This is a collection of sales data categorized by geographic location (Continent, Country, City), demographic information (Age, Gender), and economic metrics (Gross Merchandise Value)
 </p>
 
- <p style="font-size: 15px; font-weight: 300; color: #858B9D "> 
+ <p style="font-size: 15px;"> 
   Examples on How to Use This Data
 
 </p>
-<ul style="font-size: 12px; color: #858B9D; line-height: 24px" id="random-list">
+<ul style="font-size: 12px; line-height: 24px" id="random-list">
   <li>
     <h3>Analyzing Trends</h3>
     <p>Analyze trends in Gross Merchandise Value (GMV) across different demographics and regions.</p>
@@ -858,9 +858,19 @@ text-align: right;
 
 </div>;;
   }
+  block t48: TextBlock {
+    content: @md <div style="
+        width:100%;
+        height:100%;
+        border-radius: 4px;
+        background: #fafafa;"
+    </div>;;
+  }
   theme: PageTheme {
     background {
       bg_image: 'linear-gradient(135deg, #ffffff 0%, #ccdaf0 100%)'
+      // bg_image: 'url(https://i.pinimg.com/originals/7b/31/3f/7b313f61386ee25512d9f5c9576fbc9a.png)'
+      // bg_size: 'cover'
     }
     canvas {
       background {
@@ -871,7 +881,16 @@ text-align: right;
         border_radius: 8
         border_style: 'solid'
       }
-      shadow: 'md'
+      shadow: 'lg'
+    }
+    block {
+      label {
+        font_size: 14
+        font_color: "#022658"
+      }
+      text {
+        font_color: "#022658"
+      }
     }
   }
   view: CanvasLayout {
@@ -892,10 +911,10 @@ text-align: right;
       position: pos(40, 100, 630, 40)
     }
     block v1 {
-      position: pos(50, 820, 1240, 390)
+      position: pos(60, 700, 1210, 380)
     }
     block v2 {
-      position: pos(880, 480, 260, 130)
+      position: pos(880, 350, 260, 130)
     }
     block v2_dup_dup {
       position: pos(410, 2490, 380, 480)
@@ -910,20 +929,20 @@ text-align: right;
       position: pos(40, 3460, 610, 510)
     }
     block v10 {
-      position: pos(880, 630, 320, 130)
+      position: pos(880, 500, 320, 130)
     }
     block v12 {
-      position: pos(70, 480, 740, 280)
+      position: pos(60, 350, 750, 280)
       layer: -1
     }
     block f1 {
       position: pos(60, 3380, 340, 50)
     }
     block t5 {
-      position: pos(50, 360, 1250, 80)
+      position: pos(40, 230, 1250, 80)
     }
     block t6 {
-      position: pos(30, 1360, 1270, 80)
+      position: pos(40, 1180, 1250, 80)
     }
     block t7 {
       position: pos(60, 2510, 220, 70)
@@ -945,17 +964,17 @@ text-align: right;
       position: pos(1120, 100, 170, 50)
     }
     block t17 {
-      position: pos(860, 460, 430, 320)
+      position: pos(860, 330, 430, 320)
       layer: -1
     }
     block v13 {
-      position: pos(30, 1480, 660, 340)
+      position: pos(40, 1280, 620, 340)
     }
     block t18 {
       position: pos(30, 2490, 380, 90)
     }
     block v14 {
-      position: pos(30, 1870, 1260, 540)
+      position: pos(30, 1650, 1260, 540)
     }
     block t25 {
       position: pos(60, 3320, 50, 60)
@@ -1009,7 +1028,7 @@ text-align: right;
       position: pos(670, 3460, 620, 510)
     }
     block v16 {
-      position: pos(700, 1490, 620, 350)
+      position: pos(700, 1280, 590, 340)
     }
     block t38 {
       position: pos(-10, 4540, 1360, 250)
@@ -1025,11 +1044,15 @@ text-align: right;
       position: pos(1240, 3140, 70, 100)
     }
     block t46 {
-      position: pos(50, 460, 780, 320)
+      position: pos(40, 330, 790, 320)
       layer: -2
     }
     block t47 {
-      position: pos(1220, 1320, 80, 100)
+      position: pos(1220, 1150, 80, 100)
+      layer: -2
+    }
+    block t48 {
+      position: pos(40, 680, 1250, 430)
       layer: -2
     }
   }
