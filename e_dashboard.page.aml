@@ -502,7 +502,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
   block v13: VizBlock {
     label: 'GMV by Country'
     viz: BarChart {
-      dataset: ds_ecommerce2
+      dataset: demo.ds_ecommerce2
       legend: VizFieldFull {
         ref: ref('demo.dim_countries', 'name')
         format {
@@ -515,7 +515,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
           show_data_label_by: 'value'
         }
         series {
-          field {
+          field: VizFieldFull {
             label: '  '
             ref: ref('demo.order_master', 'gmv')
             format {
@@ -525,17 +525,46 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
           }
           settings {
             color: '#255DD4'
+            color_palette: 'seq-blue'
             point {
-              value: 'United Kingdom'
+              value: 'Australia'
+              color: '#255DD4'
+            }
+            point {
+              value: 'France'
+              color: '#517DDD'
+            }
+            point {
+              value: 'Germany'
               color: '#7C9EE5'
             }
             point {
+              value: 'India'
+              color: '#A8BEEE'
+            }
+            point {
+              value: 'Indonesia'
+              color: '#D3DFF6'
+            }
+            point {
+              value: 'Singapore'
+              color: '#E9EFFB'
+            }
+            point {
+              value: 'South Korea'
+              color: '#255DD4'
+            }
+            point {
+              value: 'United Kingdom'
+              color: '#517DDD'
+            }
+            point {
               value: 'United States'
-              color: '#74C9C5'
+              color: '#7C9EE5'
             }
             point {
               value: 'Vietnam'
-              color: '#FCB8B8'
+              color: '#A8BEEE'
             }
           }
         }
@@ -856,6 +885,14 @@ text-align: right;
         background: #fafafa;"
     </div>;;
   }
+  block t49: TextBlock {
+    content: @md <div style="
+        width:100%;
+        height:100%;
+        border-radius: 4px;
+        background: #fafafa;"
+    </div>;;
+  }
   theme: PageTheme {
     background {
       bg_image: 'linear-gradient(135deg, #ffffff 0%, #ccdaf0 100%)'
@@ -901,7 +938,7 @@ text-align: right;
       position: pos(40, 100, 630, 40)
     }
     block v1 {
-      position: pos(60, 700, 1210, 380)
+      position: pos(70, 830, 1200, 400)
     }
     block v2 {
       position: pos(880, 350, 260, 130)
@@ -1039,7 +1076,11 @@ text-align: right;
       layer: -2
     }
     block t48 {
-      position: pos(40, 680, 1250, 430)
+      position: pos(0, 1320, 1340, 130)
+      layer: -1
+    }
+    block t49 {
+      position: pos(50, 800, 1240, 450)
       layer: -2
     }
   }
