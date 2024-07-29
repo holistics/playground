@@ -189,6 +189,32 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
             pattern: '[$$]#,###'
           }
         }
+        settings {
+          point {
+            value: 'Clothes'
+            color: '#022658FF'
+          }
+          point {
+            value: 'Groceries'
+            color: '#394875FF'
+          }
+          point {
+            value: 'Home Entertainment'
+            color: '#646D92FF'
+          }
+          point {
+            value: 'Home Furniture'
+            color: '#8E94B0FF'
+          }
+          point {
+            value: 'Mobiles & Tablets'
+            color: '#BABDCFFF'
+          }
+          point {
+            value: 'Skin Care'
+            color: '#E8E9EFFF'
+          }
+        }
       }
       settings {
         display_as_donut: true
@@ -251,7 +277,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
               }
               max {
                 value: 150000
-                color: '#07326C'
+                color: '#18A59E'
               }
             }
           }
@@ -438,7 +464,9 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
       input_type: 'nullable-single'
     }
   }
-  block t5: title('Overview', '#022658')
+  block t5: TextBlock {
+    content: @md <h1 style =" font-size:40px; color: #022658;padding-bottom:24px;border-bottom: 1px solid #022658" id="regional-analysis">Overview</h1>;;
+  }
   block t6: TextBlock {
     content: @md <h1 style =" font-size:40px; color: #022658;padding-bottom:24px;border-bottom: 1px solid #022658" id="regional-analysis">Regional Analysis</h1>;;
   }
@@ -528,43 +556,43 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
             color_palette: 'seq-blue'
             point {
               value: 'Australia'
-              color: '#255DD4'
+              color: '#022658'
             }
             point {
               value: 'France'
-              color: '#517DDD'
+              color: '#223666'
             }
             point {
               value: 'Germany'
-              color: '#7C9EE5'
+              color: '#394875'
             }
             point {
               value: 'India'
-              color: '#A8BEEE'
+              color: '#4e5a83'
             }
             point {
               value: 'Indonesia'
-              color: '#D3DFF6'
+              color: '#646d92'
             }
             point {
               value: 'Singapore'
-              color: '#E9EFFB'
+              color: '#7980a1'
             }
             point {
               value: 'South Korea'
-              color: '#255DD4'
+              color: '#8e94b0'
             }
             point {
               value: 'United Kingdom'
-              color: '#517DDD'
+              color: '#a4a8c0'
             }
             point {
               value: 'United States'
-              color: '#7C9EE5'
+              color: '#babdcf'
             }
             point {
               value: 'Vietnam'
-              color: '#A8BEEE'
+              color: '#d1d3df'
             }
           }
         }
@@ -682,8 +710,8 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
     }
   }
   block t29: TextBlock {
-    content: @md <svg width="100%" height="130" viewBox="0 0 400 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="1" y="1" width="398" height="128" rx="6" fill="#E8F2FD" stroke="#4896EA" stroke-dasharray="4 4"/>
+    content: @md <svg width="100%" height="130" viewBox="0 0 420 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="1" y="1" width="418" height="128" rx="6" fill="#E8F2FD" stroke="#4896EA" stroke-dasharray="4 4"/>
 </svg>
 ;;
   }
@@ -877,14 +905,6 @@ text-align: right;
 
 </div>;;
   }
-  block t48: TextBlock {
-    content: @md <div style="
-        width:100%;
-        height:100%;
-        border-radius: 4px;
-        background: #fafafa;"
-    </div>;;
-  }
   block t49: TextBlock {
     content: @md <div style="
         width:100%;
@@ -923,7 +943,7 @@ text-align: right;
   view: CanvasLayout {
     label: 'View 1'
     width: 1330
-    height: 4700
+    height: 4260
     block hd1 {
       position: pos(1160, 40, 140, 40)
     }
@@ -938,22 +958,22 @@ text-align: right;
       position: pos(40, 100, 630, 40)
     }
     block v1 {
-      position: pos(70, 830, 1200, 400)
+      position: pos(50, 710, 1210, 380)
     }
     block v2 {
       position: pos(880, 350, 260, 130)
     }
     block v2_dup_dup {
-      position: pos(420, 2230, 380, 480)
+      position: pos(420, 2250, 380, 480)
     }
     block v6 {
-      position: pos(830, 2230, 460, 480)
+      position: pos(830, 2250, 460, 480)
     }
     block v7 {
-      position: pos(40, 4000, 1250, 430)
+      position: pos(30, 3620, 1250, 430)
     }
     block v8 {
-      position: pos(40, 3460, 610, 510)
+      position: pos(30, 3090, 610, 510)
     }
     block v10 {
       position: pos(880, 500, 320, 130)
@@ -963,23 +983,23 @@ text-align: right;
       layer: -1
     }
     block f1 {
-      position: pos(60, 3380, 340, 50)
+      position: pos(50, 3000, 340, 50)
     }
     block t5 {
       position: pos(40, 230, 1250, 70)
     }
     block t6 {
-      position: pos(40, 1180, 1250, 80)
+      position: pos(30, 1190, 1260, 80)
     }
     block t7 {
-      position: pos(50, 2250, 220, 70)
+      position: pos(50, 2270, 220, 50)
       layer: 1
     }
     block t8 {
-      position: pos(40, 3170, 1260, 80)
+      position: pos(30, 2820, 1260, 80)
     }
     block t9 {
-      position: pos(120, 3330, 270, 50)
+      position: pos(110, 2950, 270, 50)
     }
     block t10 {
       position: pos(770, 100, 160, 50)
@@ -995,92 +1015,88 @@ text-align: right;
       layer: -1
     }
     block v13 {
-      position: pos(40, 1280, 620, 340)
+      position: pos(30, 1290, 630, 340)
     }
     block t18 {
-      position: pos(30, 2230, 380, 90)
+      position: pos(30, 2250, 380, 90)
     }
     block v14 {
-      position: pos(30, 1650, 1260, 540)
+      position: pos(30, 1670, 1260, 540)
     }
     block t25 {
-      position: pos(60, 3320, 50, 60)
+      position: pos(50, 2940, 50, 60)
     }
     block t26 {
-      position: pos(40, 3300, 380, 150)
+      position: pos(30, 2920, 390, 150)
       layer: -2
     }
     block t27 {
-      position: pos(330, 2250, 60, 60)
+      position: pos(330, 2270, 60, 60)
     }
     block t28 {
-      position: pos(990, 3330, 260, 50)
+      position: pos(980, 2950, 260, 50)
     }
     block f2 {
-      position: pos(930, 3380, 340, 50)
+      position: pos(920, 3000, 340, 50)
     }
     block t29 {
-      position: pos(480, 3300, 380, 150)
+      position: pos(450, 2920, 410, 150)
       layer: -3
     }
     block t30 {
-      position: pos(500, 3320, 60, 60)
+      position: pos(490, 2940, 60, 60)
     }
     block t31 {
-      position: pos(910, 3300, 380, 160)
+      position: pos(890, 2920, 410, 140)
       layer: -5
     }
     block f3 {
-      position: pos(500, 3380, 340, 50)
+      position: pos(490, 3000, 340, 50)
     }
     block t32 {
-      position: pos(560, 3330, 270, 50)
+      position: pos(550, 2950, 270, 50)
       layer: 1
     }
     block t33 {
-      position: pos(930, 3320, 60, 60)
+      position: pos(920, 2940, 60, 60)
     }
     block t34 {
-      position: pos(50, 2350, 330, 360)
+      position: pos(50, 2370, 330, 360)
       layer: -3
     }
     block t35 {
-      position: pos(30, 2330, 380, 410)
+      position: pos(30, 2350, 380, 410)
       layer: -4
     }
     block v15 {
-      position: pos(670, 3460, 620, 510)
+      position: pos(670, 3090, 620, 510)
     }
     block v16 {
-      position: pos(700, 1280, 590, 340)
+      position: pos(690, 1290, 600, 340)
     }
     block t38 {
-      position: pos(-10, 4540, 1360, 250)
+      position: pos(-10, 4090, 1360, 250)
       layer: -1
     }
     block t39 {
-      position: pos(30, 4590, 200, 70)
+      position: pos(20, 4140, 200, 70)
     }
     block t40 {
-      position: pos(910, 4570, 390, 110)
+      position: pos(910, 4120, 390, 110)
     }
     block t42 {
-      position: pos(1240, 3140, 70, 100)
+      position: pos(1230, 2790, 70, 100)
     }
     block t46 {
       position: pos(40, 330, 790, 320)
       layer: -2
     }
     block t47 {
-      position: pos(1220, 1150, 80, 100)
+      position: pos(1210, 1150, 80, 100)
       layer: -2
     }
-    block t48 {
-      position: pos(0, 1320, 1340, 130)
-      layer: -1
-    }
     block t49 {
-      position: pos(50, 800, 1240, 450)
+      position: pos(30, 680, 1260, 440)
       layer: -2
     }
   }

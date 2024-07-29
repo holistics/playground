@@ -68,7 +68,7 @@ Func shadow_light() {
 }
 
 
-Func title(title: String, color:String){
+Func title(content: String, color:String){
   TextBlock {
     content: @md <div style="padding-top:10px"> 
       <div style="
@@ -77,15 +77,15 @@ Func title(title: String, color:String){
         color: ${color};
         border-bottom: 1px solid #fcfcfc;"
       >
-        ${title}
+        ${content}
       </div>
     </div>;;
   }
 }
 
-// Func title_darkblue() {
-//   title('',"#022658");
-// }
+Func title_darkblue(content: String) {
+  title("${content}","#022658");
+}
 
 Dashboard page_components {
   title: 'Page Components'
