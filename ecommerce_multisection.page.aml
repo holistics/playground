@@ -943,7 +943,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
     width: 1330
     height: 4260
     block hd1 {
-      position: pos(1160, 40, 140, 40)
+      position: pos(1180, 40, 120, 40)
     }
     block hd2 {
       position: pos(40, 40, 630, 60)
