@@ -273,11 +273,11 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
             format: ScaleFormat {
               min {
                 value: 0
-                color: '#E9EFFB'
+                color: '#d1d3df'
               }
               max {
                 value: 150000
-                color: '#18A59E'
+                color: '#394875'
               }
             }
           }
@@ -346,7 +346,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
             }
           }
           settings {
-            color: '#18A59E'
+            color: '#022658'
           }
         }
       }
@@ -363,7 +363,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
             }
           }
           settings {
-            color: '#07326C'
+            color: '#d1d3df'
           }
         }
       }
@@ -471,12 +471,12 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
     content: @md <h1 style =" font-size:40px; color: #022658;padding-bottom:24px;border-bottom: 1px solid #022658" id="regional-analysis">Regional Analysis</h1>;;
   }
   block t7: TextBlock {
-    content: @md   <p style="font-size: 16px; color: #18345E "> Click on Pivot table to Cross-filter other charts
+    content: @md   <p style="font-size: 16px; color: #18345E "> Click on one chart to Cross-filter other charts
 
 </p>;;
   }
   block t8: TextBlock {
-    content: @md <h1 style ="font-size:40px; color: #022658;padding-bottom:24px;border-bottom: 1px solid #022658" id="users-analysis">Users Analysis</h1>;;
+    content: @md <h1 style ="font-size:40px; color: #022658;padding-bottom:24px;border-bottom: 1px solid #022658" id="users-analysis">User Analysis</h1>;;
   }
   block t9: TextBlock {
     content: @md <h3>Filter by Country</h3>;;
@@ -651,15 +651,15 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
           settings {
             point {
               value: 'Cancelled'
-              color: '#07326C'
+              color: '#022658'
             }
             point {
               value: 'Delivered'
-              color: '#18A59E'
+              color: '#223666'
             }
             point {
               value: 'Refunded'
-              color: '#255DD4'
+              color: '#394875'
             }
           }
         }
