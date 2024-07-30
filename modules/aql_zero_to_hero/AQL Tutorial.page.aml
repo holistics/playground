@@ -5,41 +5,51 @@ Dashboard aql_tutorial {
   view: CanvasLayout {
     label: 'View 1'
     height: 1500
+    grid_size: 15
     block t1 {
-      position: pos(30, 60, 260, 100)
+      position: pos(30, 40, 620, 130)
     }
     block v1 {
-      position: pos(30, 250, 370, 310)
+      position: pos(45, 345, 370, 310)
     }
     block v2 {
-      position: pos(440, 250, 370, 310)
+      position: pos(555, 360, 370, 310)
     }
     block t2 {
-      position: pos(30, 150, 410, 100)
+      position: pos(30, 255, 410, 100)
     }
     block t3 {
-      position: pos(30, 600, 570, 100)
+      position: pos(30, 700, 570, 100)
     }
     block v3 {
-      position: pos(30, 720, 370, 310)
+      position: pos(30, 820, 370, 310)
     }
     block v4 {
-      position: pos(430, 720, 620, 310)
+      position: pos(430, 820, 620, 310)
     }
     block t4 {
-      position: pos(30, 1050, 570, 100)
+      position: pos(30, 1170, 570, 100)
     }
     block v5 {
-      position: pos(30, 1140, 370, 280)
+      position: pos(30, 1240, 370, 280)
     }
     block v6 {
-      position: pos(450, 1140, 370, 240)
+      position: pos(450, 1240, 370, 240)
+    }
+    block t5 {
+      position: pos(30, 180, 1130, 60)
+    }
+    block t6 {
+      position: pos(30, 330, 405, 345)
+      layer: -1
     }
   }
   block t1: TextBlock {
-    content: @md ## AQL Tutorial
+    content: @md # AQL Tutorial
 
-Docs: [AQL Sales Enablement](https://www.notion.so/holistics/Progressive-AQL-Sales-Enablement-74de10f58380491d85f591519537dee4);;
+Welcome to the AQL Tutorial! This interactive guide offers examples ranging from easy to difficult, helping you become familiar with AQL. For more in-depth information, explore additional resources available [here](https://www.notion.so/holistics/Progressive-AQL-Sales-Enablement-74de10f58380491d85f591519537dee4). Let’s get started!
+
+;;
   }
   block v1: VizBlock {
     label: 'Simple Aggregation (Intial)'
@@ -91,12 +101,12 @@ Docs: [AQL Sales Enablement](https://www.notion.so/holistics/Progressive-AQL-Sal
     }
   }
   block t2: TextBlock {
-    content: @md # Simple Aggregation
+    content: @md ### 1.1 Simple Aggregation
 
 You can aggregate values of columns within a model;;
   }
   block t3: TextBlock {
-    content: @md # Aggregation with Scalar Functions
+    content: @md ### 1.2 Aggregation with Scalar Functions
 
 You can aggregate values and then perform scalar operations (addition, subtraction, multiplication, division) on these aggregations.;;
   }
@@ -176,7 +186,7 @@ You can aggregate values and then perform scalar operations (addition, subtracti
     }
   }
   block t4: TextBlock {
-    content: @md # Conditions
+    content: @md ### 1.3 Conditions
 
 You can apply conditions when calculating metrics;;
   }
@@ -241,5 +251,14 @@ You can apply conditions when calculating metrics;;
         row_limit: 5000
       }
     }
+  }
+  block t5: TextBlock {
+    content: @md ## 1. Basic AQL Understanding
+
+---;;
+  }
+  block t6: TextBlock {
+    content: @md <div style="background: #fbfbfb; width: 100%; height: 100%"></div>
+;;
   }
 }
