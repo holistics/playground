@@ -4,37 +4,40 @@ Dashboard aql_tutorial {
 
   view: CanvasLayout {
     label: 'View 1'
-    height: 1500
+    height: 1530
     grid_size: 15
     block t1 {
       position: pos(30, 40, 620, 130)
     }
     block v1 {
-      position: pos(45, 345, 370, 310)
+      position: pos(30, 360, 390, 310)
     }
     block v2 {
-      position: pos(555, 360, 370, 310)
+      position: pos(450, 360, 370, 310)
     }
     block t2 {
-      position: pos(30, 255, 410, 100)
+      position: pos(30, 270, 540, 60)
     }
     block t3 {
-      position: pos(30, 700, 570, 100)
+      position: pos(30, 720, 570, 100)
     }
     block v3 {
-      position: pos(30, 820, 370, 310)
+      position: pos(30, 820, 390, 310)
     }
     block v4 {
-      position: pos(430, 820, 620, 310)
+      position: pos(450, 825, 620, 310)
     }
     block t4 {
-      position: pos(30, 1170, 570, 100)
+      position: pos(30, 1170, 570, 75)
     }
     block v5 {
-      position: pos(30, 1240, 370, 280)
+      position: pos(30, 1245, 390, 280)
     }
     block v6 {
-      position: pos(450, 1140, 520, 250)
+      position: pos(450, 1245, 520, 250)
+    }
+    block t5 {
+      position: pos(30, 195, 1140, 70)
     }
   }
   block t1: TextBlock {
@@ -249,9 +252,5 @@ You can apply conditions when calculating metrics;;
     content: @md ## 1. Basic AQL Understanding
 
 ---;;
-  }
-  block t6: TextBlock {
-    content: @md <div style="background: #fbfbfb; width: 100%; height: 100%"></div>
-;;
   }
 }
