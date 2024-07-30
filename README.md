@@ -1,8 +1,9 @@
   #  Welcome to Holistics Playground 🚀
 
-<div class="flex space-x-6">
-  <div class="flex-1">
-  
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bYlmNC-HTps?si=oXGYEg9Pt5xBroIh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<br/>
+
 #### Introduction 
 Holistics Playground is a public demo environment where you can explore a variety of examples and freely experiment without affecting your workspace or other users.
 
