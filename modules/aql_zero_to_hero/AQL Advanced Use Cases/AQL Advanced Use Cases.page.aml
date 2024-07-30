@@ -6,21 +6,22 @@ Dashboard pct_of_total {
 
   view: CanvasLayout {
     label: 'View 1'
-    height: 1080
+    height: 690
+    grid_size: 15
     block v1 {
-      position: pos(620, 280, 550, 400)
+      position: pos(615, 240, 555, 400)
     }
     block t1 {
-      position: pos(620, 190, 250, 40)
+      position: pos(615, 165, 250, 40)
     }
     block t2 {
-      position: pos(40, 190, 500, 70)
+      position: pos(30, 165, 500, 70)
     }
     block t3 {
-      position: pos(40, 50, 390, 110)
+      position: pos(30, 30, 390, 110)
     }
     block v2 {
-      position: pos(40, 280, 560, 400)
+      position: pos(30, 240, 555, 400)
     }
   }
   block v1: VizBlock {

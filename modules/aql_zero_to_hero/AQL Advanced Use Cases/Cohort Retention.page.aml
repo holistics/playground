@@ -63,10 +63,12 @@ Dashboard aql_cohort_retention {
 Docs: [Create Cohort Retention (using AQL)](https://docs.holistics.io/as-code/guides/aql-cohort-retention);;
   }
   block t2: TextBlock {
-    content: @md ### Result;;
+    content: @md ### Expected Result;;
   }
   block t3: TextBlock {
-    content: @md ### Initial Data;;
+    content: @md ### Initial Data
+
+Explore or edit the initial data below to replicate the result on the right.;;
   }
   block v2: VizBlock {
     label: 'Users'
@@ -150,23 +152,24 @@ Docs: [Create Cohort Retention (using AQL)](https://docs.holistics.io/as-code/gu
   view: CanvasLayout {
     label: 'View 1'
     height: 1100
+    grid_size: 15
     block v1 {
-      position: pos(20, 480, 1160, 570)
+      position: pos(30, 495, 1140, 570)
     }
     block t1 {
-      position: pos(10, 30, 600, 70)
+      position: pos(30, 30, 600, 70)
     }
     block t2 {
-      position: pos(20, 430, 70, 40)
+      position: pos(30, 450, 450, 40)
     }
     block t3 {
-      position: pos(20, 140, 110, 40)
+      position: pos(30, 135, 495, 90)
     }
     block v2 {
-      position: pos(20, 200, 490, 220)
+      position: pos(30, 210, 495, 220)
     }
     block v3 {
-      position: pos(530, 200, 660, 210)
+      position: pos(540, 210, 630, 210)
     }
   }
 }
