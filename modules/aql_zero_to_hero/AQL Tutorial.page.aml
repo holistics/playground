@@ -4,48 +4,63 @@ Dashboard aql_tutorial {
 
   view: CanvasLayout {
     label: 'View 1'
-    height: 1530
+    height: 1900
     grid_size: 15
     block t1 {
-      position: pos(30, 40, 620, 130)
+      position: pos(30, 30, 1140, 345)
     }
     block v1 {
-      position: pos(30, 360, 390, 310)
+      position: pos(30, 615, 390, 310)
     }
     block v2 {
-      position: pos(450, 360, 370, 310)
+      position: pos(450, 615, 370, 310)
     }
     block t2 {
-      position: pos(30, 270, 540, 60)
+      position: pos(30, 525, 540, 60)
     }
     block t3 {
-      position: pos(30, 720, 570, 100)
+      position: pos(30, 975, 570, 100)
     }
     block v3 {
-      position: pos(30, 820, 390, 310)
+      position: pos(30, 1080, 390, 310)
     }
     block v4 {
-      position: pos(450, 825, 620, 310)
+      position: pos(450, 1080, 620, 310)
     }
     block t4 {
-      position: pos(30, 1170, 570, 75)
+      position: pos(30, 1425, 570, 75)
     }
     block v5 {
-      position: pos(30, 1245, 390, 280)
+      position: pos(30, 1500, 390, 280)
     }
     block v6 {
-      position: pos(450, 1245, 520, 250)
+      position: pos(450, 1500, 520, 250)
     }
     block t5 {
-      position: pos(30, 195, 1140, 70)
+      position: pos(30, 375, 1140, 165)
     }
   }
   block t1: TextBlock {
     content: @md # AQL Tutorial
 
-Welcome to the AQL Tutorial! This interactive guide offers examples ranging from easy to difficult, helping you become familiar with AQL. For more in-depth information, explore additional resources available [here](https://www.notion.so/holistics/Progressive-AQL-Sales-Enablement-74de10f58380491d85f591519537dee4). Let’s get started!
+Welcome to the AQL Tutorial! 
 
-;;
+This interactive guide offers examples ranging from easy to difficult, helping you become familiar with AQL. 
+
+For more in-depth information, explore additional resources available [here](https://www.notion.so/holistics/Progressive-AQL-Sales-Enablement-74de10f58380491d85f591519537dee4).
+
+This tutorial consists of four levels:
+
+1. **Basic Understanding**: Learn AQL fundamentals and simple calculations.
+
+2. **Intermediate Skills**: Use multiple clauses and perform aggregations.
+
+3. **Advanced Applications**: Master complex queries, advanced analytical concepts, and performance optimization techniques.
+
+4. **Expert Mastery**: Craft sophisticated queries and implement advanced analytics.
+
+
+Let’s get started! 🙌;;
   }
   block v1: VizBlock {
     label: 'Simple Aggregation (Intial)'
@@ -218,7 +233,7 @@ You can apply conditions when calculating metrics;;
     }
   }
   block v6: VizBlock {
-    label: 'Conditions (Initial) (dup)'
+    label: 'Conditions (Result)'
     viz: DataTable {
       dataset: demo.ds_ecommerce
       calculation f_a24a2c2 {
@@ -251,6 +266,10 @@ You can apply conditions when calculating metrics;;
   block t5: TextBlock {
     content: @md ## 1. Basic AQL Understanding
 
----;;
+---
+
+Gain a foundational understanding of AQL, including its primary purpose and basic syntax. You will learn to perform simple calculations and aggregations, such as summing two columns (e.g., revenue from different product lines), calculating percentages (e.g., profit margin), counting distinct values (e.g., unique customers), and filtering data based on simple conditions (e.g., sales by region).
+
+;;
   }
 }
