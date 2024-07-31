@@ -875,7 +875,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
   }
   block t46: background_gray()
   block t47: TextBlock {
-    content: @md   <div>
+    content: @md   <div style="height:100%;overflow:hidden;">
   <a href="#heading" class="border-radius:4px;overflow:hidden;">
 <svg width="100%" height="106" viewBox="0 0 92 106" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="90" height="100%" transform="translate(0 0.765625)" fill="none"/>
@@ -901,8 +901,8 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
 </svg>;;
   }
   block t51: TextBlock {
-    content: @md   <div>
-  <a href="#heading" class="border-radius:4px;overflow:hidden;">
+    content: @md   <div style="height:100%;overflow:hidden;">
+  <a href="#heading" style="border-radius:4px;overflow:hidden;">
 <svg width="100%" height="106" viewBox="0 0 92 106" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="90" height="100%" transform="translate(0 0.765625)" fill="none"/>
 <path d="M33.9407 25.4843L34.329 25.8727C34.5864 26.1301 35.0038 26.1301 35.2613 25.8727L45.0662 16.0677L45.0662 50.7158C45.0662 51.0799 45.3614 51.375 45.7254 51.375L46.2747 51.375C46.6388 51.375 46.9339 51.0799 46.9339 50.7158L46.9339 16.0677L56.7389 25.8727C56.9963 26.1301 57.4137 26.1301 57.6711 25.8727L58.0595 25.4843C58.3169 25.2269 58.3169 24.8095 58.0595 24.5521L46.4662 12.9587C46.2088 12.7013 45.7914 12.7013 45.5339 12.9587L33.9407 24.5521C33.6832 24.8095 33.6832 25.2269 33.9407 25.4843Z" fill="#18a59e"/>
@@ -953,7 +953,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
       layer: -1
     }
     block t2 {
-      position: pos(40, 100, 630, 40)
+      position: pos(40, 100, 660, 50)
     }
     block v1 {
       position: pos(60, 710, 1200, 380)
