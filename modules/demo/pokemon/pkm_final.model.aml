@@ -444,17 +444,27 @@ END;;
   }
 
   owner: 'chukwudi@holistics.io'
-  query: @sql SELECT
-  {{ #a.* }},
-  {{ #b.description }},
-  {{ #b.gif }},
-  {{ #b.png }}
-FROM
-  {{ #demo.pkm_extra a }}
-  LEFT JOIN {{ #demo.pkm_original b }} ON {{ #a.pokedex_number }} = {{ #b.number }}
-WHERE {{ #b.gif }} <> '';;
+  query: @sql
+    SELECT
+      {{ #a.* }},
+      {{ #b.description }},
+      {{ #b.gif }},
+      {{ #b.png }}
+    FROM
+      {{ #demo.pkm_extra a }}
+      LEFT JOIN {{ #demo.pkm_original b }} ON {{ #a.pokedex_number }} = {{ #b.number }}
+    WHERE {{ #b.gif }} <> '';;
   models: [
     demo.pkm_extra,
     demo.pkm_original
   ]
+  persistence: FullPersistence {
+    schema: 'persisted'
+    custom_ddl: @sql 	
+      CREATE TABLE {{ persisted_table }}
+      AS {{ parsed_query }};
+
+      CREATE INDEX {{ index_name }} ON {{ persisted_table }} USING gin (name gin_trgm_ops);
+      ;;
+  }
 }
