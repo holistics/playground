@@ -44,32 +44,32 @@ Dataset ds_ecommerce2 {
   metric count_users {
     label: 'Count Users'
     type: 'number'
-    definition: @aql count(ecommerce.dim_users.id);;
+    definition: @aql count(demo.dim_users.id);;
   }
 
   metric count_orders {
     label: 'Count Orders'
     type: 'number'
-    definition: @aql count(ecommerce.fct_orders.id) | with_relationships(ecommerce.fct_orders.user_id >  ecommerce.dim_users.id);;
+    definition: @aql count(demo.fct_orders.id) | with_relationships(demo.fct_orders.user_id >  demo.dim_users.id);;
   }
 
   metric count_distinct_orders {
     label: 'Count Distinct Orders'
     type: 'number'
-    definition: @aql count_distinct(ecommerce.fct_order_items.order_id) ;;
+    definition: @aql count_distinct(demo.fct_order_items.order_id) ;;
   }
 
   metric count_distinct_products {
     label: 'Count Distinct Products'
     type: 'number'
-    definition: @aql count_distinct(ecommerce.fct_order_items.product_id) ;;
+    definition: @aql count_distinct(demo.fct_order_items.product_id) ;;
   }
 
   metric gmv {
     label: "GMV - Gross Merchandise Value"
     type: "number"
     description: "Total value regardless of order status"
-    definition: @aql sum(ecommerce.fct_order_items.value);;
+    definition: @aql sum(demo.fct_order_items.value);;
   }
 
   metric aov {
