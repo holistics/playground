@@ -4,12 +4,8 @@ use demo
 Dashboard ecommerce_overview {
   title: '[Demo] Ecommerce Overview 4.0'
   block hd1: TextBlock {
-    content: @md <picture>
-    <source media="(min-width:650px)" srcset="https://cdn.holistics.io/logos/holistics-logo-white.svg">
-    <img src="holisticswhitelabeldemo.jpg" alt="demo" width="355"
-    " height="35">
-  </picture>
-;;
+    content: @md 
+    <img style="margin-bottom:0 !important;overflow:hidden;" src="https://cdn.holistics.io/logos/holistics-logo-white.svg" alt="demo" width="255">;;
   }
   block hd2: TextBlock {
     content: @md  <div id="heading">
@@ -943,7 +939,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
     width: 1330
     height: 4260
     block hd1 {
-      position: pos(1180, 40, 120, 40)
+      position: pos(1130, 40, 170, 50)
     }
     block hd2 {
       position: pos(40, 40, 630, 60)
