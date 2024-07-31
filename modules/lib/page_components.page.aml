@@ -68,7 +68,7 @@ Func shadow_light() {
 }
 
 
-Func title(content: String, color:String){
+Func title(content: String, color: String) {
   TextBlock {
     content: @md <div style="padding-top:10px"> 
       <div style="
@@ -84,7 +84,7 @@ Func title(content: String, color:String){
 }
 
 Func title_darkblue(content: String) {
-  title("${content}","#022658");
+  title("${content}", "#022658");
 }
 
 Dashboard page_components {
@@ -106,7 +106,10 @@ Dashboard page_components {
       position: pos(400, 80, 150, 80)
     }
     block t6 {
-      position: pos(40, 320, 630, 260)
+      position: pos(40, 320, 290, 260)
+    }
+    block beautiful_card {
+      position: pos(390, 320, 290, 250)
     }
   }
   block style_css: TextBlock {
@@ -135,4 +138,15 @@ Dashboard page_components {
 
   block t5: sticky_note_pink("Sample sticky note")
   block t6: background_gray()
+  block beautiful_card: TextBlock {
+    content: @md <div 
+      style="
+        background-color: #f8f8f8; 
+        width: 100%; 
+        height: 100%; 
+        overflow: hidden">
+      <div style="width: 100%; height: 8px; border-radius: 0 6px 0 0; background-color: #1abc9c"></div>
+      </div>
+   ;;
+  }
 }
