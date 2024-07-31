@@ -9,7 +9,8 @@ Dashboard marketing_purple {
   description: ''''''
   theme: PageTheme {
     background {
-      bg_image: 'radial-gradient(circle at top, #ffe5f1 , #ebfffa)'
+      bg_image: 'url("https://cdn.holistics.io/images/magenta_bg.svg")'
+      bg_size: 'contain'
     }
     canvas {
       background {
