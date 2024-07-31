@@ -1,0 +1,17 @@
+Dashboard go_back_to_studio {
+  title: 'Go Back To AML Studio'
+  description: ''''''
+  block title: TextBlock {
+    content: @md # [Please click here to go back to AML Studio](https://playground.holistics.io/play);;
+  }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 760
+    height: 160
+    grid_size: 20
+    block title {
+      position: pos(40, 60, 720, 100)
+    }
+  }
+}
