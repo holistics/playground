@@ -1084,7 +1084,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
     }
     block t47 {
       position: pos(1210, 1150, 80, 100)
-      layer: -2
+      layer: 1
     }
     block t49 {
       position: pos(40, 680, 1250, 440)
@@ -1096,7 +1096,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
     }
     block t51 {
       position: pos(1210, 2780, 80, 100)
-      layer: -2
+      layer: 1
     }
   }
   settings {
