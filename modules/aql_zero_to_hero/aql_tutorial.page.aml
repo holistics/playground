@@ -4,40 +4,43 @@ Dashboard aql_tutorial {
 
   view: CanvasLayout {
     label: 'View 1'
-    height: 1900
+    height: 2100
     grid_size: 15
     block t1 {
       position: pos(30, 30, 1140, 345)
     }
     block v1 {
-      position: pos(30, 615, 390, 310)
+      position: pos(30, 645, 390, 310)
     }
     block v2 {
-      position: pos(450, 615, 370, 310)
+      position: pos(450, 645, 370, 310)
     }
     block t2 {
-      position: pos(30, 525, 540, 60)
+      position: pos(30, 555, 540, 60)
     }
     block t3 {
-      position: pos(30, 975, 570, 100)
+      position: pos(30, 1005, 570, 100)
     }
     block v3 {
-      position: pos(30, 1080, 390, 310)
+      position: pos(30, 1110, 390, 310)
     }
     block v4 {
-      position: pos(450, 1080, 620, 310)
+      position: pos(450, 1110, 620, 310)
     }
     block t4 {
-      position: pos(30, 1425, 570, 75)
+      position: pos(30, 1455, 570, 75)
     }
     block v5 {
-      position: pos(30, 1500, 390, 280)
+      position: pos(30, 1530, 390, 280)
     }
     block v6 {
-      position: pos(450, 1500, 520, 250)
+      position: pos(450, 1530, 520, 250)
     }
     block t5 {
-      position: pos(30, 375, 1140, 165)
+      position: pos(30, 405, 1140, 165)
+    }
+    block t6 {
+      position: pos(30, 1800, 1140, 255)
     }
   }
   block t1: TextBlock {
@@ -47,7 +50,7 @@ Welcome to the AQL Tutorial!
 
 This interactive guide offers examples ranging from easy to difficult, helping you become familiar with AQL. 
 
-For more in-depth information, explore additional resources available [here](https://www.notion.so/holistics/Progressive-AQL-Sales-Enablement-74de10f58380491d85f591519537dee4).
+For more in-depth information, explore additional resources available [here](https://docs.holistics.io/as-code/aql/getting-started).
 
 This tutorial consists of four levels:
 
@@ -271,5 +274,12 @@ You can apply conditions when calculating metrics;;
 Gain a foundational understanding of AQL, including its primary purpose and basic syntax. You will learn to perform simple calculations and aggregations, such as summing two columns (e.g., revenue from different product lines), calculating percentages (e.g., profit margin), counting distinct values (e.g., unique customers), and filtering data based on simple conditions (e.g., sales by region).
 
 ;;
+  }
+  block t6: TextBlock {
+    content: @md ## 2. Intermediate Skills (WIP)
+
+---
+
+![](https://media1.tenor.com/m/iCqG_iT-h48AAAAC/bills-ugh.gif);;
   }
 }
