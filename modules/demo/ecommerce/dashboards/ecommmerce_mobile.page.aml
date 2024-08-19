@@ -9,7 +9,8 @@ Dashboard ecomax_mobile {
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
-    width: 864
+    width: 540
+    height: 1420
     block override_css {
       position: pos(-280, 630, 170, 120)
     }
@@ -25,11 +26,11 @@ Dashboard ecomax_mobile {
       layer: -1
     }
     block v1 {
-      position: pos(20, 280, 170, 130)
+      position: pos(20, 280, 140, 130)
       layer: 1
     }
     block v2 {
-      position: pos(20, 440, 820, 370)
+      position: pos(20, 440, 500, 310)
     }
     block t3 {
       position: pos(20, 410, 820, 20)
@@ -38,22 +39,22 @@ Dashboard ecomax_mobile {
       position: pos(190, 100, 270, 80)
     }
     block v3 {
-      position: pos(310, 280, 310, 140)
+      position: pos(190, 280, 150, 140)
     }
     block v4 {
-      position: pos(980, 300, 320, 330)
+      position: pos(270, 1140, 260, 250)
     }
     block d1 {
       position: pos(20, 100, 140, 80)
     }
     block v5 {
-      position: pos(20, 840, 430, 340)
+      position: pos(20, 770, 500, 340)
     }
     block v6 {
-      position: pos(480, 840, 360, 340)
+      position: pos(20, 1140, 240, 250)
     }
     block v7 {
-      position: pos(580, 280, 310, 140)
+      position: pos(370, 280, 150, 140)
     }
     block t6 {
       position: pos(900, 780, 320, 40)
@@ -202,9 +203,9 @@ Dashboard ecomax_mobile {
     }
   }
   block v4: VizBlock {
-    label: 'Count Users by Gender'
+    label: 'GMV by Gender'
     viz: PieChart {
-      dataset: ds_ecommerce
+      dataset: demo.ds_ecommerce
       legend: VizFieldFull {
         ref: ref('demo.dim_users', 'gender')
         format {
@@ -212,31 +213,29 @@ Dashboard ecomax_mobile {
         }
       }
       series {
-        field {
+        field: VizFieldFull {
           label: ' '
-          ref: 'count_users'
+          ref: 'gmv'
           format {
             type: 'number'
             pattern: 'inherited'
           }
         }
         settings {
+          color: '#505B63'
           point {
             value: 'Female'
-            color: '#2f3e4a'
+            color: '#505B63'
           }
           point {
             value: 'Male'
-            color: '#505B63'
+            color: '#2f3e4a'
           }
         }
       }
       settings {
         display_as_donut: true
       }
-    }
-    settings {
-      hide_label: true
     }
   }
   block d1: DateDrillBlock {
