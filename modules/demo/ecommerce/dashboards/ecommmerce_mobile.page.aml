@@ -14,8 +14,12 @@ Dashboard ecomax_mobile {
     block override_css {
       position: pos(-280, 630, 170, 120)
     }
+    block t5 {
+      position: pos(70, 40, 540, 130)
+      layer: 1
+    }
     block t1 {
-      position: pos(-10, 10, 1100, 190)
+      position: pos(20, 40, 1100, 190)
     }
     block t2 {
       position: pos(530, 1310, 400, 420)
@@ -86,7 +90,12 @@ Dashboard ecomax_mobile {
       }
     </style>;;
   }
-
+  block t5: TextBlock {
+    content: @md <span 
+      style="display: block; color: white; font-weight: 700; font-size: 32px; padding-top: 12px">
+      ECOMAX
+    </span>;;
+  }
   block t1: TextBlock {
     content: @md <div style="background: #2f3e4a; width: 100%; height: 1500px">
 </div>;;
