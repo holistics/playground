@@ -17,7 +17,7 @@ Dashboard merchify_home {
       position: pos(660, 260, 220, 140)
     }
     block v5 {
-      position: pos(920, 260, 240, 140)
+      position: pos(880, 260, 240, 140)
     }
     block t1 {
       position: pos(660, 220, 460, 40)
@@ -63,6 +63,11 @@ Dashboard merchify_home {
     label: 'Revenue'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce2
+      filter {
+        field: ref('demo.fct_orders', 'created_at')
+        operator: 'before'
+        value: '2024-05-01'
+      }
       value: VizFieldFull {
         label: 'Sales'
         ref: ref('demo.order_master', 'revenue')
@@ -85,6 +90,11 @@ Dashboard merchify_home {
     label: 'Orders'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce2
+      filter {
+        field: ref('demo.fct_orders', 'created_at')
+        operator: 'before'
+        value: '2024-05-01'
+      }
       value: VizFieldFull {
         label: 'Orders'
         ref: ref('demo.fct_orders', 'total_orders_count')
@@ -92,6 +102,11 @@ Dashboard merchify_home {
           type: 'number'
           pattern: 'inherited'
         }
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.fct_orders', 'created_at')
+        duration: 1
+        granularity: 'year'
       }
     }
     settings {
@@ -104,8 +119,8 @@ Dashboard merchify_home {
       dataset: demo.ds_ecommerce2
       filter {
         field: ref('demo.dim_users', 'sign_up_date')
-        operator: 'matches'
-        value: '2024-04-30 - 2024-05-11'
+        operator: 'before'
+        value: '2024-05-01'
       }
       value: VizFieldFull {
         label: 'Customers'
@@ -114,6 +129,11 @@ Dashboard merchify_home {
           type: 'number'
           pattern: 'inherited'
         }
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.dim_users', 'sign_up_date')
+        duration: 1
+        granularity: 'year'
       }
     }
     settings {

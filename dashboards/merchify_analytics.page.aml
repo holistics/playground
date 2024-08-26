@@ -19,7 +19,7 @@ Dashboard merchify_analytics {
       position: pos(560, 40, 250, 140)
     }
     block v5 {
-      position: pos(820, 40, 250, 140)
+      position: pos(780, 40, 380, 140)
     }
     block v6 {
       position: pos(60, 660, 500, 360)
@@ -165,20 +165,53 @@ Dashboard merchify_analytics {
   }
   block v5: VizBlock {
     label: 'Orders (dup)'
-    viz: MetricKpi {
+    viz: DataTable {
       dataset: demo.ds_ecommerce2
       calculation conversion_rate_merchify {
         label: 'Conversion rate'
-        formula: @aql div(count_distinct(demo.fct_orders.user_city_id),demo.dim_users.total_users);;
+        formula: @aql safe_divide(
+  (count_distinct(demo.fct_orders.user_id)|where(demo.dim_countries.name == "Vietnam")),
+  count_distinct(demo.fct_orders.user_id));;
         calc_type: 'measure'
         data_type: 'number'
       }
-      value: VizFieldFull {
-        ref: 'conversion_rate_merchify'
-        format {
-          type: 'number'
-          pattern: '#,###0.00'
+      calculation metric_12a3de4 {
+        label: 'Untitled Metric'
+        formula: @aql (count_distinct(demo.fct_orders.user_id)|where(demo.dim_countries.name == "Vietnam"));;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation metric_4e162d6 {
+        label: 'Untitled Metric'
+        formula: @aql count_distinct(demo.fct_orders.user_id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: 'conversion_rate_merchify'
+          format {
+            type: 'number'
+            pattern: '#,###0.00'
+          }
+        },
+        VizFieldFull {
+          ref: 'metric_12a3de4'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'metric_4e162d6'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
         }
+      ]
+      settings {
+        show_row_number: true
       }
     }
     settings {
