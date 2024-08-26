@@ -21,7 +21,6 @@ Dashboard merchify_home {
     }
   }
   block v2: VizBlock {
-    theme: SecondaryBlock
     label: 'Sales'
     viz: AreaChart {
       dataset: demo.ds_ecommerce2
@@ -51,11 +50,25 @@ Dashboard merchify_home {
             line_interpolation: 'smooth'
           }
         }
+        series {
+          field: VizFieldFull {
+            label: 'Monthly Average'
+            ref: ref('demo.order_master', 'revenue')
+            analytic: ReferenceLine {
+              type: 'avg'
+            }
+          }
+          settings {
+            color: '#E27712'
+            line_style: 'dashed'
+          }
+        }
       }
       settings {
         row_limit: 5000
       }
     }
+    theme: SecondaryBlock
   }
   block v3: VizBlock {
     label: 'Revenue'

@@ -4,6 +4,7 @@ Dashboard merchify_analytics {
 
   view: CanvasLayout {
     label: 'View 1'
+    width: 1180
     height: 1060
     grid_size: 20
     block v2 {
@@ -25,7 +26,7 @@ Dashboard merchify_analytics {
       position: pos(600, 660, 540, 360)
     }
     block v8 {
-      position: pos(40, 240, 1120, 380)
+      position: pos(40, 240, 1100, 380)
     }
   }
   block v2: VizBlock {
@@ -256,7 +257,7 @@ Dashboard merchify_analytics {
     }
   }
   block v7: VizBlock {
-    theme: BlockTheme{
+    theme: BlockTheme {
       label {
         font_size: 16
         font_color: "#0F172A"
