@@ -1,0 +1,299 @@
+Dashboard merchify_analytics {
+  title: 'merchify_analytics'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 1060
+    grid_size: 20
+    block v1 {
+      position: pos(40, 220, 1120, 400)
+    }
+    block v2 {
+      position: pos(40, 40, 250, 140)
+    }
+    block v3 {
+      position: pos(300, 40, 250, 140)
+    }
+    block v4 {
+      position: pos(560, 40, 250, 140)
+    }
+    block v5 {
+      position: pos(820, 40, 250, 140)
+    }
+    block v6 {
+      position: pos(60, 660, 500, 360)
+    }
+    block v7 {
+      position: pos(620, 660, 540, 360)
+    }
+  }
+  block v1: VizBlock {
+    label: 'Sales Performance'
+    viz: CombinationChart {
+      dataset: demo.ds_ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('demo.dim_dates', 'date_key')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          mark_type: 'column'
+          field: VizFieldFull {
+            label: 'Total Orders'
+            ref: 'count_orders'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#623de6'
+          }
+        }
+      }
+      y_axis {
+        settings {
+          alignment: 'right'
+        }
+        series {
+          mark_type: 'line'
+          field: VizFieldFull {
+            label: 'GMV'
+            ref: 'gmv'
+            format {
+              type: 'number'
+              pattern: '[$$]#,###0.00,"K"'
+              group_separator: ','
+              decimal_separator: '.'
+            }
+          }
+          settings {
+            color: '#D9F0A3FF'
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+      y_axis {
+        series {
+          mark_type: 'line'
+          field: VizFieldFull {
+            label: 'AOV'
+            ref: 'aov'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#a4a5fd'
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+  }
+
+  block v2: VizBlock {
+    label: 'Revenue'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce2
+      value: VizFieldFull {
+        label: 'Sales'
+        ref: ref('demo.order_master', 'revenue')
+        format {
+          type: 'number'
+          pattern: '#,###0.00,,"M"'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.fct_orders', 'created_at')
+        duration: 1
+        granularity: 'year'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+
+  block v3: VizBlock {
+    label: 'Orders'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce2
+      value: VizFieldFull {
+        label: 'Orders'
+        ref: ref('demo.fct_orders', 'total_orders_count')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+
+  block v4: VizBlock {
+    label: 'Revenue (dup) (dup)'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce2
+      filter {
+        field: ref('demo.dim_users', 'sign_up_date')
+        operator: 'matches'
+        value: '2024-04-30 - 2024-05-11'
+      }
+      value: VizFieldFull {
+        label: 'Customers'
+        ref: ref('demo.dim_users', 'total_users')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v5: VizBlock {
+    label: 'Orders (dup)'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce2
+      calculation conversion_rate_merchify {
+        label: 'Conversion rate'
+        formula: @aql div(count_distinct(demo.fct_orders.user_city_id),demo.dim_users.total_users);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      value: VizFieldFull {
+        ref: 'conversion_rate_merchify'
+        format {
+          type: 'number'
+          pattern: '#,###0.00'
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v6: VizBlock {
+    label: 'Top Selling Products'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce2
+      calculation f_28374b6 {
+        label: 'Product Image'
+        formula: @aml concat('<img src="', demo.ecommerce_product_images.url, '" style="float:left;height:48px; margin: 12px 6px; object-fit:contain" />');;
+        calc_type: 'dimension'
+        data_type: 'text'
+      }
+      filter {
+        field: ref('demo.order_master', 'order_created_at')
+        operator: 'matches'
+        value: '2023'
+      }
+      fields: [
+        VizFieldFull {
+          ref: 'f_28374b6'
+          format {
+            type: 'html'
+          }
+        },
+        VizFieldFull {
+          ref: ref('demo.dim_products', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          label: 'GMV'
+          ref: ref('demo.order_master', 'gmv')
+          format {
+            type: 'number'
+            pattern: '[$$]#,###'
+          }
+        }
+      ]
+      settings {
+        pagination_size: 100
+        row_height: 'multiple_lines'
+        sorts: [
+          SortSetting {
+            field_index: 2
+            direction: 'desc'
+          }
+        ]
+        conditional_formats: [
+          ConditionalFormat {
+            ref: ref('demo.order_master', 'gmv')
+            format: ScaleFormat {
+              min {
+                value: 0
+                color: '#d1d3df'
+              }
+              max {
+                value: 150000
+                color: '#394875'
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+  block v7: VizBlock {
+    label: 'Top Selling Categories'
+    viz: PivotTable {
+      dataset: demo.ds_ecommerce2
+      calculation f_28374b6 {
+        label: 'Product Image'
+        formula: @aml concat('<img src="', demo.ecommerce_product_images.url, '" style="float:left;height:48px; margin: 12px 6px; object-fit:contain" />');;
+        calc_type: 'dimension'
+        data_type: 'text'
+      }
+      filter {
+        field: ref('demo.order_master', 'order_created_at')
+        operator: 'matches'
+        value: '2023'
+      }
+      rows: [
+        VizFieldFull {
+          ref: ref('demo.dim_categories', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('demo.dim_products', 'name')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          label: 'GMV'
+          ref: ref('demo.order_master', 'gmv')
+          format {
+            type: 'number'
+            pattern: '[$$]#,###'
+          }
+        }
+      ]
+      settings {
+        row_height: 'multiple_lines'
+        pagination_size: 100
+        show_row_total: true
+        show_column_total: true
+      }
+    }
+  }
+}

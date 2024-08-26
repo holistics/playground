@@ -1,0 +1,126 @@
+Dashboard merchify_home {
+  title: 'Merchify_home'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1160
+    height: 480
+    grid_size: 20
+    block v2 {
+      position: pos(60, 40, 560, 400)
+    }
+    block v3 {
+      position: pos(660, 80, 240, 140)
+    }
+    block v4 {
+      position: pos(660, 260, 220, 140)
+    }
+    block v5 {
+      position: pos(920, 260, 240, 140)
+    }
+    block t1 {
+      position: pos(660, 220, 460, 40)
+    }
+  }
+  block v2: VizBlock {
+    label: 'Sales'
+    viz: AreaChart {
+      dataset: demo.ds_ecommerce2
+      filter {
+        field: ref('demo.fct_orders', 'created_at')
+        operator: 'matches'
+        value: '2024-05-01 - 2024-06-01'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('demo.fct_orders', 'created_at')
+        transformation: 'datetrunc day'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('demo.order_master', 'revenue')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#FF9100FF'
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'Revenue'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce2
+      value: VizFieldFull {
+        label: 'Sales'
+        ref: ref('demo.order_master', 'revenue')
+        format {
+          type: 'number'
+          pattern: '#,###0.00,,"M"'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.fct_orders', 'created_at')
+        duration: 1
+        granularity: 'year'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v4: VizBlock {
+    label: 'Orders'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce2
+      value: VizFieldFull {
+        label: 'Orders'
+        ref: ref('demo.fct_orders', 'total_orders_count')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v5: VizBlock {
+    label: 'Revenue (dup) (dup)'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce2
+      filter {
+        field: ref('demo.dim_users', 'sign_up_date')
+        operator: 'matches'
+        value: '2024-04-30 - 2024-05-11'
+      }
+      value: VizFieldFull {
+        label: 'Customers'
+        ref: ref('demo.dim_users', 'total_users')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block t1: TextBlock {
+    content: @md <div style="height: 1px; width: 500px; background-color: #ccc;"></div>;;
+  }
+}
