@@ -19,7 +19,7 @@ Dashboard merchify_analytics {
       position: pos(560, 40, 250, 140)
     }
     block v5 {
-      position: pos(780, 40, 380, 140)
+      position: pos(800, 40, 380, 140)
     }
     block v6 {
       position: pos(60, 660, 500, 360)
@@ -165,13 +165,14 @@ Dashboard merchify_analytics {
   }
   block v5: VizBlock {
     label: 'Orders (dup)'
-    viz: DataTable {
+    viz: MetricKpi {
       dataset: demo.ds_ecommerce2
       calculation conversion_rate_merchify {
         label: 'Conversion rate'
         formula: @aql safe_divide(
-  (count_distinct(demo.fct_orders.user_id)|where(demo.dim_countries.name == "Vietnam")),
-  count_distinct(demo.fct_orders.user_id));;
+  count_distinct(demo.fct_orders.user_id) | where(demo.dim_countries.name == "Vietnam") ,
+  count_distinct(demo.fct_orders.user_id)
+);;
         calc_type: 'measure'
         data_type: 'number'
       }
@@ -187,31 +188,42 @@ Dashboard merchify_analytics {
         calc_type: 'measure'
         data_type: 'number'
       }
-      fields: [
-        VizFieldFull {
-          ref: 'conversion_rate_merchify'
-          format {
-            type: 'number'
-            pattern: '#,###0.00'
-          }
-        },
-        VizFieldFull {
-          ref: 'metric_12a3de4'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        },
-        VizFieldFull {
-          ref: 'metric_4e162d6'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
+      calculation converted_users {
+        label: 'converted_users'
+        formula: @aql count_distinct(demo.fct_orders.user_id) | where(demo.dim_countries.name == "Vietnam");;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation all_users {
+        label: 'all_users'
+        formula: @aql count_distinct(demo.fct_orders.user_id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation conversion_rate {
+        label: 'Conversion Rate'
+        formula: @aql converted_users*1.0 / all_users;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('demo.fct_orders', 'created_at')
+        operator: 'matches'
+        value: '2023-02-01 to 2023-03-01'
+      }
+      value: VizFieldFull {
+        ref: 'conversion_rate'
+        format {
+          type: 'number'
+          pattern: '#,###0.00%'
+          group_separator: ','
+          decimal_separator: '.'
         }
-      ]
-      settings {
-        show_row_number: true
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.fct_order_items', 'created_at')
+        duration: 1
+        granularity: 'month'
       }
     }
     settings {
