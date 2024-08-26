@@ -4,26 +4,24 @@ Dashboard merchify_home {
 
   view: CanvasLayout {
     label: 'View 1'
-    width: 1160
-    height: 480
+    width: 1140
+    height: 440
     grid_size: 20
     block v2 {
-      position: pos(60, 40, 560, 400)
+      position: pos(40, 40, 560, 360)
     }
     block v3 {
-      position: pos(660, 80, 240, 140)
+      position: pos(620, 40, 480, 180)
     }
     block v4 {
-      position: pos(660, 260, 220, 140)
+      position: pos(620, 240, 220, 160)
     }
     block v5 {
-      position: pos(880, 260, 240, 140)
-    }
-    block t1 {
-      position: pos(660, 220, 460, 40)
+      position: pos(860, 240, 240, 160)
     }
   }
   block v2: VizBlock {
+    theme: SecondaryBlock
     label: 'Sales'
     viz: AreaChart {
       dataset: demo.ds_ecommerce2
@@ -63,6 +61,12 @@ Dashboard merchify_home {
     label: 'Revenue'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce2
+      calculation metric_73b32d0 {
+        label: 'Sales goal'
+        formula: @aql 200000000;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
       filter {
         field: ref('demo.fct_orders', 'created_at')
         operator: 'before'
@@ -76,17 +80,24 @@ Dashboard merchify_home {
           pattern: '#,###0.00,,"M"'
         }
       }
-      compare_value: VizPopSettings {
-        field: ref('demo.fct_orders', 'created_at')
-        duration: 1
-        granularity: 'year'
+      compare_value: VizFieldFull {
+        ref: 'metric_73b32d0'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        display_mode: 'progress'
       }
     }
     settings {
       hide_label: true
     }
+    theme: SecondaryBlock
   }
   block v4: VizBlock {
+    theme: SecondaryBlock
     label: 'Orders'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce2
@@ -106,7 +117,7 @@ Dashboard merchify_home {
       compare_value: VizPopSettings {
         field: ref('demo.fct_orders', 'created_at')
         duration: 1
-        granularity: 'year'
+        granularity: 'month'
       }
     }
     settings {
@@ -114,6 +125,7 @@ Dashboard merchify_home {
     }
   }
   block v5: VizBlock {
+    theme: SecondaryBlock
     label: 'Revenue (dup) (dup)'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce2
@@ -133,14 +145,11 @@ Dashboard merchify_home {
       compare_value: VizPopSettings {
         field: ref('demo.dim_users', 'sign_up_date')
         duration: 1
-        granularity: 'year'
+        granularity: 'month'
       }
     }
     settings {
       hide_label: true
     }
-  }
-  block t1: TextBlock {
-    content: @md <div style="height: 1px; width: 500px; background-color: #ccc;"></div>;;
   }
 }
