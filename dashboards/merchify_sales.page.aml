@@ -1,0 +1,313 @@
+Dashboard merchify_overview {
+  title: 'Merchify Sales'
+  description: ''''''
+  block f1: FilterBlock {
+    label: 'Merchant Name'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo.ds_ecommerce
+      field: ref('demo.dim_merchants', 'name')
+    }
+    default {
+      operator: 'is'
+      value: 'Abernathy Group'
+    }
+  }
+  block v2: VizBlock {
+    label: 'Product Performance'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.dim_products', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          label: 'Total Orders'
+          ref: 'count_distinct_orders'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          label: 'GMV'
+          ref: 'gmv'
+          format {
+            type: 'number'
+            pattern: '[$$]#,###0.00,"K"'
+            group_separator: ','
+            decimal_separator: '.'
+          }
+        },
+        VizFieldFull {
+          label: 'AOV'
+          ref: 'aov'
+          format {
+            type: 'number'
+            pattern: '[$$]#,###0.00'
+          }
+        }
+      ]
+      settings {
+        row_height: 'multiple_lines'
+        show_row_number: true
+        row_limit: 5000
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block t1: lib.page_components.block.card_flat
+  block t3: lib.page_components.block.card_flat
+  block f2: FilterBlock {
+    label: 'Date Range'
+    type: 'date'
+    default {
+      operator: 'matches'
+      value: 'last 2 years'
+    }
+  }
+  block t11: lib.page_components.block.line_ver
+  block t12: lib.page_components.block.line_ver
+  block v11: VizBlock {
+    label: 'Product Performance (dup)'
+    viz: CombinationChart {
+      dataset: demo.ds_ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('demo.dim_dates', 'date_key')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          mark_type: 'column'
+          field: VizFieldFull {
+            label: 'Total Orders'
+            ref: 'count_orders'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#005A32FF'
+          }
+        }
+      }
+      y_axis {
+        settings {
+          alignment: 'right'
+        }
+        series {
+          mark_type: 'line'
+          field: VizFieldFull {
+            label: 'GMV'
+            ref: 'gmv'
+            format {
+              type: 'number'
+              pattern: '[$$]#,###0.00,"K"'
+              group_separator: ','
+              decimal_separator: '.'
+            }
+          }
+          settings {
+            color: '#D9F0A3FF'
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+      y_axis {
+        series {
+          mark_type: 'line'
+          field: VizFieldFull {
+            label: 'AOV'
+            ref: 'aov'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#41AB5DFF'
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+  }
+  block f3: FilterBlock {
+    label: 'Product'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo.ds_ecommerce
+      field: ref('demo.dim_products', 'name')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block v12: VizBlock {
+    label: 'Total sales'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce2
+      filter {
+        field: ref('demo.fct_orders', 'created_at')
+        operator: 'before'
+        value: '2024-05-01'
+      }
+      value: VizFieldFull {
+        ref: ref('demo.order_master', 'revenue')
+        format {
+          type: 'number'
+          pattern: '[$$]#,###0.00,,"M"'
+          group_separator: ','
+          decimal_separator: '.'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.fct_orders', 'created_at')
+        duration: 1
+        granularity: 'month'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v13: VizBlock {
+    label: 'Total sales (dup)'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce2
+      filter {
+        field: ref('demo.fct_orders', 'created_at')
+        operator: 'before'
+        value: '2024-05-01'
+      }
+      value: VizFieldFull {
+        label: 'GMV'
+        ref: ref('demo.user_facts_aggr', 'total_gmv')
+        format {
+          type: 'number'
+          pattern: '[$$]#,###0.00,,"M"'
+          group_separator: ','
+          decimal_separator: '.'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.fct_orders', 'created_at')
+        duration: 1
+        granularity: 'month'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v14: VizBlock {
+    label: 'Total sales (dup) (dup)'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce2
+      filter {
+        field: ref('demo.fct_orders', 'created_at')
+        operator: 'before'
+        value: '2024-05-01'
+      }
+      value: VizFieldFull {
+        label: 'AOV'
+        ref: 'aov'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.fct_orders', 'created_at')
+        duration: 1
+        granularity: 'month'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1340
+    height: 1080
+    block f1 {
+      position: pos(-320, 320, 300, 80)
+    }
+    block v2 {
+      position: pos(730, 310, 560, 350)
+    }
+    block t1 {
+      position: pos(0, 260, 1340, 440)
+      layer: -1
+    }
+    block t3 {
+      position: pos(340, 40, 1000, 190)
+      layer: -1
+    }
+    block f2 {
+      position: pos(0, 140, 310, 80)
+    }
+    block t11 {
+      position: pos(640, 40, 40, 190)
+    }
+    block t12 {
+      position: pos(970, 40, 40, 190)
+    }
+    block v11 {
+      position: pos(20, 290, 670, 390)
+    }
+    block f3 {
+      position: pos(0, 50, 310, 80)
+    }
+    block v12 {
+      position: pos(390, 70, 240, 120)
+    }
+    block v13 {
+      position: pos(710, 70, 240, 120)
+    }
+    block v14 {
+      position: pos(1040, 70, 240, 120)
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'f3'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: [
+            'v2',
+            'v11'
+          ]
+          field: ref('demo.dim_dates', 'date_key')
+        }
+      ]
+    }
+  ]
+  settings {
+    timezone: 'Etc/UTC'
+    cache_duration: 20160
+  }
+}

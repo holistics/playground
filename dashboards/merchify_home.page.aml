@@ -1,24 +1,24 @@
 Dashboard merchify_home {
-  theme: Merchify
+  //theme: Merchify
   title: 'Merchify_home'
   description: ''''''
 
   view: CanvasLayout {
     label: 'View 1'
-    width: 1140
-    height: 440
+    width: 1120
+    height: 400
     grid_size: 20
     block v2 {
-      position: pos(40, 40, 560, 360)
+      position: pos(0, 0, 560, 360)
     }
     block v3 {
-      position: pos(620, 40, 480, 180)
+      position: pos(580, 0, 540, 180)
     }
     block v4 {
-      position: pos(620, 240, 220, 160)
+      position: pos(580, 200, 240, 160)
     }
     block v5 {
-      position: pos(860, 240, 240, 160)
+      position: pos(860, 200, 260, 160)
     }
   }
   block v2: VizBlock {

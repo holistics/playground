@@ -1,33 +1,39 @@
 Dashboard merchify_analytics {
-  theme: Merchify
+  //theme: Merchify
   title: 'merchify_analytics'
   description: ''''''
 
   view: CanvasLayout {
     label: 'View 1'
-    width: 1180
-    height: 1060
+    width: 1060
+    height: 1240
     grid_size: 20
     block v2 {
-      position: pos(40, 40, 240, 160)
+      position: pos(0, 0, 320, 160)
     }
     block v3 {
-      position: pos(320, 40, 240, 160)
+      position: pos(380, 0, 320, 160)
     }
     block v4 {
-      position: pos(600, 40, 220, 160)
+      position: pos(760, 0, 300, 160)
     }
     block v5 {
-      position: pos(860, 40, 280, 160)
+      position: pos(0, 200, 320, 160)
     }
     block v6 {
-      position: pos(40, 660, 500, 360)
+      position: pos(0, 820, 460, 360)
     }
     block v7 {
-      position: pos(600, 660, 540, 360)
+      position: pos(520, 820, 540, 360)
     }
     block v8 {
-      position: pos(40, 240, 1100, 380)
+      position: pos(0, 400, 1060, 380)
+    }
+    block v9 {
+      position: pos(380, 200, 320, 160)
+    }
+    block v10 {
+      position: pos(760, 200, 300, 160)
     }
   }
   block v2: VizBlock {
@@ -312,8 +318,7 @@ Dashboard merchify_analytics {
     }
   }
   block v8: VizBlock {
-    theme: PrimaryBlock
-    label: 'Trend chart of each metrics'
+    label: 'Trend chart of key metrics'
     viz: LineChart {
       dataset: demo.ds_ecommerce2
       filter {
@@ -379,5 +384,61 @@ Dashboard merchify_analytics {
         legend_label: 'left'
       }
     }
+    theme: PrimaryBlock
+  }
+  block v9: VizBlock {
+    label: 'Revenue (dup)'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce2
+      filter {
+        field: ref('demo.fct_orders', 'created_at')
+        operator: 'before'
+        value: '2024-04-29'
+      }
+      value: VizFieldFull {
+        label: 'GMV'
+        ref: 'gmv'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.fct_orders', 'created_at')
+        duration: 1
+        granularity: 'month'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+    theme: SecondaryBlock
+  }
+  block v10: VizBlock {
+    label: 'Revenue (dup) (dup)'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce2
+      filter {
+        field: ref('demo.fct_orders', 'created_at')
+        operator: 'before'
+        value: '2024-05-01'
+      }
+      value: VizFieldFull {
+        ref: 'aov'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.fct_orders', 'created_at')
+        duration: 1
+        granularity: 'month'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+    theme: SecondaryBlock
   }
 }
