@@ -26,14 +26,14 @@ Dashboard merchify_analytics {
     block v7 {
       position: pos(520, 820, 540, 360)
     }
-    block v8 {
-      position: pos(0, 400, 1060, 380)
-    }
     block v9 {
       position: pos(380, 200, 320, 160)
     }
     block v10 {
       position: pos(760, 200, 300, 160)
+    }
+    block v11 {
+      position: pos(0, 360, 1040, 440)
     }
   }
   block v2: VizBlock {
@@ -317,75 +317,6 @@ Dashboard merchify_analytics {
       }
     }
   }
-  block v8: VizBlock {
-    label: 'Trend chart of key metrics'
-    viz: LineChart {
-      dataset: demo.ds_ecommerce2
-      filter {
-        field: ref('demo.fct_orders', 'created_at')
-        operator: 'matches'
-        value: '2024-01-01 - 2024-05-31'
-      }
-      x_axis: VizFieldFull {
-        ref: ref('demo.fct_orders', 'created_at')
-        transformation: 'datetrunc month'
-        format {
-          type: 'date'
-        }
-      }
-      y_axis {
-        settings {
-          alignment: 'right'
-          scale: 'logarithmic'
-        }
-        series {
-          field: VizFieldFull {
-            ref: ref('demo.order_master', 'revenue')
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-          settings {
-            color: '#F1BB88'
-            line_interpolation: 'smooth'
-          }
-        }
-        series {
-          field: VizFieldFull {
-            ref: 'count_orders'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-          settings {
-            color: '#D70909'
-            line_interpolation: 'smooth'
-          }
-        }
-        series {
-          field: VizFieldFull {
-            ref: 'count_users'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-          settings {
-            color: '#255DD4'
-            line_interpolation: 'smooth'
-          }
-        }
-      }
-      settings {
-        show_data_points: true
-        row_limit: 5000
-        legend_label: 'left'
-      }
-    }
-    theme: PrimaryBlock
-  }
   block v9: VizBlock {
     label: 'Revenue (dup)'
     viz: MetricKpi {
@@ -440,5 +371,64 @@ Dashboard merchify_analytics {
       hide_label: true
     }
     theme: SecondaryBlock
+  }
+  block v11: VizBlock {
+    label: 'Metrics by Date'
+    viz: MetricSheet {
+      dataset: demo.ds_ecommerce
+      filter {
+        field: ref('demo.dim_dates', 'date_key')
+        operator: 'not_null'
+        value: []
+      }
+      date_field: VizFieldFull {
+        ref: ref('demo.dim_dates', 'date_key')
+        transformation: 'datetrunc quarter'
+        format {
+          type: 'date'
+        }
+      }
+      rows: [
+        MetricSeries {
+          field: VizFieldFull {
+            ref: 'count_users'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        },
+        MetricSeries {
+          field: VizFieldFull {
+            ref: 'count_distinct_orders'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        },
+        MetricSeries {
+          field: VizFieldFull {
+            ref: 'gmv'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        },
+        MetricSeries {
+          field: VizFieldFull {
+            ref: 'aov'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      ]
+      settings {
+        max_column: 7
+      }
+    }
   }
 }
