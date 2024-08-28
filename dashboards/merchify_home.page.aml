@@ -1,4 +1,5 @@
 Dashboard merchify_home {
+  theme: Merchify
   title: 'Merchify_home'
   description: ''''''
 

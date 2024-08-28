@@ -1,5 +1,11 @@
 PageTheme Merchify {
+background {
+  bg_color: "white"
+}
+canvas {
+shadow: "none"
 
+}
 }
 
 

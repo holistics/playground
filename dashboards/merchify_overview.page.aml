@@ -1,0 +1,10 @@
+Dashboard merchify_overview {
+  title: 'Merchify Overview'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+  }
+}
