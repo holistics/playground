@@ -37,7 +37,6 @@ Dashboard hooli_analytics {
     }
   }
   block v2: VizBlock {
-    theme: SecondaryBlock
     label: 'Revenue'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce2
@@ -63,6 +62,7 @@ Dashboard hooli_analytics {
     settings {
       hide_label: true
     }
+    theme: SecondaryBlock
   }
   block v3: VizBlock {
     theme: SecondaryBlock

@@ -393,20 +393,20 @@ Dashboard hooli_overview {
       position: pos(-320, 290, 300, 80)
     }
     block v2 {
-      position: pos(730, 210, 560, 370)
+      position: pos(730, 250, 560, 330)
     }
     block t3 {
-      position: pos(340, -10, 1000, 190)
+      position: pos(340, 0, 1000, 190)
       layer: -1
     }
     block f2 {
       position: pos(0, 90, 310, 80)
     }
     block t11 {
-      position: pos(640, -10, 40, 190)
+      position: pos(640, 0, 40, 190)
     }
     block t12 {
-      position: pos(980, -10, 40, 190)
+      position: pos(980, 0, 40, 190)
     }
     block v11 {
       position: pos(20, 220, 670, 390)
@@ -415,13 +415,13 @@ Dashboard hooli_overview {
       position: pos(0, 0, 310, 80)
     }
     block v12 {
-      position: pos(380, 30, 240, 120)
+      position: pos(380, 40, 240, 120)
     }
     block v14 {
-      position: pos(1050, 20, 240, 120)
+      position: pos(1050, 30, 240, 120)
     }
     block v5 {
-      position: pos(700, 20, 250, 140)
+      position: pos(700, 30, 250, 140)
     }
     block v15 {
       position: pos(0, 630, 710, 370)

@@ -6,52 +6,48 @@ Dashboard hooli_marketing {
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
-    width: 1260
-    height: 920
-    block override_css {
-      position: pos(-20, 650, 170, 120)
-    }
+    width: 1240
+    height: 890
     block v3 {
-      position: pos(330, 280, 910, 230)
+      position: pos(310, 280, 930, 230)
     }
     block f1 {
-      position: pos(0, 0, 630, 60)
+      position: pos(0, 0, 510, 60)
     }
     block v10 {
-      position: pos(20, 110, 200, 100)
+      position: pos(50, 120, 170, 100)
     }
     block v11 {
-      position: pos(330, 110, 200, 100)
+      position: pos(340, 120, 170, 100)
     }
     block v12 {
-      position: pos(940, 110, 200, 100)
+      position: pos(990, 120, 180, 100)
     }
     block v13 {
-      position: pos(630, 110, 200, 100)
-    }
-    block t1 {
-      position: pos(30, 900, 300, 520)
-      layer: -1
+      position: pos(640, 120, 200, 100)
     }
     block v14 {
-      position: pos(330, 560, 910, 260)
+      position: pos(310, 560, 930, 260)
     }
     block v15 {
-      position: pos(20, 280, 250, 230)
+      position: pos(0, 280, 270, 230)
     }
     block v18 {
-      position: pos(20, 570, 250, 250)
+      position: pos(0, 560, 270, 260)
     }
-  }
-  block override_css: TextBlock {
-    content: @md <style>
-      .dac-text-block {
-        overflow: hidden !important;
-      }
-      .h-kpi-metric-label {
-        font-size: 18px;
-      }
-    </style>;;
+    block t2 {
+      position: pos(0, 90, 1240, 150)
+      layer: -1
+    }
+    block t3 {
+      position: pos(270, 90, 50, 150)
+    }
+    block t4 {
+      position: pos(570, 90, 50, 150)
+    }
+    block t5 {
+      position: pos(920, 90, 50, 150)
+    }
   }
   block v3: VizBlock {
     label: 'General'
@@ -207,10 +203,8 @@ Dashboard hooli_marketing {
       hide_label: true
     }
   }
-  block t1: TextBlock {
-    content: @md <div style="width: 295px; height: 380px; border-radius: 4px;"></div>;;
-  }
   block v14: VizBlock {
+    theme: SecondaryBlock
     label: 'Cost per conversion'
     viz: AreaChart {
       dataset: demo.marketing_campaign
@@ -247,6 +241,7 @@ Dashboard hooli_marketing {
     }
   }
   block v15: VizBlock {
+    theme: SecondaryBlock
     label: 'Clicks graph'
     viz: AreaChart {
       dataset: demo.marketing_campaign
@@ -289,6 +284,7 @@ Dashboard hooli_marketing {
     }
   }
   block v18: VizBlock {
+    theme: SecondaryBlock
     label: 'CTR graph'
     viz: AreaChart {
       dataset: demo.marketing_campaign
@@ -330,5 +326,41 @@ Dashboard hooli_marketing {
     settings {
       hide_controls: true
     }
+  }
+  block t2: TextBlock {
+    content: @md <div
+      style="
+        background: rgba(255,255,255, 1);
+        border-radius: 14px;
+        border: 2px solid #eeeeee;
+        width: 100%; height: 100%;"
+    ></div>;;
+  }
+  block t3: TextBlock {
+    content: @md <div 
+      style="
+        border-left: 2px solid #eeeeee;
+        height: 100%;
+        margin-left: 50%;
+        display: block;
+      "></div>;;
+  }
+  block t4: TextBlock {
+    content: @md <div 
+      style="
+        border-left: 2px solid #eeeeee;
+        height: 100%;
+        margin-left: 50%;
+        display: block;
+      "></div>;;
+  }
+  block t5: TextBlock {
+    content: @md <div 
+      style="
+        border-left: 2px solid #eeeeee;
+        height: 100%;
+        margin-left: 50%;
+        display: block;
+      "></div>;;
   }
 }
