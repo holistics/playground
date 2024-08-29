@@ -166,4 +166,16 @@ Dashboard hooli_home {
       hide_label: true
     }
   }
+  block override_css: TextBlock {
+    content: @md <style>
+      .h-kpi-metric-label {
+        font-size: 16px;
+      }
+      .h-kpi-metric-kpi {
+        font-size: 44px;
+        line-height: 52px;
+        color: #C35448;
+      }
+    </style>;;
+  }
 }

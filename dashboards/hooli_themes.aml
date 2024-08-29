@@ -45,7 +45,7 @@ BlockTheme SecondaryBlock {
 padding: 12
       border{
         border_width: 1
-        border_color: "#E5E5E5"
+        border_color: "#DAC5C2"
         border_radius: 8
       }
       background {

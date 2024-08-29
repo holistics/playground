@@ -18,7 +18,7 @@ Dashboard hooli_products {
       position: pos(560, 540, 620, 440)
     }
     block f1 {
-      position: pos(360, 20, 300, 100)
+      position: pos(320, 20, 300, 100)
     }
     block f2 {
       position: pos(0, 20, 300, 100)

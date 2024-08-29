@@ -477,7 +477,7 @@ Dashboard hooli_analytics {
       style="
         background: rgba(255,255,255, 1);
         border-radius: 14px;
-        border: 2px solid #eeeeee;
+        border: 1px solid #DAC5C2;
         width: 100%; height: 100%;"
     ></div>;;
   }

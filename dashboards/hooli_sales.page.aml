@@ -66,7 +66,8 @@ Dashboard hooli_overview {
       hide_label: true
     }
   }
-  block t3: lib.page_components.block.card_flat
+
+
   block f2: FilterBlock {
     theme: SecondaryBlock
     label: 'Date Range'
@@ -76,8 +77,6 @@ Dashboard hooli_overview {
       value: '$H_NIL$'
     }
   }
-  block t11: lib.page_components.block.line_ver
-  block t12: lib.page_components.block.line_ver
   block v11: VizBlock {
     theme: SecondaryBlock
     label: 'Sales Performance'
@@ -396,6 +395,33 @@ Dashboard hooli_overview {
       }
     }
   }
+  block t13: TextBlock {
+    content: @md <div
+      style="
+        background: rgba(255,255,255, 1);
+        border-radius: 14px;
+        border: 2px solid #DAC5C2;
+        width: 100%; height: 100%;"
+    ></div>;;
+  }
+  block t14: TextBlock {
+    content: @md <div 
+      style="
+        border-left: 2px solid #DAC5C2;
+        height: 100%;
+        margin-left: 50%;
+        display: block;
+      "></div>;;
+  }
+  block t15: TextBlock {
+    content: @md <div 
+      style="
+        border-left: 2px solid #DAC5C2;
+        height: 100%;
+        margin-left: 50%;
+        display: block;
+      "></div>;;
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1340
@@ -406,18 +432,8 @@ Dashboard hooli_overview {
     block v2 {
       position: pos(730, 240, 610, 390)
     }
-    block t3 {
-      position: pos(340, 0, 1000, 210)
-      layer: -1
-    }
     block f2 {
       position: pos(0, 110, 310, 100)
-    }
-    block t11 {
-      position: pos(640, 0, 40, 210)
-    }
-    block t12 {
-      position: pos(980, 0, 40, 210)
     }
     block v11 {
       position: pos(0, 240, 690, 390)
@@ -442,6 +458,16 @@ Dashboard hooli_overview {
     }
     block v17 {
       position: pos(0, 1080, 1340, 430)
+    }
+    block t13 {
+      position: pos(340, 0, 1000, 210)
+      layer: -1
+    }
+    block t14 {
+      position: pos(600, 0, 90, 210)
+    }
+    block t15 {
+      position: pos(920, 0, 90, 210)
     }
   }
   interactions: [
