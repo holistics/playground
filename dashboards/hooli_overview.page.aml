@@ -1,6 +1,6 @@
-Dashboard merchify_analytics {
+Dashboard hooli_analytics {
   //theme: Merchify
-  title: 'merchify_analytics'
+  title: 'Hooli Analytics Overview'
   description: ''''''
 
   view: CanvasLayout {
@@ -21,10 +21,10 @@ Dashboard merchify_analytics {
       position: pos(0, 200, 320, 160)
     }
     block v6 {
-      position: pos(0, 820, 460, 360)
+      position: pos(0, 720, 460, 360)
     }
     block v7 {
-      position: pos(520, 820, 540, 360)
+      position: pos(520, 720, 540, 360)
     }
     block v9 {
       position: pos(380, 200, 320, 160)
@@ -33,7 +33,7 @@ Dashboard merchify_analytics {
       position: pos(760, 200, 300, 160)
     }
     block v11 {
-      position: pos(0, 360, 1040, 440)
+      position: pos(0, 420, 1040, 240)
     }
   }
   block v2: VizBlock {
@@ -373,7 +373,7 @@ Dashboard merchify_analytics {
     theme: SecondaryBlock
   }
   block v11: VizBlock {
-    label: 'Metrics by Date'
+    label: 'Metrics Trends'
     viz: MetricSheet {
       dataset: demo.ds_ecommerce
       filter {
@@ -383,7 +383,7 @@ Dashboard merchify_analytics {
       }
       date_field: VizFieldFull {
         ref: ref('demo.dim_dates', 'date_key')
-        transformation: 'datetrunc quarter'
+        transformation: 'datetrunc month'
         format {
           type: 'date'
         }
@@ -391,44 +391,57 @@ Dashboard merchify_analytics {
       rows: [
         MetricSeries {
           field: VizFieldFull {
+            label: 'Customers'
             ref: 'count_users'
             format {
               type: 'number'
               pattern: 'inherited'
             }
           }
+          settings {
+            mark_type: 'line'
+          }
         },
         MetricSeries {
           field: VizFieldFull {
+            label: 'Orders'
             ref: 'count_distinct_orders'
             format {
               type: 'number'
               pattern: 'inherited'
             }
           }
+          settings {
+            mark_type: 'line'
+          }
         },
         MetricSeries {
           field: VizFieldFull {
+            label: 'Sales'
             ref: 'gmv'
             format {
               type: 'number'
               pattern: 'inherited'
             }
           }
+          settings {
+            mark_type: 'line'
+          }
         },
         MetricSeries {
           field: VizFieldFull {
+            label: 'AOV'
             ref: 'aov'
             format {
               type: 'number'
               pattern: 'inherited'
             }
           }
+          settings {
+            mark_type: 'line'
+          }
         }
       ]
-      settings {
-        max_column: 7
-      }
     }
   }
 }

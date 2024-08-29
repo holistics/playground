@@ -1,0 +1,334 @@
+use demo
+use lib
+
+Dashboard hooli_marketing {
+  title: 'Hooli Dashboard'
+  description: ''''''
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1260
+    height: 920
+    block override_css {
+      position: pos(-20, 650, 170, 120)
+    }
+    block v3 {
+      position: pos(330, 280, 910, 230)
+    }
+    block f1 {
+      position: pos(0, 0, 630, 60)
+    }
+    block v10 {
+      position: pos(20, 110, 200, 100)
+    }
+    block v11 {
+      position: pos(330, 110, 200, 100)
+    }
+    block v12 {
+      position: pos(940, 110, 200, 100)
+    }
+    block v13 {
+      position: pos(630, 110, 200, 100)
+    }
+    block t1 {
+      position: pos(30, 900, 300, 520)
+      layer: -1
+    }
+    block v14 {
+      position: pos(330, 560, 910, 260)
+    }
+    block v15 {
+      position: pos(20, 280, 250, 230)
+    }
+    block v18 {
+      position: pos(20, 570, 250, 250)
+    }
+  }
+  block override_css: TextBlock {
+    content: @md <style>
+      .dac-text-block {
+        overflow: hidden !important;
+      }
+      .h-kpi-metric-label {
+        font-size: 18px;
+      }
+    </style>;;
+  }
+  block v3: VizBlock {
+    label: 'General'
+    viz: DataTable {
+      dataset: demo.marketing_campaign
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.marketing_kpi', 'c_date')
+          transformation: 'datetrunc day'
+          format {
+            type: 'date'
+          }
+        },
+        VizFieldFull {
+          ref: ref('demo.marketing_kpi', 'campaign_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('demo.marketing_kpi', 'orders')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('demo.marketing_kpi', 'revenue')
+          format {
+            type: 'number'
+            pattern: '[$$]#,###0.00'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 3
+            direction: 'desc'
+          }
+        ]
+        conditional_formats: [
+          ConditionalFormat {
+            ref: ref('demo.marketing_kpi', 'revenue')
+            format: ScaleFormat {
+              min {
+                value: 500000
+                color: '#FFEDD7FF'
+              }
+              mid {
+                value: 1200000
+                color: '#DACDB5FF'
+              }
+              max {
+                value: 2000000
+                color: '#9F600FFF'
+              }
+            }
+          }
+        ]
+        row_limit: 5000
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'Campaign'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: marketing_campaign
+      field: ref('demo.marketing_kpi', 'campaign_name')
+    }
+    default {
+      operator: 'is'
+      value: 'youtube_blogger'
+    }
+    settings {
+      input_type: 'single'
+    }
+  }
+  block v10: VizBlock {
+    label: 'Conversion rate'
+    viz: MetricKpi {
+      dataset: marketing_campaign
+      value: VizFieldFull {
+        label: 'Conversion rate'
+        ref: ref('demo.marketing_kpi', 'conversion_rate')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v11: VizBlock {
+    label: 'CPC'
+    viz: MetricKpi {
+      dataset: marketing_campaign
+      value: VizFieldFull {
+        ref: ref('demo.marketing_kpi', 'cost_per_click')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v12: VizBlock {
+    label: 'CP1kI'
+    viz: MetricKpi {
+      dataset: marketing_campaign
+      value: VizFieldFull {
+        label: 'CP1kI'
+        ref: ref('demo.marketing_kpi', 'cost_per_thousand_impressions')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v13: VizBlock {
+    label: 'Cost per conversion'
+    viz: MetricKpi {
+      dataset: marketing_campaign
+      value: VizFieldFull {
+        ref: ref('demo.marketing_kpi', 'cost_per_conversion')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block t1: TextBlock {
+    content: @md <div style="width: 295px; height: 380px; border-radius: 4px;"></div>;;
+  }
+  block v14: VizBlock {
+    label: 'Cost per conversion'
+    viz: AreaChart {
+      dataset: demo.marketing_campaign
+      x_axis: VizFieldFull {
+        ref: ref('demo.marketing_kpi', 'c_date')
+        transformation: 'datetrunc day'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        settings {
+          show_data_label_by: 'value'
+        }
+        series {
+          field: VizFieldFull {
+            ref: ref('demo.marketing_kpi', 'cost_per_conversion')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#F98D02FF'
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+      settings {
+        show_data_points: true
+        row_limit: 5000
+        legend_label: 'hidden'
+      }
+    }
+  }
+  block v15: VizBlock {
+    label: 'Clicks graph'
+    viz: AreaChart {
+      dataset: demo.marketing_campaign
+      x_axis: VizFieldFull {
+        label: ' '
+        ref: ref('demo.marketing_kpi', 'c_date')
+        transformation: 'datetrunc day'
+        format {
+          type: 'date'
+          pattern: 'LL/dd'
+        }
+      }
+      y_axis {
+        settings {
+          alignment: 'right'
+        }
+        series {
+          field: VizFieldFull {
+            ref: ref('demo.marketing_kpi', 'clicks')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: '#,###0.00,,"M"'
+            }
+          }
+          settings {
+            color: '#F98D02FF'
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        legend_label: 'hidden'
+        x_axis_label: ' '
+      }
+    }
+    settings {
+      hide_controls: true
+    }
+  }
+  block v18: VizBlock {
+    label: 'CTR graph'
+    viz: AreaChart {
+      dataset: demo.marketing_campaign
+      x_axis: VizFieldFull {
+        label: ' '
+        ref: ref('demo.marketing_kpi', 'c_date')
+        transformation: 'datetrunc day'
+        format {
+          type: 'date'
+          pattern: 'LL/dd'
+        }
+      }
+      y_axis {
+        settings {
+          alignment: 'right'
+        }
+        series {
+          field: VizFieldFull {
+            ref: ref('demo.marketing_kpi', 'ctr')
+            format {
+              type: 'number'
+              pattern: '#,###0.00'
+              group_separator: '.'
+              decimal_separator: ','
+            }
+          }
+          settings {
+            color: '#F98D02FF'
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        legend_label: 'hidden'
+        x_axis_label: ' '
+      }
+    }
+    settings {
+      hide_controls: true
+    }
+  }
+}

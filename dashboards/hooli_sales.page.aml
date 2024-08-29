@@ -1,5 +1,5 @@
-Dashboard merchify_overview {
-  title: 'Merchify Sales'
+Dashboard hooli_overview {
+  title: 'Hooli Sales'
   description: ''''''
   block f1: FilterBlock {
     label: 'Merchant Name'
@@ -14,11 +14,12 @@ Dashboard merchify_overview {
     }
   }
   block v2: VizBlock {
-    label: 'Product Performance'
+    label: 'Product list'
     viz: DataTable {
       dataset: demo.ds_ecommerce
       fields: [
         VizFieldFull {
+          label: 'Product Name'
           ref: ref('demo.dim_products', 'name')
           format {
             type: 'text'
@@ -61,20 +62,19 @@ Dashboard merchify_overview {
       hide_label: true
     }
   }
-  block t1: lib.page_components.block.card_flat
   block t3: lib.page_components.block.card_flat
   block f2: FilterBlock {
     label: 'Date Range'
     type: 'date'
     default {
       operator: 'matches'
-      value: 'last 2 years'
+      value: '$H_NIL$'
     }
   }
   block t11: lib.page_components.block.line_ver
   block t12: lib.page_components.block.line_ver
   block v11: VizBlock {
-    label: 'Product Performance (dup)'
+    label: 'Sales Performance'
     viz: CombinationChart {
       dataset: demo.ds_ecommerce
       x_axis: VizFieldFull {
@@ -96,7 +96,7 @@ Dashboard merchify_overview {
             }
           }
           settings {
-            color: '#005A32FF'
+            color: '#FBD7B6FF'
           }
         }
       }
@@ -107,7 +107,7 @@ Dashboard merchify_overview {
         series {
           mark_type: 'line'
           field: VizFieldFull {
-            label: 'GMV'
+            label: 'Sales'
             ref: 'gmv'
             format {
               type: 'number'
@@ -117,24 +117,7 @@ Dashboard merchify_overview {
             }
           }
           settings {
-            color: '#D9F0A3FF'
-            line_interpolation: 'smooth'
-          }
-        }
-      }
-      y_axis {
-        series {
-          mark_type: 'line'
-          field: VizFieldFull {
-            label: 'AOV'
-            ref: 'aov'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-          settings {
-            color: '#41AB5DFF'
+            color: '#E27712'
             line_interpolation: 'smooth'
           }
         }
@@ -166,36 +149,8 @@ Dashboard merchify_overview {
         value: '2024-05-01'
       }
       value: VizFieldFull {
+        label: 'Total Sales'
         ref: ref('demo.order_master', 'revenue')
-        format {
-          type: 'number'
-          pattern: '[$$]#,###0.00,,"M"'
-          group_separator: ','
-          decimal_separator: '.'
-        }
-      }
-      compare_value: VizPopSettings {
-        field: ref('demo.fct_orders', 'created_at')
-        duration: 1
-        granularity: 'month'
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
-  block v13: VizBlock {
-    label: 'Total sales (dup)'
-    viz: MetricKpi {
-      dataset: demo.ds_ecommerce2
-      filter {
-        field: ref('demo.fct_orders', 'created_at')
-        operator: 'before'
-        value: '2024-05-01'
-      }
-      value: VizFieldFull {
-        label: 'GMV'
-        ref: ref('demo.user_facts_aggr', 'total_gmv')
         format {
           type: 'number'
           pattern: '[$$]#,###0.00,,"M"'
@@ -240,47 +195,242 @@ Dashboard merchify_overview {
       hide_label: true
     }
   }
+  block v5: VizBlock {
+    label: 'Orders (dup)'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce2
+      calculation conversion_rate_merchify {
+        label: 'Conversion rate'
+        formula: @aql safe_divide(
+  count_distinct(demo.fct_orders.user_id) | where(demo.dim_countries.name == "Vietnam") ,
+  count_distinct(demo.fct_orders.user_id)
+);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation metric_12a3de4 {
+        label: 'Untitled Metric'
+        formula: @aql (count_distinct(demo.fct_orders.user_id)|where(demo.dim_countries.name == "Vietnam"));;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation metric_4e162d6 {
+        label: 'Untitled Metric'
+        formula: @aql count_distinct(demo.fct_orders.user_id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation converted_users {
+        label: 'converted_users'
+        formula: @aql count_distinct(demo.fct_orders.user_id) | where(demo.dim_countries.name == "Vietnam");;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation all_users {
+        label: 'all_users'
+        formula: @aql count_distinct(demo.fct_orders.user_id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation conversion_rate {
+        label: 'Conversion Rate'
+        formula: @aql converted_users*1.0 / all_users;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('demo.fct_orders', 'created_at')
+        operator: 'before'
+        value: '2024-05-01'
+      }
+      value: VizFieldFull {
+        ref: 'conversion_rate'
+        format {
+          type: 'number'
+          pattern: '#,###0.00%'
+          group_separator: ','
+          decimal_separator: '.'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.fct_orders', 'created_at')
+        duration: 1
+        granularity: 'month'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v15: VizBlock {
+    label: 'Top Sales by Product'
+    viz: ColumnChart {
+      dataset: demo.ds_ecommerce
+      filter {
+        field: ref('demo.dim_products', 'name')
+        operator: 'top'
+        value: 10
+      }
+      x_axis: VizFieldFull {
+        ref: ref('demo.dim_products', 'name')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            label: 'Sales'
+            ref: 'gmv'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#E27712'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        sort {
+          field_index: 0
+          direction: 'desc'
+          type: 'yaxis'
+        }
+        legend_label: 'hidden'
+      }
+    }
+  }
+  block v16: VizBlock {
+    label: 'Top Sales by Category'
+    viz: ColumnChart {
+      dataset: demo.ds_ecommerce
+      filter {
+        field: ref('demo.dim_categories', 'name')
+        operator: 'top'
+        value: 10
+      }
+      x_axis: VizFieldFull {
+        ref: ref('demo.dim_categories', 'name')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            label: 'Sales'
+            ref: 'gmv'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#E27712'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        sort {
+          field_index: 0
+          direction: 'desc'
+          type: 'yaxis'
+        }
+        legend_label: 'hidden'
+      }
+    }
+  }
+  block v17: VizBlock {
+    label: 'Top Sales by Customer'
+    viz: ColumnChart {
+      dataset: demo.ds_ecommerce
+      filter {
+        field: ref('demo.dim_users', 'full_name')
+        operator: 'top'
+        value: 10
+      }
+      x_axis: VizFieldFull {
+        ref: ref('demo.dim_users', 'full_name')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            label: 'Sales'
+            ref: 'gmv'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#E27712'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        sort {
+          field_index: 0
+          direction: 'desc'
+          type: 'yaxis'
+        }
+        legend_label: 'hidden'
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1340
-    height: 1080
+    height: 1520
     block f1 {
-      position: pos(-320, 320, 300, 80)
+      position: pos(-320, 290, 300, 80)
     }
     block v2 {
-      position: pos(730, 310, 560, 350)
-    }
-    block t1 {
-      position: pos(0, 260, 1340, 440)
-      layer: -1
+      position: pos(730, 210, 560, 370)
     }
     block t3 {
-      position: pos(340, 40, 1000, 190)
+      position: pos(340, -10, 1000, 190)
       layer: -1
     }
     block f2 {
-      position: pos(0, 140, 310, 80)
+      position: pos(0, 90, 310, 80)
     }
     block t11 {
-      position: pos(640, 40, 40, 190)
+      position: pos(640, -10, 40, 190)
     }
     block t12 {
-      position: pos(970, 40, 40, 190)
+      position: pos(980, -10, 40, 190)
     }
     block v11 {
-      position: pos(20, 290, 670, 390)
+      position: pos(20, 220, 670, 390)
     }
     block f3 {
-      position: pos(0, 50, 310, 80)
+      position: pos(0, 0, 310, 80)
     }
     block v12 {
-      position: pos(380, 80, 240, 120)
-    }
-    block v13 {
-      position: pos(710, 70, 240, 120)
+      position: pos(380, 30, 240, 120)
     }
     block v14 {
-      position: pos(1040, 70, 240, 120)
+      position: pos(1050, 20, 240, 120)
+    }
+    block v5 {
+      position: pos(700, 20, 250, 140)
+    }
+    block v15 {
+      position: pos(0, 630, 710, 370)
+    }
+    block v16 {
+      position: pos(730, 630, 600, 380)
+    }
+    block v17 {
+      position: pos(0, 1040, 1340, 370)
     }
   }
   interactions: [

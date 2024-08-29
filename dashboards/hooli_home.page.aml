@@ -1,6 +1,6 @@
-Dashboard merchify_home {
+Dashboard hooli_home {
   //theme: Merchify
-  title: 'Merchify_home'
+  title: 'Hooli Home'
   description: ''''''
 
   view: CanvasLayout {
