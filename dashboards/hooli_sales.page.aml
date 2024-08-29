@@ -264,129 +264,129 @@ Dashboard hooli_overview {
       hide_label: true
     }
   }
-  // block v15: VizBlock {
-  //   label: 'Top Sales by Product'
-  //   viz: ColumnChart {
-  //     dataset: demo.ds_ecommerce
-  //     filter {
-  //       field: ref('demo.dim_products', 'name')
-  //       operator: 'top'
-  //       value: 10
-  //     }
-  //     x_axis: VizFieldFull {
-  //       ref: ref('demo.dim_products', 'name')
-  //       format {
-  //         type: 'text'
-  //       }
-  //     }
-  //     y_axis {
-  //       series {
-  //         field: VizFieldFull {
-  //           label: 'Sales'
-  //           ref: 'gmv'
-  //           format {
-  //             type: 'number'
-  //             pattern: 'inherited'
-  //           }
-  //         }
-  //         settings {
-  //           color: '#E27712'
-  //         }
-  //       }
-  //     }
-  //     settings {
-  //       row_limit: 5000
-  //       sort {
-  //         field_index: 0
-  //         direction: 'desc'
-  //         type: 'yaxis'
-  //       }
-  //       legend_label: 'hidden'
-  //     }
-  //   }
-  // }
-  // block v16: VizBlock {
-  //   label: 'Top Sales by Category'
-  //   viz: ColumnChart {
-  //     dataset: demo.ds_ecommerce
-  //     filter {
-  //       field: ref('demo.dim_categories', 'name')
-  //       operator: 'top'
-  //       value: 10
-  //     }
-  //     x_axis: VizFieldFull {
-  //       ref: ref('demo.dim_categories', 'name')
-  //       format {
-  //         type: 'text'
-  //       }
-  //     }
-  //     y_axis {
-  //       series {
-  //         field: VizFieldFull {
-  //           label: 'Sales'
-  //           ref: 'gmv'
-  //           format {
-  //             type: 'number'
-  //             pattern: 'inherited'
-  //           }
-  //         }
-  //         settings {
-  //           color: '#E27712'
-  //         }
-  //       }
-  //     }
-  //     settings {
-  //       row_limit: 5000
-  //       sort {
-  //         field_index: 0
-  //         direction: 'desc'
-  //         type: 'yaxis'
-  //       }
-  //       legend_label: 'hidden'
-  //     }
-  //   }
-  // }
-  // block v17: VizBlock {
-  //   label: 'Top Sales by Customer'
-  //   viz: ColumnChart {
-  //     dataset: demo.ds_ecommerce
-  //     filter {
-  //       field: ref('demo.dim_users', 'full_name')
-  //       operator: 'top'
-  //       value: 10
-  //     }
-  //     x_axis: VizFieldFull {
-  //       ref: ref('demo.dim_users', 'full_name')
-  //       format {
-  //         type: 'text'
-  //       }
-  //     }
-  //     y_axis {
-  //       series {
-  //         field: VizFieldFull {
-  //           label: 'Sales'
-  //           ref: 'gmv'
-  //           format {
-  //             type: 'number'
-  //             pattern: 'inherited'
-  //           }
-  //         }
-  //         settings {
-  //           color: '#E27712'
-  //         }
-  //       }
-  //     }
-  //     settings {
-  //       row_limit: 5000
-  //       sort {
-  //         field_index: 0
-  //         direction: 'desc'
-  //         type: 'yaxis'
-  //       }
-  //       legend_label: 'hidden'
-  //     }
-  //   }
-  // }
+  block v15: VizBlock {
+    label: 'Top Sales by Product'
+    viz: ColumnChart {
+      dataset: demo.ds_ecommerce
+      // filter {
+      //   field: ref('demo.dim_products', 'name')
+      //   operator: 'top'
+      //   value: 10
+      // }
+      x_axis: VizFieldFull {
+        ref: ref('demo.dim_products', 'name')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            label: 'Sales'
+            ref: 'gmv'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#E27712'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        sort {
+          field_index: 0
+          direction: 'desc'
+          type: 'yaxis'
+        }
+        legend_label: 'hidden'
+      }
+    }
+  }
+  block v16: VizBlock {
+    label: 'Top Sales by Category'
+    viz: ColumnChart {
+      dataset: demo.ds_ecommerce
+      // filter {
+      //   field: ref('demo.dim_categories', 'name')
+      //   operator: 'top'
+      //   value: 10
+      // }
+      x_axis: VizFieldFull {
+        ref: ref('demo.dim_categories', 'name')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            label: 'Sales'
+            ref: 'gmv'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#E27712'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        sort {
+          field_index: 0
+          direction: 'desc'
+          type: 'yaxis'
+        }
+        legend_label: 'hidden'
+      }
+    }
+  }
+  block v17: VizBlock {
+    label: 'Top Sales by Customer'
+    viz: ColumnChart {
+      dataset: demo.ds_ecommerce
+      // filter {
+      //   field: ref('demo.dim_users', 'full_name')
+      //   operator: 'top'
+      //   value: 10
+      // }
+      x_axis: VizFieldFull {
+        ref: ref('demo.dim_users', 'full_name')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            label: 'Sales'
+            ref: 'gmv'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#E27712'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        sort {
+          field_index: 0
+          direction: 'desc'
+          type: 'yaxis'
+        }
+        legend_label: 'hidden'
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1340
