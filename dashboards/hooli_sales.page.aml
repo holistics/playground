@@ -1,4 +1,5 @@
 Dashboard hooli_overview {
+  theme: Hooli
   title: 'Hooli Sales'
   description: ''''''
   block f1: FilterBlock {
@@ -74,6 +75,7 @@ Dashboard hooli_overview {
   block t11: lib.page_components.block.line_ver
   block t12: lib.page_components.block.line_ver
   block v11: VizBlock {
+    theme: SecondaryBlock
     label: 'Sales Performance'
     viz: CombinationChart {
       dataset: demo.ds_ecommerce
@@ -393,7 +395,7 @@ Dashboard hooli_overview {
       position: pos(-320, 290, 300, 80)
     }
     block v2 {
-      position: pos(730, 250, 560, 330)
+      position: pos(730, 220, 590, 390)
     }
     block t3 {
       position: pos(340, 0, 1000, 190)
@@ -409,7 +411,7 @@ Dashboard hooli_overview {
       position: pos(980, 0, 40, 190)
     }
     block v11 {
-      position: pos(20, 220, 670, 390)
+      position: pos(0, 220, 690, 390)
     }
     block f3 {
       position: pos(0, 0, 310, 80)

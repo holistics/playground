@@ -2,6 +2,7 @@ use demo
 use lib
 
 Dashboard hooli_marketing {
+  theme: Hooli
   title: 'Hooli Dashboard'
   description: ''''''
   view: CanvasLayout {

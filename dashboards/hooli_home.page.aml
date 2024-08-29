@@ -1,5 +1,5 @@
 Dashboard hooli_home {
-  //theme: Merchify
+  theme: Hooli
   title: 'Hooli Home'
   description: ''''''
 

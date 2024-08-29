@@ -1,5 +1,5 @@
 Dashboard hooli_analytics {
-  //theme: Merchify
+  theme: Hooli
   title: 'Hooli Analytics Overview'
   description: ''''''
 
