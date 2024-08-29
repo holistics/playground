@@ -1,26 +1,27 @@
 Dashboard hooli_products {
+  theme: Hooli
   title: 'Hooli Products'
   description: ''''''
 
   view: CanvasLayout {
     label: 'View 1'
     width: 1180
-    height: 960
+    height: 1060
     grid_size: 20
     block v6 {
-      position: pos(0, 120, 540, 800)
+      position: pos(0, 140, 540, 840)
     }
     block v7 {
-      position: pos(560, 120, 620, 340)
+      position: pos(560, 140, 620, 380)
     }
     block v8 {
-      position: pos(560, 480, 620, 440)
+      position: pos(560, 540, 620, 440)
     }
     block f1 {
-      position: pos(360, 20, 300, 80)
+      position: pos(360, 20, 300, 100)
     }
     block f2 {
-      position: pos(0, 20, 300, 80)
+      position: pos(0, 20, 300, 100)
     }
   }
   block v6: VizBlock {
@@ -177,6 +178,7 @@ Dashboard hooli_products {
     }
   }
   block f1: FilterBlock {
+    theme: SecondaryBlock
     label: 'Product Name'
     type: 'field'
     source: FieldFilterSource {
@@ -189,6 +191,7 @@ Dashboard hooli_products {
     }
   }
   block f2: FilterBlock {
+    theme: SecondaryBlock
     label: 'Category Name'
     type: 'field'
     source: FieldFilterSource {

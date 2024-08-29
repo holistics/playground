@@ -1,8 +1,16 @@
 PageTheme Hooli {
 background {
-  bg_color: "white"
+  bg_color: "#FEF3EE"
 }
 canvas {
+  background {
+    bg_color: "#FEF3EE"
+  }
+  // border {
+  //   border_width: 1
+  //   border_color: "#D5D5D5"
+  //   border_style: "dashed"
+  // }
 shadow: "none"
 
 }

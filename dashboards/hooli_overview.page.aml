@@ -21,10 +21,10 @@ Dashboard hooli_analytics {
       position: pos(0, 200, 320, 160)
     }
     block v6 {
-      position: pos(0, 720, 460, 360)
+      position: pos(0, 840, 480, 360)
     }
     block v7 {
-      position: pos(520, 720, 540, 360)
+      position: pos(520, 840, 540, 360)
     }
     block v9 {
       position: pos(380, 200, 320, 160)
@@ -33,8 +33,26 @@ Dashboard hooli_analytics {
       position: pos(760, 200, 300, 160)
     }
     block v11 {
-      position: pos(0, 420, 1040, 240)
+      position: pos(20, 560, 1020, 220)
     }
+    block t1 {
+      position: pos(0, 400, 1060, 400)
+      layer: -1
+    }
+  }
+  block override_css: TextBlock {
+    content: @md <style>
+      .h-kpi-metric {
+      }
+      .h-kpi-metric-label {
+        font-size: 16px;
+      }
+      .h-kpi-metric-kpi {
+        font-size: 40px;
+        line-height: 52px;
+        color: #C35448;
+      }
+    </style>;;
   }
   block v2: VizBlock {
     label: 'Revenue'
@@ -62,7 +80,19 @@ Dashboard hooli_analytics {
     settings {
       hide_label: true
     }
-    theme: SecondaryBlock
+    theme: SecondaryBlock.extend(
+      {
+        background {
+          bg_color: "#0F172A"
+        }
+        text {
+          font_color: "white"
+
+        }
+
+
+      }
+    )
   }
   block v3: VizBlock {
     theme: SecondaryBlock
@@ -189,13 +219,7 @@ Dashboard hooli_analytics {
     }
   }
   block v6: VizBlock {
-    theme: BlockTheme {
-      label {
-        font_size: 16
-        font_color: "#0F172A"
-        font_weight: "normal"
-      }
-    }
+    theme: SecondaryBlock
     label: 'Top Selling Products'
     viz: DataTable {
       dataset: demo.ds_ecommerce2
@@ -264,13 +288,7 @@ Dashboard hooli_analytics {
     }
   }
   block v7: VizBlock {
-    theme: BlockTheme {
-      label {
-        font_size: 16
-        font_color: "#0F172A"
-        font_weight: "normal"
-      }
-    }
+    theme: SecondaryBlock
     label: 'Top Selling Categories'
     viz: PivotTable {
       dataset: demo.ds_ecommerce2
@@ -327,7 +345,7 @@ Dashboard hooli_analytics {
         value: '2024-04-29'
       }
       value: VizFieldFull {
-        label: 'GMV'
+        label: 'GMV - Gross Merchandise Value'
         ref: 'gmv'
         format {
           type: 'number'
@@ -442,6 +460,25 @@ Dashboard hooli_analytics {
           }
         }
       ]
+      settings {
+        max_column: 3
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
     }
+    settings {
+      hide_label: true
+    }
+  }
+  block t1: TextBlock {
+    content: @md <div
+      style="
+        background: rgba(255,255,255, 1);
+        border-radius: 14px;
+        border: 2px solid #eeeeee;
+        width: 100%; height: 100%;"
+    ></div>;;
   }
 }

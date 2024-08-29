@@ -2,19 +2,22 @@ Dashboard hooli_overview {
   theme: Hooli
   title: 'Hooli Sales'
   description: ''''''
-  block f1: FilterBlock {
-    label: 'Merchant Name'
-    type: 'field'
-    source: FieldFilterSource {
-      dataset: demo.ds_ecommerce
-      field: ref('demo.dim_merchants', 'name')
-    }
-    default {
-      operator: 'is'
-      value: 'Abernathy Group'
-    }
+  block override_css: TextBlock {
+    content: @md <style>
+      .h-kpi-metric {
+      }
+      .h-kpi-metric-label {
+        font-size: 20px;
+      }
+      .h-kpi-metric-kpi {
+        font-size: 52px;
+        line-height: 72px;
+        color: #C35448;
+      }
+    </style>;;
   }
   block v2: VizBlock {
+    theme: SecondaryBlock
     label: 'Product list'
     viz: DataTable {
       dataset: demo.ds_ecommerce
@@ -65,6 +68,7 @@ Dashboard hooli_overview {
   }
   block t3: lib.page_components.block.card_flat
   block f2: FilterBlock {
+    theme: SecondaryBlock
     label: 'Date Range'
     type: 'date'
     default {
@@ -124,12 +128,14 @@ Dashboard hooli_overview {
           }
         }
       }
+
       settings {
         row_limit: 5000
       }
     }
   }
   block f3: FilterBlock {
+    theme: SecondaryBlock
     label: 'Product'
     type: 'field'
     source: FieldFilterSource {
@@ -265,6 +271,7 @@ Dashboard hooli_overview {
     }
   }
   block v15: VizBlock {
+    theme: SecondaryBlock
     label: 'Top Sales by Product'
     viz: ColumnChart {
       dataset: demo.ds_ecommerce
@@ -306,6 +313,7 @@ Dashboard hooli_overview {
     }
   }
   block v16: VizBlock {
+    theme: SecondaryBlock
     label: 'Top Sales by Category'
     viz: ColumnChart {
       dataset: demo.ds_ecommerce
@@ -347,6 +355,7 @@ Dashboard hooli_overview {
     }
   }
   block v17: VizBlock {
+    theme: SecondaryBlock
     label: 'Top Sales by Customer'
     viz: ColumnChart {
       dataset: demo.ds_ecommerce
@@ -391,60 +400,51 @@ Dashboard hooli_overview {
     label: 'View 1'
     width: 1340
     height: 1520
-    block f1 {
-      position: pos(-320, 290, 300, 80)
+    block override_css {
+      position: pos(-410, 20, 361, 370)
     }
     block v2 {
-      position: pos(730, 220, 590, 390)
+      position: pos(730, 240, 610, 390)
     }
     block t3 {
-      position: pos(340, 0, 1000, 190)
+      position: pos(340, 0, 1000, 210)
       layer: -1
     }
     block f2 {
-      position: pos(0, 90, 310, 80)
+      position: pos(0, 110, 310, 100)
     }
     block t11 {
-      position: pos(640, 0, 40, 190)
+      position: pos(640, 0, 40, 210)
     }
     block t12 {
-      position: pos(980, 0, 40, 190)
+      position: pos(980, 0, 40, 210)
     }
     block v11 {
-      position: pos(0, 220, 690, 390)
+      position: pos(0, 240, 690, 390)
     }
     block f3 {
-      position: pos(0, 0, 310, 80)
+      position: pos(0, 0, 310, 100)
     }
     block v12 {
       position: pos(380, 40, 240, 120)
     }
     block v14 {
-      position: pos(1050, 30, 240, 120)
+      position: pos(1050, 40, 240, 120)
     }
     block v5 {
-      position: pos(700, 30, 250, 140)
+      position: pos(710, 40, 250, 140)
     }
     block v15 {
-      position: pos(0, 630, 710, 370)
+      position: pos(0, 670, 710, 370)
     }
     block v16 {
-      position: pos(730, 630, 600, 380)
+      position: pos(730, 670, 610, 380)
     }
     block v17 {
-      position: pos(0, 1040, 1340, 370)
+      position: pos(0, 1080, 1340, 430)
     }
   }
   interactions: [
-    FilterInteraction {
-      from: 'f3'
-      to: [
-        CustomMapping {
-          block: 'f1'
-          disabled: true
-        }
-      ]
-    },
     FilterInteraction {
       from: 'f2'
       to: [

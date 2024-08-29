@@ -51,6 +51,7 @@ Dashboard hooli_marketing {
     }
   }
   block v3: VizBlock {
+    theme: SecondaryBlock
     label: 'General'
     viz: DataTable {
       dataset: demo.marketing_campaign
