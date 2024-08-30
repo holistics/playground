@@ -64,6 +64,7 @@ Dashboard hooli_marketing {
       }
     </style>;;
   }
+
   block v3: VizBlock {
     theme: SecondaryBlock
     label: 'General'
