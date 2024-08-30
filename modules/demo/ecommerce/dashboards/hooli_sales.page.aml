@@ -12,7 +12,7 @@ Dashboard hooli_overview {
       .h-kpi-metric-kpi {
         font-size: 52px;
         line-height: 72px;
-        color: #C35448;
+        color: #0F172A;
       }
     </style>;;
   }
@@ -133,6 +133,9 @@ Dashboard hooli_overview {
       }
     }
   }
+
+  block t9: hooli_components.block.card_red
+
   block f3: FilterBlock {
     theme: SecondaryBlock
     label: 'Product'
@@ -395,15 +398,6 @@ Dashboard hooli_overview {
       }
     }
   }
-  block t13: TextBlock {
-    content: @md <div
-      style="
-        background: rgba(255,255,255, 1);
-        border-radius: 14px;
-        border: 2px solid #DAC5C2;
-        width: 100%; height: 100%;"
-    ></div>;;
-  }
   block t14: TextBlock {
     content: @md <div 
       style="
@@ -424,50 +418,49 @@ Dashboard hooli_overview {
   }
   view: CanvasLayout {
     label: 'View 1'
-    width: 1340
-    height: 1520
+    width: 1410
+    height: 1580
     block override_css {
       position: pos(-410, 20, 361, 370)
     }
     block v2 {
-      position: pos(730, 240, 610, 390)
+      position: pos(770, 280, 610, 390)
     }
     block f2 {
-      position: pos(0, 110, 310, 100)
+      position: pos(40, 150, 310, 100)
     }
     block v11 {
-      position: pos(0, 240, 710, 390)
+      position: pos(40, 280, 710, 390)
+    }
+    block t9 {
+      position: pos(380, 40, 1000, 210)
     }
     block f3 {
-      position: pos(0, 0, 310, 100)
+      position: pos(40, 40, 310, 100)
     }
     block v12 {
-      position: pos(380, 40, 240, 120)
+      position: pos(430, 90, 240, 120)
     }
     block v14 {
-      position: pos(1050, 40, 240, 120)
+      position: pos(1110, 90, 240, 120)
     }
     block v5 {
-      position: pos(710, 40, 250, 140)
+      position: pos(760, 80, 250, 140)
     }
     block v15 {
-      position: pos(0, 670, 710, 370)
+      position: pos(40, 710, 710, 370)
     }
     block v16 {
-      position: pos(730, 670, 610, 370)
+      position: pos(770, 710, 610, 370)
     }
     block v17 {
-      position: pos(0, 1080, 1340, 430)
-    }
-    block t13 {
-      position: pos(340, 0, 1000, 210)
-      layer: -1
+      position: pos(40, 1120, 1340, 430)
     }
     block t14 {
-      position: pos(600, 0, 90, 210)
+      position: pos(670, 50, 90, 200)
     }
     block t15 {
-      position: pos(920, 0, 90, 210)
+      position: pos(1010, 50, 90, 200)
     }
   }
   interactions: [
