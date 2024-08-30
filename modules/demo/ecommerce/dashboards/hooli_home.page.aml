@@ -198,7 +198,7 @@ Dashboard hooli_home {
       .h-kpi-metric-kpi {
         font-size: 44px;
         line-height: 52px;
-        color: #C35448;
+        color: #0F172A;
       }
     </style>;;
   }
