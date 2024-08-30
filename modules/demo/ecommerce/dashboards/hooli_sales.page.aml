@@ -1,0 +1,491 @@
+Dashboard hooli_overview {
+  theme: Hooli
+  title: 'Hooli Sales'
+  description: ''''''
+  block override_css: TextBlock {
+    content: @md <style>
+      .h-kpi-metric {
+      }
+      .h-kpi-metric-label {
+        font-size: 20px;
+      }
+      .h-kpi-metric-kpi {
+        font-size: 52px;
+        line-height: 72px;
+        color: #C35448;
+      }
+    </style>;;
+  }
+  block v2: VizBlock {
+    theme: SecondaryBlock
+    label: 'Product list'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce
+      fields: [
+        VizFieldFull {
+          label: 'Product Name'
+          ref: ref('demo.dim_products', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          label: 'Total Orders'
+          ref: 'count_distinct_orders'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          label: 'GMV'
+          ref: 'gmv'
+          format {
+            type: 'number'
+            pattern: '[$$]#,###0.00,"K"'
+            group_separator: ','
+            decimal_separator: '.'
+          }
+        },
+        VizFieldFull {
+          label: 'AOV'
+          ref: 'aov'
+          format {
+            type: 'number'
+            pattern: '[$$]#,###0.00'
+          }
+        }
+      ]
+      settings {
+        row_height: 'multiple_lines'
+        show_row_number: true
+        row_limit: 5000
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+
+
+  block f2: FilterBlock {
+    theme: SecondaryBlock
+    label: 'Date Range'
+    type: 'date'
+    default {
+      operator: 'matches'
+      value: '$H_NIL$'
+    }
+  }
+  block v11: VizBlock {
+    theme: SecondaryBlock
+    label: 'Sales Performance'
+    viz: CombinationChart {
+      dataset: demo.ds_ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('demo.dim_dates', 'date_key')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          mark_type: 'column'
+          field: VizFieldFull {
+            label: 'Total Orders'
+            ref: 'count_orders'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#FBD7B6FF'
+          }
+        }
+      }
+      y_axis {
+        settings {
+          alignment: 'right'
+        }
+        series {
+          mark_type: 'line'
+          field: VizFieldFull {
+            label: 'Sales'
+            ref: 'gmv'
+            format {
+              type: 'number'
+              pattern: '[$$]#,###0.00,"K"'
+              group_separator: ','
+              decimal_separator: '.'
+            }
+          }
+          settings {
+            color: '#E27712'
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+
+      settings {
+        row_limit: 5000
+      }
+    }
+  }
+  block f3: FilterBlock {
+    theme: SecondaryBlock
+    label: 'Product'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo.ds_ecommerce
+      field: ref('demo.dim_products', 'name')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block v12: VizBlock {
+    label: 'Total sales'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce2
+      filter {
+        field: ref('demo.fct_orders', 'created_at')
+        operator: 'before'
+        value: '2024-05-01'
+      }
+      value: VizFieldFull {
+        label: 'Total Sales'
+        ref: ref('demo.order_master', 'revenue')
+        format {
+          type: 'number'
+          pattern: '[$$]#,###0.00,,"M"'
+          group_separator: ','
+          decimal_separator: '.'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.fct_orders', 'created_at')
+        duration: 1
+        granularity: 'month'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v14: VizBlock {
+    label: 'Total sales (dup) (dup)'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce2
+      filter {
+        field: ref('demo.fct_orders', 'created_at')
+        operator: 'before'
+        value: '2024-05-01'
+      }
+      value: VizFieldFull {
+        label: 'AOV'
+        ref: 'aov'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.fct_orders', 'created_at')
+        duration: 1
+        granularity: 'month'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v5: VizBlock {
+    label: 'Orders (dup)'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce2
+      calculation conversion_rate_merchify {
+        label: 'Conversion rate'
+        formula: @aql safe_divide(
+  count_distinct(demo.fct_orders.user_id) | where(demo.dim_countries.name == "Vietnam") ,
+  count_distinct(demo.fct_orders.user_id)
+);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation metric_12a3de4 {
+        label: 'Untitled Metric'
+        formula: @aql (count_distinct(demo.fct_orders.user_id)|where(demo.dim_countries.name == "Vietnam"));;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation metric_4e162d6 {
+        label: 'Untitled Metric'
+        formula: @aql count_distinct(demo.fct_orders.user_id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation converted_users {
+        label: 'converted_users'
+        formula: @aql count_distinct(demo.fct_orders.user_id) | where(demo.dim_countries.name == "Vietnam");;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation all_users {
+        label: 'all_users'
+        formula: @aql count_distinct(demo.fct_orders.user_id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation conversion_rate {
+        label: 'Conversion Rate'
+        formula: @aql converted_users*1.0 / all_users;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('demo.fct_orders', 'created_at')
+        operator: 'before'
+        value: '2024-05-01'
+      }
+      value: VizFieldFull {
+        ref: 'conversion_rate'
+        format {
+          type: 'number'
+          pattern: '#,###0.00%'
+          group_separator: ','
+          decimal_separator: '.'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.fct_orders', 'created_at')
+        duration: 1
+        granularity: 'month'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v15: VizBlock {
+    theme: SecondaryBlock
+    label: 'Top Sales by Product'
+    viz: ColumnChart {
+      dataset: demo.ds_ecommerce
+      // filter {
+      //   field: ref('demo.dim_products', 'name')
+      //   operator: 'top'
+      //   value: 10
+      // }
+      x_axis: VizFieldFull {
+        ref: ref('demo.dim_products', 'name')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            label: 'Sales'
+            ref: 'gmv'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#E27712'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        sort {
+          field_index: 0
+          direction: 'desc'
+          type: 'yaxis'
+        }
+        legend_label: 'hidden'
+      }
+    }
+  }
+  block v16: VizBlock {
+    theme: SecondaryBlock
+    label: 'Top Sales by Category'
+    viz: ColumnChart {
+      dataset: demo.ds_ecommerce
+      // filter {
+      //   field: ref('demo.dim_categories', 'name')
+      //   operator: 'top'
+      //   value: 10
+      // }
+      x_axis: VizFieldFull {
+        ref: ref('demo.dim_categories', 'name')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            label: 'Sales'
+            ref: 'gmv'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#E27712'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        sort {
+          field_index: 0
+          direction: 'desc'
+          type: 'yaxis'
+        }
+        legend_label: 'hidden'
+      }
+    }
+  }
+  block v17: VizBlock {
+    theme: SecondaryBlock
+    label: 'Top Sales by Customer'
+    viz: ColumnChart {
+      dataset: demo.ds_ecommerce
+      // filter {
+      //   field: ref('demo.dim_users', 'full_name')
+      //   operator: 'top'
+      //   value: 10
+      // }
+      x_axis: VizFieldFull {
+        ref: ref('demo.dim_users', 'full_name')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            label: 'Sales'
+            ref: 'gmv'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#E27712'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        sort {
+          field_index: 0
+          direction: 'desc'
+          type: 'yaxis'
+        }
+        legend_label: 'hidden'
+      }
+    }
+  }
+  block t13: TextBlock {
+    content: @md <div
+      style="
+        background: rgba(255,255,255, 1);
+        border-radius: 14px;
+        border: 2px solid #DAC5C2;
+        width: 100%; height: 100%;"
+    ></div>;;
+  }
+  block t14: TextBlock {
+    content: @md <div 
+      style="
+        border-left: 2px solid #DAC5C2;
+        height: 100%;
+        margin-left: 50%;
+        display: block;
+      "></div>;;
+  }
+  block t15: TextBlock {
+    content: @md <div 
+      style="
+        border-left: 2px solid #DAC5C2;
+        height: 100%;
+        margin-left: 50%;
+        display: block;
+      "></div>;;
+  }
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1340
+    height: 1520
+    block override_css {
+      position: pos(-410, 20, 361, 370)
+    }
+    block v2 {
+      position: pos(730, 240, 610, 390)
+    }
+    block f2 {
+      position: pos(0, 110, 310, 100)
+    }
+    block v11 {
+      position: pos(0, 240, 710, 390)
+    }
+    block f3 {
+      position: pos(0, 0, 310, 100)
+    }
+    block v12 {
+      position: pos(380, 40, 240, 120)
+    }
+    block v14 {
+      position: pos(1050, 40, 240, 120)
+    }
+    block v5 {
+      position: pos(710, 40, 250, 140)
+    }
+    block v15 {
+      position: pos(0, 670, 710, 370)
+    }
+    block v16 {
+      position: pos(730, 670, 610, 370)
+    }
+    block v17 {
+      position: pos(0, 1080, 1340, 430)
+    }
+    block t13 {
+      position: pos(340, 0, 1000, 210)
+      layer: -1
+    }
+    block t14 {
+      position: pos(600, 0, 90, 210)
+    }
+    block t15 {
+      position: pos(920, 0, 90, 210)
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: [
+            'v2',
+            'v11'
+          ]
+          field: ref('demo.dim_dates', 'date_key')
+        }
+      ]
+    }
+  ]
+  settings {
+    timezone: 'Etc/UTC'
+    cache_duration: 20160
+  }
+}

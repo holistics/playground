@@ -1,23 +1,31 @@
-Model dim_product_cities = dim_cities.extend({
-  label: 'Product City'
-})
-Model dim_product_countries = dim_countries.extend({
-  label: 'Product Country'
-})
+Model dim_product_cities = dim_cities.extend(
+  {
+    label: 'Product City'
+  }
+)
+Model dim_product_countries = dim_countries.extend(
+  {
+    label: 'Product Country'
+  }
+)
 
-Model dim_user_cities = dim_cities.extend({
-  label: 'User City'
-})
-Model dim_user_countries = dim_countries.extend({
-  label: 'User Country'
-})
+Model dim_user_cities = dim_cities.extend(
+  {
+    label: 'User City'
+  }
+)
+Model dim_user_countries = dim_countries.extend(
+  {
+    label: 'User Country'
+  }
+)
 
 Dataset ds_ecommerce {
   label: 'Demo Ecommerce'
   description: 'Ecommerce dataset. ERD can be found [here](https://dbdiagram.io/e/658b9f1289dea62799972ec8/665fedfcb65d933879884fa8)'
   data_source_name: 'demo_pg'
   owner: 'triet.lq@holistics.io'
-  
+
   models: [
     fct_order_items,
     fct_orders,
@@ -27,7 +35,7 @@ Dataset ds_ecommerce {
     dim_users,
     dim_categories,
     dim_merchants,
-    
+
 
     dim_product_cities,
     dim_product_countries,
@@ -36,24 +44,24 @@ Dataset ds_ecommerce {
   ]
   relationships: [
     relationship(demo.fct_order_items.product_id > demo.dim_products.id, true),
-    relationship(demo.fct_order_items.category_id >  demo.dim_categories.id, true),
-    
-    relationship(demo.fct_order_items.merchant_id >  demo.dim_merchants.id, true),
-    relationship(demo.fct_order_items.merchant_city_id >  demo.dim_product_cities.id, true),
-    relationship(demo.fct_order_items.merchant_country_code >  demo.dim_product_countries.code, true),
-    relationship(demo.fct_order_items.user_id >  demo.dim_users.id, true),
-    relationship(demo.fct_order_items.created_date >  demo.dim_dates.date_key, true),
-    relationship(demo.fct_order_items.order_id >  demo.fct_orders.id, false),
+    relationship(demo.fct_order_items.category_id > demo.dim_categories.id, true),
+
+    relationship(demo.fct_order_items.merchant_id > demo.dim_merchants.id, true),
+    relationship(demo.fct_order_items.merchant_city_id > demo.dim_product_cities.id, true),
+    relationship(demo.fct_order_items.merchant_country_code > demo.dim_product_countries.code, true),
+    relationship(demo.fct_order_items.user_id > demo.dim_users.id, true),
+    relationship(demo.fct_order_items.created_date > demo.dim_dates.date_key, true),
+    relationship(demo.fct_order_items.order_id > demo.fct_orders.id, false),
 
 
-    relationship(demo.fct_orders.user_city_id >  demo.dim_user_cities.id, true),
-    relationship(demo.fct_orders.user_country_code >  demo.dim_user_countries.code, true),
-    relationship(demo.fct_orders.created_date >  demo.dim_dates.date_key, true),
-    relationship(demo.fct_orders.user_id >  demo.dim_users.id, false),
+    relationship(demo.fct_orders.user_city_id > demo.dim_user_cities.id, true),
+    relationship(demo.fct_orders.user_country_code > demo.dim_user_countries.code, true),
+    relationship(demo.fct_orders.created_date > demo.dim_dates.date_key, true),
+    relationship(demo.fct_orders.user_id > demo.dim_users.id, false),
 
   ]
 
-  dimension acquisition_month_cohort  {
+  dimension acquisition_month_cohort {
     model: dim_users
     label: 'Acquisition Month Cohort'
     type: 'date'
