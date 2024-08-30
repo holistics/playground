@@ -1,17 +1,5 @@
 Dashboard hooli_home {
-  theme: PageTheme {
-    background {
-      bg_color: "white"
-    }
-    canvas {
-      // border {
-      //   border_color: "#d5d5d5"
-      //   border_width: 1
-      // }
-      shadow: "none"
-    }
-  }
-
+ theme: Hooli
   title: 'Hooli Home'
   description: ''''''
 
