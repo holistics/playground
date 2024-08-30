@@ -3,7 +3,7 @@ use lib
 
 Dashboard hooli_marketing {
   theme: Hooli
-  title: 'Hooli Dashboard'
+  title: 'Hooli Marketing'
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
