@@ -436,7 +436,7 @@ Dashboard hooli_overview {
       position: pos(0, 110, 310, 100)
     }
     block v11 {
-      position: pos(0, 240, 690, 390)
+      position: pos(0, 240, 710, 390)
     }
     block f3 {
       position: pos(0, 0, 310, 100)
@@ -454,7 +454,7 @@ Dashboard hooli_overview {
       position: pos(0, 670, 710, 370)
     }
     block v16 {
-      position: pos(730, 670, 610, 380)
+      position: pos(730, 670, 610, 370)
     }
     block v17 {
       position: pos(0, 1080, 1340, 430)
