@@ -5,39 +5,58 @@ Dashboard hooli_analytics {
 
   view: CanvasLayout {
     label: 'View 1'
-    width: 1060
-    height: 1240
-    grid_size: 20
+    width: 1130
+    height: 1400
+    block override_css {
+      position: pos(-380, -40, 361, 353)
+    }
+    block t5 {
+      position: pos(40, 40, 280, 160)
+    }
+    block t6 {
+      position: pos(820, 220, 280, 180)
+    }
+    block t7 {
+      position: pos(430, 220, 300, 180)
+    }
+    block t8 {
+      position: pos(40, 220, 280, 180)
+    }
+    block t9 {
+      position: pos(820, 40, 280, 160)
+    }
+    block t10 {
+      position: pos(430, 40, 300, 160)
+    }
+    block t11 {
+      position: pos(40, 440, 1060, 470)
+    }
     block v2 {
-      position: pos(0, 0, 320, 160)
+      position: pos(60, 70, 240, 100)
     }
     block v3 {
-      position: pos(380, 0, 320, 160)
+      position: pos(460, 70, 180, 120)
     }
     block v4 {
-      position: pos(760, 0, 300, 160)
+      position: pos(850, 70, 180, 110)
     }
     block v5 {
-      position: pos(0, 200, 320, 160)
+      position: pos(60, 260, 200, 120)
     }
     block v6 {
-      position: pos(0, 840, 480, 360)
+      position: pos(40, 950, 480, 360)
     }
     block v7 {
-      position: pos(520, 840, 540, 360)
+      position: pos(560, 950, 540, 360)
     }
     block v9 {
-      position: pos(380, 200, 320, 160)
+      position: pos(460, 260, 260, 110)
     }
     block v10 {
-      position: pos(760, 200, 300, 160)
+      position: pos(850, 260, 240, 120)
     }
     block v11 {
-      position: pos(20, 560, 1020, 220)
-    }
-    block t1 {
-      position: pos(0, 400, 1060, 400)
-      layer: -1
+      position: pos(60, 620, 1020, 220)
     }
   }
   block override_css: TextBlock {
@@ -50,10 +69,19 @@ Dashboard hooli_analytics {
       .h-kpi-metric-kpi {
         font-size: 40px;
         line-height: 52px;
-        color: #C35448;
+        color: #0F172A;
       }
     </style>;;
   }
+  block t5: hooli_components.block.card_red
+  block t6: hooli_components.block.card_red
+  block t7: hooli_components.block.card_red
+  block t8: hooli_components.block.card_red
+  block t9: hooli_components.block.card_red
+  block t10: hooli_components.block.card_red
+  block t11: hooli_components.block.card_red
+
+
   block v2: VizBlock {
     label: 'Revenue'
     viz: MetricKpi {
@@ -80,22 +108,8 @@ Dashboard hooli_analytics {
     settings {
       hide_label: true
     }
-    theme: SecondaryBlock.extend(
-      {
-        background {
-          bg_color: "#0F172A"
-        }
-        text {
-          font_color: "white"
-
-        }
-
-
-      }
-    )
   }
   block v3: VizBlock {
-    theme: SecondaryBlock
     label: 'Orders'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce2
@@ -123,7 +137,6 @@ Dashboard hooli_analytics {
     }
   }
   block v4: VizBlock {
-    theme: SecondaryBlock
     label: 'Revenue (dup) (dup)'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce2
@@ -151,7 +164,6 @@ Dashboard hooli_analytics {
     }
   }
   block v5: VizBlock {
-    theme: SecondaryBlock
     label: 'Orders (dup)'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce2
@@ -361,7 +373,6 @@ Dashboard hooli_analytics {
     settings {
       hide_label: true
     }
-    theme: SecondaryBlock
   }
   block v10: VizBlock {
     label: 'Revenue (dup) (dup)'
@@ -388,7 +399,6 @@ Dashboard hooli_analytics {
     settings {
       hide_label: true
     }
-    theme: SecondaryBlock
   }
   block v11: VizBlock {
     label: 'Metrics Trends'
@@ -471,14 +481,5 @@ Dashboard hooli_analytics {
     settings {
       hide_label: true
     }
-  }
-  block t1: TextBlock {
-    content: @md <div
-      style="
-        background: rgba(255,255,255, 1);
-        border-radius: 14px;
-        border: 1px solid #DAC5C2;
-        width: 100%; height: 100%;"
-    ></div>;;
   }
 }

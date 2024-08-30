@@ -1,53 +1,44 @@
+use demo
+
 Dashboard hooli_home {
- theme: Hooli
+  theme: Hooli
   title: 'Hooli Home'
   description: ''''''
 
   view: CanvasLayout {
     label: 'View 1'
-    width: 1120
-    height: 500
-    block beautiful_card {
-      position: pos(580, 60, 520, 180)
-      layer: -1
+    width: 1170
+    height: 460
+    block t5 {
+      position: pos(610, 30, 520, 200)
+    }
+    block t6 {
+      position: pos(880, 250, 250, 160)
+    }
+    block t7 {
+      position: pos(610, 250, 240, 160)
     }
     block v2 {
-      position: pos(0, 60, 560, 380)
+      position: pos(30, 30, 560, 380)
     }
     block v3 {
-      position: pos(600, 90, 340, 120)
+      position: pos(630, 60, 340, 120)
     }
     block v4 {
-      position: pos(590, 300, 220, 120)
+      position: pos(620, 270, 220, 120)
     }
     block v5 {
-      position: pos(870, 290, 180, 120)
+      position: pos(900, 260, 180, 120)
     }
     block override_css {
       position: pos(-280, 620, 361, 310)
     }
-    block t1 {
-      position: pos(580, 260, 250, 180)
-      layer: -1
-    }
-    block t2 {
-      position: pos(850, 260, 250, 180)
-      layer: -1
-    }
   }
-  block beautiful_card: TextBlock {
-    content: @md <div 
-  style="
-    background-color: white; 
-    width: 100%; 
-    height: 100%; 
-    overflow: hidden; 
-    border: 1px solid #DAC5C2;">
-  <div style="width: 100%; height: 8px; border-radius: 0 6px 0 0; background-color: #DC4C3D;"></div>
-</div>
 
-   ;;
-  }
+
+  block t5: hooli_components.block.card_red
+  block t6: hooli_components.block.card_red
+  block t7: hooli_components.block.card_red
   block v2: VizBlock {
     label: 'Sales'
     viz: AreaChart {
@@ -201,29 +192,5 @@ Dashboard hooli_home {
         color: #0F172A;
       }
     </style>;;
-  }
-  block t1: TextBlock {
-    content: @md <div 
-  style="
-    background-color: white; 
-    width: 100%; 
-    height: 100%; 
-    overflow: hidden; 
-    border: 1px solid #DAC5C2;">
-  <div style="width: 100%; height: 8px; border-radius: 0 6px 0 0; background-color: #DC4C3D;"></div>
-</div>
-;;
-  }
-  block t2: TextBlock {
-    content: @md <div 
-  style="
-    background-color: white; 
-    width: 100%; 
-    height: 100%; 
-    overflow: hidden; 
-    border: 1px solid #DAC5C2;">
-  <div style="width: 100%; height: 8px; border-radius: 0 6px 0 0; background-color: #DC4C3D;"></div>
-</div>
-;;
   }
 }
