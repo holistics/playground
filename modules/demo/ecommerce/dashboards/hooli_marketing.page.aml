@@ -7,49 +7,52 @@ Dashboard hooli_marketing {
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
-    width: 1240
-    height: 890
+    width: 1290
+    height: 920
+    block t9 {
+      position: pos(20, 140, 1240, 170)
+    }
+    block override_css {
+      position: pos(0, 0, 361, 370)
+    }
     block v3 {
-      position: pos(310, 280, 930, 230)
+      position: pos(330, 350, 930, 230)
     }
     block f1 {
-      position: pos(0, 0, 510, 60)
+      position: pos(20, 20, 510, 90)
     }
     block v10 {
-      position: pos(50, 120, 170, 100)
+      position: pos(70, 180, 170, 100)
     }
     block v11 {
-      position: pos(340, 120, 170, 100)
+      position: pos(360, 180, 170, 100)
     }
     block v12 {
-      position: pos(990, 120, 180, 100)
+      position: pos(1010, 180, 180, 100)
     }
     block v13 {
-      position: pos(640, 120, 200, 100)
+      position: pos(660, 180, 200, 100)
     }
     block v14 {
-      position: pos(310, 560, 930, 260)
+      position: pos(330, 620, 930, 260)
     }
     block v15 {
-      position: pos(0, 280, 270, 230)
+      position: pos(20, 350, 270, 230)
     }
     block v18 {
-      position: pos(0, 560, 270, 260)
-    }
-    block t2 {
-      position: pos(0, 90, 1240, 150)
-      layer: -1
+      position: pos(20, 620, 270, 260)
     }
     block t3 {
-      position: pos(270, 90, 50, 150)
+      position: pos(290, 150, 50, 160)
     }
     block t4 {
-      position: pos(570, 90, 50, 150)
+      position: pos(590, 150, 50, 160)
     }
     block t5 {
-      position: pos(920, 90, 50, 150)
+      position: pos(940, 150, 50, 160)
     }
   }
+  block t9: hooli_components.block.card_red
   block override_css: TextBlock {
     content: @md <style>
       .h-kpi-metric {
@@ -60,7 +63,7 @@ Dashboard hooli_marketing {
       .h-kpi-metric-kpi {
         font-size: 52px;
         line-height: 72px;
-        color: #C35448;
+        color: #0F172A;
       }
     </style>;;
   }
@@ -131,6 +134,7 @@ Dashboard hooli_marketing {
     }
   }
   block f1: FilterBlock {
+    theme: SecondaryBlock
     label: 'Campaign'
     type: 'field'
     source: FieldFilterSource {
@@ -343,15 +347,6 @@ Dashboard hooli_marketing {
     settings {
       hide_controls: true
     }
-  }
-  block t2: TextBlock {
-    content: @md <div
-      style="
-        background: rgba(255,255,255, 1);
-        border-radius: 14px;
-        border: 2px solid #DAC5C2;
-        width: 100%; height: 100%;"
-    ></div>;;
   }
   block t3: TextBlock {
     content: @md <div 
