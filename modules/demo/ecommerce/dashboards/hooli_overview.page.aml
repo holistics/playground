@@ -6,57 +6,72 @@ Dashboard hooli_analytics {
   view: CanvasLayout {
     label: 'View 1'
     width: 1130
-    height: 1400
+    height: 1720
     block override_css {
       position: pos(-380, -40, 361, 353)
     }
     block t5 {
-      position: pos(40, 40, 280, 160)
+      position: pos(40, 130, 280, 160)
     }
     block t6 {
-      position: pos(820, 220, 280, 180)
+      position: pos(820, 310, 280, 180)
     }
     block t7 {
-      position: pos(430, 220, 300, 180)
+      position: pos(430, 310, 300, 180)
     }
     block t8 {
-      position: pos(40, 220, 280, 180)
+      position: pos(40, 310, 280, 180)
     }
     block t9 {
-      position: pos(820, 40, 280, 160)
+      position: pos(820, 130, 280, 160)
     }
     block t10 {
-      position: pos(430, 40, 300, 160)
+      position: pos(430, 130, 300, 160)
     }
     block t11 {
-      position: pos(40, 440, 1060, 470)
+      position: pos(40, 530, 530, 470)
+    }
+    block t15 {
+      position: pos(40, 1030, 1060, 240)
     }
     block v6 {
-      position: pos(40, 950, 480, 360)
+      position: pos(40, 1310, 480, 360)
     }
     block v7 {
-      position: pos(560, 950, 540, 360)
+      position: pos(560, 1310, 540, 360)
     }
     block v11 {
-      position: pos(60, 660, 1020, 220)
+      position: pos(70, 1060, 1000, 180)
     }
     block v12 {
-      position: pos(60, 70, 250, 120)
+      position: pos(60, 160, 250, 120)
     }
     block v13 {
-      position: pos(450, 70, 260, 120)
+      position: pos(450, 160, 260, 120)
     }
     block v14 {
-      position: pos(840, 70, 240, 120)
+      position: pos(840, 160, 240, 120)
     }
     block v15 {
-      position: pos(60, 260, 260, 120)
+      position: pos(60, 350, 260, 120)
     }
     block v16 {
-      position: pos(450, 260, 270, 120)
+      position: pos(450, 350, 270, 120)
     }
     block v17 {
-      position: pos(840, 260, 240, 120)
+      position: pos(840, 350, 240, 120)
+    }
+    block t12 {
+      position: pos(610, 530, 490, 470)
+    }
+    block v18 {
+      position: pos(60, 560, 490, 410)
+    }
+    block v19 {
+      position: pos(630, 560, 450, 430)
+    }
+    block f1 {
+      position: pos(40, 20, 280, 90)
     }
   }
   block override_css: TextBlock {
@@ -80,6 +95,7 @@ Dashboard hooli_analytics {
   block t9: hooli_components.block.card_red
   block t10: hooli_components.block.card_red
   block t11: hooli_components.block.card_red
+  block t15: hooli_components.block.card_red
   block v6: VizBlock {
     theme: SecondaryBlock
     label: 'Top Selling Products'
@@ -267,13 +283,6 @@ Dashboard hooli_analytics {
           }
         }
       ]
-      settings {
-        max_column: 3
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-      }
     }
     settings {
       hide_label: true
@@ -453,6 +462,120 @@ Dashboard hooli_analytics {
     }
     settings {
       hide_label: true
+    }
+  }
+  block t12: TextBlock {
+    content: @md <div 
+  style="
+    background-color: white; 
+    width: 100%; 
+    height: 100%; 
+    overflow: hidden; 
+    border: 1px solid #DAC5C2; 
+    border-radius: 0 6px 0 0;">
+  <div style="width: 100%; height: 8px; background-color: #DC4C3D;"></div>
+</div>
+;;
+  }
+  block v18: VizBlock {
+    label: 'Sales Overtime'
+    viz: LineChart {
+      dataset: demo.ds_ecommerce
+      filter {
+        field: ref('demo.fct_order_items', 'created_at')
+        operator: 'last'
+        value: '3'
+        modifier: 'month'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('demo.fct_order_items', 'created_at')
+        transformation: 'datetrunc week'
+        format {
+          type: 'date'
+          pattern: 'dd LLL'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            label: 'Sales'
+            ref: 'gmv'
+            format {
+              type: 'number'
+              pattern: '[$$]#,###'
+            }
+          }
+          settings {
+            color: '#E27712'
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        legend_label: 'hidden'
+      }
+    }
+  }
+  block v19: VizBlock {
+    label: 'Trend Metrics'
+    viz: LineChart {
+      dataset: demo.ds_ecommerce
+      filter {
+        field: ref('demo.fct_order_items', 'created_at')
+        operator: 'last'
+        value: '3'
+        modifier: 'month'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('demo.fct_order_items', 'created_at')
+        transformation: 'datetrunc week'
+        format {
+          type: 'date'
+          pattern: 'dd LLL'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            label: 'Orders'
+            ref: 'count_orders'
+            format {
+              type: 'number'
+              pattern: '#,###'
+            }
+          }
+          settings {
+            color: '#D70909'
+            line_interpolation: 'smooth'
+          }
+        }
+        series {
+          field: VizFieldFull {
+            label: 'Users'
+            ref: 'count_users'
+            format {
+              type: 'number'
+              pattern: '#,###'
+            }
+          }
+          settings {
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'Date range'
+    type: 'date'
+    default {
+      operator: 'last'
+      value: '3'
+      modifier: 'month'
     }
   }
 }

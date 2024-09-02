@@ -52,7 +52,7 @@ padding: 12
         bg_color: "white"
       }
       label {
-        font_size: 16
+        font_size: 14
         font_color: "#0F172A"
         font_weight: "normal"
       }
