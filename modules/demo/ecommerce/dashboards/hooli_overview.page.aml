@@ -31,32 +31,32 @@ Dashboard hooli_analytics {
     block t11 {
       position: pos(40, 440, 1060, 470)
     }
-    block v2 {
-      position: pos(60, 70, 240, 100)
-    }
-    block v3 {
-      position: pos(460, 70, 180, 120)
-    }
-    block v4 {
-      position: pos(850, 70, 180, 110)
-    }
-    block v5 {
-      position: pos(60, 260, 200, 120)
-    }
     block v6 {
       position: pos(40, 950, 480, 360)
     }
     block v7 {
       position: pos(560, 950, 540, 360)
     }
-    block v9 {
-      position: pos(460, 260, 260, 110)
-    }
-    block v10 {
-      position: pos(850, 260, 240, 120)
-    }
     block v11 {
-      position: pos(60, 620, 1020, 220)
+      position: pos(60, 660, 1020, 220)
+    }
+    block v12 {
+      position: pos(60, 70, 250, 120)
+    }
+    block v13 {
+      position: pos(450, 70, 260, 120)
+    }
+    block v14 {
+      position: pos(840, 70, 240, 120)
+    }
+    block v15 {
+      position: pos(60, 260, 260, 120)
+    }
+    block v16 {
+      position: pos(450, 260, 270, 120)
+    }
+    block v17 {
+      position: pos(840, 260, 240, 120)
     }
   }
   block override_css: TextBlock {
@@ -80,156 +80,6 @@ Dashboard hooli_analytics {
   block t9: hooli_components.block.card_red
   block t10: hooli_components.block.card_red
   block t11: hooli_components.block.card_red
-
-
-  block v2: VizBlock {
-    label: 'Revenue'
-    viz: MetricKpi {
-      dataset: demo.ds_ecommerce2
-      filter {
-        field: ref('demo.fct_orders', 'created_at')
-        operator: 'before'
-        value: '2024-05-01'
-      }
-      value: VizFieldFull {
-        label: 'Sales'
-        ref: ref('demo.order_master', 'revenue')
-        format {
-          type: 'number'
-          pattern: '#,###0.00,,"M"'
-        }
-      }
-      compare_value: VizPopSettings {
-        field: ref('demo.fct_orders', 'created_at')
-        duration: 1
-        granularity: 'month'
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
-  block v3: VizBlock {
-    label: 'Orders'
-    viz: MetricKpi {
-      dataset: demo.ds_ecommerce2
-      filter {
-        field: ref('demo.fct_orders', 'created_at')
-        operator: 'before'
-        value: '2024-05-01'
-      }
-      value: VizFieldFull {
-        label: 'Orders'
-        ref: ref('demo.fct_orders', 'total_orders_count')
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      compare_value: VizPopSettings {
-        field: ref('demo.fct_orders', 'created_at')
-        duration: 1
-        granularity: 'month'
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
-  block v4: VizBlock {
-    label: 'Revenue (dup) (dup)'
-    viz: MetricKpi {
-      dataset: demo.ds_ecommerce2
-      filter {
-        field: ref('demo.dim_users', 'sign_up_date')
-        operator: 'before'
-        value: '2024-05-01'
-      }
-      value: VizFieldFull {
-        label: 'Customers'
-        ref: ref('demo.dim_users', 'total_users')
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      compare_value: VizPopSettings {
-        field: ref('demo.dim_users', 'sign_up_date')
-        duration: 1
-        granularity: 'month'
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
-  block v5: VizBlock {
-    label: 'Orders (dup)'
-    viz: MetricKpi {
-      dataset: demo.ds_ecommerce2
-      calculation conversion_rate_merchify {
-        label: 'Conversion rate'
-        formula: @aql safe_divide(
-  count_distinct(demo.fct_orders.user_id) | where(demo.dim_countries.name == "Vietnam") ,
-  count_distinct(demo.fct_orders.user_id)
-);;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      calculation metric_12a3de4 {
-        label: 'Untitled Metric'
-        formula: @aql (count_distinct(demo.fct_orders.user_id)|where(demo.dim_countries.name == "Vietnam"));;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      calculation metric_4e162d6 {
-        label: 'Untitled Metric'
-        formula: @aql count_distinct(demo.fct_orders.user_id);;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      calculation converted_users {
-        label: 'converted_users'
-        formula: @aql count_distinct(demo.fct_orders.user_id) | where(demo.dim_countries.name == "Vietnam");;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      calculation all_users {
-        label: 'all_users'
-        formula: @aql count_distinct(demo.fct_orders.user_id);;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      calculation conversion_rate {
-        label: 'Conversion Rate'
-        formula: @aql converted_users*1.0 / all_users;;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      filter {
-        field: ref('demo.fct_orders', 'created_at')
-        operator: 'before'
-        value: '2024-05-01'
-      }
-      value: VizFieldFull {
-        ref: 'conversion_rate'
-        format {
-          type: 'number'
-          pattern: '#,###0.00%'
-          group_separator: ','
-          decimal_separator: '.'
-        }
-      }
-      compare_value: VizPopSettings {
-        field: ref('demo.fct_orders', 'created_at')
-        duration: 1
-        granularity: 'month'
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
   block v6: VizBlock {
     theme: SecondaryBlock
     label: 'Top Selling Products'
@@ -347,59 +197,6 @@ Dashboard hooli_analytics {
       }
     }
   }
-  block v9: VizBlock {
-    label: 'Revenue (dup)'
-    viz: MetricKpi {
-      dataset: demo.ds_ecommerce2
-      filter {
-        field: ref('demo.fct_orders', 'created_at')
-        operator: 'before'
-        value: '2024-04-29'
-      }
-      value: VizFieldFull {
-        label: 'GMV - Gross Merchandise Value'
-        ref: 'gmv'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      compare_value: VizPopSettings {
-        field: ref('demo.fct_orders', 'created_at')
-        duration: 1
-        granularity: 'month'
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
-  block v10: VizBlock {
-    label: 'Revenue (dup) (dup)'
-    viz: MetricKpi {
-      dataset: demo.ds_ecommerce2
-      filter {
-        field: ref('demo.fct_orders', 'created_at')
-        operator: 'before'
-        value: '2024-05-01'
-      }
-      value: VizFieldFull {
-        ref: 'aov'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      compare_value: VizPopSettings {
-        field: ref('demo.fct_orders', 'created_at')
-        duration: 1
-        granularity: 'month'
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
   block v11: VizBlock {
     label: 'Metrics Trends'
     viz: MetricSheet {
@@ -476,6 +273,182 @@ Dashboard hooli_analytics {
           enabled: true
           debug_comments: true
         }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v12: VizBlock {
+    label: 'GMV - Gross Merchandise Value'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce
+      filter {
+        field: ref('demo.fct_order_items', 'created_at')
+        operator: 'before'
+        value: '2024-07-01'
+      }
+      value: VizFieldFull {
+        label: 'Sales'
+        ref: 'gmv'
+        format {
+          type: 'number'
+          pattern: '[$$]#,###0.00,,"M"'
+          group_separator: ','
+          decimal_separator: '.'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.fct_order_items', 'created_at')
+        duration: 1
+        granularity: 'month'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v13: VizBlock {
+    label: 'Orders'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce
+      filter {
+        field: ref('demo.fct_order_items', 'created_at')
+        operator: 'before'
+        value: '2024-07-01'
+      }
+      value: VizFieldFull {
+        label: 'Orders'
+        ref: 'count_distinct_orders'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.fct_order_items', 'created_at')
+        duration: 1
+        granularity: 'month'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v14: VizBlock {
+    label: 'Orders (dup)'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce
+      filter {
+        field: ref('demo.fct_order_items', 'created_at')
+        operator: 'before'
+        value: '2024-07-01'
+      }
+      value: VizFieldFull {
+        ref: 'count_users'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.fct_order_items', 'created_at')
+        duration: 1
+        granularity: 'month'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v15: VizBlock {
+    label: 'Conversion rate'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce
+      calculation converted_users {
+        label: 'converted users'
+        formula: @aql count(demo.fct_orders.user_id) | where(demo.fct_orders.status == "delivered");;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation conversion_rate {
+        label: 'Conversion Rate'
+        formula: @aql converted_users*1.0 / count_users;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('demo.fct_order_items', 'created_at')
+        operator: 'before'
+        value: '2024-04-25'
+      }
+      value: VizFieldFull {
+        ref: 'conversion_rate'
+        format {
+          type: 'number'
+          pattern: '#,###0.00\\%'
+          group_separator: ','
+          decimal_separator: '.'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.fct_orders', 'created_at')
+        duration: 1
+        granularity: 'month'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v16: VizBlock {
+    label: 'GMV - Gross Merchandise Value'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce
+      filter {
+        field: ref('demo.fct_order_items', 'created_at')
+        operator: 'before'
+        value: '2024-05-01'
+      }
+      value: VizFieldFull {
+        ref: 'gmv'
+        format {
+          type: 'number'
+          pattern: '[$$]#,###0.00,,"M"'
+          group_separator: ','
+          decimal_separator: '.'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.fct_order_items', 'created_at')
+        duration: 1
+        granularity: 'month'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v17: VizBlock {
+    label: 'GMV - Gross Merchandise Value (dup)'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce
+      filter {
+        field: ref('demo.fct_order_items', 'created_at')
+        operator: 'before'
+        value: '2024-05-01'
+      }
+      value: VizFieldFull {
+        ref: 'aov'
+        format {
+          type: 'number'
+          pattern: '[$$]#,###'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('demo.fct_order_items', 'created_at')
+        duration: 1
+        granularity: 'month'
       }
     }
     settings {
