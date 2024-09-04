@@ -31,9 +31,6 @@ Dashboard hooli_analytics {
     block t11 {
       position: pos(40, 530, 530, 470)
     }
-    block t15 {
-      position: pos(40, 1030, 1060, 240)
-    }
     block v6 {
       position: pos(40, 1310, 480, 360)
     }
@@ -73,6 +70,9 @@ Dashboard hooli_analytics {
     block f1 {
       position: pos(40, 20, 280, 90)
     }
+    block t15 {
+      position: pos(40, 1030, 1060, 240)
+    }
   }
   block override_css: TextBlock {
     content: @md <style>
@@ -95,9 +95,7 @@ Dashboard hooli_analytics {
   block t9: hooli_components.block.card_red
   block t10: hooli_components.block.card_red
   block t11: hooli_components.block.card_red
-  block t15: hooli_components.block.card_red
   block v6: VizBlock {
-    theme: SecondaryBlock
     label: 'Top Selling Products'
     viz: DataTable {
       dataset: demo.ds_ecommerce2
@@ -149,21 +147,22 @@ Dashboard hooli_analytics {
             format: ScaleFormat {
               min {
                 value: 0
-                color: '#E9EFFB'
+                color: '#F7CBA0FF'
               }
               mid {
                 value: 80000
-                color: '#3763C5FF'
+                color: '#ED801CFF'
               }
               max {
                 value: 150000
-                color: '#07326C'
+                color: '#603206FF'
               }
             }
           }
         ]
       }
     }
+    theme: demo.SecondaryBlock
   }
   block v7: VizBlock {
     theme: SecondaryBlock
@@ -578,4 +577,5 @@ Dashboard hooli_analytics {
       modifier: 'month'
     }
   }
+  block t15: hooli_components.block.card_red
 }

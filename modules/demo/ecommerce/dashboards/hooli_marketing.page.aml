@@ -67,9 +67,7 @@ Dashboard hooli_marketing {
       }
     </style>;;
   }
-
   block v3: VizBlock {
-    theme: SecondaryBlock
     label: 'General'
     viz: DataTable {
       dataset: demo.marketing_campaign
@@ -116,15 +114,15 @@ Dashboard hooli_marketing {
             format: ScaleFormat {
               min {
                 value: 500000
-                color: '#FFEDD7FF'
+                color: '#F7CBA0FF'
               }
               mid {
                 value: 1200000
-                color: '#DACDB5FF'
+                color: '#ED801CFF'
               }
               max {
                 value: 2000000
-                color: '#9F600FFF'
+                color: '#603206FF'
               }
             }
           }
@@ -132,6 +130,7 @@ Dashboard hooli_marketing {
         row_limit: 5000
       }
     }
+    theme: demo.SecondaryBlock
   }
   block f1: FilterBlock {
     theme: SecondaryBlock

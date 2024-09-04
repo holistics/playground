@@ -18,14 +18,13 @@ Dashboard hooli_products {
       position: pos(600, 560, 620, 440)
     }
     block f1 {
-      position: pos(360, 40, 300, 100)
+      position: pos(40, 40, 540, 100)
     }
     block f2 {
-      position: pos(40, 40, 300, 100)
+      position: pos(600, 40, 620, 100)
     }
   }
   block v6: VizBlock {
-    theme: SecondaryBlock
     label: 'Top Selling Products'
     viz: DataTable {
       dataset: demo.ds_ecommerce2
@@ -77,21 +76,22 @@ Dashboard hooli_products {
             format: ScaleFormat {
               min {
                 value: 0
-                color: '#FBF1DFFF'
+                color: '#F7CBA0FF'
               }
               mid {
                 value: 80000
-                color: '#C7AB81FF'
+                color: '#ED801CFF'
               }
               max {
                 value: 150000
-                color: '#9F600EFF'
+                color: '#603206FF'
               }
             }
           }
         ]
       }
     }
+    theme: demo.SecondaryBlock
   }
   block v7: VizBlock {
     theme: SecondaryBlock
@@ -130,7 +130,6 @@ Dashboard hooli_products {
     }
   }
   block v8: VizBlock {
-    theme: SecondaryBlock
     label: 'Details'
     viz: PivotTable {
       dataset: demo.ds_ecommerce
@@ -152,19 +151,19 @@ Dashboard hooli_products {
       ]
       values: [
         VizFieldFull {
-          label: 'No.of Orders'
-          ref: 'count_orders'
-          format {
-            type: 'number'
-            pattern: '#,###'
-          }
-        },
-        VizFieldFull {
           label: 'Revenue'
           ref: 'gmv'
           format {
             type: 'number'
-            pattern: 'inherited'
+            pattern: '[$$]#,###'
+          }
+        },
+        VizFieldFull {
+          label: 'No. of Orders'
+          ref: 'count_distinct_orders'
+          format {
+            type: 'number'
+            pattern: '#,###'
           }
         }
       ]
@@ -177,6 +176,7 @@ Dashboard hooli_products {
     settings {
       hide_label: true
     }
+    theme: demo.SecondaryBlock
   }
   block f1: FilterBlock {
     theme: SecondaryBlock
