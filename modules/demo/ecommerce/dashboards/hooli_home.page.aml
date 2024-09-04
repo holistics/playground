@@ -22,13 +22,13 @@ Dashboard hooli_home {
       position: pos(30, 30, 560, 380)
     }
     block v3 {
-      position: pos(630, 60, 340, 120)
+      position: pos(640, 80, 480, 120)
     }
     block v4 {
-      position: pos(620, 270, 220, 120)
+      position: pos(630, 280, 210, 120)
     }
     block v5 {
-      position: pos(900, 260, 180, 120)
+      position: pos(900, 280, 220, 120)
     }
     block override_css {
       position: pos(-280, 620, 361, 310)
@@ -112,15 +112,10 @@ Dashboard hooli_home {
           pattern: '#,###0.00,,"M"'
         }
       }
-      compare_value: VizFieldFull {
-        ref: 'metric_73b32d0'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      settings {
-        display_mode: 'progress'
+      compare_value: VizPopSettings {
+        field: ref('demo.fct_orders', 'created_at')
+        duration: 1
+        granularity: 'month'
       }
     }
     settings {
