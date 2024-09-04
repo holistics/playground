@@ -1,8 +1,8 @@
 Dataset ds_ecommerce2 {
-  label: 'Demo Ecommerce'
+  label: 'Demo Ecommerce (Archived)'
   description: 'Ecommerce dataset. ERD can be found [here](https://dbdiagram.io/e/658b9f1289dea62799972ec8/665fedfcb65d933879884fa8)'
   data_source_name: 'demo_pg'
-  owner: 'thong.do@holistics.io'
+  owner: '???'
 
   models: [
     fct_order_items,
