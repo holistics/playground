@@ -50,6 +50,8 @@ Dataset ds_ecommerce {
     ecommerce_product_images,
 
     user_cohort_retention,
+
+    demo.dim_product_img
   ]
   relationships: [
     relationship(demo.fct_order_items.product_id > demo.dim_products.id, true),
@@ -63,6 +65,7 @@ Dataset ds_ecommerce {
     relationship(demo.fct_orders.user_country_code > demo.dim_user_countries.code, true),
     relationship(demo.fct_orders.created_date > demo.dim_dates.date_key, true),
     relationship(demo.fct_orders.user_id > demo.dim_users.id, false),
+    relationship(demo.dim_product_img.product_id - demo.dim_products.id, true)
 
     relationship(order_master_ecommerce_merchants, true),
     relationship(order_master_ecommerce_orders, true),
