@@ -166,7 +166,7 @@ Dashboard hooli_overview {
   block v12: VizBlock {
     label: 'Total sales'
     viz: MetricKpi {
-      dataset: demo.ds_ecommerce2
+      dataset: demo.ds_ecommerce
       filter {
         field: ref('demo.fct_orders', 'created_at')
         operator: 'before'
@@ -195,7 +195,7 @@ Dashboard hooli_overview {
   block v14: VizBlock {
     label: 'Total sales (dup) (dup)'
     viz: MetricKpi {
-      dataset: demo.ds_ecommerce2
+      dataset: demo.ds_ecommerce
       filter {
         field: ref('demo.fct_orders', 'created_at')
         operator: 'before'
@@ -222,7 +222,7 @@ Dashboard hooli_overview {
   block v5: VizBlock {
     label: 'Orders (dup)'
     viz: MetricKpi {
-      dataset: demo.ds_ecommerce2
+      dataset: demo.ds_ecommerce
       calculation conversion_rate_merchify {
         label: 'Conversion rate'
         formula: @aql safe_divide(

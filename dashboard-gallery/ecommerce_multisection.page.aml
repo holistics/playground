@@ -216,7 +216,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
   block v6: VizBlock {
     label: 'Top selling products'
     viz: DataTable {
-      dataset: demo.ds_ecommerce2
+      dataset: demo.ds_ecommerce
       calculation f_28374b6 {
         label: 'Product Image'
         formula: @aml concat('<img src="', demo.ecommerce_product_images.url, '" style="float:left;height:48px; margin: 12px 6px; object-fit:contain" />');;
@@ -280,7 +280,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
   block v7: VizBlock {
     label: 'Cohort Retention'
     viz: RetentionHeatmap {
-      dataset: ds_ecommerce2
+      dataset: ds_ecommerce
       filter {
         field: ref('demo.user_cohort_retention', 'cohort_month')
         operator: 'matches'
@@ -319,7 +319,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
   block v8: VizBlock {
     label: 'Users vs Orders Growth'
     viz: CombinationChart {
-      dataset: demo.ds_ecommerce2
+      dataset: demo.ds_ecommerce
       x_axis: VizFieldFull {
         ref: ref('demo.dim_users', 'sign_up_date')
         transformation: 'datetrunc quarter'
@@ -364,7 +364,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
   block v10: VizBlock {
     label: 'Total Users compared with Target Users'
     viz: MetricKpi {
-      dataset: ds_ecommerce2
+      dataset: ds_ecommerce
       calculation f_d80427a {
         label: 'Target Users'
         formula: @aml demo.dim_users.users_signed_up_count * 1.38;;
@@ -397,7 +397,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
   block v12: VizBlock {
     label: 'Gross Merchandise Value'
     viz: AreaChart {
-      dataset: ds_ecommerce2
+      dataset: ds_ecommerce
       // calculation f_2fb1cc3 {
       //   label: 'GMT last year'
       //   formula: @aml order_master.gmv * 0.87;;
@@ -444,7 +444,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
     label: 'Country'
     type: 'field'
     source: FieldFilterSource {
-      dataset: ds_ecommerce2
+      dataset: ds_ecommerce
       field: ref('demo.dim_countries', 'name')
     }
     default {
@@ -603,7 +603,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
   block v14: VizBlock {
     label: 'Orders by Country Name and Status'
     viz: ColumnChart {
-      dataset: demo.ds_ecommerce2
+      dataset: demo.ds_ecommerce
       calculation f_7be4e9b {
         label: 'Status'
         formula: @aml  case(
@@ -616,7 +616,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
         data_type: 'text'
       }
       x_axis: VizFieldFull {
-        ref: ref('demo.dim_countries', 'name')
+        ref: ref('demo.dim_user_countries', 'name')
         format {
           type: 'text'
         }
@@ -689,7 +689,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
     label: 'Age Group'
     type: 'field'
     source: FieldFilterSource {
-      dataset: ds_ecommerce2
+      dataset: ds_ecommerce
       field: ref('demo.dim_users', 'age_group')
     }
     default {
@@ -718,8 +718,8 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
     label: 'City'
     type: 'field'
     source: FieldFilterSource {
-      dataset: ds_ecommerce2
-      field: ref('demo.dim_cities', 'name')
+      dataset: ds_ecommerce
+      field: ref('demo.dim_user_cities', 'name')
     }
     default {
       operator: 'is'
@@ -772,7 +772,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
   block v15: VizBlock {
     label: 'Average Order Value over time'
     viz: CombinationChart {
-      dataset: demo.ds_ecommerce2
+      dataset: demo.ds_ecommerce
       filter {
         field: ref('demo.order_master', 'order_created_at')
         operator: 'matches'
@@ -813,7 +813,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
   block v16: VizBlock {
     label: 'Sales Funnel'
     viz: ConversionFunnel {
-      dataset: demo.ds_ecommerce2
+      dataset: demo.ds_ecommerce
       values: [
         VizFieldFull {
           ref: ref('demo.dim_users', 'users_signed_up_count')
