@@ -103,11 +103,10 @@ Dashboard hooli_analytics {
   block t10: hooli_components.block.card_red
   block t11: hooli_components.block.card_red
   block t17: hooli_components.block.card_red
-  block v7: VizBlock {
-    theme: SecondaryBlock
-    label: 'Top Selling Categories'
-    viz: PivotTable {
-      dataset: demo.ds_ecommerce2
+  block v6: VizBlock {
+    label: 'Top Selling Products'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce
       calculation f_28374b6 {
         label: 'Product Image'
         formula: @aml concat('<img src="', demo.ecommerce_product_images.url, '" style="float:left;height:48px; margin: 12px 6px; object-fit:contain" />');;
@@ -151,10 +150,17 @@ Dashboard hooli_analytics {
       }
     }
   }
+<<<<<<< HEAD
 
   block v6: VizBlock {
     label: 'Top Selling Products'
     viz: DataTable {
+=======
+  block v7: VizBlock {
+    theme: SecondaryBlock
+    label: 'Top Selling Categories'
+    viz: PivotTable {
+>>>>>>> origin/master
       dataset: demo.ds_ecommerce
       calculation f_28374b6 {
         label: 'Product Image'

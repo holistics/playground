@@ -27,7 +27,7 @@ Dashboard hooli_products {
   block v6: VizBlock {
     label: 'Top Selling Products'
     viz: DataTable {
-      dataset: demo.ds_ecommerce2
+      dataset: demo.ds_ecommerce
       calculation f_28374b6 {
         label: 'Product Image'
         formula: @aml concat('<img src="', demo.ecommerce_product_images.url, '" style="float:left;height:48px; margin: 12px 6px; object-fit:contain" />');;

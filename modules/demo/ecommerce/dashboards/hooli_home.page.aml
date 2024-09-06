@@ -42,7 +42,7 @@ Dashboard hooli_home {
   block v2: VizBlock {
     label: 'Sales'
     viz: AreaChart {
-      dataset: demo.ds_ecommerce2
+      dataset: demo.ds_ecommerce
       filter {
         field: ref('demo.fct_orders', 'created_at')
         operator: 'matches'
@@ -92,7 +92,7 @@ Dashboard hooli_home {
   block v3: VizBlock {
     label: 'Revenue'
     viz: MetricKpi {
-      dataset: demo.ds_ecommerce2
+      dataset: demo.ds_ecommerce
       calculation metric_73b32d0 {
         label: 'Sales goal'
         formula: @aql 200000000;;
@@ -125,7 +125,7 @@ Dashboard hooli_home {
   block v4: VizBlock {
     label: 'Orders'
     viz: MetricKpi {
-      dataset: demo.ds_ecommerce2
+      dataset: demo.ds_ecommerce
       filter {
         field: ref('demo.fct_orders', 'created_at')
         operator: 'before'
@@ -152,7 +152,7 @@ Dashboard hooli_home {
   block v5: VizBlock {
     label: 'Revenue (dup) (dup)'
     viz: MetricKpi {
-      dataset: demo.ds_ecommerce2
+      dataset: demo.ds_ecommerce
       filter {
         field: ref('demo.dim_users', 'sign_up_date')
         operator: 'before'

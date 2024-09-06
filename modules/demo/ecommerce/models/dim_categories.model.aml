@@ -1,5 +1,5 @@
 Model dim_categories {
-  type: 'table'
+  type: 'query'
   label: 'Category'
   description: ''
   data_source_name: 'demo_pg'
@@ -7,13 +7,13 @@ Model dim_categories {
     label: 'Id'
     type: 'number'
     hidden: false
-    definition: @sql {{ #SOURCE.id }};;
+    definition: @sql {{ #SOURCE.category_id }};;
   }
   dimension name {
     label: 'Name'
     type: 'text'
     hidden: false
-    definition: @sql {{ #SOURCE.name }};;
+    definition: @sql {{ #SOURCE.category }};;
   }
   dimension parent_id {
     label: 'Parent Id'
@@ -22,6 +22,24 @@ Model dim_categories {
     definition: @sql {{ #SOURCE.parent_id }};;
   }
 
+  dimension parent_category {
+    label: 'Parent Category'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.parent_category }};;
+  }
+
+  
+
   owner: 'triet.lq+ph@holistics.io'
-  table_name: 'ecommerce.dim_categories'
+  query: @sql 
+    select
+      cat.id as category_id
+      , cat.name as category
+      , pcat.id as parent_id
+      , pcat.name as parent_category
+    from ecommerce.dim_categories cat 
+    left join  ecommerce.dim_categories pcat on cat.parent_id = pcat.id
+    where cat.parent_id is not null
+  ;;
 }
