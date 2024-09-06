@@ -4,7 +4,7 @@ Dataset marketing_campaign {
   data_source_name: 'demo_pg'
   models: [
     marketing_kpi
-  ]
+]
   relationships: [
   ]
   owner: 'son.hoang+ph@holistics.io'

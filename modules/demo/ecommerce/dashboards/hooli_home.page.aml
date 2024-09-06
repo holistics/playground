@@ -7,13 +7,13 @@ Dashboard hooli_home {
 
   view: CanvasLayout {
     label: 'View 1'
-    width: 1170
-    height: 460
+    width: 1150
+    height: 440
     block t5 {
-      position: pos(610, 30, 520, 200)
+      position: pos(610, 30, 510, 200)
     }
     block t6 {
-      position: pos(880, 250, 250, 160)
+      position: pos(870, 250, 250, 160)
     }
     block t7 {
       position: pos(610, 250, 240, 160)
@@ -22,10 +22,10 @@ Dashboard hooli_home {
       position: pos(30, 30, 560, 380)
     }
     block v3 {
-      position: pos(640, 80, 480, 120)
+      position: pos(640, 80, 470, 120)
     }
     block v4 {
-      position: pos(630, 280, 210, 120)
+      position: pos(640, 280, 210, 120)
     }
     block v5 {
       position: pos(900, 280, 220, 120)

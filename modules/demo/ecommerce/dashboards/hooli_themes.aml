@@ -1,16 +1,11 @@
 PageTheme Hooli {
 background {
-  bg_color: "#FEF3EE"
+  bg_color: "white"
 }
 canvas {
   background {
-    bg_color: "#FEF3EE"
+    bg_color: "white"
   }
-  // border {
-  //   border_width: 1
-  //   border_color: "#D5D5D5"
-  //   border_style: "dashed"
-  // }
 shadow: "none"
 
 }
@@ -45,7 +40,7 @@ BlockTheme SecondaryBlock {
 padding: 12
       border{
         border_width: 1
-        border_color: "#DAC5C2"
+        border_color: "#D2D5DF"
         border_radius: 8
       }
       background {
