@@ -51,6 +51,9 @@ Dashboard hooli_marketing {
     block t5 {
       position: pos(940, 150, 50, 160)
     }
+    block card_red {
+      position: pos(170, 50, 645, 310)
+    }
   }
   block t9: hooli_components.block.card_red
   block override_css: TextBlock {
@@ -350,7 +353,7 @@ Dashboard hooli_marketing {
   block t3: TextBlock {
     content: @md <div 
       style="
-        border-left: 2px solid #E1E3EA;
+        border-left: 1px solid #D2D5DF;
         height: 100%;
         margin-left: 50%;
         display: block;
@@ -359,7 +362,7 @@ Dashboard hooli_marketing {
   block t4: TextBlock {
     content: @md <div 
       style="
-        border-left: 2px solid #E1E3EA;
+        border-left: 1px solid #D2D5DF;
         height: 100%;
         margin-left: 50%;
         display: block;
@@ -368,7 +371,7 @@ Dashboard hooli_marketing {
   block t5: TextBlock {
     content: @md <div 
       style="
-        border-left: 2px solid #E1E3EA;
+        border-left: 1px solid #D2D5DF;
         height: 100%;
         margin-left: 50%;
         display: block;

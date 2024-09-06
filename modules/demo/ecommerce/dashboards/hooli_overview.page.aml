@@ -5,8 +5,8 @@ Dashboard hooli_analytics {
 
   view: CanvasLayout {
     label: 'View 1'
-    width: 1130
-    height: 1920
+    width: 1120
+    height: 1770
     block override_css {
       position: pos(-380, -40, 361, 353)
     }
@@ -28,20 +28,14 @@ Dashboard hooli_analytics {
     block t10 {
       position: pos(390, 150, 330, 160)
     }
-    block t11 {
-      position: pos(40, 530, 530, 470)
-    }
-    block t17 {
-      position: pos(590, 530, 500, 470)
+    block v6 {
+      position: pos(40, 1280, 510, 460)
     }
     block v7 {
-      position: pos(570, 1380, 530, 460)
-    }
-    block v6 {
-      position: pos(50, 1410, 470, 500)
+      position: pos(570, 1280, 520, 460)
     }
     block v11 {
-      position: pos(60, 1040, 1020, 200)
+      position: pos(40, 960, 1050, 200)
     }
     block v12 {
       position: pos(70, 180, 250, 120)
@@ -62,23 +56,19 @@ Dashboard hooli_analytics {
       position: pos(760, 370, 320, 120)
     }
     block v18 {
-      position: pos(60, 560, 490, 410)
+      position: pos(40, 530, 530, 410)
     }
     block v19 {
-      position: pos(610, 560, 450, 430)
+      position: pos(590, 530, 500, 410)
     }
     block f1 {
       position: pos(40, 20, 420, 100)
     }
-    block t15 {
-      position: pos(40, 1020, 1060, 240)
-      layer: -1
-    }
     block f2 {
-      position: pos(40, 1280, 340, 80)
+      position: pos(40, 1180, 340, 80)
     }
     block f3 {
-      position: pos(400, 1280, 330, 80)
+      position: pos(400, 1180, 330, 80)
     }
   }
   block override_css: TextBlock {
@@ -101,9 +91,8 @@ Dashboard hooli_analytics {
   block t8: hooli_components.block.card_red
   block t9: hooli_components.block.card_red
   block t10: hooli_components.block.card_red
-  block t11: hooli_components.block.card_red
-  block t17: hooli_components.block.card_red
   block v6: VizBlock {
+    theme: SecondaryBlock
     label: 'Top Selling Products'
     viz: PivotTable {
       dataset: demo.ds_ecommerce
@@ -222,6 +211,7 @@ Dashboard hooli_analytics {
   }
 
   block v11: VizBlock {
+    theme: SecondaryBlock
     label: 'Metrics Trends'
     viz: MetricSheet {
       dataset: demo.ds_ecommerce
@@ -469,6 +459,7 @@ Dashboard hooli_analytics {
     }
   }
   block v18: VizBlock {
+    theme: SecondaryBlock
     label: 'Sales Overtime'
     viz: LineChart {
       dataset: demo.ds_ecommerce
@@ -509,6 +500,7 @@ Dashboard hooli_analytics {
     }
   }
   block v19: VizBlock {
+    theme: SecondaryBlock
     label: 'Trend Metrics'
     viz: LineChart {
       dataset: demo.ds_ecommerce
@@ -576,7 +568,6 @@ Dashboard hooli_analytics {
       modifier: 'month'
     }
   }
-  block t15: hooli_components.block.card_red
   block f2: FilterBlock {
     theme: SecondaryBlock.extend(
       {
