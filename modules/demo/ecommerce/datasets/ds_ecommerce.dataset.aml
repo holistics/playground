@@ -39,8 +39,6 @@ Dataset ds_ecommerce {
     dim_merchants,
     dim_product_img,
 
-
-
     dim_product_cities,
     dim_product_countries,
     dim_user_cities,
