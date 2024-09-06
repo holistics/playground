@@ -35,7 +35,7 @@ Dashboard hooli_products {
         data_type: 'text'
       }
       filter {
-        field: ref('demo.order_master', 'order_created_at')
+        field: ref('demo.fct_orders', 'created_at')
         operator: 'matches'
         value: '2023'
       }
@@ -72,7 +72,7 @@ Dashboard hooli_products {
         ]
         conditional_formats: [
           ConditionalFormat {
-            ref: ref('demo.order_master', 'gmv')
+            ref: 'gmv'
             format: ScaleFormat {
               min {
                 value: 0

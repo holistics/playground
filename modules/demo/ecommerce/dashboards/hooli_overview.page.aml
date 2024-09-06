@@ -113,7 +113,7 @@ Dashboard hooli_analytics {
         data_type: 'text'
       }
       filter {
-        field: ref('demo.order_master', 'order_created_at')
+        field: ref('demo.fct_orders', 'created_at')
         operator: 'matches'
         value: '2023'
       }
@@ -132,7 +132,7 @@ Dashboard hooli_analytics {
         },
         VizFieldFull {
           label: 'GMV'
-          ref: ref('demo.order_master', 'gmv')
+          ref: 'gmv'
           format {
             type: 'number'
             pattern: '[$$]#,###'
@@ -150,7 +150,7 @@ Dashboard hooli_analytics {
         ]
         conditional_formats: [
           ConditionalFormat {
-            ref: ref('demo.order_master', 'gmv')
+            ref: 'gmv'
             format: ScaleFormat {
               min {
                 value: 0
@@ -183,7 +183,7 @@ Dashboard hooli_analytics {
         data_type: 'text'
       }
       filter {
-        field: ref('demo.order_master', 'order_created_at')
+        field: ref('demo.fct_orders', 'created_at')
         operator: 'matches'
         value: '2023'
       }
@@ -204,7 +204,7 @@ Dashboard hooli_analytics {
       values: [
         VizFieldFull {
           label: 'GMV'
-          ref: ref('demo.order_master', 'gmv')
+          ref: 'gmv'
           format {
             type: 'number'
             pattern: '[$$]#,###'
