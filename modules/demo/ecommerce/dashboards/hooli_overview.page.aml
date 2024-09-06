@@ -105,7 +105,7 @@ Dashboard hooli_analytics {
   block t17: hooli_components.block.card_red
   block v6: VizBlock {
     label: 'Top Selling Products'
-    viz: DataTable {
+    viz: PivotTable {
       dataset: demo.ds_ecommerce
       calculation f_28374b6 {
         label: 'Product Image'
@@ -150,17 +150,11 @@ Dashboard hooli_analytics {
       }
     }
   }
-<<<<<<< HEAD
 
-  block v6: VizBlock {
-    label: 'Top Selling Products'
-    viz: DataTable {
-=======
   block v7: VizBlock {
     theme: SecondaryBlock
     label: 'Top Selling Categories'
-    viz: PivotTable {
->>>>>>> origin/master
+    viz: DataTable {
       dataset: demo.ds_ecommerce
       calculation f_28374b6 {
         label: 'Product Image'
@@ -225,7 +219,6 @@ Dashboard hooli_analytics {
         ]
       }
     }
-    theme: demo.SecondaryBlock
   }
 
   block v11: VizBlock {
