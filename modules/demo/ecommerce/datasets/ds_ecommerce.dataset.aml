@@ -37,21 +37,24 @@ Dataset ds_ecommerce {
     dim_cities,
     dim_categories,
     dim_merchants,
+    dim_product_img,
 
-    order_master,
+
 
     dim_product_cities,
     dim_product_countries,
     dim_user_cities,
     dim_user_countries,
 
-    user_facts_aggr,
 
-    ecommerce_product_images,
+    order_master, // to be removed
 
-    user_cohort_retention,
+    user_facts_aggr, // to be removed
 
-    demo.dim_product_img
+    ecommerce_product_images, // to be removed
+
+    user_cohort_retention, // to be removed
+
   ]
   relationships: [
     relationship(demo.fct_order_items.product_id > demo.dim_products.id, true),
