@@ -439,45 +439,45 @@ Dashboard hooli_overview {
   view: CanvasLayout {
     label: 'View 1'
     width: 1410
-    height: 1580
+    height: 1530
     block override_css {
       position: pos(-410, 20, 361, 370)
     }
     block v2 {
-      position: pos(770, 280, 610, 390)
+      position: pos(770, 270, 610, 390)
     }
     block f2 {
       position: pos(40, 150, 310, 100)
     }
     block v11 {
-      position: pos(40, 280, 710, 390)
+      position: pos(40, 270, 710, 390)
     }
     block t9 {
-      position: pos(380, 40, 1000, 210)
+      position: pos(370, 40, 1010, 210)
     }
     block f3 {
       position: pos(40, 40, 310, 100)
     }
     block v12 {
-      position: pos(430, 90, 240, 120)
+      position: pos(410, 90, 240, 120)
     }
     block v14 {
       position: pos(1110, 90, 240, 120)
     }
     block v5 {
-      position: pos(760, 80, 250, 140)
+      position: pos(760, 90, 250, 140)
     }
     block v15 {
-      position: pos(40, 710, 710, 370)
+      position: pos(40, 680, 710, 370)
     }
     block v16 {
-      position: pos(770, 710, 610, 370)
+      position: pos(770, 680, 610, 370)
     }
     block v17 {
-      position: pos(40, 1120, 1340, 430)
+      position: pos(40, 1070, 1340, 430)
     }
     block t14 {
-      position: pos(670, 50, 90, 200)
+      position: pos(670, 50, 60, 200)
     }
     block t15 {
       position: pos(1010, 50, 90, 200)
