@@ -8,7 +8,7 @@ Dashboard hooli_marketing {
   view: CanvasLayout {
     label: 'View 1'
     width: 1290
-    height: 920
+    height: 890
     block t9 {
       position: pos(20, 140, 1240, 170)
     }
@@ -16,7 +16,7 @@ Dashboard hooli_marketing {
       position: pos(0, 0, 361, 370)
     }
     block v3 {
-      position: pos(330, 350, 930, 230)
+      position: pos(330, 340, 930, 230)
     }
     block f1 {
       position: pos(20, 20, 510, 90)
@@ -34,13 +34,13 @@ Dashboard hooli_marketing {
       position: pos(660, 180, 200, 100)
     }
     block v14 {
-      position: pos(330, 620, 930, 260)
+      position: pos(330, 600, 930, 260)
     }
     block v15 {
-      position: pos(20, 350, 270, 230)
+      position: pos(20, 340, 270, 230)
     }
     block v18 {
-      position: pos(20, 620, 270, 260)
+      position: pos(20, 600, 270, 260)
     }
     block t3 {
       position: pos(290, 150, 50, 160)
@@ -350,7 +350,7 @@ Dashboard hooli_marketing {
   block t3: TextBlock {
     content: @md <div 
       style="
-        border-left: 2px solid #DAC5C2;
+        border-left: 2px solid #E1E3EA;
         height: 100%;
         margin-left: 50%;
         display: block;
@@ -359,7 +359,7 @@ Dashboard hooli_marketing {
   block t4: TextBlock {
     content: @md <div 
       style="
-        border-left: 2px solid #DAC5C2;
+        border-left: 2px solid #E1E3EA;
         height: 100%;
         margin-left: 50%;
         display: block;
@@ -368,7 +368,7 @@ Dashboard hooli_marketing {
   block t5: TextBlock {
     content: @md <div 
       style="
-        border-left: 2px solid #DAC5C2;
+        border-left: 2px solid #E1E3EA;
         height: 100%;
         margin-left: 50%;
         display: block;

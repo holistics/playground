@@ -11,74 +11,74 @@ Dashboard hooli_analytics {
       position: pos(-380, -40, 361, 353)
     }
     block t5 {
-      position: pos(40, 150, 280, 160)
+      position: pos(40, 150, 330, 160)
     }
     block t6 {
-      position: pos(820, 330, 280, 180)
+      position: pos(740, 330, 350, 180)
     }
     block t7 {
-      position: pos(430, 330, 300, 180)
+      position: pos(390, 330, 330, 180)
     }
     block t8 {
-      position: pos(40, 330, 280, 180)
+      position: pos(40, 330, 330, 180)
     }
     block t9 {
-      position: pos(820, 150, 280, 160)
+      position: pos(740, 150, 350, 160)
     }
     block t10 {
-      position: pos(430, 150, 300, 160)
+      position: pos(390, 150, 330, 160)
     }
     block t11 {
       position: pos(40, 530, 530, 470)
     }
-    block v6 {
-      position: pos(40, 1420, 510, 460)
+    block t17 {
+      position: pos(590, 530, 500, 470)
     }
     block v7 {
-      position: pos(570, 1420, 530, 460)
+      position: pos(570, 1380, 530, 460)
+    }
+    block v6 {
+      position: pos(50, 1410, 470, 500)
     }
     block v11 {
-      position: pos(60, 1060, 1020, 200)
+      position: pos(60, 1040, 1020, 200)
     }
     block v12 {
-      position: pos(60, 180, 250, 120)
+      position: pos(70, 180, 250, 120)
     }
     block v13 {
-      position: pos(450, 180, 260, 120)
+      position: pos(420, 180, 260, 120)
     }
     block v14 {
-      position: pos(840, 180, 240, 120)
+      position: pos(760, 180, 310, 120)
     }
     block v15 {
-      position: pos(60, 370, 260, 120)
+      position: pos(70, 370, 260, 120)
     }
     block v16 {
-      position: pos(450, 370, 270, 120)
+      position: pos(420, 370, 270, 120)
     }
     block v17 {
-      position: pos(840, 370, 240, 120)
-    }
-    block t12 {
-      position: pos(610, 530, 490, 470)
+      position: pos(760, 370, 320, 120)
     }
     block v18 {
       position: pos(60, 560, 490, 410)
     }
     block v19 {
-      position: pos(630, 560, 450, 430)
+      position: pos(610, 560, 450, 430)
     }
     block f1 {
       position: pos(40, 20, 420, 100)
     }
     block t15 {
-      position: pos(40, 1040, 1060, 240)
+      position: pos(40, 1020, 1060, 240)
       layer: -1
     }
     block f2 {
-      position: pos(40, 1320, 340, 80)
+      position: pos(40, 1280, 340, 80)
     }
     block f3 {
-      position: pos(400, 1320, 330, 80)
+      position: pos(400, 1280, 330, 80)
     }
   }
   block override_css: TextBlock {
@@ -102,9 +102,11 @@ Dashboard hooli_analytics {
   block t9: hooli_components.block.card_red
   block t10: hooli_components.block.card_red
   block t11: hooli_components.block.card_red
-  block v6: VizBlock {
-    label: 'Top Selling Products'
-    viz: DataTable {
+  block t17: hooli_components.block.card_red
+  block v7: VizBlock {
+    theme: SecondaryBlock
+    label: 'Top Selling Categories'
+    viz: PivotTable {
       dataset: demo.ds_ecommerce2
       calculation f_28374b6 {
         label: 'Product Image'
@@ -114,6 +116,54 @@ Dashboard hooli_analytics {
       }
       filter {
         field: ref('demo.order_master', 'order_created_at')
+        operator: 'matches'
+        value: '2023'
+      }
+      rows: [
+        VizFieldFull {
+          ref: ref('demo.dim_categories', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('demo.dim_products', 'name')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          label: 'GMV'
+          ref: ref('demo.order_master', 'gmv')
+          format {
+            type: 'number'
+            pattern: '[$$]#,###'
+          }
+        }
+      ]
+      settings {
+        row_height: 'multiple_lines'
+        pagination_size: 100
+        show_row_total: true
+        show_column_total: true
+      }
+    }
+  }
+
+  block v6: VizBlock {
+    label: 'Top Selling Products'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce
+      calculation f_28374b6 {
+        label: 'Product Image'
+        formula: @aml concat('<img src="', demo.ecommerce_product_images.url, '" style="float:left;height:48px; margin: 12px 6px; object-fit:contain" />');;
+        calc_type: 'dimension'
+        data_type: 'text'
+      }
+      filter {
+        field: ref('demo.fct_order_items', 'created_at')
         operator: 'matches'
         value: '2023'
       }
@@ -171,54 +221,7 @@ Dashboard hooli_analytics {
     }
     theme: demo.SecondaryBlock
   }
-  block v7: VizBlock {
-    theme: SecondaryBlock
-    label: 'Top Selling Categories'
-    viz: PivotTable {
-      dataset: demo.ds_ecommerce2
-      calculation f_28374b6 {
-        label: 'Product Image'
-        formula: @aml concat('<img src="', demo.ecommerce_product_images.url, '" style="float:left;height:48px; margin: 12px 6px; object-fit:contain" />');;
-        calc_type: 'dimension'
-        data_type: 'text'
-      }
-      filter {
-        field: ref('demo.order_master', 'order_created_at')
-        operator: 'matches'
-        value: '2023'
-      }
-      rows: [
-        VizFieldFull {
-          ref: ref('demo.dim_categories', 'name')
-          format {
-            type: 'text'
-          }
-        },
-        VizFieldFull {
-          ref: ref('demo.dim_products', 'name')
-          format {
-            type: 'text'
-          }
-        }
-      ]
-      values: [
-        VizFieldFull {
-          label: 'GMV'
-          ref: ref('demo.order_master', 'gmv')
-          format {
-            type: 'number'
-            pattern: '[$$]#,###'
-          }
-        }
-      ]
-      settings {
-        row_height: 'multiple_lines'
-        pagination_size: 100
-        show_row_total: true
-        show_column_total: true
-      }
-    }
-  }
+
   block v11: VizBlock {
     label: 'Metrics Trends'
     viz: MetricSheet {
@@ -380,36 +383,32 @@ Dashboard hooli_analytics {
     label: 'Conversion rate'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce
+      calculation has_order {
+        label: 'Has Orders?'
+        formula: @aql dimensionalize(count_orders, demo.dim_users.id) > 0;;
+        calc_type: 'dimension'
+        data_type: 'truefalse'
+        model: demo.dim_users
+      }
       calculation converted_users {
         label: 'converted users'
-        formula: @aql count(demo.fct_orders.user_id) | where(demo.fct_orders.status == "delivered");;
+        formula: @aql count_users | where(demo.dim_users.has_order == true);;
         calc_type: 'measure'
         data_type: 'number'
       }
       calculation conversion_rate {
         label: 'Conversion Rate'
-        formula: @aql converted_users*1.0 / count_users;;
+        formula: @aql converted_users*1.0 / count_users
+;;
         calc_type: 'measure'
         data_type: 'number'
-      }
-      filter {
-        field: ref('demo.fct_order_items', 'created_at')
-        operator: 'before'
-        value: '2024-04-25'
       }
       value: VizFieldFull {
         ref: 'conversion_rate'
         format {
           type: 'number'
-          pattern: '#,###0.00\\%'
-          group_separator: ','
-          decimal_separator: '.'
+          pattern: '#,###%'
         }
-      }
-      compare_value: VizPopSettings {
-        field: ref('demo.fct_orders', 'created_at')
-        duration: 1
-        granularity: 'month'
       }
     }
     settings {
@@ -469,19 +468,6 @@ Dashboard hooli_analytics {
     settings {
       hide_label: true
     }
-  }
-  block t12: TextBlock {
-    content: @md <div 
-  style="
-    background-color: white; 
-    width: 100%; 
-    height: 100%; 
-    overflow: hidden; 
-    border: 1px solid #DAC5C2; 
-    border-radius: 0 6px 0 0;">
-  <div style="width: 100%; height: 8px; background-color: #DC4C3D;"></div>
-</div>
-;;
   }
   block v18: VizBlock {
     label: 'Sales Overtime'
