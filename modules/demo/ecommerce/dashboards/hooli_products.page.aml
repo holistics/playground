@@ -54,7 +54,7 @@ Dashboard hooli_products {
         },
         VizFieldFull {
           label: 'GMV'
-          ref: ref('demo.order_master', 'gmv')
+          ref: 'gmv'
           format {
             type: 'number'
             pattern: '[$$]#,###'
