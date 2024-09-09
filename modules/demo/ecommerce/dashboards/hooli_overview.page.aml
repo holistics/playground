@@ -325,7 +325,7 @@ Dashboard hooli_analytics {
         ref: 'gmv'
         format {
           type: 'number'
-          pattern: '[$$]#,###0.00,,"M"'
+          pattern: '[$$]#,###,"K"'
           group_separator: ','
           decimal_separator: '.'
         }
@@ -354,7 +354,9 @@ Dashboard hooli_analytics {
         ref: 'count_distinct_orders'
         format {
           type: 'number'
-          pattern: 'inherited'
+          pattern: '#,###'
+          group_separator: ','
+          decimal_separator: '.'
         }
       }
       compare_value: VizPopSettings {
@@ -371,12 +373,8 @@ Dashboard hooli_analytics {
     label: 'Orders (dup)'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce
-      filter {
-        field: ref('demo.fct_order_items', 'created_at')
-        operator: 'before'
-        value: '2024-07-01'
-      }
       value: VizFieldFull {
+        label: 'Customers'
         ref: 'count_users'
         format {
           type: 'number'
@@ -384,9 +382,9 @@ Dashboard hooli_analytics {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('demo.fct_order_items', 'created_at')
+        field: ref('demo.dim_users', 'sign_up_date')
         duration: 1
-        granularity: 'month'
+        granularity: 'year'
       }
     }
     settings {
@@ -412,8 +410,13 @@ Dashboard hooli_analytics {
       }
       calculation conversion_rate {
         label: 'Conversion Rate'
-        formula: @aql converted_users*1.0 / count_users
-;;
+        formula: @aql converted_users*1.0 / count_users;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation metric_901f5a5 {
+        label: 'Untitled Metric'
+        formula: @aql 0.5;;
         calc_type: 'measure'
         data_type: 'number'
       }
@@ -422,6 +425,13 @@ Dashboard hooli_analytics {
         format {
           type: 'number'
           pattern: '#,###%'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: 'metric_901f5a5'
+        format {
+          type: 'number'
+          pattern: 'inherited'
         }
       }
     }
@@ -442,7 +452,7 @@ Dashboard hooli_analytics {
         ref: 'gmv'
         format {
           type: 'number'
-          pattern: '[$$]#,###0.00,,"M"'
+          pattern: '[$$]#,###,"K"'
           group_separator: ','
           decimal_separator: '.'
         }

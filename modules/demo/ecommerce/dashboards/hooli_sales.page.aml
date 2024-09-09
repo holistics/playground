@@ -177,7 +177,7 @@ Dashboard hooli_overview {
         ref: ref('demo.order_master', 'revenue')
         format {
           type: 'number'
-          pattern: '[$$]#,###0.00,,"M"'
+          pattern: '[$$]#,###,"K"'
           group_separator: ','
           decimal_separator: '.'
         }
@@ -206,7 +206,7 @@ Dashboard hooli_overview {
         ref: 'aov'
         format {
           type: 'number'
-          pattern: 'inherited'
+          pattern: '[$$]#,###'
         }
       }
       compare_value: VizPopSettings {
@@ -219,67 +219,48 @@ Dashboard hooli_overview {
       hide_label: true
     }
   }
-  block v5: VizBlock {
-    label: 'Orders (dup)'
+  block v20: VizBlock {
+    label: 'Conversion rate'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce
-      calculation conversion_rate_merchify {
-        label: 'Conversion rate'
-        formula: @aql safe_divide(
-  count_distinct(demo.fct_orders.user_id) | where(demo.dim_countries.name == "Vietnam") ,
-  count_distinct(demo.fct_orders.user_id)
-);;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      calculation metric_12a3de4 {
-        label: 'Untitled Metric'
-        formula: @aql (count_distinct(demo.fct_orders.user_id)|where(demo.dim_countries.name == "Vietnam"));;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      calculation metric_4e162d6 {
-        label: 'Untitled Metric'
-        formula: @aql count_distinct(demo.fct_orders.user_id);;
-        calc_type: 'measure'
-        data_type: 'number'
+      calculation has_order {
+        label: 'Has Orders?'
+        formula: @aql dimensionalize(count_orders, demo.dim_users.id) > 0;;
+        calc_type: 'dimension'
+        data_type: 'truefalse'
+        model: demo.dim_users
       }
       calculation converted_users {
-        label: 'converted_users'
-        formula: @aql count_distinct(demo.fct_orders.user_id) | where(demo.dim_countries.name == "Vietnam");;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      calculation all_users {
-        label: 'all_users'
-        formula: @aql count_distinct(demo.fct_orders.user_id);;
+        label: 'converted users'
+        formula: @aql count_users | where(demo.dim_users.has_order == true);;
         calc_type: 'measure'
         data_type: 'number'
       }
       calculation conversion_rate {
         label: 'Conversion Rate'
-        formula: @aql converted_users*1.0 / all_users;;
+        formula: @aql converted_users*1.0 / count_users;;
         calc_type: 'measure'
         data_type: 'number'
       }
-      filter {
-        field: ref('demo.fct_orders', 'created_at')
-        operator: 'before'
-        value: '2024-05-01'
+      calculation metric_6d14451 {
+        label: 'Untitled Metric'
+        formula: @aql 0.5;;
+        calc_type: 'measure'
+        data_type: 'number'
       }
       value: VizFieldFull {
         ref: 'conversion_rate'
         format {
           type: 'number'
-          pattern: '#,###0.00%'
-          group_separator: ','
-          decimal_separator: '.'
+          pattern: '#,###%'
         }
       }
-      compare_value: VizPopSettings {
-        field: ref('demo.fct_orders', 'created_at')
-        duration: 1
-        granularity: 'month'
+      compare_value: VizFieldFull {
+        ref: 'metric_6d14451'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
       }
     }
     settings {
@@ -421,7 +402,7 @@ Dashboard hooli_overview {
         display: block;
       "></div><div 
       style="
-        border-left: 2px solid #E1E3EA;
+        border-left: 1px solid #e5e7eb;
         height: 100%;
         margin-left: 50%;
         display: block;
@@ -430,7 +411,7 @@ Dashboard hooli_overview {
   block t15: TextBlock {
     content: @md <div 
       style="
-        border-left: 2px solid #E1E3EA;
+        border-left: 1px solid #e5e7eb;
         height: 100%;
         margin-left: 50%;
         display: block;
@@ -459,13 +440,13 @@ Dashboard hooli_overview {
       position: pos(40, 40, 310, 100)
     }
     block v12 {
-      position: pos(410, 90, 240, 120)
+      position: pos(410, 90, 270, 120)
     }
     block v14 {
-      position: pos(1110, 90, 240, 120)
+      position: pos(1110, 90, 250, 120)
     }
-    block v5 {
-      position: pos(760, 90, 250, 140)
+    block v20 {
+      position: pos(750, 90, 290, 120)
     }
     block v15 {
       position: pos(40, 680, 710, 370)
@@ -477,10 +458,10 @@ Dashboard hooli_overview {
       position: pos(40, 1070, 1340, 430)
     }
     block t14 {
-      position: pos(670, 50, 60, 200)
+      position: pos(690, 50, 30, 200)
     }
     block t15 {
-      position: pos(1010, 50, 90, 200)
+      position: pos(1050, 50, 30, 200)
     }
   }
   interactions: [
