@@ -206,7 +206,7 @@ Dashboard hooli_overview {
         ref: 'aov'
         format {
           type: 'number'
-          pattern: 'inherited'
+          pattern: '[$$]#,###'
         }
       }
       compare_value: VizPopSettings {
@@ -238,8 +238,13 @@ Dashboard hooli_overview {
       }
       calculation conversion_rate {
         label: 'Conversion Rate'
-        formula: @aql converted_users*1.0 / count_users
-;;
+        formula: @aql converted_users*1.0 / count_users;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation metric_6d14451 {
+        label: 'Untitled Metric'
+        formula: @aql 0.5;;
         calc_type: 'measure'
         data_type: 'number'
       }
@@ -248,6 +253,13 @@ Dashboard hooli_overview {
         format {
           type: 'number'
           pattern: '#,###%'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: 'metric_6d14451'
+        format {
+          type: 'number'
+          pattern: 'inherited'
         }
       }
     }
@@ -434,7 +446,7 @@ Dashboard hooli_overview {
       position: pos(1110, 90, 250, 120)
     }
     block v20 {
-      position: pos(740, 90, 310, 150)
+      position: pos(750, 90, 290, 150)
     }
     block v15 {
       position: pos(40, 680, 710, 370)
