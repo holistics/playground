@@ -402,7 +402,7 @@ Dashboard hooli_overview {
         display: block;
       "></div><div 
       style="
-        border-left: 2px solid #E1E3EA;
+        border-left: 1px solid #e5e7eb;
         height: 100%;
         margin-left: 50%;
         display: block;
@@ -411,7 +411,7 @@ Dashboard hooli_overview {
   block t15: TextBlock {
     content: @md <div 
       style="
-        border-left: 2px solid #E1E3EA;
+        border-left: 1px solid #e5e7eb;
         height: 100%;
         margin-left: 50%;
         display: block;

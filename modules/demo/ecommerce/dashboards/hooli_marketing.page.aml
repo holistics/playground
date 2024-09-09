@@ -349,7 +349,7 @@ Dashboard hooli_marketing {
   block t3: TextBlock {
     content: @md <div 
       style="
-        border-left: 1px solid #D2D5DF;
+        border-left: 1px solid #e5e7eb;
         height: 100%;
         margin-left: 50%;
         display: block;
@@ -358,7 +358,7 @@ Dashboard hooli_marketing {
   block t4: TextBlock {
     content: @md <div 
       style="
-        border-left: 1px solid #D2D5DF;
+        border-left: 1px solid #e5e7eb;
         height: 100%;
         margin-left: 50%;
         display: block;
@@ -367,7 +367,7 @@ Dashboard hooli_marketing {
   block t5: TextBlock {
     content: @md <div 
       style="
-        border-left: 1px solid #D2D5DF;
+        border-left: 1px solid #e5e7eb;
         height: 100%;
         margin-left: 50%;
         display: block;
