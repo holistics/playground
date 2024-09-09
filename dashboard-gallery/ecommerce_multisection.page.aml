@@ -349,7 +349,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
         series {
           mark_type: 'line'
           field: VizFieldFull {
-            ref: ref: ref('demo.fct_orders', 'delivered_orders_count')
+            ref: ref('demo.fct_orders', 'delivered_orders_count')
             format {
               type: 'number'
             }
