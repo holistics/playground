@@ -37,10 +37,10 @@ Dashboard hooli_marketing {
       position: pos(330, 560, 930, 260)
     }
     block v15 {
-      position: pos(20, 300, 270, 230)
+      position: pos(20, 300, 280, 230)
     }
     block v18 {
-      position: pos(20, 560, 270, 260)
+      position: pos(20, 560, 280, 260)
     }
     block t3 {
       position: pos(290, 110, 50, 160)

@@ -177,7 +177,7 @@ Dashboard hooli_overview {
         ref: ref('demo.order_master', 'revenue')
         format {
           type: 'number'
-          pattern: '[$$]#,###0.00,,"M"'
+          pattern: '[$$]#,###,"K"'
           group_separator: ','
           decimal_separator: '.'
         }
@@ -459,13 +459,13 @@ Dashboard hooli_overview {
       position: pos(40, 40, 310, 100)
     }
     block v12 {
-      position: pos(410, 90, 240, 120)
+      position: pos(410, 90, 270, 120)
     }
     block v14 {
-      position: pos(1110, 90, 240, 120)
+      position: pos(1110, 90, 250, 120)
     }
     block v5 {
-      position: pos(760, 90, 250, 140)
+      position: pos(750, 90, 310, 140)
     }
     block v15 {
       position: pos(40, 680, 710, 370)
@@ -477,10 +477,10 @@ Dashboard hooli_overview {
       position: pos(40, 1070, 1340, 430)
     }
     block t14 {
-      position: pos(670, 50, 60, 200)
+      position: pos(690, 50, 30, 200)
     }
     block t15 {
-      position: pos(1010, 50, 90, 200)
+      position: pos(1050, 50, 30, 200)
     }
   }
   interactions: [

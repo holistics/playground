@@ -300,7 +300,7 @@ Dashboard hooli_analytics {
         ref: 'gmv'
         format {
           type: 'number'
-          pattern: '[$$]#,###0.00,,"M"'
+          pattern: '[$$]#,###,"K"'
           group_separator: ','
           decimal_separator: '.'
         }
@@ -329,7 +329,9 @@ Dashboard hooli_analytics {
         ref: 'count_distinct_orders'
         format {
           type: 'number'
-          pattern: 'inherited'
+          pattern: '#,###'
+          group_separator: ','
+          decimal_separator: '.'
         }
       }
       compare_value: VizPopSettings {
@@ -355,7 +357,9 @@ Dashboard hooli_analytics {
         ref: 'count_users'
         format {
           type: 'number'
-          pattern: 'inherited'
+          pattern: '#,###'
+          group_separator: ','
+          decimal_separator: '.'
         }
       }
       compare_value: VizPopSettings {
@@ -417,7 +421,7 @@ Dashboard hooli_analytics {
         ref: 'gmv'
         format {
           type: 'number'
-          pattern: '[$$]#,###0.00,,"M"'
+          pattern: '[$$]#,###,"K"'
           group_separator: ','
           decimal_separator: '.'
         }

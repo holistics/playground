@@ -109,7 +109,9 @@ Dashboard hooli_home {
         ref: ref('demo.order_master', 'revenue')
         format {
           type: 'number'
-          pattern: '#,###0.00,,"M"'
+          pattern: '[$$]#,###,"K"'
+          group_separator: ','
+          decimal_separator: '.'
         }
       }
       compare_value: VizPopSettings {
