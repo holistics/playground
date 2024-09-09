@@ -1,6 +1,6 @@
 Model order_master {
   type: 'query'
-  label: 'Order Master'
+  label: '[Archived] Order Master'
   description: 'Derived model to report all Ecommerce metrics'
   owner: 'son.hoang@holistics.io'
   data_source_name: 'demo_pg'

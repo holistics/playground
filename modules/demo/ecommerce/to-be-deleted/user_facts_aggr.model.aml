@@ -1,6 +1,6 @@
 Model user_facts_aggr {
   type: 'query'
-  label: 'User Facts Aggr'
+  label: '[Archived] User Facts Aggr'
   description: ''
   data_source_name: 'demo_pg'
 

@@ -1,6 +1,6 @@
 Model user_cohort_retention {
   type: 'query'
-  label: "User Cohort Retention"
+  label: "[Archived] User Cohort Retention"
   description: ''
   data_source_name: 'demo_pg'
   owner: 'ha.pham+demo4@holistics.io'
