@@ -1,6 +1,6 @@
 Model ecommerce_product_images {
   type: 'table'
-  label: 'Product Images'
+  label: '[Archived] Product Images'
   description: ''
   data_source_name: 'demo_pg'
   dimension product_id {

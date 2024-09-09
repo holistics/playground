@@ -1,6 +1,6 @@
 Model map_categories {
   type: 'query'
-  label: 'Map Categories'
+  label: '[Archived] Map Categories'
   description: ''
   data_source_name: 'demo_pg'
   owner: 'son.hoang+ph@holistics.io'
