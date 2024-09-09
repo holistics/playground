@@ -49,8 +49,6 @@ Dataset ds_ecommerce {
 
     user_facts_aggr, // to be removed
 
-    ecommerce_product_images, // to be removed
-
     user_cohort_retention, // to be removed
 
   ]
@@ -72,7 +70,6 @@ Dataset ds_ecommerce {
     relationship(order_master_ecommerce_orders, true),
     relationship(order_master_ecommerce_products, true),
 
-    relationship(dim_products.id - ecommerce_product_images.product_id, true),
     relationship(ecommerce_cities_ecommerce_countries, true),
 
   ]
