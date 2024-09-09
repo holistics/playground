@@ -27,7 +27,7 @@ Dashboard hooli_components {
             background-color: #DC4C3D;
             border-top-left-radius: 6px;
             border-top-right-radius: 6px;
-            z-index: 1;"></div>
+            z-index: 1;"></div> 
         <div style="
             position: relative;
             background-color: white; 
