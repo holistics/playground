@@ -446,7 +446,7 @@ Dashboard hooli_overview {
       position: pos(1110, 90, 250, 120)
     }
     block v20 {
-      position: pos(750, 90, 290, 150)
+      position: pos(750, 90, 290, 120)
     }
     block v15 {
       position: pos(40, 680, 710, 370)
