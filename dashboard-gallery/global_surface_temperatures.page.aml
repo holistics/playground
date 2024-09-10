@@ -15,15 +15,21 @@ Dashboard global_temps_page {
     block t2 {
       position: pos(30, 60, 500, 140)
     }
-    block t3 {
-      position: pos(0, 0, 810, 620)
-      layer: -1
-    }
     block t4 {
-      position: pos(30, 20, 600, 110)
+      position: pos(30, 20, 600, 50)
     }
     block t5 {
-      position: pos(30, 180, 400, 110)
+      position: pos(30, 190, 400, 100)
+    }
+    block t6 {
+      position: pos(-240, 10, 240, 220)
+    }
+  }
+  theme: PageTheme {
+    canvas {
+      background {
+        bg_color: "black"
+      }
     }
   }
   block v1: VizBlock {
@@ -58,11 +64,8 @@ Dashboard global_temps_page {
     }
   }
   block t2: TextBlock {
-    content: @md   <hr style="height:2px;color:#bec1cb;background-color:#bec1cb">
-<p style="color:#bec1cb; font-size:12px; line-height:16px">The GISS Surface Temperature Analysis version 4 (GISTEMP v4) is an estimate of global surface temperature change. Graphs and tables are updated around the middle of every month using current data files from NOAA GHCN v4 (meteorological stations) and ERSST v5 (ocean areas), combined as described in their publications Hansen et al. (2010) and Lenssen et al. (2019). These updated files incorporate reports for the previous month and also late reports and corrections for earlier months.</p>;;
-  }
-  block t3: TextBlock {
-    content: @md <div style="width: 100%; height: 1000px; overflow: hidden; background-color: black;"></div>;;
+    content: @md <hr>
+<p>The GISS Surface Temperature Analysis version 4 (GISTEMP v4) is an estimate of global surface temperature change. Graphs and tables are updated around the middle of every month using current data files from NOAA GHCN v4 (meteorological stations) and ERSST v5 (ocean areas), combined as described in their publications Hansen et al. (2010) and Lenssen et al. (2019). These updated files incorporate reports for the previous month and also late reports and corrections for earlier months.</p>;;
   }
   block t4: TextBlock {
     content: @md  <style> 
@@ -76,8 +79,22 @@ Dashboard global_temps_page {
 <h1 style="font-family: Inter; font-weight: 900; font-size: 40px;">Global Surface Temperatures</h1>;;
   }
   block t5: TextBlock {
-    content: @md <hr style="height:2px;color:#bec1cb;background-color:#bec1cb">
-<p style="color:#bec1cb; font-size:12px; line-height:16px"><b>Data Source:</b> GISTEMP Team, 2023: GISS Surface Temperature Analysis (GISTEMP), version 4. NASA Goddard Institute for Space Studies. Dataset accessed 2023-07-09 at <a href="https://data.giss.nasa.gov/gistemp/" target=_blank>https://data.giss.nasa.gov/gistemp/.</a></p>;;
+    content: @md <hr>
+<p><b>Data Source:</b> GISTEMP Team, 2023: GISS Surface Temperature Analysis (GISTEMP), version 4. NASA Goddard Institute for Space Studies. Dataset accessed 2023-07-09 at <a href="https://data.giss.nasa.gov/gistemp/" target=_blank>https://data.giss.nasa.gov/gistemp/.</a></p>;;
+  }
+  block t6: TextBlock {
+    content: @md <style>
+  hr {
+    height:2px;
+    color:#bec1cb;
+    background-color:#bec1cb
+  }
+  p {
+    color:#bec1cb; 
+    font-size:12px; 
+    line-height:16px 
+  }
+  </style>;;
   }
   settings {
     timezone: 'Etc/UTC'

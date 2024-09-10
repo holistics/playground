@@ -74,9 +74,18 @@ Dashboard marketing_2 {
   }
   block v3: VizBlock {
     label: 'Conversions gauge chart'
-    viz: GaugeChart {
-      dataset: marketing_campaign
-      value: VizFieldFull {
+    viz: CustomChart {
+      dataset: demo.marketing_campaign
+      custom_chart_id: 20026
+      field max: VizFieldFull {
+        ref: ref('demo.marketing_kpi', 'leads')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+          pattern: '#,###'
+        }
+      }
+      field current: VizFieldFull {
         ref: ref('demo.marketing_kpi', 'orders')
         aggregation: 'sum'
         format {
@@ -84,17 +93,14 @@ Dashboard marketing_2 {
           pattern: '#,###'
         }
       }
-      max_value: VizFieldFull {
-        ref: ref('demo.marketing_kpi', 'leads')
-        aggregation: 'sum'
-        format {
-          type: 'number'
-          pattern: '#,###0.00,"K"'
-        }
-      }
+      setting ring_gap: 5
+      setting ring_max: 120
+      setting label_size: 36
+      setting ring_width: 25
+      setting label_color: '#53586A'
+      setting ring1_color: '#18A59E'
+      setting ring_corner: 5
       settings {
-        label: 'Conversions'
-        suffix: ''
         row_limit: 5000
       }
     }
