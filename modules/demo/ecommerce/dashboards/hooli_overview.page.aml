@@ -1,5 +1,5 @@
 Dashboard hooli_analytics {
-  theme: H.themes.classic
+  theme: Hooli
   title: 'Hooli Analytics Overview'
   description: ''''''
 
