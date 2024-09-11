@@ -51,18 +51,26 @@ Dataset ds_ecommerce {
 
   ]
   relationships: [
+
+
     relationship(demo.fct_order_items.product_id > demo.dim_products.id, true),
     relationship(demo.fct_order_items.category_id > demo.dim_categories.id, true),
-    relationship(demo.fct_order_items.merchant_city_id > demo.dim_product_cities.id, true),
-    relationship(demo.fct_order_items.merchant_country_code > demo.dim_product_countries.code, true),
-    relationship(demo.fct_order_items.user_id > demo.dim_users.id, true),
-    relationship(demo.fct_order_items.order_id > demo.fct_orders.id, false),
+    
+    relationship(demo.fct_order_items.merchant_id >  demo.dim_merchants.id, true),
+    relationship(demo.fct_order_items.merchant_city_id >  demo.dim_product_cities.id, true),
+    relationship(demo.fct_order_items.merchant_country_code >  demo.dim_product_countries.code, true),
+    relationship(demo.fct_order_items.user_id >  demo.dim_users.id, true),
+    relationship(demo.fct_order_items.created_date >  demo.dim_dates.date_key, true),
+    relationship(demo.fct_order_items.order_id >  demo.fct_orders.id, false),
 
-    relationship(demo.fct_orders.user_city_id > demo.dim_user_cities.id, true),
-    relationship(demo.fct_orders.user_country_code > demo.dim_user_countries.code, true),
-    relationship(demo.fct_orders.created_date > demo.dim_dates.date_key, true),
-    relationship(demo.fct_orders.user_id > demo.dim_users.id, false),
+
+    relationship(demo.fct_orders.user_city_id >  demo.dim_user_cities.id, true),
+    relationship(demo.fct_orders.user_country_code >  demo.dim_user_countries.code, true),
+    relationship(demo.fct_orders.created_date >  demo.dim_dates.date_key, true),
+    relationship(demo.fct_orders.user_id >  demo.dim_users.id, false),
+
     relationship(demo.dim_product_img.product_id - demo.dim_products.id, true),
+
   ]
 
   dimension acquisition_month_cohort {
