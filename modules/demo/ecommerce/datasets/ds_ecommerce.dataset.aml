@@ -33,8 +33,6 @@ Dataset ds_ecommerce {
     dim_dates,
     dim_products,
     dim_users,
-    dim_countries,
-    dim_cities,
     dim_categories,
     dim_merchants,
     dim_product_img,
@@ -65,13 +63,6 @@ Dataset ds_ecommerce {
     relationship(demo.fct_orders.created_date > demo.dim_dates.date_key, true),
     relationship(demo.fct_orders.user_id > demo.dim_users.id, false),
     relationship(demo.dim_product_img.product_id - demo.dim_products.id, true),
-
-    relationship(order_master_ecommerce_merchants, true),
-    relationship(order_master_ecommerce_orders, true),
-    relationship(order_master_ecommerce_products, true),
-
-    relationship(ecommerce_cities_ecommerce_countries, true),
-
   ]
 
   dimension acquisition_month_cohort {
