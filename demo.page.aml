@@ -12,6 +12,23 @@ Func pixel_block() {
 Dashboard pokedex_dashboard {
   title: 'Pokedex 2.0'
   description: ''''''
+  theme: PageTheme {
+    background {
+      bg_image: 'https://ngunyahyuk.wordpress.com/wp-content/uploads/2014/12/pokemon-clouds-pixel-art-1575035-1024x7682.jpg'
+      bg_size: 'contain'
+      bg_repeat: 'x'
+    }
+    canvas {
+      background {
+        bg_color: 'rgba(255, 255, 255, 0.3)'
+      }
+      shadow: 'none'
+      border {
+        border_radius: 10
+      }
+    }
+  }
+
   view: CanvasLayout {
     label: 'View 1'
     width: 1630
@@ -33,10 +50,6 @@ Dashboard pokedex_dashboard {
     block v4 {
       position: pos(90, 210, 360, 50)
       layer: 2
-    }
-    block background_block {
-      position: pos(-70, -20, 1760, 1020)
-      layer: -7
     }
     block t20 {
       position: pos(830, 170, 750, 630)
@@ -500,10 +513,6 @@ Dashboard pokedex_dashboard {
       hide_label: true
       hide_controls: true
     }
-  }
-  block background_block: TextBlock {
-    content: @md <div style="width: 100%; height: 1000px; background-color:#bbd9f6; background: url('https://i.pinimg.com/originals/68/d0/43/68d04354d8ae557bec753171be1050f1.jpg') no-repeat; background-size: cover">
-</div>;;
   }
   block t20: pixel_block()
   block t21: pixel_block()
