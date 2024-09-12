@@ -501,10 +501,8 @@ Dashboard pokedex_dashboard {
       hide_controls: true
     }
   }
-
-
   block background_block: TextBlock {
-    content: @md  <div style="width: 100%; height: 1000px; background-color:#bbd9f6; background: url('https://i.pinimg.com/originals/68/d0/43/68d04354d8ae557bec753171be1050f1.jpg') no-repeat; background-size: cover">
+    content: @md <div style="width: 100%; height: 1000px; background-color:#bbd9f6; background: url('https://i.pinimg.com/originals/68/d0/43/68d04354d8ae557bec753171be1050f1.jpg') no-repeat; background-size: cover">
 </div>;;
   }
   block t20: pixel_block()
