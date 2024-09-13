@@ -1,0 +1,108 @@
+Dashboard embed_external_content {
+  title: 'Embed External Content'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 2600
+    height: 1480
+    grid_size: 20
+    block t1 {
+      position: pos(20, 20, 720, 480)
+    }
+    block t2 {
+      position: pos(1020, 20, 1560, 360)
+    }
+    block t3 {
+      position: pos(20, 1040, 1320, 420)
+    }
+    block t4 {
+      position: pos(760, 400, 1020, 620)
+    }
+    block t5 {
+      position: pos(1360, 1040, 700, 420)
+    }
+    block t6 {
+      position: pos(2080, 400, 500, 1060)
+    }
+    block t7 {
+      position: pos(1800, 400, 260, 620)
+    }
+    block t8 {
+      position: pos(760, 20, 240, 360)
+    }
+    block t9 {
+      position: pos(20, 520, 720, 500)
+    }
+  }
+  theme: H.themes.classic.extend(
+    {
+      block {
+        label {
+          font_family: "Inter"
+          font_size: 14
+          font_color: "#53586A"
+          font_weight: "medium"
+          font_style: "normal"
+        }
+        text {
+          font_family: "Inter"
+          font_size: 12
+          font_color: "#53586A"
+          font_weight: "normal"
+          font_style: "normal"
+        }
+        border {
+          border_width: 1
+          border_radius: 8
+          border_color: '#D0D0D0'
+          border_style: "solid"
+        }
+        background {
+          bg_color: "#FFFFFF"
+          bg_repeat: false
+          bg_size: "cover"
+          bg_image: "none"
+        }
+        padding: 12
+        shadow: "none"
+        opacity: 1
+      }
+    }
+  )
+
+  block t1: TextBlock {
+    content: @md <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+    src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGQoeYqv8k&#x2F;qf7idLzYRioGc53ZkDNvvg&#x2F;view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>
+<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGQoeYqv8k&#x2F;qf7idLzYRioGc53ZkDNvvg&#x2F;view?utm_content=DAGQoeYqv8k&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Design</a> by Holistics;;
+  }
+  block t2: TextBlock {
+    content: @md <iframe width="100%" height="315" src='https://dbdiagram.io/e/66e403616dde7f414901cd6a/66e4036d6dde7f414901d09c'> </iframe>;;
+  }
+  block t3: TextBlock {
+    content: @md <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="500" src="https://embed.figma.com/board/LWCdg36YfWYL23cMYvKkxI/Untitled?node-id=0-1&embed-host=share" allowfullscreen></iframe>;;
+  }
+  block t4: TextBlock {
+    content: @md <iframe width="100%" height="600" src="https://www.youtube.com/embed/Pj81XFRaNBM?si=N0h1JtaLTqkH_7xM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>;;
+  }
+  block t5: TextBlock {
+    content: @md <iframe src="https://docs.google.com/presentation/d/1SFaCoYvNK3imHMPFKYI5ZZ1EUamqqhINdSkKNz7O2Mg/embed?start=false&loop=false&delayms=3000" frameborder="0" width="100%" height="400" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>;;
+  }
+  block t6: TextBlock {
+    content: @md <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfn2f1sg6zDHaaB3jVkvhBkvKTgdo1IwNlp5JWIJ-M4PrOjHw/viewform?embedded=true" width="100%" height="2832" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>;;
+  }
+  block t7: TextBlock {
+    content: @md   ;;
+  }
+  block t8: TextBlock {
+    content: @md   ;;
+  }
+  block t9: TextBlock {
+    content: @md   ;;
+  }
+}
