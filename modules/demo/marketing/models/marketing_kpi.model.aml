@@ -69,6 +69,12 @@ Model marketing_kpi {
     hidden: false
     definition: @sql {{ #SOURCE.revenue }};;
   }
+  dimension merchant_id {
+    label: 'Merchant ID'
+    type: 'number'
+    hidden: false
+    definition: @sql mod({{ #SOURCE.id }}, 50);;
+  }
 
    measure conversion_rate {
     label: 'Conversion rate'
