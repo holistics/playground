@@ -85,7 +85,7 @@ Dashboard hooli_overview {
     type: 'date'
     default {
       operator: 'matches'
-      value: '$H_NIL$'
+      value: 'last 3 months'
     }
     theme: demo.SecondaryBlock
   }
@@ -165,25 +165,18 @@ Dashboard hooli_overview {
     label: 'Total sales'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce
-      filter {
-        field: ref('demo.fct_orders', 'created_at')
-        operator: 'before'
-        value: '2024-05-01'
-      }
       value: VizFieldFull {
         label: 'Total Sales'
-        ref: ref('demo.order_master', 'revenue')
+        ref: 'gmv'
         format {
           type: 'number'
-          pattern: '[$$]#,###,"K"'
-          group_separator: ','
-          decimal_separator: '.'
+          pattern: 'inherited'
         }
       }
       compare_value: VizPopSettings {
-        field: ref('demo.fct_orders', 'created_at')
+        field: ref('demo.fct_order_items', 'created_at')
         duration: 1
-        granularity: 'month'
+        granularity: 'year'
       }
     }
     settings {
@@ -472,6 +465,10 @@ Dashboard hooli_overview {
             'v11'
           ]
           field: ref('demo.dim_dates', 'date_key')
+        },
+        CustomMapping {
+          block: 'v12'
+          field: ref('demo.fct_order_items', 'created_at')
         }
       ]
     }

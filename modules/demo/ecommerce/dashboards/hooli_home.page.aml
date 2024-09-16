@@ -44,15 +44,16 @@ Dashboard hooli_home {
     viz: AreaChart {
       dataset: demo.ds_ecommerce
       filter {
-        field: ref('demo.fct_orders', 'created_at')
+        field: ref('demo.dim_dates', 'date_key')
         operator: 'matches'
         value: '2024-05-01 - 2024-06-01'
       }
       x_axis: VizFieldFull {
-        ref: ref('demo.fct_orders', 'created_at')
+        ref: ref('demo.dim_dates', 'date_key')
         transformation: 'datetrunc day'
         format {
           type: 'date'
+          pattern: 'LLL dd, yyyy'
         }
       }
       y_axis {
@@ -87,7 +88,7 @@ Dashboard hooli_home {
         row_limit: 5000
       }
     }
-    theme: SecondaryBlock
+    theme: demo.SecondaryBlock
   }
   block v3: VizBlock {
     label: 'Revenue'

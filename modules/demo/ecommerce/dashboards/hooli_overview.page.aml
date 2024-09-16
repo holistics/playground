@@ -234,12 +234,17 @@ Dashboard hooli_analytics {
       }
     }
   }
-
   block v11: VizBlock {
-    theme: SecondaryBlock
     label: 'Metrics Trends'
     viz: MetricSheet {
       dataset: demo.ds_ecommerce
+      calculation untitled_metric_8a4aee9 {
+        label: 'Customers'
+        formula: @aql count_users 
+| with_relationships(demo.dim_users.sign_up_date > demo.dim_dates.date_key);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
       filter {
         field: ref('demo.dim_dates', 'date_key')
         operator: 'not_null'
@@ -255,15 +260,11 @@ Dashboard hooli_analytics {
       rows: [
         MetricSeries {
           field: VizFieldFull {
-            label: 'Customers'
-            ref: 'count_users'
+            ref: 'untitled_metric_8a4aee9'
             format {
               type: 'number'
               pattern: 'inherited'
             }
-          }
-          settings {
-            mark_type: 'line'
           }
         },
         MetricSeries {
@@ -275,9 +276,6 @@ Dashboard hooli_analytics {
               pattern: 'inherited'
             }
           }
-          settings {
-            mark_type: 'line'
-          }
         },
         MetricSeries {
           field: VizFieldFull {
@@ -287,9 +285,6 @@ Dashboard hooli_analytics {
               type: 'number'
               pattern: 'inherited'
             }
-          }
-          settings {
-            mark_type: 'line'
           }
         },
         MetricSeries {
@@ -301,25 +296,18 @@ Dashboard hooli_analytics {
               pattern: 'inherited'
             }
           }
-          settings {
-            mark_type: 'line'
-          }
         }
       ]
     }
     settings {
       hide_label: true
     }
+    theme: demo.SecondaryBlock
   }
   block v12: VizBlock {
     label: 'GMV - Gross Merchandise Value'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce
-      filter {
-        field: ref('demo.fct_order_items', 'created_at')
-        operator: 'before'
-        value: '2024-07-01'
-      }
       value: VizFieldFull {
         label: 'Sales'
         ref: 'gmv'
@@ -370,7 +358,7 @@ Dashboard hooli_analytics {
     }
   }
   block v14: VizBlock {
-    label: 'Orders (dup)'
+    label: 'Customers'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce
       value: VizFieldFull {
@@ -385,6 +373,12 @@ Dashboard hooli_analytics {
         field: ref('demo.dim_users', 'sign_up_date')
         duration: 1
         granularity: 'year'
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
     settings {
@@ -443,11 +437,6 @@ Dashboard hooli_analytics {
     label: 'GMV - Gross Merchandise Value'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce
-      filter {
-        field: ref('demo.fct_order_items', 'created_at')
-        operator: 'before'
-        value: '2024-05-01'
-      }
       value: VizFieldFull {
         ref: 'gmv'
         format {
@@ -674,6 +663,15 @@ Dashboard hooli_analytics {
         CustomMapping {
           block: 'f2'
           disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'v14'
+          field: ref('demo.dim_users', 'sign_up_date')
         }
       ]
     }
