@@ -80,16 +80,14 @@ Dashboard hooli_overview {
     }
     theme: demo.SecondaryBlock
   }
-
-
   block f2: FilterBlock {
-    theme: SecondaryBlock
     label: 'Date Range'
     type: 'date'
     default {
       operator: 'matches'
       value: '$H_NIL$'
     }
+    theme: demo.SecondaryBlock
   }
   block v11: VizBlock {
     theme: SecondaryBlock
