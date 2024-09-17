@@ -3,9 +3,11 @@ Dataset marketing_campaign {
   description: ''
   data_source_name: 'demo_pg'
   models: [
-    marketing_kpi
+    marketing_kpi,
+    dim_merchants
 ]
   relationships: [
+    relationship(marketing_kpi.merchant_id > dim_merchants.id, true)
   ]
   owner: 'son.hoang+ph@holistics.io'
 }
