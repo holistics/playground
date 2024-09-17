@@ -189,7 +189,7 @@ Dashboard hooli_home {
         line-height: 52px;
         color: #0F172A;
       }
-      .dac-metadata {
+      .embed .dac-metadata {
         display: none;
       }
     </style>;;
