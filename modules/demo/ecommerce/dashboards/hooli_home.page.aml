@@ -58,7 +58,7 @@ Dashboard hooli_home {
       y_axis {
         series {
           field: VizFieldFull {
-            ref: ref('demo.order_master', 'revenue')
+            ref: 'gmv'
             format {
               type: 'number'
               pattern: 'inherited'
@@ -72,7 +72,7 @@ Dashboard hooli_home {
         series {
           field: VizFieldFull {
             label: 'Monthly Average'
-            ref: ref('demo.order_master', 'revenue')
+            ref: 'gmv'
             analytic: ReferenceLine {
               type: 'avg'
             }
@@ -106,7 +106,7 @@ Dashboard hooli_home {
       }
       value: VizFieldFull {
         label: 'Sales'
-        ref: ref('demo.order_master', 'revenue')
+        ref: 'gmv'
         format {
           type: 'number'
           pattern: '[$$]#,###,"K"'
