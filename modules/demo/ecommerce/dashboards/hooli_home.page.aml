@@ -189,6 +189,9 @@ Dashboard hooli_home {
         line-height: 52px;
         color: #0F172A;
       }
+      .embed .dac-metadata {
+        display: none;
+      }
     </style>;;
   }
 }
