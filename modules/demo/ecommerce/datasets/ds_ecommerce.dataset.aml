@@ -71,6 +71,8 @@ Dataset ds_ecommerce {
 
     relationship(demo.dim_product_img.product_id - demo.dim_products.id, true),
 
+    relationship(demo.dim_users.sign_up_date >  demo.dim_dates.date_key, false),
+
   ]
 
   dimension acquisition_month_cohort {
