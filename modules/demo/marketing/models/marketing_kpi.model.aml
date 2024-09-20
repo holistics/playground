@@ -73,7 +73,13 @@ Model marketing_kpi {
     label: 'Merchant ID'
     type: 'number'
     hidden: false
-    definition: @sql mod({{ #SOURCE.id }}, 50);;
+    definition: @sql case mod({{ #SOURCE.id }}, 4)
+      when 0 then 126 -- Feest, Schumm and Walsh
+      when 1 then 315 -- Mayer and Sons
+      when 2 then 483 -- Nader Inc
+      else 561 -- Dibbert, Abernathy and Mertz
+      end 
+    ;;
   }
 
    measure conversion_rate {
