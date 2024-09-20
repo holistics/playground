@@ -214,7 +214,7 @@ Dashboard hooli_analytics {
         ]
         conditional_formats: [
           ConditionalFormat {
-            ref: ref('demo.order_master', 'gmv')
+            ref: 'gmv'
             format: ScaleFormat {
               min {
                 value: 0

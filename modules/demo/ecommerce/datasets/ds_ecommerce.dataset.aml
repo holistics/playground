@@ -42,9 +42,6 @@ Dataset ds_ecommerce {
     dim_user_cities,
     dim_user_countries,
 
-
-    order_master, // to be removed
-
     user_facts_aggr, // to be removed
 
     user_cohort_retention, // to be removed
