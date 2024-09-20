@@ -6,69 +6,63 @@ Dashboard hooli_overview {
   view: CanvasLayout {
     label: 'View 1'
     width: 1120
-    height: 1720
+    height: 1630
     block override_css {
       position: pos(-380, -40, 361, 353)
     }
     block t5 {
-      position: pos(40, 120, 330, 160)
+      position: pos(40, 120, 400, 360)
     }
     block t6 {
-      position: pos(740, 300, 350, 180)
-    }
-    block t7 {
-      position: pos(390, 300, 330, 180)
+      position: pos(790, 300, 300, 180)
     }
     block t8 {
-      position: pos(40, 300, 330, 180)
+      position: pos(460, 300, 310, 180)
     }
     block t9 {
-      position: pos(740, 120, 350, 160)
+      position: pos(790, 120, 300, 160)
     }
     block t10 {
-      position: pos(390, 120, 330, 160)
+      position: pos(460, 120, 310, 160)
     }
     block v6 {
-      position: pos(40, 1230, 510, 460)
+      position: pos(40, 1130, 510, 460)
     }
     block v7 {
-      position: pos(570, 1230, 520, 460)
+      position: pos(570, 1130, 520, 460)
     }
     block v11 {
-      position: pos(40, 930, 1050, 200)
+      position: pos(30, 820, 1060, 200)
     }
-    block v12 {
-      position: pos(70, 150, 250, 120)
+    block v3 {
+      position: pos(60, 150, 360, 110)
     }
     block v13 {
-      position: pos(420, 150, 260, 120)
+      position: pos(490, 150, 260, 120)
     }
     block v14 {
-      position: pos(760, 150, 310, 120)
+      position: pos(810, 150, 260, 120)
     }
     block v15 {
-      position: pos(70, 340, 260, 120)
-    }
-    block v16 {
-      position: pos(420, 340, 270, 120)
+      position: pos(490, 340, 190, 120)
     }
     block v17 {
-      position: pos(760, 340, 320, 120)
+      position: pos(810, 340, 270, 120)
     }
     block v18 {
-      position: pos(40, 500, 530, 410)
+      position: pos(50, 240, 370, 220)
     }
     block v19 {
-      position: pos(590, 500, 500, 410)
+      position: pos(30, 510, 1060, 280)
     }
     block f1 {
       position: pos(40, 20, 420, 90)
     }
     block f2 {
-      position: pos(40, 1150, 340, 70)
+      position: pos(40, 1050, 340, 70)
     }
     block f3 {
-      position: pos(400, 1150, 330, 70)
+      position: pos(400, 1050, 330, 70)
     }
   }
   block override_css: TextBlock {
@@ -87,7 +81,6 @@ Dashboard hooli_overview {
   }
   block t5: hooli_components.block.card_red
   block t6: hooli_components.block.card_red
-  block t7: hooli_components.block.card_red
   block t8: hooli_components.block.card_red
   block t9: hooli_components.block.card_red
   block t10: hooli_components.block.card_red
@@ -260,7 +253,8 @@ Dashboard hooli_overview {
       rows: [
         MetricSeries {
           field: VizFieldFull {
-            ref: 'untitled_metric_8a4aee9'
+            label: 'Sales'
+            ref: 'gmv'
             format {
               type: 'number'
               pattern: 'inherited'
@@ -279,8 +273,7 @@ Dashboard hooli_overview {
         },
         MetricSeries {
           field: VizFieldFull {
-            label: 'Sales'
-            ref: 'gmv'
+            ref: 'untitled_metric_8a4aee9'
             format {
               type: 'number'
               pattern: 'inherited'
@@ -304,10 +297,16 @@ Dashboard hooli_overview {
     }
     theme: demo.SecondaryBlock
   }
-  block v12: VizBlock {
-    label: 'GMV - Gross Merchandise Value'
+  block v3: VizBlock {
+    label: 'Revenue'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce
+      calculation metric_73b32d0 {
+        label: 'Sales goal'
+        formula: @aql 200000000;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
       value: VizFieldFull {
         label: 'Sales'
         ref: 'gmv'
@@ -319,7 +318,7 @@ Dashboard hooli_overview {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('demo.fct_order_items', 'created_at')
+        field: ref('demo.dim_dates', 'date_key')
         duration: 1
         granularity: 'month'
       }
@@ -433,29 +432,6 @@ Dashboard hooli_overview {
       hide_label: true
     }
   }
-  block v16: VizBlock {
-    label: 'GMV - Gross Merchandise Value'
-    viz: MetricKpi {
-      dataset: demo.ds_ecommerce
-      value: VizFieldFull {
-        ref: 'gmv'
-        format {
-          type: 'number'
-          pattern: '[$$]#,###,"K"'
-          group_separator: ','
-          decimal_separator: '.'
-        }
-      }
-      compare_value: VizPopSettings {
-        field: ref('demo.fct_order_items', 'created_at')
-        duration: 1
-        granularity: 'month'
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
   block v17: VizBlock {
     label: 'GMV - Gross Merchandise Value (dup)'
     viz: MetricKpi {
@@ -483,7 +459,6 @@ Dashboard hooli_overview {
     }
   }
   block v18: VizBlock {
-    theme: SecondaryBlock
     label: 'Sales Overtime'
     viz: LineChart {
       dataset: demo.ds_ecommerce
@@ -521,6 +496,10 @@ Dashboard hooli_overview {
         row_limit: 5000
         legend_label: 'hidden'
       }
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
     }
   }
   block v19: VizBlock {
@@ -580,9 +559,8 @@ Dashboard hooli_overview {
     label: 'Date range'
     type: 'date'
     default {
-      operator: 'last'
-      value: '3'
-      modifier: 'month'
+      operator: 'matches'
+      value: '6 months ago'
     }
   }
   block f2: FilterBlock {
@@ -614,45 +592,7 @@ Dashboard hooli_overview {
       from: 'f2'
       to: [
         CustomMapping {
-          block: [
-            'v11',
-            'v12',
-            'v13',
-            'v14',
-            'v15',
-            'v16',
-            'v17',
-            'v18',
-            'v19'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f2'
-      to: [
-        CustomMapping {
           block: 'f3'
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f3'
-      to: [
-        CustomMapping {
-          block: [
-            'v11',
-            'v12',
-            'v13',
-            'v14',
-            'v15',
-            'v16',
-            'v17',
-            'v18',
-            'v19'
-          ]
           disabled: true
         }
       ]

@@ -192,7 +192,7 @@ Dashboard hooli_home {
     type: 'date'
     default {
       operator: 'matches'
-      value: '$H_NIL$'
+      value: 'last 6 months'
     }
   }
   interactions: [
