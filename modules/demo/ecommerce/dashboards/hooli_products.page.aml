@@ -179,7 +179,6 @@ Dashboard hooli_products {
     theme: demo.SecondaryBlock
   }
   block f1: FilterBlock {
-    theme: SecondaryBlock
     label: 'Product Name'
     type: 'field'
     source: FieldFilterSource {
@@ -190,9 +189,21 @@ Dashboard hooli_products {
       operator: 'is'
       value: []
     }
+    settings {
+      drillthrough: Drillthrough {
+        enabled: true
+        sources: [
+          CustomDrillthroughSource {
+            sources: [
+              'demo.hooli_sales'
+            ]
+          }
+        ]
+      }
+    }
+    theme: demo.SecondaryBlock
   }
   block f2: FilterBlock {
-    theme: SecondaryBlock
     label: 'Category Name'
     type: 'field'
     source: FieldFilterSource {
@@ -203,6 +214,21 @@ Dashboard hooli_products {
       operator: 'is'
       value: []
     }
+    settings {
+      drillthrough: Drillthrough {
+        enabled: true
+        sources: [
+          CustomDrillthroughSource {
+            sources: [
+              'demo.hooli_home',
+              'demo.hooli_analytics',
+              'demo.hooli_overview'
+            ]
+          }
+        ]
+      }
+    }
+    theme: demo.SecondaryBlock
   }
   interactions: [
     FilterInteraction {
@@ -220,24 +246,6 @@ Dashboard hooli_products {
         CustomMapping {
           block: 'f1'
           disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f1'
-      to: [
-        CustomMapping {
-          block: 'v6'
-          field: ref('demo.dim_products', 'name')
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f2'
-      to: [
-        CustomMapping {
-          block: 'v6'
-          field: ref('demo.dim_categories', 'name')
         }
       ]
     }

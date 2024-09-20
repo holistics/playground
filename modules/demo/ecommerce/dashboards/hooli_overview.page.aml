@@ -1,4 +1,4 @@
-Dashboard hooli_analytics {
+Dashboard hooli_overview {
   theme: Hooli
   title: 'Hooli Analytics Overview'
   description: ''''''
