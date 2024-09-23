@@ -51,6 +51,12 @@ Dashboard hooli_marketing {
     block t5 {
       position: pos(940, 110, 50, 160)
     }
+    block f2 {
+      position: pos(580, 20, 300, 80)
+    }
+    block v19 {
+      position: pos(890, 0, 400, 110)
+    }
   }
   block t9: hooli_components.block.card_red
   block override_css: TextBlock {
@@ -373,4 +379,61 @@ Dashboard hooli_marketing {
         display: block;
       "></div>;;
   }
+  block f2: FilterBlock {
+    label: 'merchant id'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo.marketing_campaign
+      field: ref('demo.dim_merchants', 'id')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block v19: VizBlock {
+    label: 'merchan info'
+    viz: DataTable {
+      dataset: demo.marketing_campaign
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.marketing_kpi', 'merchant_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('demo.dim_merchants', 'name')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+      }
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'f2'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          disabled: true
+        }
+      ]
+    }
+  ]
 }
