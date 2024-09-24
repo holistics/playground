@@ -8,33 +8,44 @@ Dashboard hooli_home {
   view: CanvasLayout {
     label: 'View 1'
     width: 1150
-    height: 510
+    height: 860
+    grid_size: 5
     block t5 {
-      position: pos(610, 100, 510, 200)
+      position: pos(610, 30, 510, 180)
     }
     block t6 {
-      position: pos(870, 320, 250, 160)
+      position: pos(870, 230, 250, 160)
     }
     block t7 {
-      position: pos(610, 320, 240, 160)
+      position: pos(610, 230, 240, 160)
     }
     block v2 {
-      position: pos(30, 100, 560, 380)
+      position: pos(30, 30, 560, 360)
     }
     block v3 {
-      position: pos(640, 150, 470, 120)
+      position: pos(640, 60, 470, 120)
     }
     block v4 {
-      position: pos(640, 350, 210, 120)
+      position: pos(640, 260, 210, 120)
     }
     block v5 {
-      position: pos(900, 350, 220, 120)
+      position: pos(900, 260, 220, 120)
     }
     block override_css {
       position: pos(-280, 620, 361, 310)
     }
-    block f1 {
-      position: pos(30, 10, 300, 80)
+    block v6 {
+      position: pos(30, 410, 425, 380)
+    }
+    block v7 {
+      position: pos(490, 425, 250, 345)
+    }
+    block t8 {
+      position: pos(475, 410, 645, 380)
+      layer: -1
+    }
+    block v9 {
+      position: pos(760, 450, 340, 325)
     }
   }
 
@@ -119,7 +130,7 @@ Dashboard hooli_home {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('demo.dim_dates', 'date_key')
+        field: ref('demo.fct_orders', 'created_at')
         duration: 1
         granularity: 'month'
       }
@@ -132,6 +143,11 @@ Dashboard hooli_home {
     label: 'Orders'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce
+      filter {
+        field: ref('demo.fct_orders', 'created_at')
+        operator: 'before'
+        value: '2024-05-01'
+      }
       value: VizFieldFull {
         label: 'Orders'
         ref: ref('demo.fct_orders', 'total_orders_count')
@@ -141,7 +157,7 @@ Dashboard hooli_home {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('demo.dim_dates', 'date_key')
+        field: ref('demo.fct_orders', 'created_at')
         duration: 1
         granularity: 'month'
       }
@@ -154,6 +170,11 @@ Dashboard hooli_home {
     label: 'Revenue (dup) (dup)'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce
+      filter {
+        field: ref('demo.dim_users', 'sign_up_date')
+        operator: 'before'
+        value: '2024-05-01'
+      }
       value: VizFieldFull {
         label: 'Customers'
         ref: ref('demo.dim_users', 'total_users')
@@ -184,29 +205,264 @@ Dashboard hooli_home {
       }
     </style>;;
   }
-  block f1: FilterBlock {
-    label: 'Date'
-    type: 'date'
-    default {
-      operator: 'matches'
-      value: 'last 6 months'
+  block v6: VizBlock {
+    label: 'Buyers by Country'
+    viz: FilledMap {
+      dataset: demo.ds_ecommerce
+      filter {
+        field: ref('demo.dim_users', 'is_buyer')
+        operator: 'is'
+        value: true
+      }
+      location {
+        field: VizFieldFull {
+          ref: ref('demo.dim_user_countries', 'name')
+          format {
+            type: 'text'
+          }
+        }
+        primary_field: true
+      }
+      value: VizFieldFull {
+        ref: ref('demo.dim_users', 'total_users')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        value_colors {
+          min {
+            color: '#FBFDBF'
+          }
+          max {
+            color: '#E27712'
+          }
+        }
+      }
+    }
+    theme: demo.SecondaryBlock
+  }
+  block v7: VizBlock {
+    label: 'Top 10 Products'
+    viz: BarChart {
+      dataset: demo.ds_ecommerce
+      filter {
+        field: ref('demo.dim_products', 'name')
+        operator: 'top'
+        value: 10
+        options {
+          rank_by {
+            field: ref('demo.fct_order_items', 'id')
+            aggregation: 'count'
+            logic: 'standard'
+          }
+        }
+      }
+      x_axis: VizFieldFull {
+        ref: ref('demo.dim_products', 'name')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            label: 'Order quantity'
+            ref: ref('demo.fct_order_items', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#E27712FF'
+          }
+        }
+      }
+      settings {
+        sort {
+          field_index: 0
+          direction: 'desc'
+          type: 'yaxis'
+        }
+        legend_label: 'hidden'
+      }
+    }
+  }
+  block t8: TextBlock {
+    content: @md <div></div>;;
+    theme: demo.SecondaryBlock
+  }
+  block v9: VizBlock {
+    label: 'Top 10 Products'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce
+      filter {
+        field: ref('demo.dim_products', 'name')
+        operator: 'top'
+        value: 10
+        options {
+          rank_by {
+            field: ref('demo.fct_order_items', 'id')
+            aggregation: 'count'
+            logic: 'standard'
+          }
+        }
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.dim_products', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          label: 'Order Quantity'
+          ref: ref('demo.fct_order_items', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'count_id'
+        }
+      ]
+      settings {
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 1
+            direction: 'desc'
+          }
+        ]
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: '_holistics_row_number_'
+              width: 48
+            },
+            ColumnWidth {
+              key: 'count_id'
+              width: 127
+            }
+          ]
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
     }
   }
   interactions: [
     FilterInteraction {
-      from: 'f1'
+      from: 'v2'
       to: [
         CustomMapping {
           block: [
-            'v3',
-            'v2',
-            'v4'
+            'v8',
+            'v9'
           ]
-          field: ref('demo.dim_dates', 'date_key')
-        },
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v3'
+      to: [
         CustomMapping {
-          block: 'v5'
-          field: ref('demo.dim_users', 'sign_up_date')
+          block: [
+            'v8',
+            'v9'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v4'
+      to: [
+        CustomMapping {
+          block: [
+            'v8',
+            'v9'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v5'
+      to: [
+        CustomMapping {
+          block: [
+            'v8',
+            'v9'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v6'
+      to: [
+        CustomMapping {
+          block: [
+            'v8',
+            'v9'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v7'
+      to: [
+        CustomMapping {
+          block: [
+            'v8',
+            'v9'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v8'
+      to: [
+        CustomMapping {
+          block: [
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v9'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v9'
+      to: [
+        CustomMapping {
+          block: [
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8'
+          ]
+          disabled: true
         }
       ]
     }
