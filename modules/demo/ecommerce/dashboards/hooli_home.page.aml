@@ -8,30 +8,33 @@ Dashboard hooli_home {
   view: CanvasLayout {
     label: 'View 1'
     width: 1150
-    height: 440
+    height: 510
     block t5 {
-      position: pos(610, 30, 510, 200)
+      position: pos(610, 100, 510, 200)
     }
     block t6 {
-      position: pos(870, 250, 250, 160)
+      position: pos(870, 320, 250, 160)
     }
     block t7 {
-      position: pos(610, 250, 240, 160)
+      position: pos(610, 320, 240, 160)
     }
     block v2 {
-      position: pos(30, 30, 560, 380)
+      position: pos(30, 100, 560, 380)
     }
     block v3 {
-      position: pos(640, 80, 470, 120)
+      position: pos(640, 150, 470, 120)
     }
     block v4 {
-      position: pos(640, 280, 210, 120)
+      position: pos(640, 350, 210, 120)
     }
     block v5 {
-      position: pos(900, 280, 220, 120)
+      position: pos(900, 350, 220, 120)
     }
     block override_css {
       position: pos(-280, 620, 361, 310)
+    }
+    block f1 {
+      position: pos(30, 10, 300, 80)
     }
   }
 
@@ -116,7 +119,7 @@ Dashboard hooli_home {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('demo.fct_orders', 'created_at')
+        field: ref('demo.dim_dates', 'date_key')
         duration: 1
         granularity: 'month'
       }
@@ -129,11 +132,6 @@ Dashboard hooli_home {
     label: 'Orders'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce
-      filter {
-        field: ref('demo.fct_orders', 'created_at')
-        operator: 'before'
-        value: '2024-05-01'
-      }
       value: VizFieldFull {
         label: 'Orders'
         ref: ref('demo.fct_orders', 'total_orders_count')
@@ -143,7 +141,7 @@ Dashboard hooli_home {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('demo.fct_orders', 'created_at')
+        field: ref('demo.dim_dates', 'date_key')
         duration: 1
         granularity: 'month'
       }
@@ -156,11 +154,6 @@ Dashboard hooli_home {
     label: 'Revenue (dup) (dup)'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce
-      filter {
-        field: ref('demo.dim_users', 'sign_up_date')
-        operator: 'before'
-        value: '2024-05-01'
-      }
       value: VizFieldFull {
         label: 'Customers'
         ref: ref('demo.dim_users', 'total_users')
@@ -191,4 +184,31 @@ Dashboard hooli_home {
       }
     </style>;;
   }
+  block f1: FilterBlock {
+    label: 'Date'
+    type: 'date'
+    default {
+      operator: 'matches'
+      value: 'last 6 months'
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: [
+            'v3',
+            'v2',
+            'v4'
+          ]
+          field: ref('demo.dim_dates', 'date_key')
+        },
+        CustomMapping {
+          block: 'v5'
+          field: ref('demo.dim_users', 'sign_up_date')
+        }
+      ]
+    }
+  ]
 }
