@@ -6,7 +6,7 @@ Dashboard hooli_analytics {
   view: CanvasLayout {
     label: 'View 1'
     width: 1120
-    height: 1630
+    height: 1390
     block override_css {
       position: pos(-380, -40, 361, 353)
     }
@@ -26,13 +26,10 @@ Dashboard hooli_analytics {
       position: pos(460, 120, 310, 160)
     }
     block v6 {
-      position: pos(40, 1130, 510, 460)
+      position: pos(30, 900, 510, 460)
     }
     block v7 {
-      position: pos(570, 1130, 520, 460)
-    }
-    block v11 {
-      position: pos(30, 820, 1060, 200)
+      position: pos(560, 900, 530, 460)
     }
     block v3 {
       position: pos(60, 150, 360, 110)
@@ -59,10 +56,10 @@ Dashboard hooli_analytics {
       position: pos(40, 20, 420, 90)
     }
     block f2 {
-      position: pos(40, 1050, 340, 70)
+      position: pos(30, 820, 340, 70)
     }
     block f3 {
-      position: pos(400, 1050, 330, 70)
+      position: pos(390, 820, 330, 70)
     }
   }
   block override_css: TextBlock {
@@ -226,76 +223,6 @@ Dashboard hooli_analytics {
         ]
       }
     }
-  }
-  block v11: VizBlock {
-    label: 'Metrics Trends'
-    viz: MetricSheet {
-      dataset: demo.ds_ecommerce
-      calculation untitled_metric_8a4aee9 {
-        label: 'Customers'
-        formula: @aql count_users 
-| with_relationships(demo.dim_users.sign_up_date > demo.dim_dates.date_key);;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      filter {
-        field: ref('demo.dim_dates', 'date_key')
-        operator: 'not_null'
-        value: []
-      }
-      date_field: VizFieldFull {
-        ref: ref('demo.dim_dates', 'date_key')
-        transformation: 'datetrunc month'
-        format {
-          type: 'date'
-        }
-      }
-      rows: [
-        MetricSeries {
-          field: VizFieldFull {
-            label: 'Sales'
-            ref: 'gmv'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        },
-        MetricSeries {
-          field: VizFieldFull {
-            label: 'Orders'
-            ref: 'count_distinct_orders'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        },
-        MetricSeries {
-          field: VizFieldFull {
-            ref: 'untitled_metric_8a4aee9'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        },
-        MetricSeries {
-          field: VizFieldFull {
-            label: 'AOV'
-            ref: 'aov'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-      ]
-    }
-    settings {
-      hide_label: true
-    }
-    theme: demo.SecondaryBlock
   }
   block v3: VizBlock {
     label: 'Revenue'

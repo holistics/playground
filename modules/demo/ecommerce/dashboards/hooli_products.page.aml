@@ -195,7 +195,9 @@ Dashboard hooli_products {
         sources: [
           CustomDrillthroughSource {
             sources: [
-              'demo.hooli_sales'
+              'demo.hooli_sales',
+              'demo.hooli_analytics',
+              'demo.hooli_overview'
             ]
           }
         ]
@@ -220,7 +222,6 @@ Dashboard hooli_products {
         sources: [
           CustomDrillthroughSource {
             sources: [
-              'demo.hooli_home',
               'demo.hooli_analytics',
               'demo.hooli_overview'
             ]
