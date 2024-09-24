@@ -814,14 +814,14 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
     label: 'Sales Funnel'
     viz: ConversionFunnel {
       dataset: demo.ds_ecommerce
-      calculation untitled_metric_1704407 {
-        label: 'Untitled Metric'
+      calculation buyer_count {
+        label: 'Buyer Count'
         formula: @aql count_users | where(demo.dim_users.is_buyer == true);;
         calc_type: 'measure'
         data_type: 'number'
       }
-      calculation untitled_metric_7ef3883 {
-        label: 'Untitled Metric'
+      calculation repeated_buyers_count {
+        label: 'Repeated Buyers'
         formula: @aql count_users | where(demo.dim_users.is_repeated_buyer == true);;
         calc_type: 'measure'
         data_type: 'number'
@@ -834,28 +834,15 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
           }
         },
         VizFieldFull {
-          ref: ref('demo.user_facts_aggr', 'buyers_count')
+          label: 'Buyers'
+          ref: 'buyer_count'
           format {
             type: 'number'
             pattern: 'inherited'
           }
         },
         VizFieldFull {
-          ref: 'untitled_metric_1704407'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        },
-        VizFieldFull {
-          ref: ref('demo.user_facts_aggr', 'repeated_buyers_count')
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        },
-        VizFieldFull {
-          ref: 'untitled_metric_7ef3883'
+          ref: 'repeated_buyers_count'
           format {
             type: 'number'
             pattern: 'inherited'

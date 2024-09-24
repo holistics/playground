@@ -42,8 +42,6 @@ Dataset ds_ecommerce {
     dim_user_cities,
     dim_user_countries,
 
-    user_facts_aggr, // to be removed
-
     user_cohort_retention, // to be removed
 
   ]
@@ -115,7 +113,7 @@ Dataset ds_ecommerce {
     hidden: false
     description: ""
     definition: @aql case(
-  when: demo.dim_users.total_oders_of_user > 22
+  when: demo.dim_users.total_oders_of_user > 300
   , then: true
   , else: false
 );;
