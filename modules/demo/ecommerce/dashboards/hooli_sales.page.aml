@@ -117,6 +117,7 @@ Dashboard hooli_overview {
           }
         }
       }
+      //jajssjsjjsjja
       y_axis {
         settings {
           alignment: 'right'
