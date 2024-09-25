@@ -455,12 +455,11 @@ Dashboard hooli_overview {
     }
   }
   interactions: [
-    FilterInteraction {
-      from: 'f2'
+    PopInteraction {
+      from: 'p1'
       to: [
         CustomMapping {
           block: [
-            'v2',
             'v11',
             'v12',
             'v14'
@@ -469,11 +468,12 @@ Dashboard hooli_overview {
         }
       ]
     },
-    PopInteraction {
-      from: 'p1'
+    FilterInteraction {
+      from: 'f2'
       to: [
         CustomMapping {
           block: [
+            'v2',
             'v11',
             'v12',
             'v14'
