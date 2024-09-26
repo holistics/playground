@@ -47,7 +47,7 @@ Dashboard hooli_analytics {
       position: pos(810, 340, 270, 120)
     }
     block v18 {
-      position: pos(50, 240, 370, 220)
+      position: pos(60, 240, 360, 220)
     }
     block v19 {
       position: pos(30, 510, 1060, 280)
