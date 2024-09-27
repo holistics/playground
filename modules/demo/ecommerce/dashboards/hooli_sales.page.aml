@@ -117,6 +117,7 @@ Dashboard hooli_overview {
           }
         }
       }
+      //jajssjsjjsjja
       y_axis {
         settings {
           alignment: 'right'
@@ -173,11 +174,6 @@ Dashboard hooli_overview {
           pattern: 'inherited'
         }
       }
-      compare_value: VizPopSettings {
-        field: ref('demo.fct_order_items', 'created_at')
-        duration: 1
-        granularity: 'year'
-      }
     }
     settings {
       hide_label: true
@@ -187,11 +183,6 @@ Dashboard hooli_overview {
     label: 'Total sales (dup) (dup)'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce
-      filter {
-        field: ref('demo.fct_orders', 'created_at')
-        operator: 'before'
-        value: '2024-05-01'
-      }
       value: VizFieldFull {
         label: 'AOV'
         ref: 'aov'
@@ -199,11 +190,6 @@ Dashboard hooli_overview {
           type: 'number'
           pattern: '[$$]#,###'
         }
-      }
-      compare_value: VizPopSettings {
-        field: ref('demo.fct_orders', 'created_at')
-        duration: 1
-        granularity: 'month'
       }
     }
     settings {
@@ -408,6 +394,16 @@ Dashboard hooli_overview {
         display: block;
       "></div>;;
   }
+  block p1: PopBlock {
+    theme: SecondaryBlock
+    label: 'Period Comparison'
+    default {
+      type: 'relative'
+      duration: 3
+      granularity: 'month'
+      show_growth_rate: true
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1410
@@ -416,19 +412,19 @@ Dashboard hooli_overview {
       position: pos(-410, 20, 361, 370)
     }
     block v2 {
-      position: pos(770, 270, 610, 390)
+      position: pos(770, 260, 610, 520)
     }
     block f2 {
-      position: pos(40, 150, 310, 100)
+      position: pos(40, 40, 310, 90)
     }
     block v11 {
-      position: pos(40, 270, 710, 390)
+      position: pos(40, 390, 710, 390)
     }
     block t9 {
       position: pos(370, 40, 1010, 210)
     }
     block f3 {
-      position: pos(40, 40, 310, 100)
+      position: pos(40, 270, 710, 90)
     }
     block v12 {
       position: pos(410, 90, 270, 120)
@@ -440,13 +436,13 @@ Dashboard hooli_overview {
       position: pos(750, 90, 290, 120)
     }
     block v15 {
-      position: pos(40, 680, 710, 370)
+      position: pos(40, 800, 710, 370)
     }
     block v16 {
-      position: pos(770, 680, 610, 370)
+      position: pos(770, 800, 610, 370)
     }
     block v17 {
-      position: pos(40, 1070, 1340, 430)
+      position: pos(40, 1190, 1340, 430)
     }
     block t14 {
       position: pos(690, 50, 30, 200)
@@ -454,21 +450,35 @@ Dashboard hooli_overview {
     block t15 {
       position: pos(1050, 50, 30, 200)
     }
+    block p1 {
+      position: pos(40, 150, 310, 100)
+    }
   }
   interactions: [
+    PopInteraction {
+      from: 'p1'
+      to: [
+        CustomMapping {
+          block: [
+            'v11',
+            'v12',
+            'v14'
+          ]
+          field: ref('demo.dim_dates', 'date_key')
+        }
+      ]
+    },
     FilterInteraction {
       from: 'f2'
       to: [
         CustomMapping {
           block: [
             'v2',
-            'v11'
+            'v11',
+            'v12',
+            'v14'
           ]
           field: ref('demo.dim_dates', 'date_key')
-        },
-        CustomMapping {
-          block: 'v12'
-          field: ref('demo.fct_order_items', 'created_at')
         }
       ]
     }
