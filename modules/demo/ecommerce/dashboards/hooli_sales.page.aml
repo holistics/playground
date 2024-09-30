@@ -329,15 +329,21 @@ Dashboard hooli_overview {
     }
   }
   block v17: VizBlock {
-    theme: SecondaryBlock
     label: 'Top Sales by Customer'
     viz: ColumnChart {
       dataset: demo.ds_ecommerce
-      // filter {
-      //   field: ref('demo.dim_users', 'full_name')
-      //   operator: 'top'
-      //   value: 10
-      // }
+      filter {
+        field: ref('demo.dim_users', 'full_name')
+        operator: 'top'
+        value: 10
+        options {
+          rank_by {
+            field: 'gmv'
+            aggregation: 'custom'
+            logic: 'standard'
+          }
+        }
+      }
       x_axis: VizFieldFull {
         ref: ref('demo.dim_users', 'full_name')
         format {
@@ -369,6 +375,7 @@ Dashboard hooli_overview {
         legend_label: 'hidden'
       }
     }
+    theme: demo.SecondaryBlock
   }
   block t14: TextBlock {
     content: @md <div 
@@ -407,7 +414,7 @@ Dashboard hooli_overview {
   view: CanvasLayout {
     label: 'View 1'
     width: 1410
-    height: 1530
+    height: 1660
     block override_css {
       position: pos(-410, 20, 361, 370)
     }
