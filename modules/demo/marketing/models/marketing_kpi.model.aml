@@ -73,10 +73,13 @@ Model marketing_kpi {
     label: 'Merchant ID'
     type: 'number'
     hidden: false
-    definition: @sql case mod({{ #SOURCE.id }}, 4)
+    definition: @sql case mod({{ #SOURCE.id }}, 7)
       when 0 then 126 -- Feest, Schumm and Walsh
       when 1 then 315 -- Mayer and Sons
       when 2 then 483 -- Nader Inc
+      when 3 then 255 --  Gleichner, Dickin son and Jenskins
+      when 4 then 353  -- Bailey, Mohanan and Nitzsche
+      when 5 then 661 -- Dooley Inc
       else 561 -- Dibbert, Abernathy and Mertz
       end 
     ;;
