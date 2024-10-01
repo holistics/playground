@@ -256,7 +256,6 @@ Dashboard hooli_overview {
           rank_by {
             field: 'gmv'
             aggregation: 'custom'
-            logic: 'standard'
           }
         }
       }
