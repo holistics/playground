@@ -249,9 +249,16 @@ Dashboard hooli_overview {
     viz: ColumnChart {
       dataset: demo.ds_ecommerce
       filter {
-        field: 'gmv'
-        operator: 'greater_than'
-        value: '180000'
+        field: ref('demo.dim_products', 'name')
+        operator: 'top'
+        value: 10
+        options {
+          rank_by {
+            field: 'gmv'
+            aggregation: 'custom'
+            logic: 'standard'
+          }
+        }
       }
       x_axis: VizFieldFull {
         ref: ref('demo.dim_products', 'name')
