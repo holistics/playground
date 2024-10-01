@@ -245,15 +245,21 @@ Dashboard hooli_overview {
     }
   }
   block v15: VizBlock {
-    theme: SecondaryBlock
     label: 'Top Sales by Product'
     viz: ColumnChart {
       dataset: demo.ds_ecommerce
-      // filter {
-      //   field: ref('demo.dim_products', 'name')
-      //   operator: 'top'
-      //   value: 10
-      // }
+      filter {
+        field: ref('demo.dim_products', 'name')
+        operator: 'top'
+        value: 10
+        options {
+          rank_by {
+            field: 'gmv'
+            aggregation: 'custom'
+            logic: 'standard'
+          }
+        }
+      }
       x_axis: VizFieldFull {
         ref: ref('demo.dim_products', 'name')
         format {
@@ -267,7 +273,7 @@ Dashboard hooli_overview {
             ref: 'gmv'
             format {
               type: 'number'
-              pattern: 'inherited'
+              pattern: '[$$]#,###'
             }
           }
           settings {
@@ -285,17 +291,24 @@ Dashboard hooli_overview {
         legend_label: 'hidden'
       }
     }
+    theme: demo.SecondaryBlock
   }
   block v16: VizBlock {
-    theme: SecondaryBlock
     label: 'Top Sales by Category'
     viz: ColumnChart {
       dataset: demo.ds_ecommerce
-      // filter {
-      //   field: ref('demo.dim_categories', 'name')
-      //   operator: 'top'
-      //   value: 10
-      // }
+      filter {
+        field: ref('demo.dim_categories', 'name')
+        operator: 'top'
+        value: 10
+        options {
+          rank_by {
+            field: 'gmv'
+            aggregation: 'custom'
+            logic: 'standard'
+          }
+        }
+      }
       x_axis: VizFieldFull {
         ref: ref('demo.dim_categories', 'name')
         format {
@@ -309,7 +322,7 @@ Dashboard hooli_overview {
             ref: 'gmv'
             format {
               type: 'number'
-              pattern: 'inherited'
+              pattern: '[$$]#,###'
             }
           }
           settings {
@@ -327,6 +340,7 @@ Dashboard hooli_overview {
         legend_label: 'hidden'
       }
     }
+    theme: demo.SecondaryBlock
   }
   block v17: VizBlock {
     label: 'Top Sales by Customer'
@@ -429,10 +443,23 @@ Dashboard hooli_overview {
       show_growth_rate: true
     }
   }
+  block f4: FilterBlock {
+    label: 'Customer Name'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo.ds_ecommerce
+      field: ref('demo.dim_users', 'full_name')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+    theme: demo.SecondaryBlock
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1410
-    height: 1660
+    height: 1750
     block override_css {
       position: pos(-410, 20, 361, 370)
     }
@@ -443,7 +470,7 @@ Dashboard hooli_overview {
       position: pos(40, 40, 310, 90)
     }
     block v11 {
-      position: pos(40, 390, 710, 390)
+      position: pos(40, 380, 710, 400)
     }
     block t9 {
       position: pos(370, 40, 1010, 210)
@@ -455,7 +482,7 @@ Dashboard hooli_overview {
       position: pos(410, 90, 270, 120)
     }
     block v14 {
-      position: pos(1110, 90, 250, 120)
+      position: pos(1110, 90, 240, 120)
     }
     block v20 {
       position: pos(750, 90, 290, 120)
@@ -467,7 +494,7 @@ Dashboard hooli_overview {
       position: pos(770, 800, 610, 370)
     }
     block v17 {
-      position: pos(40, 1190, 1340, 430)
+      position: pos(40, 1300, 1340, 430)
     }
     block t14 {
       position: pos(690, 50, 30, 200)
@@ -478,8 +505,46 @@ Dashboard hooli_overview {
     block p1 {
       position: pos(40, 150, 310, 100)
     }
+    block f4 {
+      position: pos(40, 1190, 480, 90)
+    }
   }
   interactions: [
+    FilterInteraction {
+      from: 'f3'
+      to: [
+        CustomMapping {
+          block: 'f4'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f4'
+      to: [
+        CustomMapping {
+          block: [
+            'v2',
+            'v11',
+            'v12',
+            'v14',
+            'v20',
+            'v15',
+            'v16'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f4'
+      to: [
+        CustomMapping {
+          block: 'f3'
+          disabled: true
+        }
+      ]
+    },
     PopInteraction {
       from: 'p1'
       to: [
