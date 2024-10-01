@@ -330,49 +330,67 @@ Dashboard hooli_overview {
   }
   block v17: VizBlock {
     label: 'Top Sales by Customer'
-    viz: ColumnChart {
+    viz: DataTable {
       dataset: demo.ds_ecommerce
       filter {
-        field: ref('demo.dim_users', 'full_name')
-        operator: 'top'
-        value: 10
-        options {
-          rank_by {
-            field: 'gmv'
-            aggregation: 'custom'
-            logic: 'standard'
+        field: 'gmv'
+        operator: 'not_null'
+        value: []
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.dim_users', 'full_name')
+          format {
+            type: 'text'
           }
-        }
-      }
-      x_axis: VizFieldFull {
-        ref: ref('demo.dim_users', 'full_name')
-        format {
-          type: 'text'
-        }
-      }
-      y_axis {
-        series {
-          field: VizFieldFull {
-            label: 'Sales'
-            ref: 'gmv'
-            format {
-              type: 'number'
-              pattern: 'inherited'
+          action a_1: VizAction {
+            type: 'GoToUrl'
+            label: 'Send email to customer'
+            url: ActionFieldInput {
+              ref: ref('demo.dim_users', 'email_user')
+              aggregation: 'min'
             }
           }
-          settings {
-            color: '#E27712'
+        },
+        VizFieldFull {
+          ref: ref('demo.dim_users', 'gender')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          label: 'Age Group'
+          ref: ref('demo.dim_users', 'age_group')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          label: 'Total Orders'
+          ref: ref('demo.dim_users', 'total_oders_of_user')
+          format {
+            type: 'number'
+            pattern: '#,###'
+          }
+        },
+        VizFieldFull {
+          label: 'Sales'
+          ref: 'gmv'
+          format {
+            type: 'number'
+            pattern: '[$$]#,###'
           }
         }
-      }
+      ]
       settings {
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 4
+            direction: 'desc'
+          }
+        ]
         row_limit: 5000
-        sort {
-          field_index: 0
-          direction: 'desc'
-          type: 'yaxis'
-        }
-        legend_label: 'hidden'
       }
     }
     theme: demo.SecondaryBlock
@@ -419,7 +437,7 @@ Dashboard hooli_overview {
       position: pos(-410, 20, 361, 370)
     }
     block v2 {
-      position: pos(770, 260, 610, 520)
+      position: pos(770, 270, 610, 510)
     }
     block f2 {
       position: pos(40, 40, 310, 90)

@@ -82,7 +82,6 @@ Dashboard hooli_analytics {
   block t9: hooli_components.block.card_red
   block t10: hooli_components.block.card_red
   block v6: VizBlock {
-    theme: SecondaryBlock
     label: 'Top Selling Products'
     viz: PivotTable {
       dataset: demo.ds_ecommerce
@@ -123,36 +122,26 @@ Dashboard hooli_analytics {
       ]
       settings {
         row_height: 'multiple_lines'
+        pagination_size: 100
+        show_row_total: true
+        show_column_total: true
         sorts: [
           SortSetting {
             field_index: 2
             direction: 'desc'
           }
         ]
-        conditional_formats: [
-          ConditionalFormat {
-            ref: 'gmv'
-            format: ScaleFormat {
-              min {
-                value: 0
-                color: '#F7CBA0FF'
-              }
-              mid {
-                value: 80000
-                color: '#ED801CFF'
-              }
-              max {
-                value: 150000
-                color: '#603206FF'
-              }
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'demo.dim_products_name'
+              width: 186
             }
-          }
-        ]
-        pagination_size: 100
-        show_row_total: true
-        show_column_total: true
+          ]
+        }
       }
     }
+    theme: demo.SecondaryBlock
   }
   block v7: VizBlock {
     label: 'Top Selling Categories'
@@ -198,25 +187,6 @@ Dashboard hooli_analytics {
           SortSetting {
             field_index: 2
             direction: 'desc'
-          }
-        ]
-        conditional_formats: [
-          ConditionalFormat {
-            ref: 'gmv'
-            format: ScaleFormat {
-              min {
-                value: 0
-                color: '#F7CBA0FF'
-              }
-              mid {
-                value: 80000
-                color: '#ED801CFF'
-              }
-              max {
-                value: 150000
-                color: '#603206FF'
-              }
-            }
           }
         ]
       }
