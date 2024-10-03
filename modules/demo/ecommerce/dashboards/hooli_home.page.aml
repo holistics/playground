@@ -8,7 +8,7 @@ Dashboard hooli_home {
   view: CanvasLayout {
     label: 'View 1'
     width: 1150
-    height: 860
+    height: 820
     grid_size: 5
     block t5 {
       position: pos(610, 30, 510, 180)
