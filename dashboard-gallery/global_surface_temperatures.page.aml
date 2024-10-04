@@ -36,7 +36,7 @@ Dashboard global_temps_page {
     label: 'Temps by Year'
     viz: CustomChart {
       dataset: global_temps_dataset
-      custom_chart_id: 18694
+      custom_chart_id: 1099511648253
       field dim: VizFieldFull {
         ref: ref('demo.global_temps_pivot', 'year')
         format {
