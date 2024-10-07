@@ -244,7 +244,7 @@ Dashboard hooli_home {
     theme: demo.SecondaryBlock
   }
   block v7: VizBlock {
-    label: 'Top 10 Products'
+    label: 'Top 10 Most Ordered Products'
     viz: BarChart {
       dataset: demo.ds_ecommerce
       filter {

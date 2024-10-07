@@ -76,7 +76,7 @@ Dashboard marketing_2 {
     label: 'Conversions gauge chart'
     viz: CustomChart {
       dataset: demo.marketing_campaign
-      custom_chart_id: 20026
+      custom_chart_id: 1099511648254
       field max: VizFieldFull {
         ref: ref('demo.marketing_kpi', 'leads')
         aggregation: 'sum'
