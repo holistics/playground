@@ -6,60 +6,60 @@ Dashboard hooli_analytics {
   view: CanvasLayout {
     label: 'View 1'
     width: 1120
-    height: 1440
+    height: 1420
     block override_css {
       position: pos(-380, -40, 361, 353)
     }
     block t5 {
-      position: pos(40, 130, 400, 360)
+      position: pos(40, 110, 400, 360)
     }
     block t6 {
-      position: pos(790, 310, 300, 180)
+      position: pos(790, 290, 300, 180)
     }
     block t8 {
-      position: pos(460, 310, 310, 180)
+      position: pos(460, 290, 310, 180)
     }
     block t9 {
-      position: pos(790, 130, 300, 160)
+      position: pos(790, 110, 300, 160)
     }
     block t10 {
-      position: pos(460, 130, 310, 160)
+      position: pos(460, 110, 310, 160)
     }
     block v6 {
-      position: pos(40, 940, 500, 460)
+      position: pos(40, 920, 500, 460)
     }
     block v7 {
-      position: pos(560, 940, 530, 460)
+      position: pos(560, 920, 530, 460)
     }
     block v3 {
-      position: pos(60, 160, 360, 110)
+      position: pos(60, 140, 360, 110)
     }
     block v13 {
-      position: pos(490, 160, 260, 120)
+      position: pos(490, 140, 260, 120)
     }
     block v14 {
-      position: pos(810, 160, 260, 120)
+      position: pos(810, 140, 260, 120)
     }
     block v15 {
-      position: pos(490, 350, 260, 120)
+      position: pos(490, 330, 260, 120)
     }
     block v17 {
-      position: pos(810, 350, 260, 120)
+      position: pos(810, 330, 260, 120)
     }
     block v18 {
-      position: pos(60, 250, 360, 220)
+      position: pos(60, 230, 360, 220)
     }
     block v19 {
-      position: pos(40, 520, 1050, 280)
+      position: pos(40, 500, 1050, 280)
     }
     block f1 {
-      position: pos(40, 20, 400, 100)
+      position: pos(40, 20, 400, 80)
     }
     block f2 {
-      position: pos(40, 830, 340, 90)
+      position: pos(40, 810, 340, 90)
     }
     block f3 {
-      position: pos(400, 830, 330, 90)
+      position: pos(400, 810, 330, 90)
     }
   }
   block override_css: TextBlock {
