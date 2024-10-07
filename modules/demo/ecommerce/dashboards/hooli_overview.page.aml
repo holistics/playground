@@ -53,7 +53,7 @@ Dashboard hooli_analytics {
       position: pos(40, 520, 1050, 280)
     }
     block f1 {
-      position: pos(40, 10, 400, 100)
+      position: pos(40, 20, 400, 100)
     }
     block f2 {
       position: pos(40, 830, 340, 90)
@@ -452,7 +452,6 @@ Dashboard hooli_analytics {
     }
   }
   block f1: FilterBlock {
-    theme: SecondaryBlock
     label: 'Date range'
     type: 'date'
     default {
