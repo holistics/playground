@@ -61,39 +61,7 @@ Dashboard ecomax_users {
       position: pos(300, 30, 500, 40)
     }
   }
-  block override_css: TextBlock {
-    content: @md <style>
-      .dac-text-block {
-        overflow: hidden !important;
-      }
-      
-      .h-kpi-metric .h-kpi-metric-kpi {
-        font-size: 36px;
-        color: #2f3e4a;
-      }
-      .h-kpi-metric .h-kpi-metric-label {
-        font-size: 18px;
-      }
-      .h-kpi-metric .h-kpi-metric-kpi {
-        line-height: 3.5rem !important;
-      }
-      
-      .sepline {
-        border-top: 0.5px solid #2f3e4a; opacity: 25%; width: 100%;
-      }
-      .color-main {
-        color: #2f3e4a;
-      }
-
-      .dac-text-block a {
-        color: white
-      }
-      .dac-text-block a:hover {
-        text-decoration: none;
-        font-weight: bold;
-      }
-    </style>;;
-  }
+  block override_css: ecomax.block.override_css
 
   block t1: TextBlock {
     content: @md <div style="background: #2f3e4a; width: 100%; height: 1500px">
@@ -247,14 +215,7 @@ Dashboard ecomax_users {
     label: 'Date Period'
     default: 'month'
   }
-  block t4: TextBlock {
-    content: @md <ul style="list-style-type: none; color: white; font-size: 18px; line-height: 3; padding-left: 0">
-      <li><a href="/dashboards/v4/1099511664128-ecomax">Overview</a></li>
-      <li><span style="font-weight: 700; border-bottom: 1px solid white"><a href="/dashboards/v4/1099511664777-ecomax-users">Users</a></span></li>
-      <li>Revenue</li>
-      <li>Products</li>
-    </ul>;;
-  }
+  block t4: demo.ecomax_nav('Users')
   block v7: VizBlock {
     label: 'AOV'
     viz: MetricKpi {

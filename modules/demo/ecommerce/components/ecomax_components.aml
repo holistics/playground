@@ -1,0 +1,10 @@
+Func ecomax_nav (activeItem: String) {
+  TextBlock {
+    content: @md <ul style="list-style-type: none; color: white; font-size: 18px; line-height: 3; padding-left: 0">
+      <li><a class=" ${if (activeItem == 'Overview') { 'active-item' } else { ''} } " href="/dashboards/v4/1099511664128-ecomax">Overview</a></span></li>
+      <li><a class=" ${if (activeItem == 'Users') { 'active-item' } else { ''} } "  href="/dashboards/v4/1099511664777-ecomax-users">Users</a></li>
+      <li>Revenue</li>
+      <li>Products</li>
+    </ul>;;
+  }
+}
