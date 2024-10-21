@@ -88,6 +88,10 @@ Dashboard ecomax_users {
       .dac-text-block a {
         color: white
       }
+      .dac-text-block a:hover {
+        text-decoration: none;
+        font-weight: bold;
+      }
     </style>;;
   }
 
@@ -246,7 +250,7 @@ Dashboard ecomax_users {
   block t4: TextBlock {
     content: @md <ul style="list-style-type: none; color: white; font-size: 18px; line-height: 3; padding-left: 0">
       <li><a href="https://playground.holistics.io/dashboards/v4/1099511664128-ecomax">Overview</a></li>
-      <li><span style="font-weight: 700; border-bottom: 1px solid white"><a href="https://secure.holistics.io/dashboards/v4/90689-ecomax-users">Users</a></span></li>
+      <li><span style="font-weight: 700; border-bottom: 1px solid white"><a href="https://playground.holistics.io/dashboards/v4/90689-ecomax-users">Users</a></span></li>
       <li>Revenue</li>
       <li>Products</li>
     </ul>;;
