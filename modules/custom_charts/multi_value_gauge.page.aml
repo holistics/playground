@@ -757,7 +757,7 @@ CustomChart {
         calc_type: 'measure'
         data_type: 'number'
       }
-      custom_chart_id: 20059
+      custom_chart_id: 1099511648255
       field m1: VizFieldFull {
         ref: 'avg_monthly_order_count'
         format {

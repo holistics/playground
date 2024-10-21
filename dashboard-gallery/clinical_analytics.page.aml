@@ -66,7 +66,7 @@ Dashboard clinical_analytics {
     label: 'Patient Volume'
     viz: CustomChart {
       dataset: clinical_analytics_dataset
-      custom_chart_id: 18654
+      custom_chart_id: 1099511648251
       field date: VizFieldFull {
         ref: ref('demo.persisted_clinical_analytics', 'appt_start_time')
         transformation: 'datetrunc hour'
@@ -127,7 +127,7 @@ Dashboard clinical_analytics {
     label: 'Care Score & Wait Time Min by Department'
     viz: CustomChart {
       dataset: clinical_analytics_dataset
-      custom_chart_id: 18655
+      custom_chart_id: 1099511648252
       field a: VizFieldFull {
         ref: ref('demo.persisted_clinical_analytics', 'department')
         format {
@@ -157,7 +157,7 @@ Dashboard clinical_analytics {
     label: 'Care Score & Wait Time Min by Department (dup)'
     viz: CustomChart {
       dataset: clinical_analytics_dataset
-      custom_chart_id: 18655
+      custom_chart_id: 1099511648252
       field a: VizFieldFull {
         ref: ref('demo.persisted_clinical_analytics', 'department')
         format {
