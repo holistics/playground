@@ -19,7 +19,7 @@ Dashboard hooli_marketing {
       position: pos(330, 330, 930, 230)
     }
     block f1 {
-      position: pos(20, 10, 510, 90)
+      position: pos(20, 40, 470, 80)
     }
     block v10 {
       position: pos(70, 170, 170, 100)
@@ -133,7 +133,6 @@ Dashboard hooli_marketing {
     theme: demo.SecondaryBlock
   }
   block f1: FilterBlock {
-    theme: SecondaryBlock
     label: 'Campaign'
     type: 'field'
     source: FieldFilterSource {
