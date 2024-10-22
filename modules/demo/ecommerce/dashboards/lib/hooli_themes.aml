@@ -11,29 +11,6 @@ shadow: "none"
 }
 }
 
-
-
-BlockTheme PrimaryBlock {
-padding: 12
-      border{
-        border_width: 1
-        border_color: "#e5e7eb"
-        border_radius: 8
-      }
-      background {
-        bg_color: "#FFF9F7"
-      }
-      label {
-        font_size: 16
-        font_color: "#0F172A"
-        font_weight: "normal"
-      }
-      text {
-        font_size: 12
-        font_color: "#0F172A"
-      }
-}
-
 BlockTheme SecondaryBlock {
 padding: 12
       border{
@@ -54,3 +31,25 @@ padding: 12
         font_color: "#0F172A"
       }
 }
+
+// BlockTheme PrimaryBlock {
+// padding: 12
+//       border{
+//         border_width: 1
+//         border_color: "#e5e7eb"
+//         border_radius: 8
+//       }
+//       background {
+//         bg_color: "#FFF9F7"
+//       }
+//       label {
+//         font_size: 16
+//         font_color: "#0F172A"
+//         font_weight: "normal"
+//       }
+//       text {
+//         font_size: 12
+//         font_color: "#0F172A"
+//       }
+// }
+

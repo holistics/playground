@@ -90,7 +90,6 @@ Dashboard hooli_overview {
     theme: demo.SecondaryBlock
   }
   block v11: VizBlock {
-    theme: SecondaryBlock
     label: 'Sales Performance'
     viz: CombinationChart {
       dataset: demo.ds_ecommerce
@@ -117,7 +116,6 @@ Dashboard hooli_overview {
           }
         }
       }
-      //jajssjsjjsjja
       y_axis {
         settings {
           alignment: 'right'
@@ -135,16 +133,20 @@ Dashboard hooli_overview {
             }
           }
           settings {
-            color: '#E27712'
+            color: '#DC4C3DFF'
             line_interpolation: 'smooth'
           }
         }
       }
-
       settings {
         row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
+    theme: demo.SecondaryBlock
   }
 
   block t9: hooli_components.block.card_red

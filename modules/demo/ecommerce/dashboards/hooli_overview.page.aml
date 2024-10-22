@@ -11,19 +11,19 @@ Dashboard hooli_analytics {
       position: pos(-380, -40, 361, 353)
     }
     block t5 {
-      position: pos(40, 110, 400, 360)
+      position: pos(40, 110, 470, 360)
     }
     block t6 {
-      position: pos(790, 290, 300, 180)
+      position: pos(820, 290, 270, 180)
     }
     block t8 {
-      position: pos(460, 290, 310, 180)
+      position: pos(530, 290, 270, 180)
     }
     block t9 {
-      position: pos(790, 110, 300, 160)
+      position: pos(820, 110, 270, 160)
     }
     block t10 {
-      position: pos(460, 110, 310, 160)
+      position: pos(530, 110, 270, 160)
     }
     block v6 {
       position: pos(40, 920, 500, 460)
@@ -32,22 +32,22 @@ Dashboard hooli_analytics {
       position: pos(560, 920, 530, 460)
     }
     block v3 {
-      position: pos(60, 140, 360, 110)
+      position: pos(60, 140, 430, 110)
     }
     block v13 {
-      position: pos(490, 140, 260, 120)
+      position: pos(550, 140, 230, 120)
     }
     block v14 {
-      position: pos(810, 140, 260, 120)
+      position: pos(850, 140, 220, 120)
     }
     block v15 {
-      position: pos(490, 330, 260, 120)
+      position: pos(560, 330, 220, 120)
     }
     block v17 {
-      position: pos(810, 330, 260, 120)
+      position: pos(850, 330, 220, 120)
     }
     block v18 {
-      position: pos(60, 230, 360, 220)
+      position: pos(60, 230, 430, 220)
     }
     block v19 {
       position: pos(40, 500, 1050, 280)
@@ -379,7 +379,9 @@ Dashboard hooli_analytics {
             ref: 'gmv'
             format {
               type: 'number'
-              pattern: '[$$]#,###'
+              pattern: '[$$]#,###,"K"'
+              group_separator: ','
+              decimal_separator: '.'
             }
           }
           settings {
@@ -391,6 +393,10 @@ Dashboard hooli_analytics {
       settings {
         row_limit: 5000
         legend_label: 'hidden'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
     settings {
