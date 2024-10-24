@@ -90,18 +90,7 @@ Dashboard ecomax {
       .color-main {
         color: #2f3e4a;
       }
-
-      .dac-text-block a {
-        color: white;
-      }
-      .dac-text-block a:hover {
-        text-decoration: none;
-        font-weight: bold;
-      }
-      .active-item {
-        font-weight: 700; 
-        border-bottom: 1px solid white;
-      }
+      
     </style>;;
   }
 
