@@ -13,7 +13,14 @@ Model dim_merchants {
     label: 'Name'
     type: 'text'
     hidden: false
-    definition: @sql {{ #SOURCE.name }};;
+    definition: @sql case {{ #SOURCE.id }}
+      when 126 then 'Incite Main Street Market'-- Feest, Schumm and Walsh
+      when 483 then 'Pied Piper 123 Oak Avenue' -- Nader Inc
+      when 255 then 'Pied Piper Maple Street' --  Gleichner, Dickin son and Jenskins
+      when 353 then 'Incite City Center' -- Bailey, Mohanan and Nitzsche
+      when 561 then 'Pied Piper Elm Street Market'
+      else {{ #SOURCE.name }} end
+    ;;
   }
   dimension city_id {
     label: 'City Id'
