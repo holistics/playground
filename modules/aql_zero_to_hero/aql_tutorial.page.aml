@@ -13,7 +13,7 @@ Dashboard aql_tutorial {
       position: pos(30, 645, 390, 310)
     }
     block v2 {
-      position: pos(450, 645, 370, 310)
+      position: pos(450, 645, 375, 310)
     }
     block t2 {
       position: pos(30, 555, 540, 60)
