@@ -4,35 +4,26 @@ Dashboard embed_external_content {
 
   view: CanvasLayout {
     label: 'View 1'
-    width: 2600
-    height: 1480
+    width: 2000
+    height: 1400
     grid_size: 20
     block t1 {
       position: pos(20, 20, 720, 480)
     }
     block t2 {
-      position: pos(1020, 20, 1560, 360)
+      position: pos(760, 20, 700, 480)
     }
     block t3 {
-      position: pos(20, 1040, 1320, 420)
+      position: pos(20, 960, 1960, 420)
     }
     block t4 {
-      position: pos(760, 400, 1020, 620)
+      position: pos(760, 520, 700, 420)
     }
     block t5 {
-      position: pos(1360, 1040, 700, 420)
+      position: pos(20, 520, 720, 420)
     }
     block t6 {
-      position: pos(2080, 400, 500, 1060)
-    }
-    block t7 {
-      position: pos(1800, 400, 260, 620)
-    }
-    block t8 {
-      position: pos(760, 20, 240, 360)
-    }
-    block t9 {
-      position: pos(20, 520, 720, 500)
+      position: pos(1480, 20, 500, 920)
     }
   }
   theme: H.themes.classic.extend(
@@ -95,14 +86,5 @@ Dashboard embed_external_content {
   }
   block t6: TextBlock {
     content: @md <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfn2f1sg6zDHaaB3jVkvhBkvKTgdo1IwNlp5JWIJ-M4PrOjHw/viewform?embedded=true" width="100%" height="2832" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>;;
-  }
-  block t7: TextBlock {
-    content: @md   ;;
-  }
-  block t8: TextBlock {
-    content: @md   ;;
-  }
-  block t9: TextBlock {
-    content: @md   ;;
   }
 }
