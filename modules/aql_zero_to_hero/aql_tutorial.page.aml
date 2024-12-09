@@ -4,43 +4,112 @@ Dashboard aql_tutorial {
 
   view: CanvasLayout {
     label: 'View 1'
-    height: 2100
+    width: 2745
+    height: 2790
     grid_size: 15
     block t1 {
-      position: pos(30, 30, 1140, 345)
+      position: pos(45, 15, 1140, 180)
     }
     block v1 {
-      position: pos(30, 645, 390, 310)
+      position: pos(60, 420, 255, 270)
     }
     block v2 {
-      position: pos(450, 645, 375, 310)
+      position: pos(420, 420, 495, 270)
     }
     block t2 {
-      position: pos(30, 555, 540, 60)
-    }
-    block t3 {
-      position: pos(30, 1005, 570, 100)
-    }
-    block v3 {
-      position: pos(30, 1110, 390, 310)
-    }
-    block v4 {
-      position: pos(450, 1110, 620, 310)
-    }
-    block t4 {
-      position: pos(30, 1455, 570, 75)
-    }
-    block v5 {
-      position: pos(30, 1530, 390, 280)
-    }
-    block v6 {
-      position: pos(450, 1530, 520, 250)
+      position: pos(45, 300, 900, 975)
+      layer: -1
     }
     block t5 {
-      position: pos(30, 405, 1140, 165)
+      position: pos(45, 210, 720, 75)
+    }
+    block v7 {
+      position: pos(60, 675, 255, 240)
+    }
+    block v8 {
+      position: pos(420, 675, 495, 270)
+    }
+    block v9 {
+      position: pos(420, 1005, 495, 270)
+    }
+    block v10 {
+      position: pos(60, 990, 255, 270)
     }
     block t6 {
-      position: pos(30, 1800, 1140, 255)
+      position: pos(990, 300, 765, 660)
+    }
+    block v11 {
+      position: pos(1005, 420, 345, 270)
+    }
+    block v12 {
+      position: pos(1395, 420, 345, 270)
+    }
+    block v13 {
+      position: pos(1005, 675, 345, 270)
+    }
+    block v14 {
+      position: pos(1395, 675, 345, 270)
+    }
+    block t7 {
+      position: pos(1785, 300, 900, 450)
+    }
+    block v15 {
+      position: pos(1815, 420, 255, 270)
+    }
+    block v16 {
+      position: pos(2190, 420, 495, 270)
+    }
+    block t8 {
+      position: pos(1785, 795, 900, 375)
+    }
+    block v17 {
+      position: pos(1815, 885, 255, 270)
+    }
+    block v18 {
+      position: pos(2190, 885, 495, 270)
+    }
+    block t9 {
+      position: pos(45, 1320, 720, 75)
+    }
+    block v19 {
+      position: pos(60, 1515, 255, 270)
+    }
+    block v20 {
+      position: pos(420, 1515, 495, 270)
+    }
+    block t10 {
+      position: pos(45, 1425, 900, 375)
+      layer: -1
+    }
+    block t11 {
+      position: pos(975, 1425, 780, 375)
+      layer: -1
+    }
+    block v21 {
+      position: pos(1005, 1515, 255, 270)
+    }
+    block v22 {
+      position: pos(1260, 1515, 480, 270)
+    }
+    block t12 {
+      position: pos(1770, 1425, 930, 375)
+      layer: -1
+    }
+    block v23 {
+      position: pos(1815, 1530, 255, 270)
+    }
+    block v24 {
+      position: pos(2190, 1530, 495, 270)
+    }
+    block t13 {
+      position: pos(45, 1845, 900, 375)
+      layer: -1
+    }
+    block v25 {
+      position: pos(60, 1905, 255, 270)
+    }
+    block v26 {
+      position: pos(420, 1905, 495, 270)
     }
   }
   block t1: TextBlock {
@@ -50,58 +119,53 @@ Welcome to the AQL Tutorial!
 
 This interactive guide offers examples ranging from easy to difficult, helping you become familiar with AQL. 
 
-For more in-depth information, explore additional resources available [here](https://docs.holistics.io/as-code/aql/getting-started).
-
-This tutorial consists of four levels:
-
-1. **Basic Understanding**: Learn AQL fundamentals and simple calculations.
-
-2. **Intermediate Skills**: Use multiple clauses and perform aggregations.
-
-3. **Advanced Applications**: Master complex queries, advanced analytical concepts, and performance optimization techniques.
-
-4. **Expert Mastery**: Craft sophisticated queries and implement advanced analytics.
-
-
-Let’s get started! 🙌;;
+For more in-depth information, explore additional resources available [here](https://docs.holistics.io/as-code/aql/getting-started).;;
   }
   block v1: VizBlock {
-    label: 'Simple Aggregation (Intial)'
+    label: '1.1 (initial)'
     viz: DataTable {
-      dataset: demo.ds_ecommerce
+      dataset: demo.ds_ecommerce_for_aql
       fields: [
         VizFieldFull {
-          ref: ref('demo.dim_product_countries', 'name')
+          ref: ref('demo.fct_orders_base', 'created_at')
+          transformation: 'datetrunc year'
           format {
-            type: 'text'
+            type: 'date'
+            pattern: 'yyyy'
           }
         }
       ]
       settings {
         show_row_number: true
         row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
   }
   block v2: VizBlock {
-    label: 'Simple Aggregation (Result)'
+    label: '1.1 (result)'
     viz: DataTable {
-      dataset: demo.ds_ecommerce
-      calculation f_c5892a6 {
-        label: 'Total Users per Country'
-        formula: @aql count(demo.dim_users.id);;
+      dataset: demo.ds_ecommerce_for_aql
+      calculation total_orders {
+        label: 'Total Orders'
+        formula: @aql count(demo.fct_orders_base.id);;
         calc_type: 'measure'
         data_type: 'number'
       }
       fields: [
         VizFieldFull {
-          ref: ref('demo.dim_product_countries', 'name')
+          ref: ref('demo.fct_orders_base', 'created_at')
+          transformation: 'datetrunc year'
           format {
-            type: 'text'
+            type: 'date'
+            pattern: 'yyyy'
           }
         },
         VizFieldFull {
-          ref: 'f_c5892a6'
+          ref: 'total_orders'
           format {
             type: 'number'
             pattern: 'inherited'
@@ -111,175 +175,719 @@ Let’s get started! 🙌;;
       settings {
         show_row_number: true
         row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
   }
   block t2: TextBlock {
-    content: @md ### 1.1 Simple Aggregation
-
-You can aggregate values of columns within a model;;
-  }
-  block t3: TextBlock {
-    content: @md ### 1.2 Aggregation with Scalar Functions
-
-You can aggregate values and then perform scalar operations (addition, subtraction, multiplication, division) on these aggregations.;;
-  }
-  block v3: VizBlock {
-    label: 'Aggregation with Scalar Functions (Initial)'
-    viz: DataTable {
-      dataset: demo.ds_ecommerce
-      fields: [
-        VizFieldFull {
-          ref: ref('demo.dim_product_countries', 'name')
-          format {
-            type: 'text'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 5000
-      }
-    }
-  }
-  block v4: VizBlock {
-    label: 'Aggregation with Scalar Functions (Result)'
-    viz: DataTable {
-      dataset: demo.ds_ecommerce
-      calculation f_7eafbc0 {
-        label: 'Total users'
-        formula: @aql count(demo.dim_users.id);;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      calculation f_f9c8103 {
-        label: 'Total Orders'
-        formula: @aql count(demo.fct_order_items.id);;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      calculation f_1c4966c {
-        label: 'Order Per Users'
-        formula: @aql count(demo.fct_order_items.id) * 1.0 / count(demo.dim_users.id);;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      fields: [
-        VizFieldFull {
-          ref: ref('demo.dim_product_countries', 'name')
-          format {
-            type: 'text'
-          }
-        },
-        VizFieldFull {
-          ref: 'f_7eafbc0'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        },
-        VizFieldFull {
-          ref: 'f_f9c8103'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        },
-        VizFieldFull {
-          ref: 'f_1c4966c'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 5000
-      }
-    }
-  }
-  block t4: TextBlock {
-    content: @md ### 1.3 Conditions
-
-You can apply conditions when calculating metrics;;
-  }
-  block v5: VizBlock {
-    label: 'Conditions (Initial)'
-    viz: DataTable {
-      dataset: demo.ds_ecommerce
-      calculation f_a24a2c2 {
-        label: 'total orders'
-        formula: @aql count(demo.fct_order_items.id);;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      fields: [
-        VizFieldFull {
-          ref: ref('demo.dim_product_countries', 'name')
-          format {
-            type: 'text'
-          }
-        },
-        VizFieldFull {
-          ref: 'f_a24a2c2'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 5000
-      }
-    }
-  }
-  block v6: VizBlock {
-    label: 'Conditions (Result)'
-    viz: DataTable {
-      dataset: demo.ds_ecommerce
-      calculation f_a24a2c2 {
-        label: 'total orders with value more than $100'
-        formula: @aql count(demo.fct_order_items.id) | where(demo.fct_order_items.value > 150);;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      fields: [
-        VizFieldFull {
-          ref: ref('demo.dim_product_countries', 'name')
-          format {
-            type: 'text'
-          }
-        },
-        VizFieldFull {
-          ref: 'f_a24a2c2'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 5000
-      }
-    }
+    content: @md ### 1. Simple Aggregations;;
   }
   block t5: TextBlock {
-    content: @md ## 1. Basic AQL Understanding
-
----
-
-Gain a foundational understanding of AQL, including its primary purpose and basic syntax. You will learn to perform simple calculations and aggregations, such as summing two columns (e.g., revenue from different product lines), calculating percentages (e.g., profit margin), counting distinct values (e.g., unique customers), and filtering data based on simple conditions (e.g., sales by region).
-
+    content: @md ## Level 1 - Basic AQL Understanding
 ;;
   }
-  block t6: TextBlock {
-    content: @md ## 2. Intermediate Skills (WIP)
-
----
-
-![](https://media1.tenor.com/m/iCqG_iT-h48AAAAC/bills-ugh.gif);;
+  block v7: VizBlock {
+    label: '1.2 (initial)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce_for_aql
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.dim_categories', 'name')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
   }
+  block v8: VizBlock {
+    label: '1.2 (result)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce_for_aql
+      calculation average_product_price {
+        label: 'Untitled Metric'
+        formula: @aql average(demo.dim_products.price);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.dim_categories', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          label: 'Avg product price'
+          ref: 'average_product_price'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v9: VizBlock {
+    label: '1.3 (result)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce_for_aql
+      calculation max_order_created_at {
+        label: 'Max Order Created At'
+        formula: @aql max(demo.fct_orders_base.created_at);;
+        calc_type: 'measure'
+        data_type: 'datetime'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.fct_order_items', 'user_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'max_order_created_at'
+          format {
+            type: 'datetime'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v10: VizBlock {
+    label: '1.3 (Initial)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce_for_aql
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.fct_order_items', 'user_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block t6: TextBlock {
+    content: @md ### 2. Conditions;;
+  }
+  block v11: VizBlock {
+    label: '2.1 (initial)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce_for_aql
+      calculation total_orders {
+        label: 'Total Orders'
+        formula: @aql count(demo.fct_orders_base.id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: 'total_orders'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v12: VizBlock {
+    label: '2.1 (result)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce_for_aql
+      calculation successful_total_orders {
+        label: 'Successful Total Orders'
+        formula: @aql count(demo.fct_orders_base.id) | where(demo.fct_orders_base.status == 'delivered');;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: 'successful_total_orders'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v13: VizBlock {
+    label: '2.2 (initial)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce_for_aql
+      calculation successful_total_orders {
+        label: 'Successful Total Orders'
+        formula: @aql count(demo.fct_orders_base.id) | where(demo.fct_orders_base.status == 'delivered');;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: 'successful_total_orders'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v14: VizBlock {
+    label: '2.2 (result)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce_for_aql
+      calculation _successful_total_orders_with_discount {
+        label: 'Successful Total Orders'
+        formula: @aql count(demo.fct_orders_base.id) | where(demo.fct_orders_base.status == 'delivered', demo.fct_orders_base.discount > 0.05);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: '_successful_total_orders_with_discount'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block t7: TextBlock {
+    content: @md ### 3. Calculate ratio;;
+  }
+  block v15: VizBlock {
+    label: '3.1 (initial)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce_for_aql
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.dim_product_countries', 'name')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v16: VizBlock {
+    label: '3.1 (result)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce_for_aql
+      calculation orders_to_users_ratio {
+        label: 'Orders To Users Ratio'
+        formula: @aql (count(demo.fct_orders_base.id) | where(demo.fct_orders_base.status == 'delivered')) * 1.0 
+/ count(demo.dim_users_base.id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.dim_product_countries', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: 'orders_to_users_ratio'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block t8: TextBlock {
+    content: @md ### 4. Cross-model metric;;
+  }
+  block v17: VizBlock {
+    label: '4.1 (initial)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce_for_aql
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.fct_orders_base', 'created_at')
+          transformation: 'datetrunc year'
+          format {
+            type: 'date'
+            pattern: 'yyyy'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v18: VizBlock {
+    label: '4.1 (result)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce_for_aql
+      calculation aov {
+        label: 'Aov'
+        formula: @aql demo.fct_order_items
+| average(demo.fct_order_items.quantity 
+  * demo.dim_products.price);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.fct_orders_base', 'created_at')
+          transformation: 'datetrunc year'
+          format {
+            type: 'date'
+            pattern: 'yyyy'
+          }
+        },
+        VizFieldFull {
+          ref: 'aov'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block t9: TextBlock {
+    content: @md ## Level 2 - Intermediate AQL understanding;;
+  }
+  block v19: VizBlock {
+    label: '1.1 (initial)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce_for_aql
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.fct_orders_base', 'created_at')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'LLL yyyy'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v20: VizBlock {
+    label: '1.1 (result)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce_for_aql
+      calculation cumulative_total_orders {
+        label: 'Cumulative Total Orders'
+        formula: @aql running_total(count(demo.fct_orders_base.id), demo.fct_orders_base.created_at | month());;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation total_orders {
+        label: 'Total Orders'
+        formula: @aql count(demo.fct_orders_base.id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.fct_orders_base', 'created_at')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'LLL yyyy'
+          }
+        },
+        VizFieldFull {
+          ref: 'total_orders'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          label: 'Cumulative Total Orders'
+          ref: 'cumulative_total_orders'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block t10: TextBlock {
+    content: @md ### 1. Time-based functions;;
+  }
+  block t11: TextBlock {
+    content: @md ### 2. Level of Details;;
+  }
+  block v21: VizBlock {
+    label: '2.1 (initial)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce_for_aql
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.dim_categories', 'name')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v22: VizBlock {
+    label: '2.1 (result)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce_for_aql
+      calculation total_orders {
+        label: 'Total Orders'
+        formula: @aql count(demo.fct_orders_base.id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation total_orders_across_all {
+        label: 'Total Orders Across All'
+        formula: @aql count(demo.fct_orders_base.id) | of_all(demo.dim_categories.name);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation percent_of_total {
+        label: 'Percent Of Total'
+        formula: @aql total_orders * 1.0 / total_orders_across_all;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: 'total_orders'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('demo.dim_categories', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: 'total_orders_across_all'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'percent_of_total'
+          format {
+            type: 'number'
+            pattern: '#,###%'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        frozen_columns: 0
+      }
+    }
+  }
+  block t12: TextBlock {
+    content: @md ### 3. Windows Functions;;
+  }
+  block v23: VizBlock {
+    label: '3.1 (initial)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce_for_aql
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.fct_orders_base', 'created_at')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'LLL yyyy'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v24: VizBlock {
+    label: '3.1 (result)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce_for_aql
+      calculation total_orders {
+        label: 'Total Orders'
+        formula: @aql count(demo.fct_orders_base.id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation previous_total_orders {
+        label: 'Previous Total Orders'
+        formula: @aql previous(total_orders, 1, order: demo.fct_orders_base.created_at | quarter());;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation total_order_mom_growth {
+        label: 'Total Order Mom Growth'
+        formula: @aql (total_orders - previous_total_orders) *  1.0 / previous_total_orders;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.fct_orders_base', 'created_at')
+          transformation: 'datetrunc quarter'
+          format {
+            type: 'date'
+            pattern: 'yyyy Qq'
+          }
+        },
+        VizFieldFull {
+          ref: 'total_orders'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'previous_total_orders'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'total_order_mom_growth'
+          format {
+            type: 'number'
+            pattern: '#,###%'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block t13: TextBlock {
+    content: @md ### 1. Time-based functions;;
+  }
+  block v25: VizBlock {
+    label: '4.1 (initial)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce_for_aql
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.fct_orders_base', 'created_at')
+          transformation: 'datetrunc year'
+          format {
+            type: 'date'
+            pattern: 'yyyy'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v26: VizBlock {
+    label: '4.1 (result)'
+    viz: DataTable {
+      dataset: demo.ds_ecommerce_for_aql
+      calculation untitled_metric_8e69b23 {
+        label: 'Avg Monthly Signups'
+        formula: @aql demo.dim_users_base 
+| group(demo.dim_users_base.sign_up_at | month()) 
+| select(signup_count: count(demo.dim_users_base.id))
+| average(signup_count);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation total_users {
+        label: 'Total Users'
+        formula: @aql count(demo.dim_users_base.id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('demo.dim_users_base', 'sign_up_at')
+          transformation: 'datetrunc year'
+          format {
+            type: 'date'
+            pattern: 'yyyy'
+          }
+        },
+        VizFieldFull {
+          ref: 'total_users'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'untitled_metric_8e69b23'
+          format {
+            type: 'number'
+            pattern: '#,###0.00'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  theme: H.themes.classic
 }

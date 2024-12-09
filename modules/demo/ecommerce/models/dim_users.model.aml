@@ -1,4 +1,4 @@
-Model dim_users {
+Model dim_users_base {
   type: 'table'
   label: 'User'
   description: ''
@@ -130,6 +130,11 @@ end;;
     format: "LLL dd yyyy"
   }
 
+    owner: "son.hoang+ph@holistics.io"
+  table_name: '\"ecommerce\".\"users\"'
+}
+
+Model dim_users = dim_users_base.extend({
 
   measure users_signed_up_count {
     label: 'Users Signed Up'
@@ -150,7 +155,4 @@ end;;
     aggregation_type: "custom"
     format: "LLL dd yyyy"
   }
-
-    owner: "son.hoang+ph@holistics.io"
-  table_name: '\"ecommerce\".\"users\"'
-}
+})

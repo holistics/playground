@@ -1,4 +1,4 @@
-Model fct_orders {
+Model fct_orders_base {
   type: 'table'
   label: 'Orders'
   description: ''
@@ -57,7 +57,13 @@ Model fct_orders {
     hidden: false
     definition: @sql {{ #SOURCE.delivery_attempts }};;
   }
- measure cumm_orders {
+
+  owner: 'triet.lq+ph@holistics.io'
+  table_name: 'ecommerce.fct_orders'
+}
+
+Model fct_orders = fct_orders_base.extend({
+   measure cumm_orders {
     label: 'Cumulative Orders'
     type: 'number'
     definition: @aql running_total(ecommerce_orders.total_order, ecommerce_orders.order_month) ;;
@@ -110,6 +116,4 @@ Model fct_orders {
     definition: @sql DATE_PART('Day', CURRENT_TIMESTAMP - max({{ created_at }}));;
     aggregation_type: "custom"
   }
-  owner: 'triet.lq+ph@holistics.io'
-  table_name: 'ecommerce.fct_orders'
-}
+})

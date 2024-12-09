@@ -1,0 +1,49 @@
+Dataset ds_ecommerce_for_aql {
+  label: 'Demo Ecommerce for AQL'
+  description: 'Ecommerce dataset. ERD can be found [here](https://dbdiagram.io/e/658b9f1289dea62799972ec8/665fedfcb65d933879884fa8)'
+  data_source_name: 'demo_pg'
+  owner: 'thanh.to@holistics.io'
+
+  models: [
+    fct_order_items,
+    fct_orders_base,
+
+    dim_dates,
+    dim_products,
+    dim_users_base,
+    dim_categories,
+    dim_merchants,
+    dim_product_img,
+
+    dim_product_cities,
+    dim_product_countries,
+    dim_user_cities,
+    dim_user_countries,
+
+  ]
+  relationships: [
+
+
+    relationship(demo.fct_order_items.product_id > demo.dim_products.id, true),
+    relationship(demo.fct_order_items.category_id > demo.dim_categories.id, true),
+
+    relationship(demo.fct_order_items.merchant_id > demo.dim_merchants.id, true),
+    relationship(demo.fct_order_items.merchant_city_id > demo.dim_product_cities.id, true),
+    relationship(demo.fct_order_items.merchant_country_code > demo.dim_product_countries.code, true),
+    relationship(demo.fct_order_items.user_id > demo.dim_users_base.id, true),
+    relationship(demo.fct_order_items.created_date > demo.dim_dates.date_key, true),
+    relationship(demo.fct_order_items.order_id > demo.fct_orders_base.id, false),
+
+
+    relationship(demo.fct_orders_base.user_city_id > demo.dim_user_cities.id, true),
+    relationship(demo.fct_orders_base.user_country_code > demo.dim_user_countries.code, true),
+    relationship(demo.fct_orders_base.created_date > demo.dim_dates.date_key, true),
+    relationship(demo.fct_orders_base.user_id > demo.dim_users_base.id, false),
+
+    relationship(demo.dim_product_img.product_id - demo.dim_products.id, true),
+
+    relationship(demo.dim_users_base.sign_up_date > demo.dim_dates.date_key, false),
+
+  ]
+
+}
