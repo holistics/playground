@@ -128,7 +128,7 @@ Dashboard metric_table {
     }
     default {
       operator: 'matches'
-      value: '2025-01-01 - 2025-01-13'
+      value: '2024-01-01 - 2024-01-13'
     }
   }
   block t1: TextBlock {
