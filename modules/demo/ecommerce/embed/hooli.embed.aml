@@ -1,0 +1,11 @@
+EmbedPortal hooli_portal {
+  description: "https://hooli.getholistics.com"
+
+  objects: [
+    hooli_home,
+    hooli_analytics,
+    hooli_overview,
+    hooli_marketing,
+    hooli_products,
+  ]
+}
