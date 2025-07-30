@@ -158,8 +158,15 @@ Dashboard hooli_home {
       }
       compare_value: VizPopSettings {
         field: ref('demo.fct_orders', 'created_at')
-        duration: 1
+        duration: 3
         granularity: 'month'
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        alignment: 'left'
       }
     }
     settings {
