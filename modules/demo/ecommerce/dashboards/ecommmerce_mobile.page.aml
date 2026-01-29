@@ -65,6 +65,10 @@ Dashboard ecomax_mobile {
     block t10 {
       position: pos(20, 260, 820, 20)
     }
+    block v8 {
+      position: pos(160, 190, 250, 70)
+      layer: 2
+    }
   }
   block override_css: TextBlock {
     content: @md <style>
@@ -379,6 +383,29 @@ Dashboard ecomax_mobile {
   }
   block t10: TextBlock {
     content: @md <div class="sepline"></div>;;
+  }
+  block v8: VizBlock {
+    label: 'Count Users'
+    viz: MetricKpi {
+      dataset: demo.ds_ecommerce
+      value: VizFieldFull {
+        ref: 'count_users'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        alignment: 'left'
+      }
+    }
+    settings {
+      hide_label: true
+    }
   }
   interactions: [
     FilterInteraction {
