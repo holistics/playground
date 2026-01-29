@@ -359,13 +359,13 @@ Dashboard hooli_analytics {
     viz: LineChart {
       dataset: demo.ds_ecommerce
       filter {
-        field: ref('demo.fct_order_items', 'created_at')
+        field: r(demo.fct_order_items.created_at)
         operator: 'last'
         value: '3'
-        modifier: 'month'
+        modifier: 'year'
       }
       x_axis: VizFieldFull {
-        ref: ref('demo.fct_order_items', 'created_at')
+        ref: r(demo.fct_order_items.created_at)
         transformation: 'datetrunc week'
         format {
           type: 'date'
@@ -376,7 +376,7 @@ Dashboard hooli_analytics {
         series {
           field: VizFieldFull {
             label: 'Sales'
-            ref: 'gmv'
+            ref: r(demo.ds_ecommerce.gmv)
             format {
               type: 'number'
               pattern: '[$$]#,###'
@@ -391,6 +391,11 @@ Dashboard hooli_analytics {
       settings {
         row_limit: 5000
         legend_label: 'hidden'
+        x_axis_show_null_datetime: true
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
     settings {
@@ -399,18 +404,17 @@ Dashboard hooli_analytics {
     }
   }
   block v19: VizBlock {
-    theme: SecondaryBlock
     label: 'Trend Metrics'
     viz: LineChart {
       dataset: demo.ds_ecommerce
       filter {
-        field: ref('demo.fct_order_items', 'created_at')
+        field: r(demo.fct_order_items.created_at)
         operator: 'last'
         value: '3'
-        modifier: 'month'
+        modifier: 'year'
       }
       x_axis: VizFieldFull {
-        ref: ref('demo.fct_order_items', 'created_at')
+        ref: r(demo.fct_order_items.created_at)
         transformation: 'datetrunc week'
         format {
           type: 'date'
@@ -421,7 +425,7 @@ Dashboard hooli_analytics {
         series {
           field: VizFieldFull {
             label: 'Orders'
-            ref: 'count_orders'
+            ref: r(demo.ds_ecommerce.count_orders)
             format {
               type: 'number'
               pattern: '#,###'
@@ -435,7 +439,7 @@ Dashboard hooli_analytics {
         series {
           field: VizFieldFull {
             label: 'Users'
-            ref: 'count_users'
+            ref: r(demo.ds_ecommerce.count_users)
             format {
               type: 'number'
               pattern: '#,###'
@@ -448,8 +452,14 @@ Dashboard hooli_analytics {
       }
       settings {
         row_limit: 5000
+        x_axis_show_null_datetime: true
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
+    theme: demo.SecondaryBlock
   }
   block f1: FilterBlock {
     label: 'Date range'
