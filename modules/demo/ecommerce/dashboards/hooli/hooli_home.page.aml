@@ -57,13 +57,8 @@ Dashboard hooli_home {
     label: 'Sales'
     viz: AreaChart {
       dataset: demo.ds_ecommerce
-      filter {
-        field: ref('demo.dim_dates', 'date_key')
-        operator: 'matches'
-        value: '2024-05-01 - 2024-06-01'
-      }
       x_axis: VizFieldFull {
-        ref: ref('demo.dim_dates', 'date_key')
+        ref: r(demo.dim_dates.date_key)
         transformation: 'datetrunc day'
         format {
           type: 'date'
@@ -73,7 +68,7 @@ Dashboard hooli_home {
       y_axis {
         series {
           field: VizFieldFull {
-            ref: 'gmv'
+            ref: r(demo.ds_ecommerce.gmv)
             format {
               type: 'number'
               pattern: 'inherited'
@@ -87,7 +82,7 @@ Dashboard hooli_home {
         series {
           field: VizFieldFull {
             label: 'Monthly Average'
-            ref: 'gmv'
+            ref: r(demo.ds_ecommerce.gmv)
             analytic: ReferenceLine {
               type: 'avg'
             }
@@ -100,6 +95,11 @@ Dashboard hooli_home {
       }
       settings {
         row_limit: 5000
+        x_axis_show_null_datetime: true
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
     theme: demo.SecondaryBlock
@@ -223,7 +223,7 @@ Dashboard hooli_home {
       }
       location {
         field: VizFieldFull {
-          ref: ref('demo.dim_user_countries', 'name')
+          ref: ref('demo.dim_countries', 'name')
           format {
             type: 'text'
           }
@@ -260,7 +260,7 @@ Dashboard hooli_home {
         value: 10
         options {
           rank_by {
-            field: ref('demo.fct_order_items', 'id')
+            field: ref('demo.fct_order_items', 'order_id')
             aggregation: 'count'
             logic: 'standard'
           }
@@ -276,7 +276,7 @@ Dashboard hooli_home {
         series {
           field: VizFieldFull {
             label: 'Order quantity'
-            ref: ref('demo.fct_order_items', 'id')
+            ref: ref('demo.fct_order_items', 'order_id')
             aggregation: 'count'
             format {
               type: 'number'
@@ -312,7 +312,7 @@ Dashboard hooli_home {
         value: 10
         options {
           rank_by {
-            field: ref('demo.fct_order_items', 'id')
+            field: ref('demo.fct_order_items', 'order_id')
             aggregation: 'count'
             logic: 'standard'
           }
@@ -327,7 +327,7 @@ Dashboard hooli_home {
         },
         VizFieldFull {
           label: 'Order Quantity'
-          ref: ref('demo.fct_order_items', 'id')
+          ref: ref('demo.fct_order_items', 'order_id')
           aggregation: 'count'
           format {
             type: 'number'

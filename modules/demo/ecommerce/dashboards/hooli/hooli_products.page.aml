@@ -35,26 +35,26 @@ Dashboard hooli_products {
         data_type: 'text'
       }
       filter {
-        field: ref('demo.fct_orders', 'created_at')
+        field: r(demo.fct_orders.created_at)
         operator: 'matches'
         value: '2023'
       }
       fields: [
         VizFieldFull {
-          ref: 'f_28374b6'
+          ref: r(demo.dim_products.product_image_100px)
           format {
             type: 'html'
           }
         },
         VizFieldFull {
-          ref: ref('demo.dim_products', 'name')
+          ref: r(demo.dim_products.name)
           format {
             type: 'text'
           }
         },
         VizFieldFull {
           label: 'GMV'
-          ref: 'gmv'
+          ref: r(demo.ds_ecommerce.gmv)
           format {
             type: 'number'
             pattern: '[$$]#,###'
@@ -63,7 +63,8 @@ Dashboard hooli_products {
       ]
       settings {
         pagination_size: 100
-        row_height: 'multiple_lines'
+        wrap_header_text: true
+        wrap_cell_text: true
         sorts: [
           SortSetting {
             field_index: 2
@@ -72,7 +73,7 @@ Dashboard hooli_products {
         ]
         conditional_formats: [
           ConditionalFormat {
-            ref: 'gmv'
+            ref: r(demo.ds_ecommerce.gmv)
             format: ScaleFormat {
               min {
                 value: 0
@@ -89,6 +90,10 @@ Dashboard hooli_products {
             }
           }
         ]
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
     theme: demo.SecondaryBlock

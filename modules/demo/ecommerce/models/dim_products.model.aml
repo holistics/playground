@@ -39,11 +39,23 @@ Model dim_products {
     hidden: false
     definition: @sql {{ #SOURCE.created_at }};;
   }
+  dimension product_image_url {
+    label: 'Product Image Url'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_image_url }};;
+  }
   dimension product_google_link {
     label: "Product (image)"
     type: "text"
     definition: @sql CONCAT('<a href="','https://www.google.com/search?tbm=isch&q=',{{ name }},'" target="_blank">',{{ name }},'</a>');;
   }
-  owner: 'triet.lq+ph@holistics.io'
-  table_name: 'ecommerce.dim_products'
+  dimension product_image_100px {
+    label: 'Product Image (100px)'
+    type: 'text'
+    hidden: false
+    definition: @aql   concat('<img src="', dim_products.product_image_url, '" style="text-align:center;height:100px;width:100px;object-fit:cover" />') ;;
+  }
+  owner: 'dong.ln+ph@holistics.io'
+  table_name: 'ecommerce.products'
 }

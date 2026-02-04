@@ -28,7 +28,19 @@ Model dim_merchants {
     hidden: false
     definition: @sql {{ #SOURCE.city_id }};;
   }
+  dimension admin_id {
+    label: 'Admin Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.admin_id }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
 
-  owner: 'triet.lq+ph@holistics.io'
-  table_name: 'ecommerce.dim_merchants'
+  owner: 'dong.ln+ph@holistics.io'
+  table_name: 'ecommerce.merchants'
 }

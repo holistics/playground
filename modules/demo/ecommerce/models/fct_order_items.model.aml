@@ -3,12 +3,12 @@ Model fct_order_items {
   label: 'Order Items'
   description: ''
   data_source_name: 'demo_pg'
-  dimension id {
-    label: 'Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.id }};;
-  }
+  // dimension id {
+  //   label: 'Id'
+  //   type: 'number'
+  //   hidden: false
+  //   definition: @sql {{ #SOURCE.id }};;
+  // }
   dimension order_id {
     label: 'Order Id'
     type: 'number'
@@ -21,67 +21,67 @@ Model fct_order_items {
     hidden: false
     definition: @sql {{ #SOURCE.product_id }};;
   }
-  dimension user_id {
-    label: 'User Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.user_id }};;
-  }
-  dimension category_id {
-    label: 'Category Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.category_id }};;
-  }
-  dimension merchant_id {
-    label: 'Merchant Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.merchant_id }};;
-  }
-  dimension merchant_city_id {
-    label: 'Merchant City Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.merchant_city_id }};;
-  }
-  dimension merchant_country_code {
-    label: 'Merchant Country Code'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.merchant_country_code }};;
-  }
-  dimension created_at {
-    label: 'Created At'
-    type: 'datetime'
-    hidden: false
-    definition: @sql {{ #SOURCE.created_at }};;
-  }
-  dimension created_date {
-    label: 'Created Date'
-    type: 'date'
-    hidden: false
-    definition: @sql {{ #SOURCE.created_date }};;
-  }
+  // dimension user_id {
+  //   label: 'User Id'
+  //   type: 'number'
+  //   hidden: false
+  //   definition: @sql {{ #SOURCE.user_id }};;
+  // }
+  // dimension category_id {
+  //   label: 'Category Id'
+  //   type: 'number'
+  //   hidden: false
+  //   definition: @sql {{ #SOURCE.category_id }};;
+  // }
+  // dimension merchant_id {
+  //   label: 'Merchant Id'
+  //   type: 'number'
+  //   hidden: false
+  //   definition: @sql {{ #SOURCE.merchant_id }};;
+  // }
+  // dimension merchant_city_id {
+  //   label: 'Merchant City Id'
+  //   type: 'number'
+  //   hidden: false
+  //   definition: @sql {{ #SOURCE.merchant_city_id }};;
+  // }
+  // dimension merchant_country_code {
+  //   label: 'Merchant Country Code'
+  //   type: 'text'
+  //   hidden: false
+  //   definition: @sql {{ #SOURCE.merchant_country_code }};;
+  // }
+  // dimension created_at {
+  //   label: 'Created At'
+  //   type: 'datetime'
+  //   hidden: false
+  //   definition: @sql {{ #SOURCE.created_at }};;
+  // }
+  // dimension created_date {
+  //   label: 'Created Date'
+  //   type: 'date'
+  //   hidden: false
+  //   definition: @sql {{ #SOURCE.created_date }};;
+  // }
   dimension quantity {
     label: 'Quantity'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.quantity }};;
   }
-  dimension value {
-    label: 'Value'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.value }};;
-  }
-  dimension discount_value {
-    label: 'Discount Value'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.discount_value }};;
-  }
+  // dimension value {
+  //   label: 'Value'
+  //   type: 'number'
+  //   hidden: false
+  //   definition: @sql {{ #SOURCE.value }};;
+  // }
+  // dimension discount_value {
+  //   label: 'Discount Value'
+  //   type: 'number'
+  //   hidden: false
+  //   definition: @sql {{ #SOURCE.discount_value }};;
+  // }
 
-  owner: 'triet.lq+ph@holistics.io'
-  table_name: 'ecommerce.fct_order_items'
+  owner: 'dong.ln+ph@holistics.io'
+  table_name: 'ecommerce.order_items'
 }

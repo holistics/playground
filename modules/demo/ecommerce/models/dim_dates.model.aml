@@ -1,29 +1,29 @@
 Model dim_dates {
-  type: 'table'
-  label: 'Date'
+  type: 'query'
+  label: 'Dim Dates'
   description: ''
   data_source_name: 'demo_pg'
   dimension date_key {
-    label: 'Date'
+    label: 'Date Key'
     type: 'date'
     hidden: false
     definition: @sql {{ #SOURCE.date_key }};;
   }
   dimension day_of_week {
     label: 'Day Of Week'
-    type: 'number'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.day_of_week }};;
   }
   dimension day_of_month {
     label: 'Day Of Month'
-    type: 'number'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.day_of_month }};;
   }
   dimension day_of_year {
     label: 'Day Of Year'
-    type: 'number'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.day_of_year }};;
   }
@@ -34,25 +34,25 @@ Model dim_dates {
     definition: @sql {{ #SOURCE.weekday_name }};;
   }
   dimension weekday_name_abbr {
-    label: 'Weekday Name Abbr'
+    label: 'Weekday Name Abbr.'
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.weekday_name_abbr }};;
   }
   dimension week_number {
     label: 'Week Number'
-    type: 'number'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.week_number }};;
   }
   dimension week_number_iso {
-    label: 'Week Number Iso'
-    type: 'number'
+    label: 'Week Number ISO'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.week_number_iso }};;
   }
   dimension year_week_iso {
-    label: 'Year Week Iso'
+    label: 'Year Week ISO'
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.year_week_iso }};;
@@ -64,14 +64,14 @@ Model dim_dates {
     definition: @sql {{ #SOURCE.month_name }};;
   }
   dimension month_name_abbr {
-    label: 'Month Name Abbr'
+    label: 'Month Name Abbr.'
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.month_name_abbr }};;
   }
   dimension month_number {
     label: 'Month Number'
-    type: 'number'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.month_number }};;
   }
@@ -95,11 +95,31 @@ Model dim_dates {
   }
   dimension year {
     label: 'Year'
-    type: 'number'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.year }};;
   }
 
-  owner: 'triet.lq+ph@holistics.io'
-  table_name: 'ecommerce.dim_dates'
+  owner: 'dong.ln@holistics.io'
+  query: @sql
+    SELECT 
+          date_key
+          , to_char(date_key, 'ID') as day_of_week
+          , to_char(date_key, 'DD') as day_of_month
+          , to_char(date_key, 'DDD') as day_of_year
+          , to_char(date_key, 'Day') as weekday_name
+          , to_char(date_key, 'Dy') as weekday_name_abbr
+          , to_char(date_key, 'WW') as week_number
+          , to_char(date_key, 'IW') as week_number_iso
+          , to_char(date_key, 'YYYYIW') as year_week_iso
+          , to_char(date_key, 'Month') as month_name
+          , to_char(date_key, 'Mon') as month_name_abbr
+          , to_char(date_key, 'MM') as month_number
+          , to_char(date_key, 'YYYYMM') as year_month
+          , to_char(date_key, 'Q') as quarter
+          , to_char(date_key, 'YYYY') || 'Q' || to_char(date_key, 'Q')  as year_quarter
+          , to_char(date_key, 'YYYY') as year
+        FROM  generate_series ('2013-01-01' :: date, current_date ,'1 day' :: interval) date_key;;
+  models: [
+  ]
 }

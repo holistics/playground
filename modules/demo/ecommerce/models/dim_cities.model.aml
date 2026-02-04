@@ -22,6 +22,6 @@ Model dim_cities {
     definition: @sql {{ #SOURCE.country_code }};;
   }
 
-  owner: 'triet.lq+ph@holistics.io'
-  table_name: 'ecommerce.dim_cities'
+  owner: 'dong.ln+ph@holistics.io'
+  table_name: 'ecommerce.cities'
 }

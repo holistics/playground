@@ -154,26 +154,26 @@ Dashboard hooli_analytics {
         data_type: 'text'
       }
       filter {
-        field: ref('demo.fct_order_items', 'created_at')
+        field: r(demo.fct_orders.created_at)
         operator: 'matches'
         value: '2023'
       }
       fields: [
         VizFieldFull {
-          ref: 'f_28374b6'
+          ref: r(demo.dim_products.product_image_100px)
           format {
             type: 'html'
           }
         },
         VizFieldFull {
-          ref: ref('demo.dim_categories', 'name')
+          ref: r(demo.dim_categories.name)
           format {
             type: 'text'
           }
         },
         VizFieldFull {
           label: 'GMV'
-          ref: 'gmv'
+          ref: r(demo.ds_ecommerce.gmv)
           format {
             type: 'number'
             pattern: '[$$]#,###'
@@ -182,13 +182,18 @@ Dashboard hooli_analytics {
       ]
       settings {
         pagination_size: 100
-        row_height: 'multiple_lines'
+        wrap_header_text: true
+        wrap_cell_text: true
         sorts: [
           SortSetting {
             field_index: 2
             direction: 'desc'
           }
         ]
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
     theme: demo.SecondaryBlock
@@ -228,7 +233,7 @@ Dashboard hooli_analytics {
     viz: MetricKpi {
       dataset: demo.ds_ecommerce
       filter {
-        field: ref('demo.fct_order_items', 'created_at')
+        field: ref('demo.fct_orders', 'created_at')
         operator: 'before'
         value: '2024-07-01'
       }
@@ -243,7 +248,7 @@ Dashboard hooli_analytics {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('demo.fct_order_items', 'created_at')
+        field: ref('demo.fct_orders', 'created_at')
         duration: 1
         granularity: 'month'
       }
@@ -333,7 +338,7 @@ Dashboard hooli_analytics {
     viz: MetricKpi {
       dataset: demo.ds_ecommerce
       filter {
-        field: ref('demo.fct_order_items', 'created_at')
+        field: ref('demo.fct_orders', 'created_at')
         operator: 'before'
         value: '2024-05-01'
       }
@@ -345,7 +350,7 @@ Dashboard hooli_analytics {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('demo.fct_order_items', 'created_at')
+        field: ref('demo.fct_orders', 'created_at')
         duration: 1
         granularity: 'month'
       }
@@ -359,13 +364,13 @@ Dashboard hooli_analytics {
     viz: LineChart {
       dataset: demo.ds_ecommerce
       filter {
-        field: r(demo.fct_order_items.created_at)
+        field: r(demo.fct_orders.created_at)
         operator: 'last'
         value: '3'
         modifier: 'year'
       }
       x_axis: VizFieldFull {
-        ref: r(demo.fct_order_items.created_at)
+        ref: r(demo.fct_orders.created_at)
         transformation: 'datetrunc week'
         format {
           type: 'date'
@@ -408,13 +413,13 @@ Dashboard hooli_analytics {
     viz: LineChart {
       dataset: demo.ds_ecommerce
       filter {
-        field: r(demo.fct_order_items.created_at)
+        field: r(demo.fct_orders.created_at)
         operator: 'last'
         value: '3'
         modifier: 'year'
       }
       x_axis: VizFieldFull {
-        ref: r(demo.fct_order_items.created_at)
+        ref: r(demo.fct_orders.created_at)
         transformation: 'datetrunc week'
         format {
           type: 'date'

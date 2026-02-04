@@ -31,15 +31,15 @@ Model dim_categories {
 
   
 
-  owner: 'triet.lq+ph@holistics.io'
+  owner: 'dong.ln+ph@holistics.io'
   query: @sql 
     select
       cat.id as category_id
       , cat.name as category
       , pcat.id as parent_id
       , pcat.name as parent_category
-    from ecommerce.dim_categories cat 
-    left join  ecommerce.dim_categories pcat on cat.parent_id = pcat.id
+    from ecommerce.categories cat 
+    left join  ecommerce.categories pcat on cat.parent_id = pcat.id
     where cat.parent_id is not null
   ;;
 }
