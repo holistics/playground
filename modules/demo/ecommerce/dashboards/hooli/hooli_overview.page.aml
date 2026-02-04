@@ -219,14 +219,9 @@ Dashboard hooli_analytics {
     label: 'Orders'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce
-      filter {
-        field: ref('demo.fct_orders', 'created_at')
-        operator: 'before'
-        value: '2024-07-01'
-      }
       value: VizFieldFull {
         label: 'Orders'
-        ref: 'count_distinct_orders'
+        ref: r(demo.ds_ecommerce.count_distinct_orders)
         format {
           type: 'number'
           pattern: '#,###'
@@ -235,9 +230,18 @@ Dashboard hooli_analytics {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('demo.fct_orders', 'created_at')
-        duration: 1
-        granularity: 'month'
+        field: r(demo.dim_dates.date_key)
+        value: RelativePopValue {
+          duration: 1
+          granularity: 'year'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        alignment: 'left'
       }
     }
     settings {
@@ -324,22 +328,26 @@ Dashboard hooli_analytics {
     label: 'GMV - Gross Merchandise Value (dup)'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce
-      filter {
-        field: ref('demo.fct_orders', 'created_at')
-        operator: 'before'
-        value: '2024-05-01'
-      }
       value: VizFieldFull {
-        ref: 'aov'
+        ref: r(demo.ds_ecommerce.aov)
         format {
           type: 'number'
           pattern: '[$$]#,###'
         }
       }
       compare_value: VizPopSettings {
-        field: ref('demo.fct_orders', 'created_at')
-        duration: 1
-        granularity: 'month'
+        field: r(demo.dim_dates.date_key)
+        value: RelativePopValue {
+          duration: 1
+          granularity: 'year'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        alignment: 'left'
       }
     }
     settings {
@@ -519,11 +527,14 @@ Dashboard hooli_analytics {
             'v18',
             'v17',
             'v15',
-            'v13',
             'v3',
             'v7',
             'v6'
           ]
+          field: r(demo.dim_dates.date_key)
+        },
+        CustomMapping {
+          block: 'v13'
           field: ref('demo.dim_dates', 'date_key')
         }
       ]
