@@ -277,45 +277,6 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
       }
     }
   }
-  block v7: VizBlock {
-    label: 'Cohort Retention'
-    viz: RetentionHeatmap {
-      dataset: ds_ecommerce
-      filter {
-        field: ref('demo.user_cohort_retention', 'cohort_month')
-        operator: 'matches'
-        value: '2023'
-      }
-      cohort: VizFieldFull {
-        label: 'Cohort Month'
-        ref: ref('demo.user_cohort_retention', 'cohort_month')
-        transformation: 'datetrunc month'
-        format {
-          type: 'date'
-        }
-      }
-      cohort_size: VizFieldFull {
-        ref: ref('demo.user_cohort_retention', 'cohort_size')
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      cohort_duration: VizFieldFull {
-        ref: ref('demo.user_cohort_retention', 'relative_month_disp')
-        format {
-          type: 'text'
-        }
-      }
-      cohort_value: VizFieldFull {
-        ref: ref('demo.user_cohort_retention', 'active_users_count')
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-    }
-  }
   block v8: VizBlock {
     label: 'Users vs Orders Growth'
     viz: CombinationChart {
@@ -524,7 +485,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
     viz: BarChart {
       dataset: demo.ds_ecommerce
       legend: VizFieldFull {
-        ref: ref('demo.dim_user_countries', 'name')
+        ref: ref('demo.dim_countries', 'name')
         format {
           type: 'text'
         }
@@ -616,7 +577,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
         data_type: 'text'
       }
       x_axis: VizFieldFull {
-        ref: ref('demo.dim_user_countries', 'name')
+        ref: ref('demo.dim_countries', 'name')
         format {
           type: 'text'
         }
@@ -946,7 +907,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
   view: CanvasLayout {
     label: 'View 1'
     width: 1330
-    height: 4260
+    height: 3860
     block hd1 {
       position: pos(1130, 40, 170, 50)
     }
@@ -971,9 +932,6 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
     }
     block v6 {
       position: pos(830, 2250, 460, 480)
-    }
-    block v7 {
-      position: pos(40, 3620, 1250, 430)
     }
     block v8 {
       position: pos(40, 3080, 600, 510)
@@ -1074,14 +1032,14 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
       position: pos(690, 1290, 600, 340)
     }
     block t38 {
-      position: pos(-10, 4090, 1360, 250)
+      position: pos(-10, 3600, 1360, 250)
       layer: -1
     }
     block t39 {
-      position: pos(20, 4140, 200, 70)
+      position: pos(20, 3650, 200, 70)
     }
     block t40 {
-      position: pos(910, 4120, 390, 110)
+      position: pos(910, 3630, 390, 110)
     }
     block t46 {
       position: pos(40, 330, 790, 320)

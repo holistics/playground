@@ -9,7 +9,7 @@ Dashboard pct_of_total {
     height: 690
     grid_size: 15
     block v1 {
-      position: pos(615, 240, 555, 400)
+      position: pos(615, 240, 555, 405)
     }
     block t1 {
       position: pos(615, 165, 250, 40)
@@ -49,7 +49,7 @@ Dashboard pct_of_total {
       }
       fields: [
         VizFieldFull {
-          ref: ref('demo.dim_product_cities', 'name')
+          ref: ref('demo.dim_cities', 'name')
           format {
             type: 'text'
           }
@@ -111,7 +111,7 @@ Video Tutorial: [Percent of Total Analysis with Holistics AQL](https://www.youtu
       }
       fields: [
         VizFieldFull {
-          ref: ref('demo.dim_product_cities', 'name')
+          ref: ref('demo.dim_cities', 'name')
           format {
             type: 'text'
           }

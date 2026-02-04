@@ -115,27 +115,13 @@ Explore or edit the initial data below to replicate the result on the right.;;
         },
         VizFieldFull {
           label: 'Orders Created At'
-          ref: ref('demo.fct_order_items', 'created_at')
+          ref: ref('demo.fct_orders', 'created_at')
           format {
             type: 'datetime'
           }
         },
         VizFieldFull {
           ref: ref('demo.fct_order_items', 'quantity')
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        },
-        VizFieldFull {
-          ref: ref('demo.fct_order_items', 'value')
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        },
-        VizFieldFull {
-          ref: ref('demo.fct_order_items', 'discount_value')
           format {
             type: 'number'
             pattern: 'inherited'
