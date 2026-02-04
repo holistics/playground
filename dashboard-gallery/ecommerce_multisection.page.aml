@@ -406,7 +406,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
     type: 'field'
     source: FieldFilterSource {
       dataset: ds_ecommerce
-      field: ref('demo.dim_user_countries', 'name')
+      field: ref('demo.dim_countries', 'name')
     }
     default {
       operator: 'is'
@@ -680,7 +680,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
     type: 'field'
     source: FieldFilterSource {
       dataset: ds_ecommerce
-      field: ref('demo.dim_user_cities', 'name')
+      field: ref('demo.dim_cities', 'name')
     }
     default {
       operator: 'is'
