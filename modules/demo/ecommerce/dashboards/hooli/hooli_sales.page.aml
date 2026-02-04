@@ -517,17 +517,9 @@ Dashboard hooli_overview {
             'v14',
             'v20',
             'v15',
-            'v16'
+            'v16',
+            'f3'
           ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f4'
-      to: [
-        CustomMapping {
-          block: 'f3'
           disabled: true
         }
       ]
@@ -541,7 +533,7 @@ Dashboard hooli_overview {
             'v12',
             'v14'
           ]
-          field: ref('demo.dim_dates', 'date_key')
+          field: r(demo.dim_dates.date_key)
         }
       ]
     },
@@ -554,6 +546,15 @@ Dashboard hooli_overview {
             'v11',
             'v12',
             'v14'
+          ]
+          field: r(demo.dim_dates.date_key)
+        },
+        CustomMapping {
+          block: [
+            'v20',
+            'v15',
+            'v16',
+            'v17'
           ]
           field: ref('demo.dim_dates', 'date_key')
         }

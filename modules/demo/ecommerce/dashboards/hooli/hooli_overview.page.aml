@@ -91,20 +91,15 @@ Dashboard hooli_analytics {
         calc_type: 'dimension'
         data_type: 'text'
       }
-      filter {
-        field: ref('demo.fct_orders', 'created_at')
-        operator: 'matches'
-        value: '2023'
-      }
       rows: [
         VizFieldFull {
-          ref: ref('demo.dim_categories', 'name')
+          ref: r(demo.dim_categories.name)
           format {
             type: 'text'
           }
         },
         VizFieldFull {
-          ref: ref('demo.dim_products', 'name')
+          ref: r(demo.dim_products.name)
           format {
             type: 'text'
           }
@@ -113,7 +108,7 @@ Dashboard hooli_analytics {
       values: [
         VizFieldFull {
           label: 'GMV'
-          ref: 'gmv'
+          ref: r(demo.ds_ecommerce.gmv)
           format {
             type: 'number'
             pattern: '[$$]#,###'
@@ -121,7 +116,8 @@ Dashboard hooli_analytics {
         }
       ]
       settings {
-        row_height: 'multiple_lines'
+        wrap_header_text: true
+        wrap_cell_text: true
         pagination_size: 100
         show_row_total: true
         show_column_total: true
@@ -131,13 +127,9 @@ Dashboard hooli_analytics {
             direction: 'desc'
           }
         ]
-        column_width {
-          manual_widths: [
-            ColumnWidth {
-              key: 'demo.dim_products_name'
-              width: 186
-            }
-          ]
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
         }
       }
     }
@@ -152,11 +144,6 @@ Dashboard hooli_analytics {
         formula: @aml concat('<img src="', demo.dim_product_img.url, '" style="float:left;height:48px; margin: 12px 6px; object-fit:contain" />');;
         calc_type: 'dimension'
         data_type: 'text'
-      }
-      filter {
-        field: r(demo.fct_orders.created_at)
-        operator: 'matches'
-        value: '2023'
       }
       fields: [
         VizFieldFull {
@@ -524,7 +511,20 @@ Dashboard hooli_analytics {
       to: [
         CustomMapping {
           block: 'v14'
-          field: ref('demo.dim_users', 'sign_up_date')
+          field: r(demo.dim_users.sign_up_date)
+        },
+        CustomMapping {
+          block: [
+            'v19',
+            'v18',
+            'v17',
+            'v15',
+            'v13',
+            'v3',
+            'v7',
+            'v6'
+          ]
+          field: ref('demo.dim_dates', 'date_key')
         }
       ]
     }
