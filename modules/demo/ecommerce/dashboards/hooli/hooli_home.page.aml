@@ -114,14 +114,9 @@ Dashboard hooli_home {
         calc_type: 'measure'
         data_type: 'number'
       }
-      filter {
-        field: ref('demo.fct_orders', 'created_at')
-        operator: 'before'
-        value: '2024-05-01'
-      }
       value: VizFieldFull {
         label: 'Sales'
-        ref: 'gmv'
+        ref: r(demo.ds_ecommerce.gmv)
         format {
           type: 'number'
           pattern: '[$$]#,###,"K"'
@@ -130,9 +125,18 @@ Dashboard hooli_home {
         }
       }
       compare_value: VizPopSettings {
-        field: ref('demo.fct_orders', 'created_at')
-        duration: 1
-        granularity: 'month'
+        field: r(demo.fct_orders.created_at)
+        value: RelativePopValue {
+          duration: 1
+          granularity: 'month'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        alignment: 'left'
       }
     }
     settings {
@@ -143,23 +147,20 @@ Dashboard hooli_home {
     label: 'Orders'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce
-      filter {
-        field: ref('demo.fct_orders', 'created_at')
-        operator: 'before'
-        value: '2024-05-01'
-      }
       value: VizFieldFull {
         label: 'Orders'
-        ref: ref('demo.fct_orders', 'total_orders_count')
+        ref: r(demo.fct_orders.total_orders_count)
         format {
           type: 'number'
           pattern: 'inherited'
         }
       }
       compare_value: VizPopSettings {
-        field: ref('demo.fct_orders', 'created_at')
-        duration: 3
-        granularity: 'month'
+        field: r(demo.fct_orders.created_at)
+        value: RelativePopValue {
+          duration: 3
+          granularity: 'month'
+        }
       }
       settings {
         aggregate_awareness {
@@ -177,23 +178,27 @@ Dashboard hooli_home {
     label: 'Revenue (dup) (dup)'
     viz: MetricKpi {
       dataset: demo.ds_ecommerce
-      filter {
-        field: ref('demo.dim_users', 'sign_up_date')
-        operator: 'before'
-        value: '2024-05-01'
-      }
       value: VizFieldFull {
         label: 'Customers'
-        ref: ref('demo.dim_users', 'total_users')
+        ref: r(demo.dim_users.total_users)
         format {
           type: 'number'
           pattern: 'inherited'
         }
       }
       compare_value: VizPopSettings {
-        field: ref('demo.dim_users', 'sign_up_date')
-        duration: 1
-        granularity: 'month'
+        field: r(demo.dim_users.sign_up_date)
+        value: RelativePopValue {
+          duration: 1
+          granularity: 'month'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        alignment: 'left'
       }
     }
     settings {

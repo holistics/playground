@@ -358,12 +358,6 @@ Dashboard hooli_analytics {
     label: 'Sales Overtime'
     viz: LineChart {
       dataset: demo.ds_ecommerce
-      filter {
-        field: r(demo.fct_orders.created_at)
-        operator: 'last'
-        value: '3'
-        modifier: 'year'
-      }
       x_axis: VizFieldFull {
         ref: r(demo.fct_orders.created_at)
         transformation: 'datetrunc week'
@@ -407,12 +401,6 @@ Dashboard hooli_analytics {
     label: 'Trend Metrics'
     viz: LineChart {
       dataset: demo.ds_ecommerce
-      filter {
-        field: r(demo.fct_orders.created_at)
-        operator: 'last'
-        value: '3'
-        modifier: 'year'
-      }
       x_axis: VizFieldFull {
         ref: r(demo.fct_orders.created_at)
         transformation: 'datetrunc week'

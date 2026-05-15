@@ -34,11 +34,6 @@ Dashboard hooli_products {
         calc_type: 'dimension'
         data_type: 'text'
       }
-      filter {
-        field: r(demo.fct_orders.created_at)
-        operator: 'matches'
-        value: '2023'
-      }
       fields: [
         VizFieldFull {
           ref: r(demo.dim_products.product_image_100px)
